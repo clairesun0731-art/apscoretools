@@ -17,34 +17,34 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "Is this APES score calculator official?",
+    question: "When is the 2026 AP Environmental Science Exam?",
     answer:
-      "No. This calculator is unofficial and is not affiliated with or endorsed by the College Board.",
+      "The regularly scheduled 2026 AP Environmental Science Exam is Friday, May 15, 2026, at 8 AM local time. Your school or AP coordinator can confirm your exact testing details.",
   },
   {
-    question: "How accurate is this AP Environmental Science score calculator?",
+    question: "When do 2026 AP scores come out?",
     answer:
-      "It provides an estimate based on the exam structure and estimated score boundaries. Actual AP score cutoffs can vary from year to year.",
+      "2026 AP scores will be available starting Monday, July 6, 2026. Students can view their scores through their College Board account.",
   },
   {
-    question: "What is a good AP Environmental Science score?",
+    question: "Can I use this calculator before the APES exam?",
     answer:
-      "A 3 is often considered passing, while a 4 or 5 is usually stronger for college credit. Each college sets its own AP credit policy.",
-  },
-  {
-    question: "What score do I need to get a 5 on APES?",
-    answer:
-      "In this calculator, the estimated AP Score 5 range starts at a composite score of 96 out of 130. The actual cutoff may vary.",
+      "Yes. You can use it during review season to test different MCQ and FRQ score scenarios and see how they may affect your estimated AP score.",
   },
   {
     question: "Can I use this calculator after the APES exam?",
     answer:
-      "Yes. If you remember your approximate MCQ and FRQ performance, you can use it to estimate your possible score.",
+      "Yes. If you remember your approximate multiple-choice and free-response performance, you can use it to estimate your possible AP score before official scores are released.",
   },
   {
-    question: "Does the AP Environmental Science exam include FRQs?",
+    question: "Is this APES score calculator official?",
     answer:
-      "Yes. The AP Environmental Science exam includes 3 free-response questions, which account for 40% of the exam score.",
+      "No. This calculator is unofficial and is not affiliated with or endorsed by the College Board. It uses estimated score boundaries.",
+  },
+  {
+    question: "Do AP Environmental Science score cutoffs change every year?",
+    answer:
+      "Yes, official AP score cutoffs can vary by year. This calculator uses estimated ranges based on common APES calculator models and past scoring patterns.",
   },
 ];
 
@@ -256,6 +256,18 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
           </article>
 
           <article className="card prose-card">
+            <h2>2026 AP Environmental Science Exam Date and Score Release</h2>
+            <p>
+              2026 AP Exams are administered over two weeks: May 4-8 and May
+              11-15, 2026. The 2026 AP Environmental Science Exam is scheduled
+              for Friday, May 15, 2026, at 8 AM local time. AP scores for 2026
+              will be available starting Monday, July 6, 2026. This calculator
+              can help you estimate your score before or after the exam, but
+              official results are only available through the College Board.
+            </p>
+          </article>
+
+          <article className="card prose-card">
             <h2>APES Score Calculator FAQ</h2>
             <div className="faq-list">
               {faqs.map((faq) => (
@@ -271,11 +283,21 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             <h2>Related AP Score Calculators</h2>
             <p>
               More calculators are planned for AP Biology, AP Chemistry, AP
-              Psychology, and AP Statistics.
+              Psychology, and AP Statistics. You can also read more about how
+              AP Environmental Science scoring works.
             </p>
-            <div>
+            <div className="hero-actions">
               <Link className="button secondary" href="/">
-                View all AP score calculators
+                AP Score Tools home
+              </Link>
+              <Link className="button" href="/ap-score-calculators/">
+                View AP score calculators
+              </Link>
+              <Link
+                className="button secondary"
+                href="/how-ap-environmental-science-is-scored/"
+              >
+                How APES is scored
               </Link>
             </div>
           </article>

@@ -69,6 +69,9 @@ export default function AboutPage() {
             <Link className="button secondary" href="/">
               Back to AP Score Tools
             </Link>
+            <Link className="button secondary" href="/ap-score-calculators/">
+              AP score calculators hub
+            </Link>
             <Link className="button" href="/ap-environmental-science-score-calculator/">
               Try the AP Environmental Science Score Calculator
             </Link>

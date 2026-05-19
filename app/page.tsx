@@ -15,19 +15,39 @@ export const metadata: Metadata = {
 
 const liveCalculator = {
   name: "AP Environmental Science Score Calculator",
-  description: "Estimate your APES score from MCQ and FRQ raw scores.",
+  description:
+    "Estimate your APES score from MCQ and FRQ raw scores using a 130-point composite model.",
   href: "/ap-environmental-science-score-calculator/",
 };
 
+const featuredCalculators = [
+  {
+    name: "AP Environmental Science Score Calculator",
+    description: "Live calculator for APES MCQ, FRQ, and composite estimates.",
+    href: "/ap-environmental-science-score-calculator/",
+    status: "Live",
+  },
+  {
+    name: "AP Biology Score Calculator",
+    description: "Coming soon. This tool is planned and not live yet.",
+    href: "/ap-biology-score-calculator/",
+    status: "Coming soon",
+  },
+  {
+    name: "AP Chemistry Score Calculator",
+    description: "Coming soon. This tool is planned and not live yet.",
+    href: "/ap-chemistry-score-calculator/",
+    status: "Coming soon",
+  },
+];
+
 const comingSoonCalculators = [
-  "AP Biology Score Calculator",
-  "AP Chemistry Score Calculator",
-  "AP Psychology Score Calculator",
-  "AP Statistics Score Calculator",
-  "AP Calculus AB Score Calculator",
-  "AP English Language Score Calculator",
-  "APUSH Score Calculator",
-  "AP World History Score Calculator",
+  { name: "AP Psychology Score Calculator", status: "Planned" },
+  { name: "AP Statistics Score Calculator", status: "Planned" },
+  { name: "AP Calculus AB Score Calculator", status: "Planned" },
+  { name: "AP English Language Score Calculator", status: "Planned" },
+  { name: "APUSH Score Calculator", status: "Planned" },
+  { name: "AP World History Score Calculator", status: "Planned" },
 ];
 
 const websiteSchema = {
@@ -99,6 +119,49 @@ export default function Home() {
       <section className="section">
         <div className="container content-stack">
           <section className="prose-card">
+            <div className="section-heading">
+              <h2>Explore AP Score Calculators</h2>
+              <p>
+                Start with the live AP Environmental Science calculator, or
+                visit the hub to see upcoming AP score calculator tools.
+              </p>
+            </div>
+            <div className="cards-grid">
+              {featuredCalculators.map((calculator) => (
+                <Link href={calculator.href} key={calculator.name}>
+                  <article
+                    className={`tool-card ${
+                      calculator.status === "Live" ? "active" : ""
+                    }`}
+                  >
+                    <div>
+                      <span
+                        className={`status-pill ${
+                          calculator.status === "Coming soon" ? "soon" : ""
+                        }`}
+                      >
+                        {calculator.status}
+                      </span>
+                      <h3>{calculator.name}</h3>
+                      <p>{calculator.description}</p>
+                    </div>
+                    <span>
+                      {calculator.status === "Live"
+                        ? "Open calculator"
+                        : "View status"}
+                    </span>
+                  </article>
+                </Link>
+              ))}
+            </div>
+            <div>
+              <Link className="button" href="/ap-score-calculators/">
+                View the AP score calculators hub
+              </Link>
+            </div>
+          </section>
+
+          <section className="prose-card">
             <h2>Available AP Score Calculator</h2>
             <Link href={liveCalculator.href}>
               <article className="tool-card active">
@@ -115,11 +178,11 @@ export default function Home() {
           <section className="prose-card">
             <h2>More AP Calculators Coming Soon</h2>
             <div className="cards-grid">
-              {comingSoonCalculators.map((name) => (
-                <article className="tool-card" key={name}>
+              {comingSoonCalculators.map((calculator) => (
+                <article className="tool-card" key={calculator.name}>
                   <div>
-                    <span className="status-pill soon">Coming soon</span>
-                    <h3>{name}</h3>
+                    <span className="status-pill soon">{calculator.status}</span>
+                    <h3>{calculator.name}</h3>
                     <p>This AP score calculator is planned and not live yet.</p>
                   </div>
                 </article>

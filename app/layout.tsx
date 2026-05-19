@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -50,55 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <header className="site-header">
-          <nav className="nav container" aria-label="Main navigation">
-            <Link className="logo" href="/">
-              <Image
-                className="logo-mark"
-                alt="AP Score Tools"
-                height={40}
-                priority
-                src="/logo-ap-score-calculator-square.png"
-                width={40}
-              />
-              <span>AP Score Tools</span>
-            </Link>
-            <div className="nav-links">
-              <Link href="/">Home</Link>
-              <Link href="/ap-environmental-science-score-calculator/">
-                APES Calculator
-              </Link>
-              <Link href="/about/">About</Link>
-            </div>
-          </nav>
-        </header>
+        <Header />
         {children}
-        <footer className="site-footer">
-          <div className="container footer-inner">
-            <div className="footer-brand">
-              <Image
-                alt=""
-                aria-hidden="true"
-                className="footer-icon"
-                height={32}
-                src="/logo-ap-score-calculator-square.png"
-                width={32}
-              />
-              <p>
-                AP Score Tools is unofficial and is not affiliated with or
-                endorsed by the College Board. Predicted AP scores are estimates
-                only.
-              </p>
-            </div>
-            <nav className="footer-links" aria-label="Footer navigation">
-              <Link href="/">Home</Link>
-              <Link href="/ap-environmental-science-score-calculator/">
-                AP Environmental Science Score Calculator
-              </Link>
-              <Link href="/about/">About</Link>
-            </nav>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
