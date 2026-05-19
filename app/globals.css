@@ -72,12 +72,20 @@ input {
 .logo {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 850;
 }
 
 .logo img {
-  width: auto;
   height: 40px;
+  width: 40px;
   object-fit: contain;
+}
+
+.logo-mark {
+  border-radius: 12px;
 }
 
 .nav-links {
@@ -193,6 +201,13 @@ p {
   font-size: 0.98rem;
 }
 
+.trust-line {
+  max-width: 620px;
+  color: var(--foreground);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
 .badge-row {
   display: flex;
   align-items: center;
@@ -234,6 +249,18 @@ p {
   background: var(--accent-soft);
   outline: 3px solid var(--accent-soft);
   outline-offset: 3px;
+}
+
+.button.secondary {
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .card,
@@ -316,6 +343,13 @@ p {
   font-weight: 760;
 }
 
+.input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
 .field input {
   width: 100%;
   border: 1px solid var(--border);
@@ -327,10 +361,33 @@ p {
   padding: 13px 14px;
 }
 
+.raw-score {
+  display: inline-flex;
+  min-width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--foreground);
+  font-weight: 800;
+}
+
 .field input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 5px var(--accent-soft);
   outline: none;
+}
+
+.field .score-slider {
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  accent-color: var(--accent);
+  background: var(--accent-soft);
+  cursor: pointer;
 }
 
 .helper {
@@ -403,6 +460,11 @@ p {
   color: #ffffff;
   font-size: 0.98rem;
   text-align: right;
+}
+
+.metric small {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.78rem;
 }
 
 .feedback {
@@ -518,14 +580,39 @@ tr:last-child td {
 
 .footer-inner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 12px;
   padding: 24px 0;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 680px;
 }
 
 .footer-icon {
   flex: 0 0 auto;
   border-radius: 10px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--accent);
+  outline: none;
 }
 
 .footer-inner p {
@@ -586,9 +673,14 @@ tr:last-child td {
   }
 
   .calculator-card-header,
+  .footer-brand,
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
   }
 
   .field-grid {

@@ -15,13 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apscoretools.com"),
+  metadataBase: new URL("https://www.apscoretools.com"),
   title: {
-    default: "AP Score Calculator",
-    template: "%s | AP Score Calculator",
+    default: "AP Score Tools | Free AP Score Calculators and Exam Tools",
+    template: "%s | AP Score Tools",
   },
   description:
-    "Free, unofficial AP score calculators and exam tools for students.",
+    "AP Score Tools provides free, unofficial AP score calculators and exam tools for students. Start with the AP Environmental Science score calculator.",
+  openGraph: {
+    title: "AP Score Tools",
+    description:
+      "Free, unofficial AP score calculators and exam tools for students.",
+    url: "https://www.apscoretools.com",
+    siteName: "AP Score Tools",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AP Score Tools",
+    description:
+      "Free, unofficial AP score calculators and exam tools for students.",
+  },
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
@@ -40,12 +54,14 @@ export default function RootLayout({
           <nav className="nav container" aria-label="Main navigation">
             <Link className="logo" href="/">
               <Image
-                alt="AP Score Calculator"
-                height={44}
+                className="logo-mark"
+                alt="AP Score Tools"
+                height={40}
                 priority
-                src="/logo-ap-score-calculator-horizontal.png"
-                width={132}
+                src="/logo-ap-score-calculator-square.png"
+                width={40}
               />
+              <span>AP Score Tools</span>
             </Link>
             <div className="nav-links">
               <Link href="/">Home</Link>
@@ -59,19 +75,28 @@ export default function RootLayout({
         {children}
         <footer className="site-footer">
           <div className="container footer-inner">
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="footer-icon"
-              height={32}
-              src="/logo-ap-score-calculator-square.png"
-              width={32}
-            />
-            <p>
-              AP Score Calculator is unofficial and is not affiliated with or
-              endorsed by the College Board. Predicted AP scores are estimates
-              only.
-            </p>
+            <div className="footer-brand">
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="footer-icon"
+                height={32}
+                src="/logo-ap-score-calculator-square.png"
+                width={32}
+              />
+              <p>
+                AP Score Tools is unofficial and is not affiliated with or
+                endorsed by the College Board. Predicted AP scores are estimates
+                only.
+              </p>
+            </div>
+            <nav className="footer-links" aria-label="Footer navigation">
+              <Link href="/">Home</Link>
+              <Link href="/ap-environmental-science-score-calculator/">
+                AP Environmental Science Score Calculator
+              </Link>
+              <Link href="/about/">About</Link>
+            </nav>
           </div>
         </footer>
       </body>

@@ -3,9 +3,16 @@ import Link from "next/link";
 import ApesCalculator from "./ApesCalculator";
 
 export const metadata: Metadata = {
-  title: "AP Environmental Science Score Calculator 2026 | APES Score Predictor",
+  title: {
+    absolute:
+      "AP Environmental Science Score Calculator 2026 | APES Score Predictor",
+  },
   description:
-    "Estimate your AP Environmental Science score with our free APES score calculator. Enter your MCQ and FRQ raw scores to predict your AP score from 1 to 5.",
+    "Estimate your AP Environmental Science score with our free APES score calculator. Enter your MCQ and FRQ raw scores to predict your unofficial AP score from 1 to 5.",
+  alternates: {
+    canonical:
+      "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
+  },
 };
 
 const faqs = [
@@ -27,7 +34,7 @@ const faqs = [
   {
     question: "What score do I need to get a 5 on APES?",
     answer:
-      "In this calculator, the estimated 5 range starts at 75% or higher. The actual cutoff may vary.",
+      "In this calculator, the estimated AP Score 5 range starts at a composite score of 96 out of 130. The actual cutoff may vary.",
   },
   {
     question: "Can I use this calculator after the APES exam?",
@@ -67,7 +74,7 @@ const jsonLd = [
     },
     description:
       "A free unofficial APES score calculator that estimates an AP Environmental Science score from MCQ and FRQ raw scores.",
-    url: "https://apscoretools.com/ap-environmental-science-score-calculator/",
+    url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
   },
   {
     "@context": "https://schema.org",
@@ -77,13 +84,13 @@ const jsonLd = [
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://apscoretools.com/",
+        item: "https://www.apscoretools.com/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "AP Environmental Science Score Calculator",
-        item: "https://apscoretools.com/ap-environmental-science-score-calculator/",
+        item: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
       },
     ],
   },
@@ -106,6 +113,11 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             free-response raw scores. This free AP Environmental Science score
             calculator gives you an unofficial predicted AP score from 1 to 5.
           </p>
+          <div className="hero-actions">
+            <Link className="button" href="/">
+              Explore AP Score Tools
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -128,15 +140,22 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
           <article className="card prose-card">
             <h2>How This AP Environmental Science Score Calculator Works</h2>
             <p>
-              The calculator converts your raw AP Environmental Science
-              multiple-choice score into a 60% weighted contribution and your
-              three free-response scores into a 40% weighted contribution. It
-              then adds those values into one estimated composite percentage.
+              The calculator first converts the AP Environmental Science
+              multiple-choice raw score out of 80 to a scaled score out of 78.
+              It then adds the three FRQ raw scores, out of 30 total, and scales
+              them to 52 points.
             </p>
             <p>
-              The estimated AP score is assigned from the composite percentage:
-              75% and above is a 5, 60% to 74.9% is a 4, 45% to 59.9% is a 3,
-              30% to 44.9% is a 2, and below 30% is a 1.
+              The two scaled section scores are added to create a composite
+              score out of 130. That composite score is mapped to an estimated
+              AP score from 1 to 5.
+            </p>
+            <p>
+              MCQ scaled score = (MCQ raw score ÷ 80) × 78
+              <br />
+              FRQ scaled score = (FRQ raw total ÷ 30) × 52
+              <br />
+              Composite score = MCQ scaled score + FRQ scaled score
             </p>
           </article>
 
@@ -147,7 +166,8 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 <thead>
                   <tr>
                     <th>Section</th>
-                    <th>Questions</th>
+                    <th>Raw Score</th>
+                    <th>Scaled Score</th>
                     <th>Time</th>
                     <th>Weight</th>
                   </tr>
@@ -156,18 +176,21 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                   <tr>
                     <td>Section I: Multiple Choice</td>
                     <td>80 questions</td>
+                    <td>78 points</td>
                     <td>1 hour 30 minutes</td>
                     <td>60%</td>
                   </tr>
                   <tr>
                     <td>Section II: Free Response</td>
-                    <td>3 questions</td>
+                    <td>3 questions / 30 raw points</td>
+                    <td>52 points</td>
                     <td>1 hour 10 minutes</td>
                     <td>40%</td>
                   </tr>
                   <tr>
                     <td>Total</td>
                     <td>-</td>
+                    <td>130 points</td>
                     <td>2 hours 40 minutes</td>
                     <td>100%</td>
                   </tr>
@@ -177,39 +200,45 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
           </article>
 
           <article className="card prose-card">
-            <h2>Estimated APES Score Chart</h2>
+            <h2>Estimated APES Composite Score Chart</h2>
             <div className="table-wrap">
               <table>
                 <thead>
                   <tr>
-                    <th>Composite Percentage</th>
-                    <th>Estimated AP Score</th>
+                    <th>Composite Score Range</th>
+                    <th>Predicted AP Score</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>75%+</td>
+                    <td>96-130</td>
                     <td>5</td>
                   </tr>
                   <tr>
-                    <td>60-74.9%</td>
+                    <td>77-95</td>
                     <td>4</td>
                   </tr>
                   <tr>
-                    <td>45-59.9%</td>
+                    <td>68-76</td>
                     <td>3</td>
                   </tr>
                   <tr>
-                    <td>30-44.9%</td>
+                    <td>50-67</td>
                     <td>2</td>
                   </tr>
                   <tr>
-                    <td>Below 30%</td>
+                    <td>0-49</td>
                     <td>1</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <p>
+              These composite score ranges are estimates based on common APES
+              score calculator models and past scoring patterns. Official AP
+              score cutoffs are determined by the College Board and may vary by
+              year.
+            </p>
           </article>
 
           <article className="card prose-card">
@@ -218,10 +247,11 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               Science?
             </h2>
             <p>
-              In this estimator, you need at least 45% for a predicted 3, at
-              least 60% for a predicted 4, and at least 75% for a predicted 5.
-              Because official AP score cutoffs can vary by year, use these
-              numbers as planning estimates instead of guarantees.
+              In this estimator, you need about 68 composite points for a
+              predicted 3, 77 composite points for a predicted 4, and 96
+              composite points for a predicted 5. Because official AP score
+              cutoffs can vary by year, use these numbers as planning estimates
+              instead of guarantees.
             </p>
           </article>
 

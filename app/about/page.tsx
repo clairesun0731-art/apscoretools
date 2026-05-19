@@ -2,20 +2,37 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About AP Score Calculator",
+  title: {
+    absolute: "About AP Score Tools",
+  },
   description:
-    "Learn about AP Score Calculator, a free unofficial AP score calculator website for students.",
+    "Learn about AP Score Tools, a free unofficial AP score calculator website for students.",
+  alternates: {
+    canonical: "https://www.apscoretools.com/about/",
+  },
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "About AP Score Tools",
+  url: "https://www.apscoretools.com/about/",
 };
 
 export default function AboutPage() {
   return (
     <main className="page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+
       <section className="container hero">
         <div>
           <span className="eyebrow">About the project</span>
-          <h1>About AP Score Calculator</h1>
+          <h1>About AP Score Tools</h1>
           <p className="lead">
-            AP Score Calculator provides free unofficial AP score calculators and
+            AP Score Tools provides free unofficial AP score calculators and
             exam tools to help students estimate possible AP exam outcomes from
             raw section scores.
           </p>
@@ -41,14 +58,17 @@ export default function AboutPage() {
 
           <article className="disclaimer">
             <p>
-              AP Score Calculator is not affiliated with or endorsed by the
-              College Board. AP, Advanced Placement, and related exam names are
+              AP Score Tools is not affiliated with or endorsed by the College
+              Board. AP, Advanced Placement, and related exam names are
               trademarks of their respective owners. Calculator results are
               estimates only.
             </p>
           </article>
 
-          <div>
+          <div className="hero-actions">
+            <Link className="button secondary" href="/">
+              Back to AP Score Tools
+            </Link>
             <Link className="button" href="/ap-environmental-science-score-calculator/">
               Try the AP Environmental Science Score Calculator
             </Link>
