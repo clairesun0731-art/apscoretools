@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const lastModified = new Date("2026-05-19T00:00:00.000Z");
+const lastModified = new Date("2026-05-20T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -32,10 +32,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://www.apscoretools.com/ap-biology-score-calculator/",
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.7,
     },
     {
       url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-calculus-ab-score-calculator/",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-lang-score-calculator/",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: "https://www.apscoretools.com/apush-score-calculator/",
       lastModified,
       changeFrequency: "monthly",
       priority: 0.6,

@@ -34,6 +34,15 @@ export default function Footer() {
             <Link href="/ap-chemistry-score-calculator/">
               AP Chemistry Score Calculator
             </Link>
+            <Link href="/ap-calculus-ab-score-calculator/">
+              AP Calculus AB Score Calculator
+            </Link>
+            <Link href="/ap-lang-score-calculator/">
+              AP Lang Score Calculator
+            </Link>
+            <Link href="/apush-score-calculator/">
+              APUSH Score Calculator
+            </Link>
           </nav>
 
           <nav className="footer-links" aria-label="Learn">
@@ -43,11 +52,11 @@ export default function Footer() {
             </Link>
           </nav>
 
-          <nav className="footer-links" aria-label="Company">
-            <strong>Company</strong>
-            <Link href="/about/">About</Link>
+          <nav className="footer-links" aria-label="Legal">
+            <strong>Legal</strong>
             <Link href="/privacy-policy/">Privacy Policy</Link>
             <Link href="/terms-of-use/">Terms of Use</Link>
+            <Link href="/about/">About</Link>
           </nav>
         </div>
       </div>

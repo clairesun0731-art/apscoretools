@@ -4,26 +4,19 @@ import ApesCalculator from "./ap-environmental-science-score-calculator/ApesCalc
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AP Score Tools | Free AP Score Calculators and Exam Tools",
+    absolute: "AP Score Tools | Free AP Score Calculator Hub",
   },
   description:
-    "Use AP Score Tools to estimate AP exam scores with free, unofficial calculators. Start with the AP Environmental Science score calculator, with more AP subjects coming soon.",
+    "Use AP Score Tools to estimate AP exam scores with free, unofficial score calculators. Start with the live AP Environmental Science score calculator, with more AP subjects coming soon.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
 };
 
-const liveCalculator = {
-  name: "AP Environmental Science Score Calculator",
-  description:
-    "Estimate your APES score from MCQ and FRQ raw scores using a 130-point composite model.",
-  href: "/ap-environmental-science-score-calculator/",
-};
-
 const featuredCalculators = [
   {
     name: "AP Environmental Science Score Calculator",
-    description: "Live calculator for APES MCQ, FRQ, and composite estimates.",
+    description: "Live APES calculator for MCQ, FRQ, and composite estimates.",
     href: "/ap-environmental-science-score-calculator/",
     status: "Live",
   },
@@ -37,6 +30,24 @@ const featuredCalculators = [
     name: "AP Chemistry Score Calculator",
     description: "Coming soon. This tool is planned and not live yet.",
     href: "/ap-chemistry-score-calculator/",
+    status: "Coming soon",
+  },
+  {
+    name: "AP Calculus AB Score Calculator",
+    description: "Coming soon. This AP Calc AB tool is planned and not live yet.",
+    href: "/ap-calculus-ab-score-calculator/",
+    status: "Coming soon",
+  },
+  {
+    name: "AP English Language Score Calculator",
+    description: "Coming soon. This AP Lang tool is planned and not live yet.",
+    href: "/ap-lang-score-calculator/",
+    status: "Coming soon",
+  },
+  {
+    name: "APUSH Score Calculator",
+    description: "Coming soon. This AP US History tool is planned and not live yet.",
+    href: "/apush-score-calculator/",
     status: "Coming soon",
   },
 ];
@@ -80,15 +91,15 @@ export default function Home() {
         <div className="container hero-tool-grid">
           <div className="hero-copy">
             <span className="eyebrow">AP score tools for students</span>
-            <h1>Free AP Score Tools for Students</h1>
+            <h1>Free AP Score Calculator Tools for Students</h1>
             <p className="lead">
-              Start with our AP Environmental Science score calculator. Enter
-              your MCQ and FRQ raw scores to get an unofficial AP score estimate
-              from 1 to 5. More AP score calculators are coming soon.
+              Start with our live AP Environmental Science score calculator.
+              More AP score calculators for Biology, Chemistry, Calculus,
+              APUSH, AP Lang, and other AP subjects are coming soon.
             </p>
             <p className="trust-line">
-              Unofficial AP score estimates · Built for students · Not
-              affiliated with the College Board
+              Unofficial AP score estimates · APES calculator live now · More AP
+              calculators coming soon
             </p>
             <div className="badge-row" aria-label="Calculator features">
               <span>First live tool: APES</span>
@@ -97,9 +108,9 @@ export default function Home() {
               <span>2026 estimate</span>
             </div>
             <p className="short-note">
-              This is our first live AP score calculator. More subjects,
-              including AP Biology, AP Chemistry, AP Psychology, and AP
-              Statistics, are planned.
+              AP Score Tools is a free AP score calculator hub. This is our
+              first live AP score calculator, and more subject tools are
+              planned.
             </p>
           </div>
 
@@ -120,10 +131,12 @@ export default function Home() {
         <div className="container content-stack">
           <section className="prose-card">
             <div className="section-heading">
-              <h2>Explore AP Score Calculators</h2>
+              <h2>Popular AP Score Calculators</h2>
               <p>
-                Start with the live AP Environmental Science calculator, or
-                visit the hub to see upcoming AP score calculator tools.
+                AP Score Tools is building a collection of unofficial AP score
+                calculators for high-demand AP subjects. The AP Environmental
+                Science calculator is live now, and more calculators are
+                planned.
               </p>
             </div>
             <div className="cards-grid">
@@ -156,23 +169,9 @@ export default function Home() {
             </div>
             <div>
               <Link className="button" href="/ap-score-calculators/">
-                View the AP score calculators hub
+                Explore all AP score calculators
               </Link>
             </div>
-          </section>
-
-          <section className="prose-card">
-            <h2>Available AP Score Calculator</h2>
-            <Link href={liveCalculator.href}>
-              <article className="tool-card active">
-                <div>
-                  <span className="status-pill">Live</span>
-                  <h3>{liveCalculator.name}</h3>
-                  <p>{liveCalculator.description}</p>
-                </div>
-                <span>Open calculator</span>
-              </article>
-            </Link>
           </section>
 
           <section className="prose-card">
