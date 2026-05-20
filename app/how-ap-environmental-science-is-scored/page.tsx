@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
@@ -61,6 +62,11 @@ const jsonLd = [
         url: "https://www.apscoretools.com/logo-ap-score-calculator-square.png",
       },
     },
+    inLanguage: "en-US",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://www.apscoretools.com/how-ap-environmental-science-is-scored/",
+    },
   },
   {
     "@context": "https://schema.org",
@@ -97,10 +103,7 @@ const jsonLd = [
 export default function HowApEnvironmentalScienceIsScoredPage() {
   return (
     <main className="page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       <section className="container hero">
         <div>

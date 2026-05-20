@@ -1,4 +1,5 @@
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 type ComingSoonCalculatorPageProps = {
   description: string;
@@ -57,10 +58,7 @@ export default function ComingSoonCalculatorPage({
 
   return (
     <main className="page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       <section className="container hero">
         <div>

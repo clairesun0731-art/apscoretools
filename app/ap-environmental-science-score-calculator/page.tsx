@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import ApesCalculator from "./ApesCalculator";
 
 export const metadata: Metadata = {
@@ -51,6 +52,70 @@ const faqs = [
 const jsonLd = [
   {
     "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "AP Environmental Science Score Calculator",
+    alternateName: [
+      "APES Score Calculator",
+      "APES Score Predictor",
+      "AP Environmental Science Score Predictor",
+    ],
+    url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
+    applicationCategory: "EducationalApplication",
+    applicationSubCategory: "Score calculator",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    featureList: [
+      "Estimate AP Environmental Science scores from MCQ and FRQ raw scores",
+      "Convert MCQ raw score to an estimated scaled score out of 78",
+      "Convert FRQ raw score to an estimated scaled score out of 52",
+      "Estimate APES composite score out of 130",
+      "Map estimated composite score to a predicted AP score from 1 to 5",
+    ],
+    description:
+      "A free, unofficial AP Environmental Science score calculator that estimates an APES composite score from multiple-choice and free-response raw scores.",
+    creator: {
+      "@type": "Organization",
+      name: "AP Score Tools",
+      url: "https://www.apscoretools.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "AP Score Tools",
+      url: "https://www.apscoretools.com",
+    },
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
+    },
+    educationalUse: "Exam preparation",
+    learningResourceType: "Calculator",
+    inLanguage: "en-US",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "AP Environmental Science Score Calculator 2026",
+    url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
+    description:
+      "A free, unofficial APES score calculator page for estimating AP Environmental Science composite scores from MCQ and FRQ raw scores.",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "AP Score Tools",
+      url: "https://www.apscoretools.com",
+    },
+    about: {
+      "@type": "SoftwareApplication",
+      name: "AP Environmental Science Score Calculator",
+      url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
+    },
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
@@ -60,21 +125,6 @@ const jsonLd = [
         text: faq.answer,
       },
     })),
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "AP Environmental Science Score Calculator",
-    applicationCategory: "EducationalApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-    description:
-      "A free unofficial APES score calculator that estimates an AP Environmental Science score from MCQ and FRQ raw scores.",
-    url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
   },
   {
     "@context": "https://schema.org",
@@ -99,10 +149,7 @@ const jsonLd = [
 export default function ApEnvironmentalScienceScoreCalculatorPage() {
   return (
     <main className="page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       <section className="container hero">
         <div>

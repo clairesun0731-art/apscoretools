@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
@@ -78,6 +79,40 @@ const morePlannedCalculators = [
 const jsonLd = [
   {
     "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "AP Score Calculators 2026",
+    url: "https://www.apscoretools.com/ap-score-calculators/",
+    description:
+      "A directory of free, unofficial AP score calculators from AP Score Tools, including the live AP Environmental Science score calculator and planned calculators for other AP subjects.",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "AP Score Tools",
+      url: "https://www.apscoretools.com",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "AP Score Calculators",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: 6,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "AP Environmental Science Score Calculator",
+        item: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
+      },
+      ...priorityCalculators.map((calculator, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: calculator.name,
+        item: `https://www.apscoretools.com${calculator.href}`,
+      })),
+    ],
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqItems.map((faq) => ({
       "@type": "Question",
@@ -111,10 +146,7 @@ const jsonLd = [
 export default function ApScoreCalculatorsPage() {
   return (
     <main className="page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       <section className="container hero">
         <div>

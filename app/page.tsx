@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import ApesCalculator from "./ap-environmental-science-score-calculator/ApesCalculator";
 
 export const metadata: Metadata = {
@@ -55,15 +56,24 @@ const organizationSchema = {
   logo: "https://www.apscoretools.com/logo-ap-score-calculator-square.png",
 };
 
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "AP Score Tools",
+  url: "https://www.apscoretools.com/",
+  description:
+    "AP Score Tools is a free, unofficial AP score calculator hub for students, starting with the live AP Environmental Science score calculator.",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "AP Score Tools",
+    url: "https://www.apscoretools.com",
+  },
+};
+
 export default function Home() {
   return (
     <main className="page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([websiteSchema, organizationSchema]),
-        }}
-      />
+      <JsonLd data={[websiteSchema, organizationSchema, webPageSchema]} />
 
       <section className="hero-tool compact-home-hero">
         <div className="container home-tool-stack">
