@@ -29,11 +29,6 @@ const faqItems = [
       "Yes. AP Biology and AP Chemistry are high-priority planned calculators.",
   },
   {
-    question: "Can I use an AP score calculator after the exam?",
-    answer:
-      "Yes. If you remember your approximate section scores, a calculator can help estimate your possible AP score before official scores are released.",
-  },
-  {
     question: "Do AP score calculator cutoffs change every year?",
     answer:
       "Official AP cutoffs can vary by subject and year. AP Score Tools uses estimated scoring models and clearly labels results as unofficial.",
@@ -126,11 +121,10 @@ export default function ApScoreCalculatorsPage() {
           <span className="eyebrow">AP score calculator hub</span>
           <h1>AP Score Calculators 2026</h1>
           <p className="lead">
-            AP Score Tools is a growing hub for free, unofficial AP score
+            AP Score Tools is a clean directory for free, unofficial AP score
             calculators. Start with the live AP Environmental Science score
-            calculator, then explore planned calculators for AP Biology, AP
-            Chemistry, AP Calculus, APUSH, AP Lang, AP Psychology, AP
-            Statistics, and more.
+            calculator, then check planned tools for AP Biology, AP Chemistry,
+            AP Calculus, APUSH, AP Lang, and more.
           </p>
         </div>
       </section>
@@ -154,9 +148,7 @@ export default function ApScoreCalculatorsPage() {
                   <h3>AP Environmental Science Score Calculator</h3>
                   <p>
                     Estimate your APES score using MCQ and FRQ raw scores,
-                    scaled into an estimated composite score out of 130. This
-                    AP Environmental Science score calculator also works as an
-                    APES calculator and APES score predictor for study planning.
+                    scaled into an estimated composite score out of 130.
                   </p>
                 </div>
                 <span>Open calculator</span>
@@ -184,17 +176,11 @@ export default function ApScoreCalculatorsPage() {
 
           <section className="card prose-card">
             <h2>More Planned AP Calculators</h2>
-            <div className="cards-grid">
+            <ul className="planned-list">
               {morePlannedCalculators.map((calculator) => (
-                <article className="tool-card" key={calculator}>
-                  <div>
-                    <span className="status-pill soon">Planned</span>
-                    <h3>{calculator}</h3>
-                    <p>This AP exam calculator is planned and not live yet.</p>
-                  </div>
-                </article>
+                <li key={calculator}>{calculator}</li>
               ))}
-            </div>
+            </ul>
           </section>
 
           <article className="card prose-card">

@@ -14,6 +14,10 @@ type ScoreFieldProps = {
   value: number;
 };
 
+type ApesCalculatorProps = {
+  mode?: "compact" | "full";
+};
+
 const nextThresholdByScore: Record<Exclude<ScoreBand, 5>, number> = {
   1: 50,
   2: 68,
@@ -81,11 +85,12 @@ function ScoreField({
   );
 }
 
-export default function ApesCalculator() {
+export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
   const [mcqRaw, setMcqRaw] = useState(60);
   const [frq1, setFrq1] = useState(8);
   const [frq2, setFrq2] = useState(8);
   const [frq3, setFrq3] = useState(8);
+  const isCompact = mode === "compact";
 
   const result = useMemo(() => {
     const mcqScaled = Math.min((mcqRaw / 80) * 78, 78);
@@ -116,13 +121,18 @@ export default function ApesCalculator() {
   }, [frq1, frq2, frq3, mcqRaw]);
 
   return (
-    <section className="calculator-card" aria-label="APES score calculator">
+    <section
+      className={`calculator-card ${isCompact ? "calculator-card-compact" : ""}`}
+      aria-label="APES score calculator"
+    >
       <div className="calculator-card-header">
         <div>
-          <span className="kicker">First available tool</span>
+          <span className="kicker">
+            {isCompact ? "Live calculator" : "First available tool"}
+          </span>
           <h2>AP Environmental Science Score Calculator</h2>
         </div>
-        <span className="score-chip">130-point composite</span>
+        {!isCompact && <span className="score-chip">130-point composite</span>}
       </div>
 
       <div className="calculator-body">
@@ -170,37 +180,59 @@ export default function ApesCalculator() {
 
         <aside className="result-card" aria-live="polite">
           <div className="result-top">
-            <p>Predicted AP Score</p>
+            <p>{isCompact ? "Estimated AP score" : "Predicted AP Score"}</p>
             <strong className="score-number">{result.score}</strong>
           </div>
           <div className="result-details">
-            <div className="metric">
-              <span>Multiple Choice Score</span>
-              <strong>{formatScore(result.mcqScaled, 78)} / 78</strong>
-            </div>
-            <div className="metric">
-              <span>Free Response Score</span>
-              <strong>
-                {formatScore(result.frqScaled, 52)} / 52
-                <small> ({result.frqRawTotal} raw)</small>
-              </strong>
-            </div>
+            {!isCompact && (
+              <>
+                <div className="metric">
+                  <span>Multiple Choice Score</span>
+                  <strong>{formatScore(result.mcqScaled, 78)} / 78</strong>
+                </div>
+                <div className="metric">
+                  <span>Free Response Score</span>
+                  <strong>
+                    {formatScore(result.frqScaled, 52)} / 52
+                    <small> ({result.frqRawTotal} raw)</small>
+                  </strong>
+                </div>
+              </>
+            )}
             <div className="metric">
               <span>Combined Composite Score</span>
               <strong>{formatScore(result.composite, 130)} / 130</strong>
             </div>
-            <div className="metric">
-              <span>Score band</span>
-              <strong>{result.scoreBand}</strong>
-            </div>
-            <div className="metric">
-              <span>Points to next band</span>
-              <strong>{result.nextBandMessage}</strong>
-            </div>
-            <p className="feedback">
-              These are estimated score boundaries. Official AP score cutoffs
-              are determined by the College Board and may vary by year.
-            </p>
+            {!isCompact && (
+              <>
+                <div className="metric">
+                  <span>Score band</span>
+                  <strong>{result.scoreBand}</strong>
+                </div>
+                <div className="metric">
+                  <span>Points to next band</span>
+                  <strong>{result.nextBandMessage}</strong>
+                </div>
+              </>
+            )}
+            {isCompact ? (
+              <>
+                <p className="feedback compact-feedback">
+                  Unofficial estimate based on current inputs.
+                </p>
+                <a
+                  className="result-link"
+                  href="/ap-environmental-science-score-calculator/"
+                >
+                  View detailed score breakdown
+                </a>
+              </>
+            ) : (
+              <p className="feedback">
+                These are estimated score boundaries. Official AP score cutoffs
+                are determined by the College Board and may vary by year.
+              </p>
+            )}
           </div>
         </aside>
       </div>

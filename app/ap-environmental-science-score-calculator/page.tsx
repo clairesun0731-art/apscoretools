@@ -122,12 +122,18 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               Explore AP Score Tools
             </Link>
           </div>
+          <nav className="quick-links" aria-label="APES page sections">
+            <a href="#calculator">Calculator</a>
+            <a href="#raw-score-conversion">Raw score conversion</a>
+            <a href="#score-chart">Score chart</a>
+            <a href="#faq">FAQ</a>
+          </nav>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="calculator">
         <div className="container content-stack">
-          <ApesCalculator />
+          <ApesCalculator mode="full" />
           <article className="disclaimer">
             <p>
               This AP Environmental Science score calculator is unofficial. It
@@ -163,7 +169,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             </p>
           </article>
 
-          <article className="card prose-card">
+          <article className="card prose-card" id="raw-score-conversion">
             <h2>APES Raw Score Conversion</h2>
             <p>
               This AP Environmental Science score calculator uses a common APES
@@ -251,7 +257,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             </div>
           </article>
 
-          <article className="card prose-card">
+          <article className="card prose-card" id="score-chart">
             <h2>Estimated APES Composite Score Chart</h2>
             <div className="table-wrap">
               <table>
@@ -319,7 +325,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             </p>
           </article>
 
-          <article className="card prose-card">
+          <article className="card prose-card" id="faq">
             <h2>APES Score Calculator FAQ</h2>
             <div className="faq-list">
               {faqs.map((faq) => (

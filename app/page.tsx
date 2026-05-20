@@ -13,52 +13,30 @@ export const metadata: Metadata = {
   },
 };
 
-const featuredCalculators = [
-  {
-    name: "AP Environmental Science Score Calculator",
-    description: "Live APES calculator for MCQ, FRQ, and composite estimates.",
-    href: "/ap-environmental-science-score-calculator/",
-    status: "Live",
-  },
-  {
-    name: "AP Biology Score Calculator",
-    description: "Coming soon. This tool is planned and not live yet.",
-    href: "/ap-biology-score-calculator/",
-    status: "Coming soon",
-  },
-  {
-    name: "AP Chemistry Score Calculator",
-    description: "Coming soon. This tool is planned and not live yet.",
-    href: "/ap-chemistry-score-calculator/",
-    status: "Coming soon",
-  },
-  {
-    name: "AP Calculus AB Score Calculator",
-    description: "Coming soon. This AP Calc AB tool is planned and not live yet.",
-    href: "/ap-calculus-ab-score-calculator/",
-    status: "Coming soon",
-  },
-  {
-    name: "AP English Language Score Calculator",
-    description: "Coming soon. This AP Lang tool is planned and not live yet.",
-    href: "/ap-lang-score-calculator/",
-    status: "Coming soon",
-  },
-  {
-    name: "APUSH Score Calculator",
-    description: "Coming soon. This AP US History tool is planned and not live yet.",
-    href: "/apush-score-calculator/",
-    status: "Coming soon",
-  },
+const comingSoonCalculators = [
+  { name: "AP Biology", href: "/ap-biology-score-calculator/" },
+  { name: "AP Chemistry", href: "/ap-chemistry-score-calculator/" },
+  { name: "AP Calculus AB", href: "/ap-calculus-ab-score-calculator/" },
+  { name: "AP Lang", href: "/ap-lang-score-calculator/" },
+  { name: "APUSH", href: "/apush-score-calculator/" },
 ];
 
-const comingSoonCalculators = [
-  { name: "AP Psychology Score Calculator", status: "Planned" },
-  { name: "AP Statistics Score Calculator", status: "Planned" },
-  { name: "AP Calculus AB Score Calculator", status: "Planned" },
-  { name: "AP English Language Score Calculator", status: "Planned" },
-  { name: "APUSH Score Calculator", status: "Planned" },
-  { name: "AP World History Score Calculator", status: "Planned" },
+const faqItems = [
+  {
+    question: "Is AP Score Tools official?",
+    answer:
+      "No. AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board.",
+  },
+  {
+    question: "Which calculator is live right now?",
+    answer:
+      "The AP Environmental Science score calculator is live now. Other AP calculators are coming soon.",
+  },
+  {
+    question: "Are calculator results exact?",
+    answer:
+      "No. Results are unofficial estimates based on raw scores, section weights, and estimated score ranges.",
+  },
 ];
 
 const websiteSchema = {
@@ -87,42 +65,30 @@ export default function Home() {
         }}
       />
 
-      <section className="hero-tool">
-        <div className="container hero-tool-grid">
-          <div className="hero-copy">
-            <span className="eyebrow">AP score tools for students</span>
-            <h1>Free AP Score Calculator Tools for Students</h1>
+      <section className="hero-tool compact-home-hero">
+        <div className="container home-tool-stack">
+          <div className="hero-copy compact-hero-copy">
+            <span className="eyebrow">AP score calculator hub</span>
+            <h1>Free AP Score Tools for Students</h1>
             <p className="lead">
-              Start with our live AP Environmental Science score calculator.
-              More AP score calculators for Biology, Chemistry, Calculus,
-              APUSH, AP Lang, and other AP subjects are coming soon.
+              Start with the live AP Environmental Science score calculator.
+              More AP calculators are coming soon.
             </p>
             <p className="trust-line">
-              Unofficial AP score estimates · APES calculator live now · More AP
-              calculators coming soon
+              Unofficial score estimates · APES calculator live now · Not
+              affiliated with the College Board
             </p>
-            <div className="badge-row" aria-label="Calculator features">
-              <span>First live tool: APES</span>
-              <span>MCQ + FRQ</span>
+            <div className="badge-row" aria-label="Calculator status">
+              <span>APES calculator live</span>
               <span>Free to use</span>
-              <span>2026 estimate</span>
             </div>
-            <p className="short-note">
-              AP Score Tools is a free AP score calculator hub. This is our
-              first live AP score calculator, and more subject tools are
-              planned.
-            </p>
           </div>
 
-          <div className="hero-calculator">
-            <ApesCalculator />
-            <div className="disclaimer">
-              <p>
-                This calculator is unofficial and is not affiliated with or
-                endorsed by the College Board. Predicted AP scores are estimates
-                only and may vary from official scores.
-              </p>
-            </div>
+          <div className="home-calculator-wrap">
+            <ApesCalculator mode="compact" />
+            <p className="inline-disclaimer">
+              AP Score Tools is unofficial. Results are estimates only.
+            </p>
           </div>
         </div>
       </section>
@@ -130,188 +96,76 @@ export default function Home() {
       <section className="section">
         <div className="container content-stack">
           <section className="prose-card">
-            <div className="section-heading">
-              <h2>Popular AP Score Calculators</h2>
-              <p>
-                AP Score Tools is building a collection of unofficial AP score
-                calculators for high-demand AP subjects. The AP Environmental
-                Science calculator is live now, and more calculators are
-                planned.
-              </p>
+            <div className="section-heading compact-heading">
+              <h2>Available Calculator</h2>
+              <p>The first live AP score calculator is ready to use.</p>
             </div>
-            <div className="cards-grid">
-              {featuredCalculators.map((calculator) => (
+            <Link href="/ap-environmental-science-score-calculator/">
+              <article className="tool-card active tool-card-compact">
+                <div>
+                  <span className="status-pill">Live</span>
+                  <h3>AP Environmental Science Score Calculator</h3>
+                  <p>
+                    Estimate your APES score from MCQ and FRQ raw scores, then
+                    review the full score breakdown on the dedicated page.
+                  </p>
+                </div>
+                <span>Open full calculator</span>
+              </article>
+            </Link>
+          </section>
+
+          <section className="prose-card">
+            <div className="section-heading compact-heading">
+              <h2>AP Score Calculators Coming Soon</h2>
+              <p>These planned pages are not live calculators yet.</p>
+            </div>
+            <div className="cards-grid compact-card-grid">
+              {comingSoonCalculators.map((calculator) => (
                 <Link href={calculator.href} key={calculator.name}>
-                  <article
-                    className={`tool-card ${
-                      calculator.status === "Live" ? "active" : ""
-                    }`}
-                  >
+                  <article className="tool-card mini-tool-card">
                     <div>
-                      <span
-                        className={`status-pill ${
-                          calculator.status === "Coming soon" ? "soon" : ""
-                        }`}
-                      >
-                        {calculator.status}
-                      </span>
+                      <span className="status-pill soon">Coming soon</span>
                       <h3>{calculator.name}</h3>
-                      <p>{calculator.description}</p>
                     </div>
-                    <span>
-                      {calculator.status === "Live"
-                        ? "Open calculator"
-                        : "View status"}
-                    </span>
                   </article>
                 </Link>
               ))}
             </div>
-            <div>
-              <Link className="button" href="/ap-score-calculators/">
-                Explore all AP score calculators
-              </Link>
+          </section>
+
+          <section className="card prose-card">
+            <h2>How AP Score Tools Works</h2>
+            <div className="steps-grid">
+              <div>
+                <span className="step-number">1</span>
+                <h3>Enter raw section scores</h3>
+                <p>Add the MCQ and FRQ points you want to test.</p>
+              </div>
+              <div>
+                <span className="step-number">2</span>
+                <h3>Get an unofficial estimate</h3>
+                <p>See a predicted AP score and composite score.</p>
+              </div>
+              <div>
+                <span className="step-number">3</span>
+                <h3>Review scoring guides</h3>
+                <p>Use the detailed APES page for charts and context.</p>
+              </div>
             </div>
           </section>
 
-          <section className="prose-card">
-            <h2>More AP Calculators Coming Soon</h2>
-            <div className="cards-grid">
-              {comingSoonCalculators.map((calculator) => (
-                <article className="tool-card" key={calculator.name}>
-                  <div>
-                    <span className="status-pill soon">{calculator.status}</span>
-                    <h3>{calculator.name}</h3>
-                    <p>This AP score calculator is planned and not live yet.</p>
-                  </div>
-                </article>
+          <section className="card prose-card">
+            <h2>FAQ</h2>
+            <div className="faq-list">
+              {faqItems.map((faq) => (
+                <div className="faq-item" key={faq.question}>
+                  <h3>{faq.question}</h3>
+                  <p>{faq.answer}</p>
+                </div>
               ))}
             </div>
           </section>
-
-          <article className="card prose-card">
-            <h2>How This AP Score Calculator Works</h2>
-            <p>
-              The live AP Environmental Science calculator uses your raw
-              multiple-choice score and free-response scores. It scales Section
-              I from 80 raw questions to 78 composite points, scales the three
-              FRQs from 30 raw points to 52 composite points, then combines both
-              sections into an estimated APES composite score out of 130.
-            </p>
-          </article>
-
-          <article className="card prose-card">
-            <h2>AP Environmental Science Exam Format</h2>
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Section</th>
-                    <th>Raw Score</th>
-                    <th>Scaled Score</th>
-                    <th>Time</th>
-                    <th>Weight</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Section I: Multiple Choice</td>
-                    <td>80 questions</td>
-                    <td>78 points</td>
-                    <td>1 hour 30 minutes</td>
-                    <td>60%</td>
-                  </tr>
-                  <tr>
-                    <td>Section II: Free Response</td>
-                    <td>3 questions / 30 raw points</td>
-                    <td>52 points</td>
-                    <td>1 hour 10 minutes</td>
-                    <td>40%</td>
-                  </tr>
-                  <tr>
-                    <td>Total</td>
-                    <td>-</td>
-                    <td>130 points</td>
-                    <td>2 hours 40 minutes</td>
-                    <td>100%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </article>
-
-          <article className="card prose-card">
-            <h2>Estimated APES Composite Score Chart</h2>
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Composite Score Range</th>
-                    <th>Predicted AP Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>96-130</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>77-95</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>68-76</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>50-67</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <td>0-49</td>
-                    <td>1</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p>
-              These composite score ranges are estimates based on common APES
-              score calculator models and past scoring patterns. Official AP
-              score cutoffs are determined by the College Board and may vary by
-              year.
-            </p>
-          </article>
-
-          <article className="card prose-card">
-            <h2>What Score Do You Need for a 3, 4, or 5?</h2>
-            <p>
-              In this AP Environmental Science estimate, a 3 starts at 68
-              composite points, a 4 starts at 77 composite points, and a 5
-              starts at 96 composite points. Official score cutoffs can change
-              by year, so use these as planning estimates.
-            </p>
-          </article>
-
-          <article className="card prose-card">
-            <h2>FAQ</h2>
-            <div className="faq-list">
-              <div className="faq-item">
-                <h3>Are these AP score calculators official?</h3>
-                <p>
-                  No. AP Score Tools is unofficial and not affiliated with or
-                  endorsed by the College Board.
-                </p>
-              </div>
-              <div className="faq-item">
-                <h3>Can I use AP Score Tools before or after the AP exam?</h3>
-                <p>
-                  Yes. You can use the live AP Environmental Science calculator
-                  to test study scenarios before the exam or estimate your
-                  possible score after the exam.
-                </p>
-              </div>
-            </div>
-          </article>
         </div>
       </section>
     </main>
