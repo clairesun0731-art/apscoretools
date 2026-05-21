@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent } from "@/lib/gtag";
 
 type ScoreBand = 1 | 2 | 3 | 4 | 5;
 
@@ -17,6 +18,8 @@ type ScoreFieldProps = {
 type ApesCalculatorProps = {
   mode?: "compact" | "full";
 };
+
+type InputField = "mcq" | "frq1" | "frq2" | "frq3";
 
 const nextThresholdByScore: Record<Exclude<ScoreBand, 5>, number> = {
   1: 50,
@@ -91,6 +94,9 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
   const [frq2, setFrq2] = useState(8);
   const [frq3, setFrq3] = useState(8);
   const isCompact = mode === "compact";
+  const pageType = isCompact ? "homepage" : "tool_page";
+  const hasStartedRef = useRef(false);
+  const hasInteractedRef = useRef(false);
 
   const result = useMemo(() => {
     const mcqScaled = Math.min((mcqRaw / 80) * 78, 78);
@@ -120,6 +126,44 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
     };
   }, [frq1, frq2, frq3, mcqRaw]);
 
+  function handleInputChange(
+    inputField: InputField,
+    nextValue: number,
+    setValue: (value: number) => void,
+  ) {
+    setValue(nextValue);
+    hasInteractedRef.current = true;
+
+    if (!hasStartedRef.current) {
+      hasStartedRef.current = true;
+      trackEvent("calculator_start", {
+        calculator_name: "apes_score_calculator",
+        page_type: pageType,
+      });
+    }
+
+    trackEvent("calculator_input_change", {
+      calculator_name: "apes_score_calculator",
+      input_field: inputField,
+      page_type: pageType,
+    });
+  }
+
+  useEffect(() => {
+    if (!hasInteractedRef.current) return;
+
+    const timeoutId = window.setTimeout(() => {
+      trackEvent("calculator_result_view", {
+        calculator_name: "apes_score_calculator",
+        predicted_score: result.score,
+        composite_score: Number(result.composite.toFixed(1)),
+        page_type: pageType,
+      });
+    }, 800);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [pageType, result.composite, result.score]);
+
   return (
     <section
       className={`calculator-card ${isCompact ? "calculator-card-compact" : ""}`}
@@ -143,7 +187,7 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
             label="Section I: Multiple Choice"
             max={80}
             min={0}
-            onChange={setMcqRaw}
+            onChange={(value) => handleInputChange("mcq", value, setMcqRaw)}
             value={mcqRaw}
           />
 
@@ -153,7 +197,7 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
             label="Question 1: Design an Investigation"
             max={10}
             min={0}
-            onChange={setFrq1}
+            onChange={(value) => handleInputChange("frq1", value, setFrq1)}
             value={frq1}
           />
 
@@ -163,7 +207,7 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
             label="Question 2: Analyze an Environmental Problem and Propose a Solution"
             max={10}
             min={0}
-            onChange={setFrq2}
+            onChange={(value) => handleInputChange("frq2", value, setFrq2)}
             value={frq2}
           />
 
@@ -173,7 +217,7 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
             label="Question 3: Analyze an Environmental Problem and Propose a Solution Doing Calculations"
             max={10}
             min={0}
-            onChange={setFrq3}
+            onChange={(value) => handleInputChange("frq3", value, setFrq3)}
             value={frq3}
           />
         </form>
@@ -223,6 +267,12 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
                 <a
                   className="result-link"
                   href="/ap-environmental-science-score-calculator/"
+                  onClick={() =>
+                    trackEvent("view_detailed_breakdown", {
+                      calculator_name: "apes_score_calculator",
+                      source: "homepage_compact_calculator",
+                    })
+                  }
                 >
                   View detailed score breakdown
                 </a>

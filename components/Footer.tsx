@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import TrackedLink from "@/components/TrackedLink";
 
 export default function Footer() {
   return (
@@ -24,16 +25,30 @@ export default function Footer() {
         <div className="footer-link-groups">
           <nav className="footer-links" aria-label="Tools">
             <strong>Tools</strong>
-            <Link href="/ap-score-calculators/">AP Score Calculators</Link>
+            <TrackedLink
+              eventName="calculator_hub_click"
+              eventParams={{ source: "footer" }}
+              href="/ap-score-calculators/"
+            >
+              AP Score Calculators
+            </TrackedLink>
             <Link href="/ap-environmental-science-score-calculator/">
               AP Environmental Science
             </Link>
-            <Link href="/ap-biology-score-calculator/">
+            <TrackedLink
+              eventName="coming_soon_subject_click"
+              eventParams={{ subject: "ap_biology", source: "footer" }}
+              href="/ap-biology-score-calculator/"
+            >
               AP Biology
-            </Link>
-            <Link href="/ap-chemistry-score-calculator/">
+            </TrackedLink>
+            <TrackedLink
+              eventName="coming_soon_subject_click"
+              eventParams={{ subject: "ap_chemistry", source: "footer" }}
+              href="/ap-chemistry-score-calculator/"
+            >
               AP Chemistry
-            </Link>
+            </TrackedLink>
           </nav>
 
           <nav className="footer-links" aria-label="Learn">

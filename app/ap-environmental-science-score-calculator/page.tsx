@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import TrackedLink from "@/components/TrackedLink";
 import ApesCalculator from "./ApesCalculator";
 
 export const metadata: Metadata = {
@@ -255,11 +256,21 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             </div>
             <p>
               You can read more about{" "}
-              <Link href="/how-ap-environmental-science-is-scored/">
+              <TrackedLink
+                eventName="scoring_guide_click"
+                eventParams={{ source: "apes_calculator_page" }}
+                href="/how-ap-environmental-science-is-scored/"
+              >
                 how AP Environmental Science is scored
-              </Link>{" "}
+              </TrackedLink>{" "}
               or browse the{" "}
-              <Link href="/ap-score-calculators/">AP Score Calculators</Link>{" "}
+              <TrackedLink
+                eventName="calculator_hub_click"
+                eventParams={{ source: "apes_calculator_page" }}
+                href="/ap-score-calculators/"
+              >
+                AP Score Calculators
+              </TrackedLink>{" "}
               hub for planned tools.
             </p>
           </article>
@@ -396,21 +407,44 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               <Link className="button secondary" href="/">
                 AP Score Tools home
               </Link>
-              <Link className="button" href="/ap-score-calculators/">
+              <TrackedLink
+                className="button"
+                eventName="calculator_hub_click"
+                eventParams={{ source: "apes_calculator_page" }}
+                href="/ap-score-calculators/"
+              >
                 View AP score calculators
-              </Link>
-              <Link
+              </TrackedLink>
+              <TrackedLink
                 className="button secondary"
+                eventName="scoring_guide_click"
+                eventParams={{ source: "apes_calculator_page" }}
                 href="/how-ap-environmental-science-is-scored/"
               >
                 How APES is scored
-              </Link>
-              <Link className="button secondary" href="/ap-biology-score-calculator/">
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="coming_soon_subject_click"
+                eventParams={{
+                  subject: "ap_biology",
+                  source: "apes_calculator_page",
+                }}
+                href="/ap-biology-score-calculator/"
+              >
                 AP Biology Score Calculator
-              </Link>
-              <Link className="button secondary" href="/ap-chemistry-score-calculator/">
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="coming_soon_subject_click"
+                eventParams={{
+                  subject: "ap_chemistry",
+                  source: "apes_calculator_page",
+                }}
+                href="/ap-chemistry-score-calculator/"
+              >
                 AP Chemistry Score Calculator
-              </Link>
+              </TrackedLink>
             </div>
           </article>
         </div>

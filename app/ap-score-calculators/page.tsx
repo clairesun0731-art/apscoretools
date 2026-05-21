@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import TrackedLink from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: {
@@ -41,26 +42,31 @@ const priorityCalculators = [
     name: "AP Biology Score Calculator",
     aliases: "AP Bio score calculator, AP Biology score calculator",
     href: "/ap-biology-score-calculator/",
+    subject: "ap_biology",
   },
   {
     name: "AP Chemistry Score Calculator",
     aliases: "AP Chem score calculator, AP Chemistry score calculator",
     href: "/ap-chemistry-score-calculator/",
+    subject: "ap_chemistry",
   },
   {
     name: "AP Calculus AB Score Calculator",
     aliases: "AP Calc AB score calculator, AP Calculus AB score calculator",
     href: "/ap-calculus-ab-score-calculator/",
+    subject: "ap_calculus_ab",
   },
   {
     name: "AP English Language Score Calculator",
     aliases: "AP Lang score calculator, AP English Language score calculator",
     href: "/ap-lang-score-calculator/",
+    subject: "ap_lang",
   },
   {
     name: "APUSH Score Calculator",
     aliases: "APUSH score calculator, AP US History score calculator",
     href: "/apush-score-calculator/",
+    subject: "apush",
   },
 ];
 
@@ -192,7 +198,15 @@ export default function ApScoreCalculatorsPage() {
             <h2>High-Priority AP Score Calculators Coming Soon</h2>
             <div className="cards-grid">
               {priorityCalculators.map((calculator) => (
-                <Link href={calculator.href} key={calculator.name}>
+                <TrackedLink
+                  eventName="coming_soon_subject_click"
+                  eventParams={{
+                    subject: calculator.subject,
+                    source: "hub_page",
+                  }}
+                  href={calculator.href}
+                  key={calculator.name}
+                >
                   <article className="tool-card">
                     <div>
                       <span className="status-pill soon">Coming soon</span>
@@ -201,7 +215,7 @@ export default function ApScoreCalculatorsPage() {
                     </div>
                     <span>View planned page</span>
                   </article>
-                </Link>
+                </TrackedLink>
               ))}
             </div>
           </section>

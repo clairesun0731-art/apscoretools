@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import TrackedLink from "@/components/TrackedLink";
 import ApesCalculator from "./ap-environmental-science-score-calculator/ApesCalculator";
 
 export const metadata: Metadata = {
@@ -15,11 +16,23 @@ export const metadata: Metadata = {
 };
 
 const comingSoonCalculators = [
-  { name: "AP Biology", href: "/ap-biology-score-calculator/" },
-  { name: "AP Chemistry", href: "/ap-chemistry-score-calculator/" },
-  { name: "AP Calculus AB", href: "/ap-calculus-ab-score-calculator/" },
-  { name: "AP Lang", href: "/ap-lang-score-calculator/" },
-  { name: "APUSH", href: "/apush-score-calculator/" },
+  {
+    name: "AP Biology",
+    href: "/ap-biology-score-calculator/",
+    subject: "ap_biology",
+  },
+  {
+    name: "AP Chemistry",
+    href: "/ap-chemistry-score-calculator/",
+    subject: "ap_chemistry",
+  },
+  {
+    name: "AP Calculus AB",
+    href: "/ap-calculus-ab-score-calculator/",
+    subject: "ap_calculus_ab",
+  },
+  { name: "AP Lang", href: "/ap-lang-score-calculator/", subject: "ap_lang" },
+  { name: "APUSH", href: "/apush-score-calculator/", subject: "apush" },
 ];
 
 const faqItems = [
@@ -132,15 +145,33 @@ export default function Home() {
             </div>
             <div className="cards-grid compact-card-grid">
               {comingSoonCalculators.map((calculator) => (
-                <Link href={calculator.href} key={calculator.name}>
+                <TrackedLink
+                  eventName="coming_soon_subject_click"
+                  eventParams={{
+                    subject: calculator.subject,
+                    source: "homepage",
+                  }}
+                  href={calculator.href}
+                  key={calculator.name}
+                >
                   <article className="tool-card mini-tool-card">
                     <div>
                       <span className="status-pill soon">Coming soon</span>
                       <h3>{calculator.name}</h3>
                     </div>
                   </article>
-                </Link>
+                </TrackedLink>
               ))}
+            </div>
+            <div>
+              <TrackedLink
+                className="button secondary"
+                eventName="calculator_hub_click"
+                eventParams={{ source: "homepage" }}
+                href="/ap-score-calculators/"
+              >
+                View all AP score calculators
+              </TrackedLink>
             </div>
           </section>
 
@@ -160,7 +191,17 @@ export default function Home() {
               <div>
                 <span className="step-number">3</span>
                 <h3>Review scoring guides</h3>
-                <p>Use the detailed APES page for charts and context.</p>
+                <p>
+                  Use the{" "}
+                  <TrackedLink
+                    eventName="scoring_guide_click"
+                    eventParams={{ source: "homepage" }}
+                    href="/how-ap-environmental-science-is-scored/"
+                  >
+                    APES scoring guide
+                  </TrackedLink>{" "}
+                  for charts and context.
+                </p>
               </div>
             </div>
           </section>

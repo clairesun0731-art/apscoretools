@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import TrackedLink from "@/components/TrackedLink";
 
 export default function Header() {
   return (
@@ -18,7 +19,13 @@ export default function Header() {
         </Link>
         <div className="nav-links">
           <Link href="/">Home</Link>
-          <Link href="/ap-score-calculators/">AP Score Calculators</Link>
+          <TrackedLink
+            eventName="calculator_hub_click"
+            eventParams={{ source: "header" }}
+            href="/ap-score-calculators/"
+          >
+            AP Score Calculators
+          </TrackedLink>
           <Link href="/ap-environmental-science-score-calculator/">
             APES Calculator
           </Link>
