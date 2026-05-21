@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 import TrackedLink from "@/components/TrackedLink";
 
 export default function Footer() {
@@ -63,6 +64,7 @@ export default function Footer() {
             <Link href="/about/">About</Link>
             <Link href="/privacy-policy/">Privacy Policy</Link>
             <Link href="/terms-of-use/">Terms of Use</Link>
+            <CookiePreferencesButton />
           </nav>
         </div>
       </div>

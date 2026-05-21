@@ -1,3 +1,5 @@
+import { hasAnalyticsConsent } from "@/lib/consent";
+
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 type GtagEventParams = {
@@ -19,6 +21,7 @@ declare global {
 
 export function trackEvent(eventName: string, params: GtagEventParams = {}) {
   if (typeof window === "undefined") return;
+  if (!hasAnalyticsConsent()) return;
   if (!window.gtag) return;
 
   window.gtag("event", eventName, params);

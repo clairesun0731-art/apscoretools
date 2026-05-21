@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
+import ConsentBanner from "@/components/ConsentBanner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "./globals.css";
@@ -54,9 +55,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        {process.env.NEXT_PUBLIC_GA_ID ? (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        ) : null}
+        <ConsentBanner />
+        <AnalyticsProvider />
       </body>
     </html>
   );

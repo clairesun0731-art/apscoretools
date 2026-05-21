@@ -683,14 +683,106 @@ tr:last-child td {
 }
 
 .footer-links a:hover,
-.footer-links a:focus-visible {
+.footer-links a:focus-visible,
+.footer-button-link:hover,
+.footer-button-link:focus-visible {
   color: var(--accent);
   outline: none;
+}
+
+.footer-button-link {
+  width: fit-content;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  text-align: left;
 }
 
 .footer-inner p {
   font-size: 0.84rem;
   line-height: 1.55;
+}
+
+.consent-banner-wrap {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.consent-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  width: min(960px, 100%);
+  align-items: center;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(16, 27, 61, 0.16);
+  padding: 18px;
+  pointer-events: auto;
+}
+
+.consent-copy {
+  display: grid;
+  gap: 7px;
+}
+
+.consent-copy h2 {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.consent-copy p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.consent-copy a {
+  width: fit-content;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 760;
+}
+
+.consent-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.consent-actions button {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--foreground);
+  cursor: pointer;
+  font-weight: 800;
+  padding: 10px 16px;
+}
+
+.consent-actions button:last-child {
+  border-color: rgba(95, 75, 255, 0.35);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.consent-actions button:hover,
+.consent-actions button:focus-visible {
+  border-color: rgba(95, 75, 255, 0.55);
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 2px;
 }
 
 .compact-home-hero {
@@ -829,6 +921,14 @@ tr:last-child td {
 
   .nav-links {
     justify-content: flex-start;
+  }
+
+  .consent-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .consent-actions {
+    grid-template-columns: 1fr;
   }
 }
 

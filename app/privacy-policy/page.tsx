@@ -66,6 +66,23 @@ export default function PrivacyPolicyPage() {
           </article>
 
           <article className="card prose-card">
+            <h2>Cookie Consent</h2>
+            <p>
+              AP Score Tools uses necessary cookies or local storage to remember
+              your cookie preferences. If you choose to accept analytics
+              cookies, we may use Google Analytics to understand how visitors
+              use the website and improve our calculators and content. If you
+              reject analytics cookies, Google Analytics will not be loaded for
+              your visit.
+            </p>
+            <p>
+              You can change your cookie preference by clearing your browser
+              storage or using the cookie preferences link if available on the
+              website.
+            </p>
+          </article>
+
+          <article className="card prose-card">
             <h2>Advertising</h2>
             <p>
               If advertising is enabled in the future, third-party vendors,
