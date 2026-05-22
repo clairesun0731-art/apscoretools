@@ -34,17 +34,26 @@ export default function Footer() {
               AP Score Calculators
             </TrackedLink>
             <Link href="/ap-environmental-science-score-calculator/">
-              AP Environmental Science
+              AP Environmental Science Score Calculator
+            </Link>
+            <Link href="/ap-chemistry-score-calculator/">
+              AP Chemistry Score Calculator
             </Link>
             <TrackedLink
               eventName="coming_soon_subject_click"
               eventParams={{ subject: "ap_biology", source: "footer" }}
               href="/ap-biology-score-calculator/"
             >
-              AP Biology
+              AP Biology Score Calculator
             </TrackedLink>
-            <Link href="/ap-chemistry-score-calculator/">
-              AP Chemistry
+            <Link href="/ap-calculus-ab-score-calculator/">
+              AP Calculus AB Score Calculator
+            </Link>
+            <Link href="/ap-lang-score-calculator/">
+              AP Lang Score Calculator
+            </Link>
+            <Link href="/apush-score-calculator/">
+              APUSH Score Calculator
             </Link>
           </nav>
 
