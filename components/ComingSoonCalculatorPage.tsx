@@ -77,8 +77,8 @@ export default function ComingSoonCalculatorPage({
             <h2>Calculator Not Live Yet</h2>
             <p>
               This planned page is included so students can find future AP score
-              calculator updates. APES is the only live calculator on AP Score
-              Tools right now.
+              calculator updates. The AP Environmental Science and AP Chemistry
+              score calculators are live on AP Score Tools right now.
             </p>
           </article>
 
@@ -94,14 +94,17 @@ export default function ComingSoonCalculatorPage({
           </article>
 
           <article className="card prose-card">
-            <h2>Use the Live APES Calculator</h2>
+            <h2>Use a Live AP Score Calculator</h2>
             <p>
-              The AP Environmental Science score calculator is live now if you
-              want to try the current working AP score calculator.
+              AP Environmental Science and AP Chemistry calculators are live now
+              if you want to try a current working AP score calculator.
             </p>
             <div className="hero-actions">
               <Link className="button" href="/ap-environmental-science-score-calculator/">
                 Open APES calculator
+              </Link>
+              <Link className="button secondary" href="/ap-chemistry-score-calculator/">
+                Open AP Chemistry calculator
               </Link>
               <Link className="button secondary" href="/ap-score-calculators/">
                 Explore AP score calculators

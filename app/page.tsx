@@ -6,26 +6,16 @@ import ApesCalculator from "./ap-environmental-science-score-calculator/ApesCalc
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AP Score Tools | Free AP Score Calculator Hub",
+    absolute: "AP Score Tools | Free AP Score Calculators for Students",
   },
   description:
-    "Use AP Score Tools to estimate AP exam scores with free, unofficial score calculators. Start with the live AP Environmental Science score calculator, with more AP subjects coming soon.",
+    "AP Score Tools provides free, unofficial AP score calculators and exam tools for students. Start with the AP Environmental Science score calculator, with more AP subjects coming soon.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
 };
 
 const comingSoonCalculators = [
-  {
-    name: "AP Biology",
-    href: "/ap-biology-score-calculator/",
-    subject: "ap_biology",
-  },
-  {
-    name: "AP Chemistry",
-    href: "/ap-chemistry-score-calculator/",
-    subject: "ap_chemistry",
-  },
   {
     name: "AP Calculus AB",
     href: "/ap-calculus-ab-score-calculator/",
@@ -42,9 +32,9 @@ const faqItems = [
       "No. AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board.",
   },
   {
-    question: "Which calculator is live right now?",
+    question: "Which calculators are live right now?",
     answer:
-      "The AP Environmental Science score calculator is live now. Other AP calculators are coming soon.",
+      "The AP Environmental Science and AP Chemistry score calculators are live now. Other AP calculators are coming soon.",
   },
   {
     question: "Are calculator results exact?",
@@ -94,11 +84,12 @@ export default function Home() {
             <span className="eyebrow">AP score calculator hub</span>
             <h1>Free AP Score Tools for Students</h1>
             <p className="lead">
-              Start with the live AP Environmental Science score calculator.
-              More AP calculators are coming soon.
+              AP Score Tools helps students estimate AP exam scores with free,
+              unofficial calculators and scoring guides. Start with the live AP
+              Environmental Science score calculator.
             </p>
             <p className="trust-line">
-              Unofficial score estimates · APES calculator live now · Not
+              Unofficial score estimates · APES and AP Chemistry live now · Not
               affiliated with the College Board
             </p>
             <div className="badge-row" aria-label="Calculator status">
@@ -120,22 +111,50 @@ export default function Home() {
         <div className="container content-stack">
           <section className="prose-card">
             <div className="section-heading compact-heading">
-              <h2>Available Calculator</h2>
-              <p>The first live AP score calculator is ready to use.</p>
+              <h2>Available Calculators</h2>
+              <p>Start with live tools or check the next planned subject.</p>
             </div>
-            <Link href="/ap-environmental-science-score-calculator/">
-              <article className="tool-card active tool-card-compact">
-                <div>
-                  <span className="status-pill">Live</span>
-                  <h3>AP Environmental Science Score Calculator</h3>
-                  <p>
-                    Estimate your APES score from MCQ and FRQ raw scores, then
-                    review the full score breakdown on the dedicated page.
-                  </p>
-                </div>
-                <span>Open full calculator</span>
-              </article>
-            </Link>
+            <div className="cards-grid">
+              <Link href="/ap-environmental-science-score-calculator/">
+                <article className="tool-card active tool-card-compact">
+                  <div>
+                    <span className="status-pill">Live</span>
+                    <h3>AP Environmental Science Score Calculator</h3>
+                    <p>
+                      Estimate your APES score from MCQ and FRQ raw scores.
+                    </p>
+                  </div>
+                  <span>Open full calculator</span>
+                </article>
+              </Link>
+              <Link href="/ap-chemistry-score-calculator/">
+                <article className="tool-card active tool-card-compact">
+                  <div>
+                    <span className="status-pill">Live</span>
+                    <h3>AP Chemistry Score Calculator</h3>
+                    <p>
+                      Estimate AP Chem MCQ and FRQ performance on a 100-point
+                      composite model.
+                    </p>
+                  </div>
+                  <span>Open calculator</span>
+                </article>
+              </Link>
+              <TrackedLink
+                eventName="coming_soon_subject_click"
+                eventParams={{ subject: "ap_biology", source: "homepage" }}
+                href="/ap-biology-score-calculator/"
+              >
+                <article className="tool-card tool-card-compact">
+                  <div>
+                    <span className="status-pill soon">Coming soon</span>
+                    <h3>AP Biology Score Calculator</h3>
+                    <p>AP Biology is the next planned calculator priority.</p>
+                  </div>
+                  <span>View planned page</span>
+                </article>
+              </TrackedLink>
+            </div>
           </section>
 
           <section className="prose-card">

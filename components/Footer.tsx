@@ -43,13 +43,9 @@ export default function Footer() {
             >
               AP Biology
             </TrackedLink>
-            <TrackedLink
-              eventName="coming_soon_subject_click"
-              eventParams={{ subject: "ap_chemistry", source: "footer" }}
-              href="/ap-chemistry-score-calculator/"
-            >
+            <Link href="/ap-chemistry-score-calculator/">
               AP Chemistry
-            </TrackedLink>
+            </Link>
           </nav>
 
           <nav className="footer-links" aria-label="Learn">

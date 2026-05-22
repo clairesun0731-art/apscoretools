@@ -294,6 +294,18 @@ p {
   gap: 14px;
 }
 
+.prose-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+}
+
+.prose-list li {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .calculator-card {
   display: grid;
   gap: 20px;
@@ -334,6 +346,10 @@ p {
   display: grid;
   gap: 14px;
   align-content: start;
+}
+
+.chemistry-input-card {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .calculator-card-compact .input-card {
@@ -910,6 +926,10 @@ tr:last-child td {
   }
 
   .calculator-card-compact .input-card {
+    grid-template-columns: 1fr;
+  }
+
+  .chemistry-input-card {
     grid-template-columns: 1fr;
   }
 

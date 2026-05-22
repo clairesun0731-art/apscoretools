@@ -158,12 +158,10 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
           <h1>AP Environmental Science Score Calculator 2026</h1>
           <p className="lead">
             Use this APES score calculator to estimate your AP Environmental
-            Science score from multiple-choice and free-response raw scores.
-          </p>
-          <p className="lead">
-            The calculator converts your MCQ score to a scaled score out of 78,
-            your FRQ score to a scaled score out of 52, and estimates a
-            composite score out of 130.
+            Science score from MCQ and FRQ raw scores. Unlike a simple
+            percentage calculator, this tool shows your estimated MCQ score out
+            of 78, FRQ score out of 52, and combined APES composite score out
+            of 130.
           </p>
           <p className="short-note">
             Use this APES calculator as an AP Environmental Science score
@@ -219,6 +217,36 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               <br />
               Composite score = MCQ scaled score + FRQ scaled score
             </p>
+          </article>
+
+          <article className="card prose-card">
+            <h2>Why This APES Calculator Uses a 130-Point Composite Score</h2>
+            <p>
+              The AP Environmental Science exam has MCQ and FRQ sections. This
+              calculator converts the MCQ raw score out of 80 to an estimated
+              scaled score out of 78, then converts the FRQ raw score out of 30
+              to an estimated scaled score out of 52.
+            </p>
+            <p>
+              Together, those section estimates create an estimated composite
+              score out of 130. This model reflects the APES exam structure,
+              but official AP score cutoffs are determined by the College Board
+              and may vary by year. This calculator is unofficial.
+            </p>
+          </article>
+
+          <article className="card prose-card">
+            <h2>What Makes a Useful APES Score Calculator?</h2>
+            <ul className="prose-list">
+              <li>
+                Uses MCQ and FRQ inputs that match the AP Environmental Science
+                exam structure
+              </li>
+              <li>Shows section score estimates, not just a final number</li>
+              <li>Explains the composite score model</li>
+              <li>Clearly labels results as unofficial estimates</li>
+              <li>Works well on mobile before and after exam day</li>
+            </ul>
           </article>
 
           <article className="card prose-card" id="raw-score-conversion">

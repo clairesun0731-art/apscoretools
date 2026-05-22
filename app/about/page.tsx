@@ -30,9 +30,10 @@ export default function AboutPage() {
           <span className="eyebrow">About the project</span>
           <h1>About AP Score Tools</h1>
           <p className="lead">
-            AP Score Tools provides free unofficial AP score calculators and
-            exam tools to help students estimate possible AP exam outcomes from
-            raw section scores.
+            AP Score Tools is a free educational tools website that helps
+            students estimate AP exam scores with unofficial calculators and
+            scoring guides. The first live tool is the AP Environmental Science
+            Score Calculator, with more AP subject calculators planned.
           </p>
         </div>
       </section>

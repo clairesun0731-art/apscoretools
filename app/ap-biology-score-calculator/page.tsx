@@ -104,9 +104,9 @@ export default function ApBiologyScoreCalculatorPage() {
           <article className="card prose-card">
             <h2>Explore AP Score Calculators</h2>
             <p>
-              Visit the AP score calculator hub to see the live APES calculator
-              and planned tools for AP Biology, AP Chemistry, AP Calculus, AP
-              Lang, APUSH, and more.
+              Visit the AP score calculator hub to see the live APES and AP
+              Chemistry calculators, plus planned tools for AP Biology, AP
+              Calculus, AP Lang, APUSH, and more.
             </p>
             <div className="hero-actions">
               <Link className="button secondary" href="/ap-score-calculators/">

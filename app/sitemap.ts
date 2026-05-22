@@ -37,8 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: "https://www.apscoretools.com/ap-calculus-ab-score-calculator/",
