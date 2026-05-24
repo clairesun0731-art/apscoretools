@@ -6,6 +6,9 @@ import { getStoredConsent, setStoredConsent } from "@/lib/consent";
 import { useEffect, useState } from "react";
 
 function dispatchConsentUpdated() {
+  if (process.env.NODE_ENV === "development") {
+    console.log("[GA4] dispatch analytics-consent-updated");
+  }
   window.dispatchEvent(new Event("analytics-consent-updated"));
 }
 
@@ -14,7 +17,11 @@ export default function ConsentBanner() {
 
   useEffect(() => {
     window.setTimeout(() => {
-      setIsVisible(getStoredConsent() === null);
+      const consent = getStoredConsent();
+      if (process.env.NODE_ENV === "development") {
+        console.log("[GA4] consent read:", consent);
+      }
+      setIsVisible(consent === null);
     }, 0);
 
     const openPreferences = () => setIsVisible(true);
@@ -26,6 +33,13 @@ export default function ConsentBanner() {
   }, []);
 
   const chooseConsent = (value: "accepted" | "rejected") => {
+    if (process.env.NODE_ENV === "development") {
+      console.log(
+        `[GA4] ${
+          value === "accepted" ? "Accept" : "Reject"
+        } analytics clicked`,
+      );
+    }
     setStoredConsent(value);
     setIsVisible(false);
     dispatchConsentUpdated();

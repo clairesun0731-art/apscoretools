@@ -1,8 +1,38 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import { getStoredConsent } from "@/lib/consent";
+
+type GoogleAnalyticsClientProps = {
+  gaId: string;
+};
+
+function GoogleAnalyticsClient({ gaId }: GoogleAnalyticsClientProps) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      console.log("[GA4] gtag script should load:", gaId);
+    }
+  }, [gaId]);
+
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', '${gaId}');
+        `}
+      </Script>
+    </>
+  );
+}
 
 export function AnalyticsProvider() {
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
@@ -10,16 +40,21 @@ export function AnalyticsProvider() {
   useEffect(() => {
     function syncConsent() {
       const consent = getStoredConsent();
-      setAnalyticsEnabled(consent === "accepted");
+      const nextAnalyticsEnabled = consent === "accepted";
+      setAnalyticsEnabled(nextAnalyticsEnabled);
 
       const gaId = process.env.NEXT_PUBLIC_GA_ID;
       if (gaId) {
-        (window as Window & Record<string, boolean>)[`ga-disable-${gaId}`] =
+        (window as unknown as Record<string, boolean>)[`ga-disable-${gaId}`] =
           consent !== "accepted";
       }
 
       if (process.env.NODE_ENV === "development") {
+        console.log("[GA4] consent read:", consent);
         console.log("[GA4] consent sync:", consent);
+        if (nextAnalyticsEnabled) {
+          console.log("[GA4] AnalyticsProvider enables GA:", gaId);
+        }
       }
     }
 
@@ -62,7 +97,7 @@ export function AnalyticsProvider() {
     return null;
   }
 
-  return <GoogleAnalytics gaId={gaId} />;
+  return <GoogleAnalyticsClient gaId={gaId} />;
 }
 
 export default AnalyticsProvider;
