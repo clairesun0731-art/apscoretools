@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HomeCalculatorSwitcher from "@/components/HomeCalculatorSwitcher";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
-import ApesCalculator from "./ap-environmental-science-score-calculator/ApesCalculator";
 
 export const metadata: Metadata = {
   title: {
     absolute: "AP Score Tools | Free AP Score Calculators for Students",
   },
   description:
-    "AP Score Tools provides free, unofficial AP score calculators and exam tools for students. Start with the AP Environmental Science score calculator, with more AP subjects coming soon.",
+    "Use AP Score Tools to estimate AP exam scores with free, unofficial calculators. AP Environmental Science and AP Chemistry calculators are live now, with more AP subjects coming soon.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
@@ -17,12 +17,40 @@ export const metadata: Metadata = {
 
 const comingSoonCalculators = [
   {
-    name: "AP Calculus AB",
+    name: "AP Biology Score Calculator",
+    href: "/ap-biology-score-calculator/",
+    subject: "ap_biology",
+  },
+  {
+    name: "AP Calculus AB Score Calculator",
     href: "/ap-calculus-ab-score-calculator/",
     subject: "ap_calculus_ab",
   },
-  { name: "AP Lang", href: "/ap-lang-score-calculator/", subject: "ap_lang" },
-  { name: "APUSH", href: "/apush-score-calculator/", subject: "apush" },
+  {
+    name: "AP Lang Score Calculator",
+    href: "/ap-lang-score-calculator/",
+    subject: "ap_lang",
+  },
+  {
+    name: "APUSH Score Calculator",
+    href: "/apush-score-calculator/",
+    subject: "apush",
+  },
+];
+
+const liveCalculators = [
+  {
+    name: "AP Environmental Science Score Calculator",
+    description:
+      "Estimate your APES score using MCQ and FRQ raw scores with a composite score out of 130.",
+    href: "/ap-environmental-science-score-calculator/",
+  },
+  {
+    name: "AP Chemistry Score Calculator",
+    description:
+      "Estimate your AP Chem score using MCQ and FRQ raw scores with a composite score out of 100.",
+    href: "/ap-chemistry-score-calculator/",
+  },
 ];
 
 const faqItems = [
@@ -65,7 +93,7 @@ const webPageSchema = {
   name: "AP Score Tools",
   url: "https://www.apscoretools.com/",
   description:
-    "AP Score Tools is a free, unofficial AP score calculator hub for students, starting with the live AP Environmental Science score calculator.",
+    "AP Score Tools is a free, unofficial AP score calculator hub for students, with live AP Environmental Science and AP Chemistry score calculators.",
   isPartOf: {
     "@type": "WebSite",
     name: "AP Score Tools",
@@ -84,22 +112,17 @@ export default function Home() {
             <span className="eyebrow">AP score calculator hub</span>
             <h1>Free AP Score Tools for Students</h1>
             <p className="lead">
-              AP Score Tools helps students estimate AP exam scores with free,
-              unofficial calculators and scoring guides. Start with the live AP
-              Environmental Science score calculator.
+              Start with live AP score calculators for AP Environmental Science
+              and AP Chemistry. More AP calculators are coming soon.
             </p>
             <p className="trust-line">
               Unofficial score estimates · APES and AP Chemistry live now · Not
               affiliated with the College Board
             </p>
-            <div className="badge-row" aria-label="Calculator status">
-              <span>APES calculator live</span>
-              <span>Free to use</span>
-            </div>
           </div>
 
           <div className="home-calculator-wrap">
-            <ApesCalculator mode="compact" />
+            <HomeCalculatorSwitcher />
             <p className="inline-disclaimer">
               AP Score Tools is unofficial. Results are estimates only.
             </p>
@@ -111,49 +134,32 @@ export default function Home() {
         <div className="container content-stack">
           <section className="prose-card">
             <div className="section-heading compact-heading">
-              <h2>Available Calculators</h2>
-              <p>Start with live tools or check the next planned subject.</p>
+              <h2>Live AP Score Calculators</h2>
+              <p>
+                Use a live calculator here, or visit the{" "}
+                <TrackedLink
+                  eventName="calculator_hub_click"
+                  eventParams={{ source: "homepage_live_section" }}
+                  href="/ap-score-calculators/"
+                >
+                  AP score calculators hub
+                </TrackedLink>{" "}
+                for the full list.
+              </p>
             </div>
             <div className="cards-grid">
-              <Link href="/ap-environmental-science-score-calculator/">
-                <article className="tool-card active tool-card-compact">
-                  <div>
-                    <span className="status-pill">Live</span>
-                    <h3>AP Environmental Science Score Calculator</h3>
-                    <p>
-                      Estimate your APES score from MCQ and FRQ raw scores.
-                    </p>
-                  </div>
-                  <span>Open full calculator</span>
-                </article>
-              </Link>
-              <Link href="/ap-chemistry-score-calculator/">
-                <article className="tool-card active tool-card-compact">
-                  <div>
-                    <span className="status-pill">Live</span>
-                    <h3>AP Chemistry Score Calculator</h3>
-                    <p>
-                      Estimate AP Chem MCQ and FRQ performance on a 100-point
-                      composite model.
-                    </p>
-                  </div>
-                  <span>Open calculator</span>
-                </article>
-              </Link>
-              <TrackedLink
-                eventName="coming_soon_subject_click"
-                eventParams={{ subject: "ap_biology", source: "homepage" }}
-                href="/ap-biology-score-calculator/"
-              >
-                <article className="tool-card tool-card-compact">
-                  <div>
-                    <span className="status-pill soon">Coming soon</span>
-                    <h3>AP Biology Score Calculator</h3>
-                    <p>AP Biology is the next planned calculator priority.</p>
-                  </div>
-                  <span>View planned page</span>
-                </article>
-              </TrackedLink>
+              {liveCalculators.map((calculator) => (
+                <Link href={calculator.href} key={calculator.name}>
+                  <article className="tool-card active tool-card-compact">
+                    <div>
+                      <span className="status-pill">Live</span>
+                      <h3>{calculator.name}</h3>
+                      <p>{calculator.description}</p>
+                    </div>
+                    <span>Open calculator</span>
+                  </article>
+                </Link>
+              ))}
             </div>
           </section>
 

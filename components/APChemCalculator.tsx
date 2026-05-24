@@ -21,6 +21,7 @@ type APChemCalculatorProps = {
 
 type InputField =
   | "mcq"
+  | "frq_total"
   | "long_frq_1"
   | "long_frq_2"
   | "long_frq_3"
@@ -106,15 +107,17 @@ export default function APChemCalculator({
   const [short5, setShort5] = useState(3);
   const [short6, setShort6] = useState(3);
   const [short7, setShort7] = useState(3);
+  const [frqTotalCompact, setFrqTotalCompact] = useState(33);
   const isCompact = mode === "compact";
-  const pageType = isCompact ? "compact" : "tool_page";
+  const pageType = isCompact ? "homepage" : "tool_page";
   const hasStartedRef = useRef(false);
   const hasInteractedRef = useRef(false);
 
   const result = useMemo(() => {
     const mcqScaled = Math.min((mcqRaw / 60) * 50, 50);
-    const frqRawTotal =
-      long1 + long2 + long3 + short4 + short5 + short6 + short7;
+    const frqRawTotal = isCompact
+      ? frqTotalCompact
+      : long1 + long2 + long3 + short4 + short5 + short6 + short7;
     const frqScaled = Math.min((frqRawTotal / 46) * 50, 50);
     const composite = Math.min(mcqScaled + frqScaled, 100);
     const score = getPredictedAPScore(composite);
@@ -138,7 +141,18 @@ export default function APChemCalculator({
       nextBandMessage,
       score,
     };
-  }, [long1, long2, long3, mcqRaw, short4, short5, short6, short7]);
+  }, [
+    frqTotalCompact,
+    isCompact,
+    long1,
+    long2,
+    long3,
+    mcqRaw,
+    short4,
+    short5,
+    short6,
+    short7,
+  ]);
 
   function handleInputChange(
     inputField: InputField,
@@ -205,83 +219,99 @@ export default function APChemCalculator({
             onChange={(value) => handleInputChange("mcq", value, setMcqRaw)}
             value={mcqRaw}
           />
-          <ScoreField
-            helper="Raw score out of 10"
-            id="chemistry-long-frq-1"
-            label="Long FRQ 1"
-            max={10}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("long_frq_1", value, setLong1)
-            }
-            value={long1}
-          />
-          <ScoreField
-            helper="Raw score out of 10"
-            id="chemistry-long-frq-2"
-            label="Long FRQ 2"
-            max={10}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("long_frq_2", value, setLong2)
-            }
-            value={long2}
-          />
-          <ScoreField
-            helper="Raw score out of 10"
-            id="chemistry-long-frq-3"
-            label="Long FRQ 3"
-            max={10}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("long_frq_3", value, setLong3)
-            }
-            value={long3}
-          />
-          <ScoreField
-            helper="Raw score out of 4"
-            id="chemistry-short-frq-4"
-            label="Short FRQ 4"
-            max={4}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("short_frq_4", value, setShort4)
-            }
-            value={short4}
-          />
-          <ScoreField
-            helper="Raw score out of 4"
-            id="chemistry-short-frq-5"
-            label="Short FRQ 5"
-            max={4}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("short_frq_5", value, setShort5)
-            }
-            value={short5}
-          />
-          <ScoreField
-            helper="Raw score out of 4"
-            id="chemistry-short-frq-6"
-            label="Short FRQ 6"
-            max={4}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("short_frq_6", value, setShort6)
-            }
-            value={short6}
-          />
-          <ScoreField
-            helper="Raw score out of 4"
-            id="chemistry-short-frq-7"
-            label="Short FRQ 7"
-            max={4}
-            min={0}
-            onChange={(value) =>
-              handleInputChange("short_frq_7", value, setShort7)
-            }
-            value={short7}
-          />
+          {isCompact ? (
+            <ScoreField
+              helper="Total FRQ raw score out of 46. Use the full calculator page to enter each FRQ separately."
+              id="chemistry-frq-total"
+              label="Total FRQ Score"
+              max={46}
+              min={0}
+              onChange={(value) =>
+                handleInputChange("frq_total", value, setFrqTotalCompact)
+              }
+              value={frqTotalCompact}
+            />
+          ) : (
+            <>
+              <ScoreField
+                helper="Raw score out of 10"
+                id="chemistry-long-frq-1"
+                label="Long FRQ 1"
+                max={10}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("long_frq_1", value, setLong1)
+                }
+                value={long1}
+              />
+              <ScoreField
+                helper="Raw score out of 10"
+                id="chemistry-long-frq-2"
+                label="Long FRQ 2"
+                max={10}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("long_frq_2", value, setLong2)
+                }
+                value={long2}
+              />
+              <ScoreField
+                helper="Raw score out of 10"
+                id="chemistry-long-frq-3"
+                label="Long FRQ 3"
+                max={10}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("long_frq_3", value, setLong3)
+                }
+                value={long3}
+              />
+              <ScoreField
+                helper="Raw score out of 4"
+                id="chemistry-short-frq-4"
+                label="Short FRQ 4"
+                max={4}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("short_frq_4", value, setShort4)
+                }
+                value={short4}
+              />
+              <ScoreField
+                helper="Raw score out of 4"
+                id="chemistry-short-frq-5"
+                label="Short FRQ 5"
+                max={4}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("short_frq_5", value, setShort5)
+                }
+                value={short5}
+              />
+              <ScoreField
+                helper="Raw score out of 4"
+                id="chemistry-short-frq-6"
+                label="Short FRQ 6"
+                max={4}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("short_frq_6", value, setShort6)
+                }
+                value={short6}
+              />
+              <ScoreField
+                helper="Raw score out of 4"
+                id="chemistry-short-frq-7"
+                label="Short FRQ 7"
+                max={4}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("short_frq_7", value, setShort7)
+                }
+                value={short7}
+              />
+            </>
+          )}
         </form>
 
         <aside aria-live="polite" className="result-card">
@@ -310,7 +340,27 @@ export default function APChemCalculator({
               <span>Points to next score band</span>
               <strong>{result.nextBandMessage}</strong>
             </div>
-            <p className="feedback">{result.feedback}</p>
+            {isCompact ? (
+              <>
+                <p className="feedback compact-feedback">
+                  Unofficial estimate based on current inputs.
+                </p>
+                <a
+                  className="result-link"
+                  href="/ap-chemistry-score-calculator/"
+                  onClick={() =>
+                    trackEvent("view_detailed_breakdown", {
+                      calculator_name: "ap_chemistry_score_calculator",
+                      source: "homepage_compact_calculator",
+                    })
+                  }
+                >
+                  View detailed score breakdown
+                </a>
+              </>
+            ) : (
+              <p className="feedback">{result.feedback}</p>
+            )}
           </div>
         </aside>
       </div>
