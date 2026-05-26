@@ -28,6 +28,22 @@ const nextThresholdByScore: Record<Exclude<ScoreBand, 5>, number> = {
   4: 96,
 };
 
+const scoreRangeByScore: Record<ScoreBand, string> = {
+  1: "0-49",
+  2: "50-67",
+  3: "68-76",
+  4: "77-95",
+  5: "96-130",
+};
+
+const feedbackByScore: Record<ScoreBand, string> = {
+  5: "Strong 5 range based on this estimate.",
+  4: "You are in the estimated 4 range. Improve your MCQ or FRQ score to move closer to a 5.",
+  3: "You are in the estimated passing range. A few more raw points could move you closer to a 4.",
+  2: "You may need more review to reach the passing range.",
+  1: "You may need more review to reach the passing range.",
+};
+
 function clamp(value: number, min: number, max: number) {
   if (Number.isNaN(value)) {
     return min;
@@ -108,23 +124,28 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
     const nextScore = score === 5 ? null : ((score + 1) as ScoreBand);
     const pointsAway =
       nextThreshold === null ? 0 : Math.max(0, nextThreshold - composite);
-    const nextBandMessage =
+    const pointsToNextBand =
       score === 5
-        ? "You are in the estimated AP Score 5 range."
-        : `You are about ${pointsAway.toFixed(
-            1,
-          )} composite points away from the estimated AP Score ${nextScore} range.`;
-
+        ? "Top estimated band"
+        : `${pointsAway.toFixed(1)} points to AP Score ${nextScore}`;
     return {
       composite,
       frqRawTotal,
       frqScaled,
       mcqScaled,
-      nextBandMessage,
+      pointsToNextBand,
       score,
-      scoreBand: `Estimated AP Score ${score} range`,
+      scoreBand: `AP Score ${score} (${scoreRangeByScore[score]} composite)`,
+      feedback: feedbackByScore[score],
     };
   }, [frq1, frq2, frq3, mcqRaw]);
+
+  useEffect(() => {
+    trackEvent("apes_calculator_view", {
+      calculator_name: "apes_score_calculator",
+      page_type: pageType,
+    });
+  }, [pageType]);
 
   function handleInputChange(
     inputField: InputField,
@@ -147,6 +168,12 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
       input_field: inputField,
       page_type: pageType,
     });
+
+    trackEvent("apes_calculator_input_change", {
+      calculator_name: "apes_score_calculator",
+      input_field: inputField,
+      page_type: pageType,
+    });
   }
 
   useEffect(() => {
@@ -159,10 +186,18 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
         composite_score: Number(result.composite.toFixed(1)),
         page_type: pageType,
       });
+
+      trackEvent("apes_result_view", {
+        calculator_name: "apes_score_calculator",
+        predicted_score: result.score,
+        composite_score: Number(result.composite.toFixed(1)),
+        score_band: result.scoreBand,
+        page_type: pageType,
+      });
     }, 800);
 
     return () => window.clearTimeout(timeoutId);
-  }, [pageType, result.composite, result.score]);
+  }, [pageType, result.composite, result.score, result.scoreBand]);
 
   return (
     <section
@@ -174,13 +209,24 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
           <span className="kicker">
             {isCompact ? "Live calculator" : "First available tool"}
           </span>
-          <h2>AP Environmental Science Score Calculator</h2>
+          <h2>
+            {isCompact
+              ? "AP Environmental Science Score Calculator"
+              : "Calculate Your APES Score"}
+          </h2>
         </div>
         {!isCompact && <span className="score-chip">130-point composite</span>}
       </div>
 
       <div className="calculator-body">
         <form className="input-card" onSubmit={(event) => event.preventDefault()}>
+          {!isCompact && (
+            <p className="calculator-helper-copy">
+              Enter your MCQ and FRQ raw scores below. You can use practice test
+              results or your best estimate after the exam.
+            </p>
+          )}
+
           <ScoreField
             helper="Raw score out of 80 questions"
             id="mcq"
@@ -231,11 +277,11 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
             {!isCompact && (
               <>
                 <div className="metric">
-                  <span>Multiple Choice Score</span>
+                  <span>MCQ Scaled Score</span>
                   <strong>{formatScore(result.mcqScaled, 78)} / 78</strong>
                 </div>
                 <div className="metric">
-                  <span>Free Response Score</span>
+                  <span>FRQ Scaled Score</span>
                   <strong>
                     {formatScore(result.frqScaled, 52)} / 52
                     <small> ({result.frqRawTotal} raw)</small>
@@ -244,18 +290,18 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
               </>
             )}
             <div className="metric">
-              <span>Combined Composite Score</span>
+              <span>Composite Score</span>
               <strong>{formatScore(result.composite, 130)} / 130</strong>
             </div>
             {!isCompact && (
               <>
                 <div className="metric">
-                  <span>Score band</span>
+                  <span>Score Band</span>
                   <strong>{result.scoreBand}</strong>
                 </div>
                 <div className="metric">
                   <span>Points to next band</span>
-                  <strong>{result.nextBandMessage}</strong>
+                  <strong>{result.pointsToNextBand}</strong>
                 </div>
               </>
             )}
@@ -279,8 +325,9 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
               </>
             ) : (
               <p className="feedback">
-                These are estimated score boundaries. Official AP score cutoffs
-                are determined by the College Board and may vary by year.
+                {result.feedback} These are estimated score boundaries.
+                Official AP score cutoffs are determined by the College Board
+                and may vary by year.
               </p>
             )}
           </div>

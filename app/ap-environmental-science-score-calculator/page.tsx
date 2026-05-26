@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
 import ApesCalculator from "./ApesCalculator";
@@ -7,10 +6,10 @@ import ApesCalculator from "./ApesCalculator";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "APES Score Calculator 2026 | AP Environmental Science Score Predictor",
+      "AP Environmental Science Score Calculator 2026 | APES Score Predictor",
   },
   description:
-    "Enter your MCQ and FRQ raw scores to estimate your APES score. Free unofficial AP Environmental Science score calculator with composite score out of 130.",
+    "Estimate your AP Environmental Science score with our free APES score calculator. Enter your MCQ and FRQ raw scores to predict your unofficial AP score from 1 to 5.",
   alternates: {
     canonical:
       "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
@@ -47,6 +46,52 @@ const faqs = [
     question: "Do AP Environmental Science score cutoffs change every year?",
     answer:
       "Yes, official AP score cutoffs can vary by year. This calculator uses estimated ranges based on common APES calculator models and past scoring patterns.",
+  },
+];
+
+const estimatedScoreBands = [
+  { predictedScore: "5", compositeRange: "96-130" },
+  { predictedScore: "4", compositeRange: "77-95" },
+  { predictedScore: "3", compositeRange: "68-76" },
+  { predictedScore: "2", compositeRange: "50-67" },
+  { predictedScore: "1", compositeRange: "0-49" },
+];
+
+const exampleScenarios = [
+  {
+    scenario: "Strong 5 range",
+    mcq: "72 / 80",
+    frq: "27 / 30",
+    composite: "118.8 / 130",
+    predictedScore: "5",
+  },
+  {
+    scenario: "Solid 4 range",
+    mcq: "60 / 80",
+    frq: "22 / 30",
+    composite: "85.0 / 130",
+    predictedScore: "4",
+  },
+  {
+    scenario: "Passing range",
+    mcq: "52 / 80",
+    frq: "17 / 30",
+    composite: "70.0 / 130",
+    predictedScore: "3",
+  },
+  {
+    scenario: "Close to a 3",
+    mcq: "45 / 80",
+    frq: "14 / 30",
+    composite: "59.4 / 130",
+    predictedScore: "2",
+  },
+  {
+    scenario: "Needs more review",
+    mcq: "34 / 80",
+    frq: "10 / 30",
+    composite: "43.6 / 130",
+    predictedScore: "1",
   },
 ];
 
@@ -152,45 +197,150 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
     <main className="page">
       <JsonLd data={jsonLd} />
 
-      <section className="container hero">
-        <div>
-          <span className="eyebrow">APES score predictor</span>
-          <h1>AP Environmental Science Score Calculator 2026</h1>
-          <p className="lead">
-            Use this APES score calculator to estimate your AP Environmental
-            Science score from MCQ and FRQ raw scores. Unlike a simple
-            percentage calculator, this tool shows your estimated MCQ score out
-            of 78, FRQ score out of 52, and combined APES composite score out
-            of 130.
-          </p>
-          <p className="short-note">
-            Use this APES calculator as an AP Environmental Science score
-            predictor, APES composite score calculator, and study check for
-            APES raw score conversion.
-          </p>
-          <div className="hero-actions">
-            <Link className="button" href="/">
-              Explore AP Score Tools
-            </Link>
+      <section className="hero-tool apes-hero-tool">
+        <div className="container hero-tool-grid apes-hero-grid">
+          <div className="hero-copy apes-hero-copy">
+            <span className="eyebrow">APES score predictor</span>
+            <h1>AP Environmental Science Score Calculator 2026</h1>
+            <p className="lead">
+              Use this APES score calculator to estimate your AP Environmental
+              Science score from MCQ and FRQ raw scores. Unlike a simple
+              percentage calculator, this tool shows your estimated MCQ score
+              out of 78, FRQ score out of 52, and combined APES composite score
+              out of 130.
+            </p>
+            <p className="short-note">
+              Use this APES calculator as an AP Environmental Science score
+              predictor, APES composite score calculator, and study check for
+              APES raw score conversion.
+            </p>
+            <div className="hero-actions">
+              <TrackedLink
+                className="button"
+                eventName="apes_calculator_view"
+                eventParams={{ source: "hero_cta" }}
+                href="#calculator"
+              >
+                Use the Calculator
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="apes_score_chart_click"
+                eventParams={{ source: "hero_cta" }}
+                href="#score-chart"
+              >
+                View Score Chart
+              </TrackedLink>
+            </div>
+            <p className="trust-line">
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. Results are estimates only.
+            </p>
           </div>
-          <nav className="quick-links" aria-label="APES page sections">
-            <a href="#calculator">Calculator</a>
-            <a href="#raw-score-conversion">Raw score conversion</a>
-            <a href="#score-chart">Score chart</a>
-            <a href="#faq">FAQ</a>
-          </nav>
+
+          <div className="hero-calculator-panel" id="calculator">
+            <ApesCalculator mode="full" />
+            <article className="disclaimer">
+              <p>
+                This calculator is unofficial and is not affiliated with or
+                endorsed by the College Board. Official AP score cutoffs may
+                vary by year.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section className="section" id="calculator">
+      <section className="section score-chart-section" id="score-chart">
         <div className="container content-stack">
-          <ApesCalculator mode="full" />
-          <article className="disclaimer">
+          <article className="card prose-card">
+            <h2>Estimated APES Composite Score Chart</h2>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Composite Score Range</th>
+                    <th>Predicted AP Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {estimatedScoreBands.map((band) => (
+                    <tr key={band.predictedScore}>
+                      <td>{band.compositeRange}</td>
+                      <td>{band.predictedScore}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <p>
-              This calculator is unofficial and is not affiliated with or
-              endorsed by the College Board. Official AP score cutoffs may vary
-              by year.
+              These composite score ranges are estimates based on common APES
+              score calculator models and past scoring patterns. Official AP
+              score cutoffs are determined by the College Board and may vary by
+              year.
             </p>
+          </article>
+
+          <article className="card prose-card">
+            <h2>
+              What Do You Need for a 3, 4, or 5 on AP Environmental Science?
+            </h2>
+            <p>
+              In this estimator, a predicted 3 starts at 68 composite points, a
+              predicted 4 starts at 77 composite points, and a predicted 5
+              starts at 96 composite points. Use these as planning ranges, not
+              guarantees.
+            </p>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Predicted AP Score</th>
+                    <th>Estimated Composite Range</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {estimatedScoreBands.map((band) => (
+                    <tr key={band.predictedScore}>
+                      <td>{band.predictedScore}</td>
+                      <td>{band.compositeRange}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article className="card prose-card">
+            <h2>Example APES Score Scenarios</h2>
+            <p>
+              These examples show how different MCQ and FRQ combinations can
+              land in different estimated APES score bands.
+            </p>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Scenario</th>
+                    <th>MCQ Raw</th>
+                    <th>FRQ Raw Total</th>
+                    <th>Estimated Composite</th>
+                    <th>Predicted AP Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {exampleScenarios.map((scenario) => (
+                    <tr key={scenario.scenario}>
+                      <td>{scenario.scenario}</td>
+                      <td>{scenario.mcq}</td>
+                      <td>{scenario.frq}</td>
+                      <td>{scenario.composite}</td>
+                      <td>{scenario.predictedScore}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </article>
         </div>
       </section>
@@ -297,7 +447,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               </TrackedLink>{" "}
               or browse the{" "}
               <TrackedLink
-                eventName="calculator_hub_click"
+                eventName="apes_explore_click"
                 eventParams={{ source: "apes_calculator_page" }}
                 href="/ap-score-calculators/"
               >
@@ -347,62 +497,6 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             </div>
           </article>
 
-          <article className="card prose-card" id="score-chart">
-            <h2>Estimated APES Composite Score Chart</h2>
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Composite Score Range</th>
-                    <th>Predicted AP Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>96-130</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>77-95</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>68-76</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>50-67</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <td>0-49</td>
-                    <td>1</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p>
-              These composite score ranges are estimates based on common APES
-              score calculator models and past scoring patterns. Official AP
-              score cutoffs are determined by the College Board and may vary by
-              year.
-            </p>
-          </article>
-
-          <article className="card prose-card">
-            <h2>
-              What Score Do You Need for a 3, 4, or 5 on AP Environmental
-              Science?
-            </h2>
-            <p>
-              In this estimator, you need about 68 composite points for a
-              predicted 3, 77 composite points for a predicted 4, and 96
-              composite points for a predicted 5. Because official AP score
-              cutoffs can vary by year, use these numbers as planning estimates
-              instead of guarantees.
-            </p>
-          </article>
-
           <article className="card prose-card">
             <h2>2026 AP Environmental Science Exam Date and Score Release</h2>
             <p>
@@ -438,7 +532,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             <div className="hero-actions">
               <TrackedLink
                 className="button secondary"
-                eventName="scoring_guide_click"
+                eventName="apes_explore_click"
                 eventParams={{ source: "apes_calculator_page" }}
                 href="/how-ap-environmental-science-is-scored/"
               >
@@ -446,7 +540,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               </TrackedLink>
               <TrackedLink
                 className="button"
-                eventName="calculator_hub_click"
+                eventName="apes_explore_click"
                 eventParams={{ source: "apes_calculator_page" }}
                 href="/ap-score-calculators/"
               >
@@ -454,7 +548,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               </TrackedLink>
               <TrackedLink
                 className="button secondary"
-                eventName="coming_soon_subject_click"
+                eventName="apes_explore_click"
                 eventParams={{
                   subject: "ap_biology",
                   source: "apes_calculator_page",
@@ -465,7 +559,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               </TrackedLink>
               <TrackedLink
                 className="button secondary"
-                eventName="coming_soon_subject_click"
+                eventName="apes_explore_click"
                 eventParams={{
                   subject: "ap_chemistry",
                   source: "apes_calculator_page",

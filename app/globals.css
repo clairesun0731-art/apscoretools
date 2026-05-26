@@ -168,6 +168,35 @@ input {
   align-items: start;
 }
 
+.apes-hero-tool {
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0 30px;
+}
+
+.apes-hero-grid {
+  grid-template-columns: minmax(320px, 0.78fr) minmax(560px, 1.22fr);
+  gap: 24px;
+}
+
+.apes-hero-copy {
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.apes-hero-copy h1 {
+  max-width: 620px;
+  font-size: clamp(2.05rem, 4vw, 3.25rem);
+}
+
+.apes-hero-copy .lead {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+.hero-calculator-panel {
+  display: grid;
+  gap: 12px;
+}
+
 .hero-copy {
   display: grid;
   gap: 14px;
@@ -389,6 +418,17 @@ p {
   align-content: start;
 }
 
+.calculator-helper-copy {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.94rem;
+  font-weight: 650;
+  line-height: 1.55;
+  padding: 12px 14px;
+}
+
 .chemistry-input-card {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -490,13 +530,17 @@ p {
   display: grid;
   min-height: 100%;
   overflow: hidden;
+  border: 1px solid rgba(139, 124, 255, 0.24);
   border-radius: 24px;
   background: var(--foreground);
   color: #ffffff;
+  box-shadow: 0 18px 48px rgba(16, 27, 61, 0.18);
 }
 
 .result-top {
-  padding: 24px 24px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(139, 124, 255, 0.12);
+  padding: 24px 24px 12px;
 }
 
 .result-top p {
@@ -530,7 +574,7 @@ p {
   display: grid;
   gap: 11px;
   align-content: end;
-  padding: 14px 20px 20px;
+  padding: 16px 20px 20px;
 }
 
 .metric {
@@ -574,6 +618,10 @@ p {
 
 .compact-feedback {
   padding: 10px 12px;
+}
+
+.score-chart-section {
+  padding-top: 36px;
 }
 
 .result-link {
