@@ -124,7 +124,8 @@ export default function Home() {
           <div className="home-calculator-wrap">
             <HomeCalculatorSwitcher />
             <p className="inline-disclaimer">
-              AP Score Tools is unofficial. Results are estimates only.
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. Results are estimates only.
             </p>
           </div>
         </div>
