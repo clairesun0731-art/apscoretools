@@ -14,6 +14,9 @@ const liveCalculatorLinks = [
     href: "/ap-chemistry-score-calculator/",
     label: "AP Chemistry",
   },
+];
+
+const betaCalculatorLinks = [
   {
     href: "/ap-human-geography-score-calculator/",
     label: "AP Human Geography",
@@ -93,6 +96,18 @@ export default function Header() {
                   ))}
                 </div>
                 <div className="nav-dropdown-section">
+                  <strong>Beta / Under Review</strong>
+                  {betaCalculatorLinks.map((link) => (
+                    <Link
+                      href={link.href}
+                      key={link.href}
+                      onClick={closeCalculatorMenu}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="nav-dropdown-section">
                   <strong>Coming Soon</strong>
                   {comingSoonLinks.map((link) => (
                     <Link
@@ -141,6 +156,14 @@ export default function Header() {
             <div className="mobile-nav-group">
               <strong>Live Calculators</strong>
               {liveCalculatorLinks.map((link) => (
+                <Link href={link.href} key={link.href} onClick={closeMenu}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="mobile-nav-group">
+              <strong>Beta / Under Review</strong>
+              {betaCalculatorLinks.map((link) => (
                 <Link href={link.href} key={link.href} onClick={closeMenu}>
                   {link.label}
                 </Link>

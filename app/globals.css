@@ -127,8 +127,8 @@ input {
   right: 0;
   z-index: 30;
   display: grid;
-  width: min(520px, calc(100vw - 32px));
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(760px, calc(100vw - 32px));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   border: 1px solid var(--border);
   border-radius: 22px;
@@ -1317,6 +1317,7 @@ tr:last-child td {
   font-size: 0.74rem;
   font-weight: 760;
   padding: 4px 7px;
+  white-space: nowrap;
 }
 
 .category-group li > span.status-live {
@@ -1328,6 +1329,17 @@ tr:last-child td {
 .category-group li > span.status-planned {
   background: var(--soft-background);
   color: var(--accent-purple);
+}
+
+.category-group li > span.status-beta,
+.status-pill.beta {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.beta-notice-card {
+  border-color: rgba(245, 158, 11, 0.32);
+  background: #fffdf8;
 }
 
 .why-card-grid {

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     absolute: "AP Score Tools | Free AP Score Calculators by Subject",
   },
   description:
-    "Use AP Score Tools to estimate AP exam scores with free, unofficial AP score calculators by subject, including AP Chemistry, AP Environmental Science, AP Human Geography, AP Macroeconomics, and AP World History.",
+    "Use AP Score Tools to estimate AP exam scores with free, unofficial AP score calculators. AP Environmental Science and AP Chemistry are live, with more subjects under review.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
@@ -20,6 +20,7 @@ const popularCalculators = [
     description:
       "Estimate your AP Chem score from MCQ and FRQ inputs with a composite score breakdown.",
     href: "/ap-chemistry-score-calculator/",
+    status: "Live",
     cta: "Use AP Chemistry Score Calculator",
   },
   {
@@ -27,28 +28,32 @@ const popularCalculators = [
     description:
       "Estimate your APES score from MCQ and FRQ raw scores with an unofficial AP score estimate.",
     href: "/ap-environmental-science-score-calculator/",
+    status: "Live",
     cta: "Use AP Environmental Science Score Calculator",
   },
   {
     name: "AP Human Geography Score Calculator",
     description:
-      "Estimate your APHUG score from multiple-choice and free-response raw scores.",
+      "Beta page under review while the APHUG scoring model is verified.",
     href: "/ap-human-geography-score-calculator/",
-    cta: "Open AP Human Geography Score Calculator",
+    status: "Beta / Under Review",
+    cta: "View AP Human Geography Beta Page",
   },
   {
     name: "AP Macroeconomics Score Calculator",
     description:
-      "Estimate your AP Macro score from MCQ and FRQ raw scores using approximate section weights.",
+      "Beta page under review while the AP Macro scoring model is verified.",
     href: "/ap-macroeconomics-score-calculator/",
-    cta: "Use AP Macroeconomics Score Calculator",
+    status: "Beta / Under Review",
+    cta: "View AP Macroeconomics Beta Page",
   },
   {
     name: "AP World History Score Calculator",
     description:
-      "Estimate your APWH score from MCQ, SAQ, DBQ, and LEQ section inputs.",
+      "Beta page under review while the APWH scoring model is verified.",
     href: "/ap-world-history-score-calculator/",
-    cta: "Estimate AP World History Score",
+    status: "Beta / Under Review",
+    cta: "View AP World History Beta Page",
   },
 ];
 
@@ -111,8 +116,9 @@ export default function Home() {
           <h1>Free AP Score Calculators by Subject</h1>
           <p className="lead">
             Estimate your AP exam score with free, unofficial AP score
-            calculators for AP Chemistry, AP Environmental Science, AP Human
-            Geography, AP Macroeconomics, AP World History, and more.
+            calculators. AP Environmental Science and AP Chemistry are live,
+            with AP Human Geography, AP Macroeconomics, and AP World History
+            currently in beta review.
           </p>
           <p className="trust-line">
             Unofficial AP score estimates · Subject-specific calculators · Not
@@ -140,16 +146,26 @@ export default function Home() {
             <div className="section-heading compact-heading">
               <h2>Popular AP Score Calculators</h2>
               <p>
-                Choose a subject calculator to enter raw scores and get an
-                unofficial AP score estimate with a section breakdown.
+                Choose a live calculator or review a clearly labeled beta page
+                for subjects whose scoring models are still being verified.
               </p>
             </div>
             <div className="cards-grid">
               {popularCalculators.map((calculator) => (
                 <Link href={calculator.href} key={calculator.name}>
-                  <article className="tool-card active tool-card-compact">
+                  <article
+                    className={`tool-card tool-card-compact ${
+                      calculator.status === "Live" ? "active" : ""
+                    }`}
+                  >
                     <div>
-                      <span className="status-pill">Live</span>
+                      <span
+                        className={`status-pill ${
+                          calculator.status.includes("Beta") ? "beta" : ""
+                        }`}
+                      >
+                        {calculator.status}
+                      </span>
                       <h3>{calculator.name}</h3>
                       <p>{calculator.description}</p>
                     </div>
@@ -193,8 +209,9 @@ export default function Home() {
               <article className="why-card">
                 <h3>Subject-specific calculators</h3>
                 <p>
-                  Each live calculator uses inputs and estimated weights that
-                  match the AP subject more closely than a generic percentage.
+                  Live calculators use subject-specific inputs and estimated
+                  weights. Beta pages stay clearly labeled until their scoring
+                  models are reviewed.
                 </p>
               </article>
               <article className="why-card">
@@ -217,8 +234,8 @@ export default function Home() {
           <section className="card prose-card">
             <h2>Find Every AP Score Calculator</h2>
             <p>
-              The AP Score Calculators hub lists live tools and clearly marked
-              planned calculators by subject.
+              The AP Score Calculators hub lists live tools, beta pages under
+              review, and clearly marked planned calculators by subject.
             </p>
             <div className="hero-actions">
               <TrackedLink

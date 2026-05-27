@@ -545,7 +545,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 }}
                 href="/ap-human-geography-score-calculator/"
               >
-                AP Human Geography Score Calculator
+                AP Human Geography Score Calculator (Beta)
               </TrackedLink>
               <TrackedLink
                 className="button secondary"
@@ -556,7 +556,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 }}
                 href="/ap-world-history-score-calculator/"
               >
-                AP World History Score Calculator
+                AP World History Score Calculator (Beta)
               </TrackedLink>
             </div>
           </article>
