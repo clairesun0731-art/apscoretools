@@ -116,14 +116,6 @@ export default function ComingSoonCalculatorPage({
               </Link>
             </div>
           </article>
-
-          <article className="disclaimer">
-            <p>
-              AP Score Tools is unofficial and is not affiliated with or
-              endorsed by the College Board. AP, Advanced Placement, and related
-              exam names are trademarks of their respective owners.
-            </p>
-          </article>
         </div>
       </section>
     </main>

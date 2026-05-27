@@ -5,9 +5,53 @@ import Link from "next/link";
 import { useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
 
+const liveCalculatorLinks = [
+  {
+    href: "/ap-environmental-science-score-calculator/",
+    label: "AP Environmental Science",
+  },
+  {
+    href: "/ap-chemistry-score-calculator/",
+    label: "AP Chemistry",
+  },
+  {
+    href: "/ap-human-geography-score-calculator/",
+    label: "AP Human Geography",
+  },
+  {
+    href: "/ap-macroeconomics-score-calculator/",
+    label: "AP Macroeconomics",
+  },
+  {
+    href: "/ap-world-history-score-calculator/",
+    label: "AP World History",
+  },
+];
+
+const comingSoonLinks = [
+  {
+    href: "/ap-biology-score-calculator/",
+    label: "AP Biology",
+  },
+  {
+    href: "/ap-calculus-ab-score-calculator/",
+    label: "AP Calculus AB",
+  },
+  {
+    href: "/ap-lang-score-calculator/",
+    label: "AP English Language",
+  },
+  {
+    href: "/apush-score-calculator/",
+    label: "APUSH",
+  },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCalculatorMenuOpen, setIsCalculatorMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
+  const closeCalculatorMenu = () => setIsCalculatorMenuOpen(false);
 
   return (
     <header className="site-header">
@@ -23,13 +67,55 @@ export default function Header() {
           />
         </Link>
         <div className="desktop-nav-links">
-          <TrackedLink
-            eventName="calculator_hub_click"
-            eventParams={{ source: "header" }}
-            href="/ap-score-calculators/"
-          >
-            AP Score Calculators
-          </TrackedLink>
+          <div className="nav-dropdown-wrap">
+            <button
+              aria-expanded={isCalculatorMenuOpen}
+              className="nav-dropdown-trigger"
+              onClick={() =>
+                setIsCalculatorMenuOpen((menuOpen) => !menuOpen)
+              }
+              type="button"
+            >
+              Calculators
+            </button>
+            {isCalculatorMenuOpen && (
+              <div className="nav-dropdown" onMouseLeave={closeCalculatorMenu}>
+                <div className="nav-dropdown-section">
+                  <strong>Live Calculators</strong>
+                  {liveCalculatorLinks.map((link) => (
+                    <Link
+                      href={link.href}
+                      key={link.href}
+                      onClick={closeCalculatorMenu}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="nav-dropdown-section">
+                  <strong>Coming Soon</strong>
+                  {comingSoonLinks.map((link) => (
+                    <Link
+                      href={link.href}
+                      key={link.href}
+                      onClick={closeCalculatorMenu}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+                <TrackedLink
+                  className="nav-dropdown-cta"
+                  eventName="calculator_hub_click"
+                  eventParams={{ source: "header_dropdown" }}
+                  href="/ap-score-calculators/"
+                  onClick={closeCalculatorMenu}
+                >
+                  View All AP Score Calculators →
+                </TrackedLink>
+              </div>
+            )}
+          </div>
           <Link href="/how-ap-environmental-science-is-scored/">
             Scoring Guides
           </Link>
@@ -52,9 +138,30 @@ export default function Header() {
             <Link href="/" onClick={closeMenu}>
               Home
             </Link>
-            <Link href="/ap-score-calculators/" onClick={closeMenu}>
-              AP Score Calculators
-            </Link>
+            <div className="mobile-nav-group">
+              <strong>Live Calculators</strong>
+              {liveCalculatorLinks.map((link) => (
+                <Link href={link.href} key={link.href} onClick={closeMenu}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="mobile-nav-group">
+              <strong>Coming Soon</strong>
+              {comingSoonLinks.map((link) => (
+                <Link href={link.href} key={link.href} onClick={closeMenu}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <TrackedLink
+              eventName="calculator_hub_click"
+              eventParams={{ source: "mobile_header" }}
+              href="/ap-score-calculators/"
+              onClick={closeMenu}
+            >
+              View All AP Score Calculators →
+            </TrackedLink>
             <Link
               href="/how-ap-environmental-science-is-scored/"
               onClick={closeMenu}

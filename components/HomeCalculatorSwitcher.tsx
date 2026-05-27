@@ -12,6 +12,7 @@ import {
   type ScoreCalculatorConfig,
 } from "@/lib/scoreCalculatorConfigs";
 import { trackEvent } from "@/lib/gtag";
+import { getScoreMessage } from "@/lib/scoreMessages";
 
 const calculators: Array<{
   id: CalculatorSubject;
@@ -79,6 +80,7 @@ export default function HomeCalculatorSwitcher() {
     () => calculateScoreResult(activeConfig, safeInputValues),
     [activeConfig, safeInputValues],
   );
+  const scoreMessage = getScoreMessage(result.score);
 
   function handleSwitch(subject: CalculatorSubject) {
     if (subject === activeSubject) {
@@ -217,9 +219,10 @@ export default function HomeCalculatorSwitcher() {
                 <span>Points to next band</span>
                 <strong>{result.pointsToNextBand}</strong>
               </div>
-              <p className="feedback compact-feedback">
-                Unofficial estimate based on current inputs.
-              </p>
+              <div className="result-message compact-feedback">
+                <strong>{scoreMessage.title}</strong>
+                <p>{scoreMessage.body}</p>
+              </div>
             </div>
           </aside>
         </div>

@@ -10,6 +10,7 @@ import {
   type WeightedScoreCalculatorConfig,
 } from "@/lib/scoreCalculatorConfigs";
 import { trackEvent } from "@/lib/gtag";
+import { getScoreMessage } from "@/lib/scoreMessages";
 
 type WeightedScoreCalculatorProps = {
   config: WeightedScoreCalculatorConfig;
@@ -79,6 +80,7 @@ export default function WeightedScoreCalculator({
     () => calculateWeightedScoreResult(config, safeInputValues),
     [config, safeInputValues],
   );
+  const scoreMessage = getScoreMessage(result.score);
 
   function handleInputChange(field: WeightedCalculatorField, nextValue: number) {
     setInputValues((currentValues) => ({
@@ -179,10 +181,10 @@ export default function WeightedScoreCalculator({
               <span>Points to next band</span>
               <strong>{result.pointsToNextBand}</strong>
             </div>
-            <p className="feedback">
-              This is an unofficial estimate. Official AP score conversions may
-              vary by year based on exam difficulty and official scoring.
-            </p>
+            <div className="result-message">
+              <strong>{scoreMessage.title}</strong>
+              <p>{scoreMessage.body}</p>
+            </div>
           </div>
         </aside>
       </div>

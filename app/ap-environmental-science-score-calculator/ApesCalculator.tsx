@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { trackEvent } from "@/lib/gtag";
+import { getScoreMessage } from "@/lib/scoreMessages";
 
 type ScoreBand = 1 | 2 | 3 | 4 | 5;
 
@@ -34,14 +35,6 @@ const scoreRangeByScore: Record<ScoreBand, string> = {
   3: "68-76",
   4: "77-95",
   5: "96-130",
-};
-
-const feedbackByScore: Record<ScoreBand, string> = {
-  5: "Strong 5 range based on this estimate.",
-  4: "You are in the estimated 4 range. Improve your MCQ or FRQ score to move closer to a 5.",
-  3: "You are in the estimated passing range. A few more raw points could move you closer to a 4.",
-  2: "You may need more review to reach the passing range.",
-  1: "You may need more review to reach the passing range.",
 };
 
 function clamp(value: number, min: number, max: number) {
@@ -136,7 +129,7 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
       pointsToNextBand,
       score,
       scoreBand: `AP Score ${score} (${scoreRangeByScore[score]} composite)`,
-      feedback: feedbackByScore[score],
+      scoreMessage: getScoreMessage(score),
     };
   }, [frq1, frq2, frq3, mcqRaw]);
 
@@ -307,9 +300,10 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
             )}
             {isCompact ? (
               <>
-                <p className="feedback compact-feedback">
-                  Unofficial estimate based on current inputs.
-                </p>
+                <div className="result-message compact-feedback">
+                  <strong>{result.scoreMessage.title}</strong>
+                  <p>{result.scoreMessage.body}</p>
+                </div>
                 <a
                   className="result-link"
                   href="/ap-environmental-science-score-calculator/"
@@ -324,11 +318,10 @@ export default function ApesCalculator({ mode = "full" }: ApesCalculatorProps) {
                 </a>
               </>
             ) : (
-              <p className="feedback">
-                {result.feedback} These are estimated score boundaries.
-                Official AP score cutoffs are determined by the College Board
-                and may vary by year.
-              </p>
+              <div className="result-message">
+                <strong>{result.scoreMessage.title}</strong>
+                <p>{result.scoreMessage.body}</p>
+              </div>
             )}
           </div>
         </aside>

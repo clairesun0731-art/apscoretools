@@ -2,663 +2,630 @@
 
 ## Project Overview
 
-This project is a Next.js App Router website for **AP Score Tools**.
+AP Score Tools is a free, unofficial educational tool website for U.S. AP students.
 
-Production domain:
-
-https://www.apscoretools.com
-
-Brand name:
-
-**AP Score Tools**
+Domain:
+- https://www.apscoretools.com/
 
 Core positioning:
+- AP score calculator cluster
+- Subject-specific AP score estimators
+- Student-friendly AP scoring guides
+- AP exam date / score release informational pages
 
-AP Score Tools provides free, unofficial AP score calculators and exam tools for students.
+The brand name is always:
 
-The first live tool is:
+AP Score Tools
 
-**AP Environmental Science Score Calculator**
+Do not write the brand as:
+- APES Score Calculator
+- AP Score Calculator
+- AP Calculator Tools
 
-Important: APES is only the first calculator tool. The overall website brand is **AP Score Tools**, not **APES Score Calculator** and not **AP Score Calculator**.
+## Tech Stack
 
-The site should eventually expand into a cluster of AP score calculators and AP exam tools.
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- GitHub
+- Vercel
+- Cloudflare DNS
 
----
+Local project directory:
+- `/Users/sunyuyang/Documents/apscoretools`
 
-## Current Site Architecture
+GitHub repo:
+- `apscoretools`
 
-Current live routes:
+Vercel project:
+- `apscoretools`
 
-```text
-/
-Homepage / AP Score Tools hub
+## Compliance Requirements
 
-/ap-environmental-science-score-calculator/
-Dedicated AP Environmental Science Score Calculator page
+AP Score Tools is unofficial.
 
-/about/
-About and disclaimer page
+Never claim:
+- official
+- guaranteed
+- exact score
+- endorsed by College Board
+- affiliated with College Board
 
-/sitemap.xml
-Generated sitemap
+Use compliant wording:
+- estimated
+- unofficial
+- approximate
+- may vary by year
+- based on available scoring structure
+- official score conversions may differ
 
-/robots.txt
-Generated robots file
-
-Future planned routes:
-
-/ap-biology-score-calculator/
-/ap-chemistry-score-calculator/
-/ap-psychology-score-calculator/
-/ap-statistics-score-calculator/
-/ap-calculus-ab-score-calculator/
-/ap-english-language-score-calculator/
-/apush-score-calculator/
-/ap-world-history-score-calculator/
-
-Do not create all future pages unless explicitly asked. If shown on the homepage, mark them clearly as Coming soon.
-
-Brand Logic
-
-Use this hierarchy:
-
-Brand: AP Score Tools
-Homepage: AP score tools hub
-First live tool: AP Environmental Science Score Calculator
-Future: more AP score calculators and AP exam tools
-
-Avoid misleading copy such as:
-
-Estimate any AP exam score
-All AP score calculators are available
-Choose from every AP subject
-AP Score Calculator 2026 as the main homepage H1
-
-Preferred homepage positioning:
-
-Free AP Score Tools for Students
-Start with our AP Environmental Science score calculator. More AP score calculators are coming soon.
-
-Acceptable phrases:
-
-AP score tools
-AP exam score tools
-Start with AP Environmental Science
-More AP score calculators are coming soon
-First live tool: APES
-Legal and Disclaimer Requirements
-
-This site must always be positioned as unofficial.
-
-Do not imply affiliation with College Board.
-
-Required disclaimer language, or close variation:
+Required disclaimer language:
 
 AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board. AP, Advanced Placement, and related exam names are trademarks of their respective owners. Calculator results are estimates only.
 
-For calculator pages, include:
+Do not overuse the disclaimer. It should appear once globally near the page bottom or footer. Avoid repeating the same disclaimer inside calculator result cards.
 
-This AP Environmental Science score calculator is unofficial. It uses estimated score boundaries based on publicly available AP exam structures and past scoring patterns. Official AP scores are determined by the College Board and may vary by year.
+## Current Live Tools
 
-Do not use phrases such as:
+Live calculator pages:
 
-Official AP score calculator
-College Board calculator
-Guaranteed AP score
-Exact AP score prediction
+1. AP Environmental Science Score Calculator
+   URL:
+   `/ap-environmental-science-score-calculator/`
 
-Use:
+   Scoring model:
+   - MCQ raw score: 0–80
+   - FRQ total: 0–30
+   - MCQ scaled: /78
+   - FRQ scaled: /52
+   - Composite score: /130
 
-unofficial
-estimated
-predicted
-score estimate
-estimated score boundaries
-Homepage Requirements
+   Estimated AP score ranges:
+   - 5: 96–130
+   - 4: 77–95
+   - 3: 68–76
+   - 2: 50–67
+   - 1: 0–49
 
-The homepage should be tool-first, but not misleading.
+2. AP Chemistry Score Calculator
+   URL:
+   `/ap-chemistry-score-calculator/`
 
-The homepage should directly show the first available calculator instead of forcing users to click a CTA button.
+   Scoring model:
+   - MCQ raw score: 0–60
+   - FRQ total raw score: 0–46
+   - MCQ scaled: /50
+   - FRQ scaled: /50
+   - Composite score: /100
 
-Above the fold should include:
+   Estimated AP score ranges:
+   - 5: 75–100
+   - 4: 60–74
+   - 3: 45–59
+   - 2: 30–44
+   - 1: 0–29
 
-Header with AP Score Tools branding
-H1: Free AP Score Tools for Students
-Short subtitle
-Trust/disclaimer line
-Badges
-Direct AP Environmental Science Score Calculator component
-Disclaimer
+3. AP Human Geography Score Calculator
+   URL:
+   `/ap-human-geography-score-calculator/`
 
-Recommended homepage H1:
+4. AP Macroeconomics Score Calculator
+   URL:
+   `/ap-macroeconomics-score-calculator/`
 
-Free AP Score Tools for Students
+5. AP World History Score Calculator
+   URL:
+   `/ap-world-history-score-calculator/`
 
-Recommended homepage subtitle:
+The last three were recently added and should be verified carefully before being treated as fully stable.
 
-Start with our AP Environmental Science score calculator. Enter your MCQ and FRQ raw scores to get an unofficial AP score estimate from 1 to 5. More AP score calculators are coming soon.
+## Coming Soon Tools
 
-Recommended trust line:
+Coming Soon pages must be clearly labeled. Do not make them appear like live calculators.
 
-Unofficial AP score estimates · Built for students · Not affiliated with the College Board
+Current Coming Soon pages include:
 
-Recommended badges:
+- AP Biology Score Calculator
+- AP Calculus AB Score Calculator
+- AP English Language / AP Lang Score Calculator
+- APUSH Score Calculator
 
-First live tool: APES
-MCQ + FRQ
-Free to use
-2026 estimate
+Coming Soon pages may include:
+- short description
+- expected calculator purpose
+- related live tools
+- email/waitlist CTA if available
 
-The homepage calculator card should be titled:
+They must not include fake interactive calculators unless the real scoring logic is implemented.
 
-AP Environmental Science Score Calculator
+## Existing Important Pages
 
-Add supporting copy:
+- Homepage:
+  `/`
 
-This is our first live AP score calculator. More subjects, including AP Biology, AP Chemistry, AP Psychology, and AP Statistics, are planned.
+- AP Score Calculators Hub:
+  `/ap-score-calculators/`
 
-Do not make users click a button before using the first calculator.
+- AP Environmental Science Score Calculator:
+  `/ap-environmental-science-score-calculator/`
 
-APES Calculator Page Requirements
+- AP Chemistry Score Calculator:
+  `/ap-chemistry-score-calculator/`
 
-Dedicated route:
+- AP Human Geography Score Calculator:
+  `/ap-human-geography-score-calculator/`
 
-/ap-environmental-science-score-calculator/
+- AP Macroeconomics Score Calculator:
+  `/ap-macroeconomics-score-calculator/`
 
-Target keywords:
+- AP World History Score Calculator:
+  `/ap-world-history-score-calculator/`
 
-apes score calculator
-ap environmental science score calculator
-apes score calculator 2026
-ap environmental science score calculator 2026
-apes calculator
-apes score predictor
-apes score chart
-ap environmental science score predictor
+- How AP Environmental Science Is Scored:
+  `/how-ap-environmental-science-is-scored/`
 
-SEO title:
-
-AP Environmental Science Score Calculator 2026 | APES Score Predictor
-
-Meta description:
-
-Estimate your AP Environmental Science score with our free APES score calculator. Enter your MCQ and FRQ raw scores to predict your unofficial AP score from 1 to 5.
-
-H1:
-
-AP Environmental Science Score Calculator 2026
-
-The APES page can be more specific than the homepage.
-
-It should include:
-
-Calculator above the fold
-Disclaimer
-How this calculator works
-AP Environmental Science exam format
-Estimated APES score chart
-What score do you need for a 3, 4, or 5?
-FAQ
-Related AP score calculators
-Calculator Logic
-
-Inputs:
-
-Multiple Choice Score: 0–80
-FRQ 1 Score: 0–10
-FRQ 2 Score: 0–10
-FRQ 3 Score: 0–10
-
-Default values:
-
-MCQ: 60
-FRQ 1: 7
-FRQ 2: 7
-FRQ 3: 7
-
-Calculation:
-
-MCQ weighted percentage = (mcq / 80) * 60
-FRQ weighted percentage = ((frq1 + frq2 + frq3) / 30) * 40
-Composite percentage = MCQ weighted percentage + FRQ weighted percentage
-
-Estimated AP score boundaries:
-
-5: 75% and above
-4: 60% to 74.9%
-3: 45% to 59.9%
-2: 30% to 44.9%
-1: below 30%
-
-Output should show:
-
-Predicted AP Score
-Estimated Composite Percentage
-MCQ Contribution
-FRQ Contribution
-Points away from next score band
-Short feedback message
-
-Feedback messages:
-
-5: Strong 5 range based on this estimate.
-4: You are in the estimated 4 range. Improve your MCQ or FRQ score to move closer to a 5.
-3: You are in the estimated passing range. A few more raw points could move you closer to a 4.
-2 or 1: You may need more review to reach the passing range.
-
-Implementation requirements:
-
-Clamp invalid values to min and max
-Format percentages to one decimal place
-Make the calculator mobile-friendly
-Avoid horizontal scrolling
-Use accessible labels
-Use "use client" only in the calculator component when possible
-UI Style Guide
-
-The site should feel like:
-
-Clean academic tool
-Student-friendly
-Lightweight
-Trustworthy
-Practical
-Not childish
-Not corporate SaaS
-Not official College Board
-
-Visual direction:
-
-Light background
-Soft blue / lavender surfaces
-Dark navy text
-Purple / indigo accent
-Rounded calculator cards
-Subtle borders
-Soft shadows
-Minimal CTA buttons
-
-Color palette:
-
---background: #F8FAFF;
---background-soft: #F3F0FF;
---card: #FFFFFF;
-
---text-main: #101B3D;
---text-muted: #5B6478;
-
---primary: #5F4BFF;
---primary-dark: #101B3D;
---primary-soft: #EEF2FF;
-
---accent: #7C3AED;
---accent-soft: #F1EAFF;
-
---border: #E4E8F5;
---success: #16A34A;
---warning: #F59E0B;
-
-Tailwind usage examples:
-
-bg-[#F8FAFF]
-text-[#101B3D]
-text-[#5B6478]
-bg-[#EEF2FF]
-border-[#E4E8F5]
-text-[#5F4BFF]
-
-Calculator card style:
-
-rounded-3xl
-border border-[#E4E8F5]
-bg-white
-shadow-[0_20px_60px_rgba(16,27,61,0.08)]
-
-Input style:
-
-rounded-2xl
-border border-[#E4E8F5]
-bg-[#F8FAFF]
-text-[#101B3D]
-focus:border-[#5F4BFF]
-focus:ring-[#EEF2FF]
-
-Result card style:
-
-bg-[#101B3D]
-text-white
-purple accent highlight
-large predicted AP score number
+- About:
+  `/about/`
+
+- Privacy Policy:
+  `/privacy-policy/`
+
+- Terms of Use:
+  `/terms-of-use/`
+
+## Current SEO Strategy
+
+Primary cluster:
+- AP score calculator
+- AP score calculators
+- AP score calculator by subject
+- AP Environmental Science score calculator
+- APES score calculator
+- AP Chemistry score calculator
+- AP Human Geography score calculator
+- AP Macroeconomics score calculator
+- AP World History score calculator
+
+Secondary seasonal clusters:
+- AP exam schedule 2026
+- AP test dates 2026
+- AP testing dates 2026
+- AP score release date 2026
+- when do AP scores come out 2026
+- what time do AP scores come out
+- how to check AP scores
+- AP scores not showing
+
+Do not chase unrelated “AP” keywords that refer to non-U.S. Advanced Placement exams.
 
 Avoid:
+- AP EAMCET counselling dates
+- AP EAMCET result
+- AP Inter results
+- unrelated Indian state exam queries
+- SAT pages for now unless the site intentionally expands beyond AP
 
-Heavy gradients
-Too many CTA buttons
-Corporate SaaS hero sections
-Dense marketing copy
-Official-looking College Board styling
-Logo and Assets
+## Current SEO Status
 
-Logo assets should be placed in:
+Known ranking / discovery signals include:
+- homepage indexed
+- APES page indexed
+- GSC has recorded clicks
+- SEMrush has found Top 100 keywords
 
-public/logo-ap-score-tools-horizontal.png
-public/logo-ap-score-tools-square.png
-public/favicon.png
-public/apple-touch-icon.png
+Known keyword appearances:
+- ap score calculator
+- ap enviro calculator
+- apes score calculator
+- apes score calculator 2026
+- ap chem score calculator
+- calculating ap scores
+- aphug calculator
+- apwh score calculator
 
-If existing files use AP Score Calculator naming, either keep them temporarily or rename consistently to AP Score Tools.
+Current strategy:
+- Do not blindly generate dozens of thin AP subject pages.
+- Prioritize improving existing live tools and the AP calculators hub.
+- Use APES and AP Chemistry as quality benchmarks.
+- Expand subject pages only when the calculator logic is real or clearly marked Coming Soon.
+- Use seasonal AP score release pages to capture June–July demand and route users back to calculators.
 
-Preferred naming going forward:
+## Current UX / UI Priorities
 
-logo-ap-score-tools-horizontal.png
-logo-ap-score-tools-square.png
-favicon.png
-apple-touch-icon.png
+Before adding many new pages, improve the existing site.
 
-Use horizontal logo in the header.
+### 1. AP Score Calculators Hub
 
-Use square logo for favicon, app icon, and optional footer/social icon.
+Page:
+`/ap-score-calculators/`
 
-Recommended sizes:
+Fix:
+- Hero title and description should be centered.
+- Eyebrow, H1, description, and note should use consistent max-width and centered layout.
+- Avoid left-heavy or visually uneven sections.
 
-Horizontal logo: 800×240 or 1200×360
-Square logo: 512×512
-favicon.png: 32×32 or 64×64
-apple-touch-icon.png: 180×180
+Recommended hero style:
+- wrapper: `mx-auto max-w-5xl px-4 pt-16 pb-10 text-center sm:px-6 lg:px-8`
+- H1: `mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl`
+- description: `mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600`
+- note: `mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-500`
 
-Use Next.js Image component for logo rendering.
+### 2. Browse Calculators by Category
 
-SEO Foundation
+The current section should not look like a mixed plain list.
 
-Production domain:
+Redesign it into category cards.
 
-https://www.apscoretools.com
+Recommended categories:
+- Science
+- History & Social Science
+- Math & Computer Science
+- English
 
-Use www consistently in canonical URLs, sitemap, robots, and schema.
+Each category card should include:
+- category title
+- short description
+- calculator links
+- clear status badge: Live or Coming Soon
 
-Required files:
+Live tools:
+- AP Environmental Science
+- AP Chemistry
+- AP Human Geography
+- AP Macroeconomics
+- AP World History
 
-app/sitemap.ts
-app/robots.ts
-app/layout.tsx
+Coming Soon:
+- AP Biology
+- AP Calculus AB
+- AP English Language
+- APUSH
 
-Sitemap routes:
+Use clean cards:
+- rounded corners
+- subtle border
+- light shadow
+- clear spacing
+- separate rows for each tool
 
-https://www.apscoretools.com/
-priority: 1.0
-changeFrequency: weekly
+### 3. Header Navigation
 
-https://www.apscoretools.com/ap-environmental-science-score-calculator/
-priority: 0.9
-changeFrequency: weekly
+The `Calculators` nav item should have a dropdown menu.
 
-https://www.apscoretools.com/about/
-priority: 0.5
-changeFrequency: monthly
+Desktop dropdown:
+- Group 1: Live Calculators
+- Group 2: Coming Soon
+- Bottom CTA: View All AP Score Calculators →
 
-Robots:
+Mobile menu:
+- Show the same grouped structure.
+- Do not rely on hover behavior on mobile.
 
-Allow all crawlers
-Sitemap: https://www.apscoretools.com/sitemap.xml
+Keep dropdown:
+- clean
+- rounded
+- readable
+- accessible
+- not too crowded
 
-Global metadata:
+### 4. Homepage “Why Students Use AP Score Tools”
 
-metadataBase: https://www.apscoretools.com
-Default title: AP Score Tools | Free AP Score Calculators and Exam Tools
-Default description: AP Score Tools provides free, unofficial AP score calculators and exam tools for students. Start with the AP Environmental Science score calculator.
+Current issue:
+- section feels left-heavy
+- empty space makes the layout look unfinished
 
-Homepage metadata:
+Update to:
+- centered heading
+- short centered description
+- 3 feature cards
 
-Title: AP Score Tools | Free AP Score Calculators and Exam Tools
-Description: Use AP Score Tools to estimate AP exam scores with free, unofficial calculators. Start with the AP Environmental Science score calculator, with more AP subjects coming soon.
-Canonical: https://www.apscoretools.com/
+Suggested cards:
+1. Subject-specific calculators
+2. Clear 1–5 score estimates
+3. Unofficial, student-friendly guidance
 
-APES page metadata:
+Use:
+- `max-w-6xl`
+- centered section intro
+- `grid gap-5 md:grid-cols-3`
+- rounded cards with subtle border and shadow
 
-Title: AP Environmental Science Score Calculator 2026 | APES Score Predictor
-Description: Estimate your AP Environmental Science score with our free APES score calculator. Enter your MCQ and FRQ raw scores to predict your unofficial AP score from 1 to 5.
-Canonical: https://www.apscoretools.com/ap-environmental-science-score-calculator/
+### 5. Calculator Result UX
 
-About metadata:
+Problem:
+The text below appears twice on calculator pages:
 
-Title: About AP Score Tools
-Description: Learn about AP Score Tools, a free unofficial AP score calculator and exam tools website for students.
-Canonical: https://www.apscoretools.com/about/
+“This is an unofficial estimate. Official AP score conversions may vary by year based on exam difficulty and official scoring.”
 
-Do not add noindex.
+Fix:
+- Keep global disclaimer once near footer/page bottom.
+- Remove duplicate generic disclaimer from calculator result cards.
+- Replace calculator result message with score-specific guidance.
 
-Schema Requirements
+Reusable function:
 
-Homepage:
-
-WebSite schema
-Organization schema
-
-WebSite:
-
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AP Score Tools",
-  "url": "https://www.apscoretools.com",
-  "description": "Free, unofficial AP score calculators and exam tools for students."
-}
-
-Organization:
-
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "AP Score Tools",
-  "url": "https://www.apscoretools.com",
-  "logo": "https://www.apscoretools.com/logo-ap-score-tools-square.png"
-}
-
-APES page:
-
-FAQPage schema
-SoftwareApplication schema
-BreadcrumbList schema
-
-SoftwareApplication:
-
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "AP Environmental Science Score Calculator",
-  "applicationCategory": "EducationalApplication",
-  "operatingSystem": "Web",
-  "url": "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
+```ts
+export function getScoreMessage(score: number) {
+  switch (score) {
+    case 5:
+      return {
+        title: "Excellent estimated result",
+        body: "Your estimated score is in the 5 range. This usually suggests very strong performance across the exam sections, but official score conversions can still vary by year.",
+      };
+    case 4:
+      return {
+        title: "Strong estimated result",
+        body: "Your estimated score is in the 4 range. This is generally a solid AP performance, though the final official score depends on the exam’s yearly scoring conversion.",
+      };
+    case 3:
+      return {
+        title: "Likely passing-range estimate",
+        body: "Your estimated score is in the 3 range. Many colleges may consider a 3 for credit or placement, but policies vary by school and subject.",
+      };
+    case 2:
+      return {
+        title: "Below the common credit range",
+        body: "Your estimated score is in the 2 range. Review the sections with the most missed points and focus on improving your raw score before the exam.",
+      };
+    default:
+      return {
+        title: "Needs more practice",
+        body: "Your estimated score is in the 1 range. Use the section breakdown to identify weak areas and build a more focused study plan.",
+      };
   }
 }
 
-BreadcrumbList:
+Apply this to all live calculators:
 
-Home > AP Environmental Science Score Calculator
+AP Environmental Science
+AP Chemistry
+AP Human Geography
+AP Macroeconomics
+AP World History
+Page Style Standards
 
-About page:
+Use consistent site-wide visual language.
 
-Optional WebPage schema
-Internal Linking
+Preferred style:
 
-Header links:
+clean
+student-friendly
+lightweight
+modern
+not over-designed
+calculator-first where appropriate
 
-Home
-APES Calculator
-About
+Layout standards:
 
-Footer links:
+most informational pages should have centered hero sections
+calculator pages may use calculator-first sections, but the title and intro should still feel balanced
+avoid large empty left/right gaps
+avoid overly dense button clusters
+use clear card separation instead of mixed list blocks
 
-Home
-AP Environmental Science Score Calculator
-About
+Recommended Tailwind patterns:
 
-Homepage:
+outer container: mx-auto max-w-6xl px-4 sm:px-6 lg:px-8
+small content container: mx-auto max-w-3xl
+page hero: text-center
+cards: rounded-3xl border border-slate-200 bg-white p-6 shadow-sm
+live badge: emerald tone
+coming soon badge: slate tone
+primary CTA: dark slate or brand accent
+secondary CTA: light bordered button
+Internal Linking Rules
 
-Link from available calculator card to /ap-environmental-science-score-calculator/
-Clearly mark APES as Live
-Clearly mark future calculators as Coming soon
+Every major informational page should link back to:
 
-APES page:
+/ap-score-calculators/
+relevant live calculator pages
+related AP guide/date/release pages
 
-Add link back to homepage:
-Explore AP Score Tools
+Every live calculator page should link to:
 
-About page:
+AP Score Calculators Hub
+at least 2 related calculators
+at least 1 relevant guide page if available
 
-Link to homepage
-Link to APES calculator
-Content Tone
+Every Coming Soon page should link to:
 
-Tone should be:
+AP Score Calculators Hub
+live alternatives
+related AP content
 
-Helpful
-Clear
-Student-friendly
-Transparent
-Concise
-Non-official
+Do not create orphan pages.
 
-Avoid over-marketing.
+Seasonal Page Planning
 
-Avoid exaggerated claims.
+After existing UI and calculator pages are improved, build the AP score release cluster.
 
-Use direct educational copy.
+Priority pages:
 
-Preferred wording:
+/when-do-ap-scores-come-out-2026/
+Main keyword:
 
-estimate
-unofficial prediction
-estimated score boundaries
-based on exam structure
-may vary by year
-college credit policies vary
+when do AP scores come out 2026
+
+Also target:
+
+when do AP scores come out
+when are AP scores released 2026
+AP scores 2026
+AP score release date
+
+/ap-score-release-date-2026/
+Main keyword:
+
+AP score release date 2026
+
+Page angle:
+
+timeline
+release date
+what students should do before scores are released
+
+/how-to-check-ap-scores/
+Main keyword:
+
+how to check AP scores
+
+Evergreen page.
+Must clearly point users to College Board for official score checking and AP Score Tools for unofficial estimation.
+
+/what-time-do-ap-scores-come-out/
+Main keyword:
+
+what time do AP scores come out
+
+Be careful:
+
+do not invent a specific release hour
+say exact access time may vary
+direct users to their College Board account
+
+/ap-scores-not-showing/
+Main keyword:
+
+AP scores not showing
+
+Page angle:
+
+score delay
+login issue
+late testing
+missing score
+what to do next
+
+/ap-score-send-deadline-2026/
+Main keyword:
+
+AP score send deadline 2026
+
+Page angle:
+
+free score send
+sending scores to colleges
+what happens after deadline
+
+Later subject release pages:
+
+/ap-environmental-science-score-release-2026/
+/ap-chemistry-score-release-2026/
+/ap-human-geography-score-release-2026/
+/ap-macroeconomics-score-release-2026/
+/ap-world-history-score-release-2026/
+
+Only create subject pages when they are connected to real live tools or clearly marked as informational.
+
+Content Rules
+
+Use concise, student-friendly English.
+
+Tone:
+
+clear
+helpful
+calm
+not too promotional
+not overly academic
 
 Avoid:
 
-guaranteed
-official
-exact
-approved
-College Board tool
-Technical Stack
+keyword stuffing
+exaggerated claims
+fake precision
+thin pages
+pretending to be official
+overusing “College Board” in a way that suggests affiliation
 
-Use:
+Preferred CTA language:
 
-Next.js App Router
-TypeScript
-Tailwind CSS
-Static SEO-friendly pages
-No backend
-No database
-No unnecessary dependencies
+Estimate Your AP Score
+Try an AP Score Calculator
+View All AP Score Calculators
+Estimate Your Score Before Results Come Out
+See Available AP Score Calculators
 
-Preferred component structure:
+Avoid CTA language:
 
-components/Header.tsx
-components/Footer.tsx
-components/APESCalculator.tsx
-components/DisclaimerBox.tsx
-components/FAQSection.tsx
-components/JsonLd.tsx
+Check Official AP Scores Here
+Get Your Exact AP Score
+Guaranteed AP Score Prediction
+Metadata Rules
 
-Routes:
+Each page should have:
 
-app/page.tsx
-app/layout.tsx
-app/globals.css
-app/sitemap.ts
-app/robots.ts
-app/about/page.tsx
-app/ap-environmental-science-score-calculator/page.tsx
+unique title
+unique meta description
+canonical URL if applicable
+clear H1
+structured headings
 
-Keep server components by default.
+Do not duplicate title/meta across pages.
 
-Use client components only for interactivity, mainly:
+For calculator pages:
+Title pattern:
+AP [Subject] Score Calculator | AP Score Tools
 
-APESCalculator.tsx
-Build and Quality Checks
+Meta description pattern:
+Use this free, unofficial AP [Subject] Score Calculator to estimate your AP score from raw section scores and review a simple score breakdown.
 
-After changes, always run:
+For score release pages:
+Title pattern:
+When Do AP Scores Come Out in 2026? | AP Score Tools
 
-npm run build
+Meta description pattern:
+Find out when AP scores come out in 2026, how to check your AP results, and how to estimate your AP score before official scores are released.
 
-Fix:
+Analytics
 
-TypeScript errors
-ESLint errors
-Hydration errors
-Metadata errors
-Schema syntax errors
-Broken imports
-Broken image paths
+GA4 Measurement ID:
 
-Before deployment, check:
+G-GYGCPYW88K
 
-Homepage loads
-APES calculator works
-APES page loads
-About page loads
-Logo displays
-Favicon displays
-Sitemap works
-Robots works
-Mobile layout works
-No horizontal overflow
-No noindex tag
-Canonicals use https://www.apscoretools.com
+GA4 still needs verification.
 
-Production URLs to test:
+Target events:
 
-https://www.apscoretools.com/
-https://www.apscoretools.com/ap-environmental-science-score-calculator/
-https://www.apscoretools.com/about/
-https://www.apscoretools.com/sitemap.xml
-https://www.apscoretools.com/robots.txt
-Deployment Notes
+calculator_start
+calculator_input_change
+calculator_result_view
+homepage_calculator_switch
+view_detailed_breakdown
+scoring_guide_click
+calculator_hub_click
+coming_soon_subject_click
 
-Project should remain separate from B2B SEO Kit.
+When modifying calculators, avoid breaking event tracking.
 
-Correct local folder:
+QA Checklist
 
-/Users/sunyuyang/Documents/apscoretools
+Before pushing changes:
 
-Do not place it inside:
+Run build.
+Run lint if configured.
+Check all live calculator pages manually.
+Confirm no calculator page repeats the same unofficial disclaimer twice.
+Confirm calculator result message changes based on estimated score.
+Confirm header dropdown works on desktop.
+Confirm mobile menu shows Live and Coming Soon groups.
+Confirm /ap-score-calculators/ hero is centered.
+Confirm Browse Calculators by Category is card-based and readable.
+Confirm homepage Why Students section is balanced and no longer left-heavy.
+Confirm Coming Soon pages are clearly labeled.
+Confirm all internal links work.
+Confirm no AP EAMCET / unrelated AP exam pages are introduced.
+Confirm sitemap includes new pages if pages are added.
+Confirm robots settings do not block important pages.
+Current Priority
 
-/Users/sunyuyang/Documents/b2b-seo-kit/
+Do not add many new SEO pages before fixing existing UI consistency.
 
-Expected setup:
+Current priority order:
 
-Local folder: apscoretools
-GitHub repo: apscoretools
-Vercel project: apscoretools
-Domain: apscoretools.com
-
-Use www as the primary domain:
-
-https://www.apscoretools.com
-
-Root domain should redirect to www if configured.
-
-Current Strategic Priority
-
-Do not overbuild.
-
-Current priority:
-
-1. Make the APES calculator page useful and indexable
-2. Make homepage accurate and not misleading
-3. Add SEO foundation files
-4. Submit sitemap to Google Search Console and Bing Webmaster Tools
-5. Expand to AP Biology / AP Chemistry / AP Psychology only after APES is indexed
-
-The site should be lightweight and tool-first.
-
-The first success metric is:
-
-APES calculator page indexed and getting impressions for APES-related keywords.
+Fix existing page styles and layout consistency.
+Improve header calculator navigation.
+Fix duplicate calculator disclaimer.
+Add score-specific result messages.
+Verify all live calculators work.
+Then create AP score release / July demand pages.

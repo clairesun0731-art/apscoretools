@@ -181,14 +181,37 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="card prose-card">
-            <h2>Why Students Use AP Score Tools</h2>
-            <ul className="prose-list">
-              <li>Free AP exam score calculators organized by subject</li>
-              <li>Section-level breakdowns instead of one generic percentage</li>
-              <li>Clear labels for estimated score bands and unofficial results</li>
-              <li>Mobile-friendly tools for practice tests and exam-day estimates</li>
-            </ul>
+          <section className="prose-card">
+            <div className="section-heading compact-heading centered-section-heading">
+              <h2>Why Students Use AP Score Tools</h2>
+              <p>
+                The calculators are built for quick practice-test checks,
+                post-exam estimates, and clearer section-by-section review.
+              </p>
+            </div>
+            <div className="why-card-grid">
+              <article className="why-card">
+                <h3>Subject-specific calculators</h3>
+                <p>
+                  Each live calculator uses inputs and estimated weights that
+                  match the AP subject more closely than a generic percentage.
+                </p>
+              </article>
+              <article className="why-card">
+                <h3>Clear 1-5 score estimates</h3>
+                <p>
+                  See an estimated AP score, composite score, and section
+                  breakdown so you can understand what moved the result.
+                </p>
+              </article>
+              <article className="why-card">
+                <h3>Unofficial, student-friendly guidance</h3>
+                <p>
+                  Every result is clearly labeled as an estimate, with plain
+                  language that helps you decide what to review next.
+                </p>
+              </article>
+            </div>
           </section>
 
           <section className="card prose-card">
@@ -220,15 +243,6 @@ export default function Home() {
               ))}
             </div>
           </section>
-
-          <article className="disclaimer">
-            <p>
-              AP Score Tools is unofficial and is not affiliated with or
-              endorsed by the College Board. AP, Advanced Placement, and related
-              exam names are trademarks of their respective owners. Calculator
-              results are estimates only.
-            </p>
-          </article>
         </div>
       </section>
     </main>

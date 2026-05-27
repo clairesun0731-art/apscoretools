@@ -4,9 +4,6 @@ import WeightedScoreCalculator from "@/components/WeightedScoreCalculator";
 import type { WeightedScoreCalculatorConfig } from "@/lib/scoreCalculatorConfigs";
 import type { WeightedCalculatorPageData } from "@/lib/weightedCalculatorPageData";
 
-const disclaimer =
-  "AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board. AP, Advanced Placement, and related exam names are trademarks of their respective owners. Calculator results are estimates only.";
-
 function rangeLabel(min: number, max: number) {
   return `${min}-${max}`;
 }
@@ -97,9 +94,9 @@ export default function WeightedCalculatorPage({
             <WeightedScoreCalculator config={config} />
           </div>
 
-          <article className="disclaimer tool-hero-disclaimer">
-            <p>{disclaimer}</p>
-          </article>
+          <p className="inline-disclaimer tool-hero-note">
+            Unofficial estimate. Final AP score conversions may vary by year.
+          </p>
         </div>
       </section>
 
@@ -194,10 +191,6 @@ export default function WeightedCalculatorPage({
                 </Link>
               ))}
             </div>
-          </article>
-
-          <article className="disclaimer">
-            <p>{disclaimer}</p>
           </article>
         </div>
       </section>

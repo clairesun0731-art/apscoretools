@@ -217,7 +217,7 @@ export default function ApScoreCalculatorsPage() {
     <main className="page">
       <JsonLd data={jsonLd} />
 
-      <section className="container hero">
+      <section className="container hero hub-hero">
         <div>
           <span className="eyebrow">AP score calculator by subject</span>
           <h1>AP Score Calculators by Subject</h1>
@@ -278,7 +278,7 @@ export default function ApScoreCalculatorsPage() {
                       {liveItems.map((calculator) => (
                         <li key={calculator.href}>
                           <Link href={calculator.href}>{calculator.name}</Link>
-                          <span>Live</span>
+                          <span className="status-live">Live</span>
                         </li>
                       ))}
                       {plannedItems.map((calculator) => (
@@ -293,7 +293,7 @@ export default function ApScoreCalculatorsPage() {
                           >
                             {calculator.name}
                           </TrackedLink>
-                          <span>Coming soon</span>
+                          <span className="status-soon">Coming Soon</span>
                         </li>
                       ))}
                     </ul>
@@ -345,7 +345,7 @@ export default function ApScoreCalculatorsPage() {
                     {group.items.map((item) => (
                       <li key={item}>
                         <span>{item}</span>
-                        <span>Planned</span>
+                        <span className="status-planned">Planned</span>
                       </li>
                     ))}
                   </ul>
@@ -380,15 +380,6 @@ export default function ApScoreCalculatorsPage() {
                 </div>
               ))}
             </div>
-          </article>
-
-          <article className="disclaimer">
-            <p>
-              AP Score Tools is unofficial and is not affiliated with or
-              endorsed by the College Board. AP, Advanced Placement, and related
-              exam names are trademarks of their respective owners. Calculator
-              results are estimates only.
-            </p>
           </article>
         </div>
       </section>
