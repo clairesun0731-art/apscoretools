@@ -173,7 +173,17 @@ input {
   padding: 28px 0 30px;
 }
 
+.calculator-hero-tool {
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0 30px;
+}
+
 .apes-hero-grid {
+  grid-template-columns: minmax(320px, 0.78fr) minmax(560px, 1.22fr);
+  gap: 24px;
+}
+
+.calculator-hero-grid {
   grid-template-columns: minmax(320px, 0.78fr) minmax(560px, 1.22fr);
   gap: 24px;
 }
@@ -183,12 +193,26 @@ input {
   padding-top: 8px;
 }
 
+.calculator-hero-copy {
+  gap: 12px;
+  padding-top: 8px;
+}
+
 .apes-hero-copy h1 {
   max-width: 620px;
   font-size: clamp(2.05rem, 4vw, 3.25rem);
 }
 
+.calculator-hero-copy h1 {
+  max-width: 620px;
+  font-size: clamp(2.05rem, 4vw, 3.25rem);
+}
+
 .apes-hero-copy .lead {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+.calculator-hero-copy .lead {
   font-size: clamp(1rem, 1.4vw, 1.12rem);
 }
 
@@ -208,6 +232,92 @@ input {
   gap: 24px;
   align-items: center;
   padding: 42px 0 24px;
+}
+
+.directory-hero,
+.tool-hero-section {
+  border-bottom: 1px solid var(--border);
+  padding: 36px 0 32px;
+}
+
+.centered-hero-copy,
+.tool-hero-stack {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.centered-hero-copy {
+  max-width: 900px;
+}
+
+.tool-hero-stack {
+  max-width: 1040px;
+}
+
+.centered-hero-copy h1,
+.tool-hero-stack h1 {
+  max-width: 860px;
+  font-size: clamp(2.15rem, 5vw, 4rem);
+}
+
+.centered-hero-copy .lead,
+.tool-hero-stack .lead {
+  max-width: 760px;
+}
+
+.centered-actions {
+  justify-content: center;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.breadcrumb a {
+  color: var(--accent);
+}
+
+.breadcrumb span::before {
+  content: "/";
+  color: var(--muted);
+  margin-right: 8px;
+}
+
+.benefit-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.benefit-row span {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--foreground);
+  font-size: 0.86rem;
+  font-weight: 760;
+  padding: 7px 11px;
+}
+
+.centered-calculator-panel {
+  width: min(100%, 980px);
+  margin-top: 6px;
+}
+
+.tool-hero-disclaimer {
+  width: min(100%, 980px);
+  text-align: left;
 }
 
 .eyebrow,
@@ -416,6 +526,14 @@ p {
   display: grid;
   gap: 14px;
   align-content: start;
+}
+
+.configured-input-card {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.configured-input-card .calculator-helper-copy {
+  grid-column: 1 / -1;
 }
 
 .calculator-helper-copy {
@@ -1034,6 +1152,56 @@ tr:last-child td {
   padding: 12px 14px;
 }
 
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.category-group {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--background);
+  padding: 16px;
+}
+
+.category-group ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-group li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--foreground);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.category-group li > span:last-child {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 760;
+  padding: 4px 7px;
+}
+
+.category-group a:hover,
+.category-group a:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
 @media (max-width: 980px) {
   .hero-tool-grid {
     grid-template-columns: 1fr;
@@ -1049,6 +1217,7 @@ tr:last-child td {
   }
 
   .compact-card-grid,
+  .category-grid,
   .steps-grid,
   .planned-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1067,6 +1236,10 @@ tr:last-child td {
   }
 
   .chemistry-input-card {
+    grid-template-columns: 1fr;
+  }
+
+  .configured-input-card {
     grid-template-columns: 1fr;
   }
 
@@ -1132,6 +1305,7 @@ tr:last-child td {
   }
 
   .compact-card-grid,
+  .category-grid,
   .steps-grid,
   .planned-list {
     grid-template-columns: 1fr;

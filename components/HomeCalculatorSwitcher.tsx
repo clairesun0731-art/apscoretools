@@ -124,7 +124,7 @@ export default function HomeCalculatorSwitcher() {
   return (
     <div className="home-calculator-switcher">
       <div className="switcher-header">
-        <span className="switcher-label">Choose a live calculator</span>
+        <span className="switcher-label">Try a featured live calculator</span>
         <div
           aria-label="Live calculators"
           className="calculator-tabs"

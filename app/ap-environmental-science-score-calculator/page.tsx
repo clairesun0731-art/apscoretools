@@ -197,57 +197,43 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
     <main className="page">
       <JsonLd data={jsonLd} />
 
-      <section className="hero-tool apes-hero-tool">
-        <div className="container hero-tool-grid apes-hero-grid">
-          <div className="hero-copy apes-hero-copy">
-            <span className="eyebrow">APES score predictor</span>
-            <h1>AP Environmental Science Score Calculator 2026</h1>
-            <p className="lead">
-              Use this APES score calculator to estimate your AP Environmental
-              Science score from MCQ and FRQ raw scores. Unlike a simple
-              percentage calculator, this tool shows your estimated MCQ score
-              out of 78, FRQ score out of 52, and combined APES composite score
-              out of 130.
-            </p>
-            <p className="short-note">
-              Use this APES calculator as an AP Environmental Science score
-              predictor, APES composite score calculator, and study check for
-              APES raw score conversion.
-            </p>
-            <div className="hero-actions">
-              <TrackedLink
-                className="button"
-                eventName="apes_calculator_view"
-                eventParams={{ source: "hero_cta" }}
-                href="#calculator"
-              >
-                Use the Calculator
-              </TrackedLink>
-              <TrackedLink
-                className="button secondary"
-                eventName="apes_score_chart_click"
-                eventParams={{ source: "hero_cta" }}
-                href="#score-chart"
-              >
-                View Score Chart
-              </TrackedLink>
-            </div>
-            <p className="trust-line">
-              AP Score Tools is unofficial and is not affiliated with or
-              endorsed by the College Board. Results are estimates only.
-            </p>
+      <section className="tool-hero-section">
+        <div className="container tool-hero-stack">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <TrackedLink
+              eventName="calculator_hub_click"
+              eventParams={{ source: "apes_breadcrumb" }}
+              href="/ap-score-calculators/"
+            >
+              AP Score Calculators
+            </TrackedLink>
+            <span>AP Environmental Science Score Calculator</span>
+          </nav>
+          <span className="eyebrow">APES score predictor</span>
+          <h1>AP Environmental Science Score Calculator 2026</h1>
+          <p className="lead">
+            Use this APES score calculator to estimate your AP Environmental
+            Science score from MCQ and FRQ raw scores. Results are unofficial
+            estimates and may vary by exam year.
+          </p>
+          <div className="benefit-row">
+            <span>Free to use</span>
+            <span>MCQ + FRQ breakdown</span>
+            <span>Estimated AP score 1-5</span>
           </div>
 
-          <div className="hero-calculator-panel" id="calculator">
+          <div className="centered-calculator-panel" id="calculator">
             <ApesCalculator mode="full" />
-            <article className="disclaimer">
-              <p>
-                This calculator is unofficial and is not affiliated with or
-                endorsed by the College Board. Official AP score cutoffs may
-                vary by year.
-              </p>
-            </article>
           </div>
+
+          <article className="disclaimer tool-hero-disclaimer">
+            <p>
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. AP, Advanced Placement, and related
+              exam names are trademarks of their respective owners. Calculator
+              results are estimates only.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -522,12 +508,10 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
           </article>
 
           <article className="card prose-card">
-            <h2>Explore More AP Score Tools</h2>
+            <h2>Related AP Score Calculators</h2>
             <p>
-              Continue with the APES scoring guide, browse the calculator hub,
-              or check the AP Biology and AP Chemistry calculator pages. The
-              APES score chart and APES raw score conversion on this page are
-              estimates.
+              Continue with the APES scoring guide, browse all AP score
+              calculators, or compare estimates with other live subject tools.
             </p>
             <div className="hero-actions">
               <TrackedLink
@@ -544,18 +528,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 eventParams={{ source: "apes_calculator_page" }}
                 href="/ap-score-calculators/"
               >
-                AP Score Calculators Hub
-              </TrackedLink>
-              <TrackedLink
-                className="button secondary"
-                eventName="apes_explore_click"
-                eventParams={{
-                  subject: "ap_biology",
-                  source: "apes_calculator_page",
-                }}
-                href="/ap-biology-score-calculator/"
-              >
-                AP Biology Score Calculator
+                AP Score Calculators
               </TrackedLink>
               <TrackedLink
                 className="button secondary"
@@ -567,6 +540,28 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 href="/ap-chemistry-score-calculator/"
               >
                 AP Chemistry Score Calculator
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="apes_explore_click"
+                eventParams={{
+                  subject: "ap_human_geography",
+                  source: "apes_calculator_page",
+                }}
+                href="/ap-human-geography-score-calculator/"
+              >
+                AP Human Geography Score Calculator
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="apes_explore_click"
+                eventParams={{
+                  subject: "ap_world_history",
+                  source: "apes_calculator_page",
+                }}
+                href="/ap-world-history-score-calculator/"
+              >
+                AP World History Score Calculator
               </TrackedLink>
             </div>
           </article>

@@ -96,13 +96,13 @@ export default function ApBiologyScoreCalculatorPage() {
             </p>
             <div className="hero-actions">
               <Link className="button" href="/ap-environmental-science-score-calculator/">
-                Open APES calculator
+                AP Environmental Science Score Calculator
               </Link>
             </div>
           </article>
 
           <article className="card prose-card">
-            <h2>Explore AP Score Calculators</h2>
+            <h2>AP Score Calculators</h2>
             <p>
               Visit the AP score calculator hub to see the live APES and AP
               Chemistry calculators, plus planned tools for AP Biology, AP
@@ -110,7 +110,7 @@ export default function ApBiologyScoreCalculatorPage() {
             </p>
             <div className="hero-actions">
               <Link className="button secondary" href="/ap-score-calculators/">
-                Explore AP score calculators
+                AP Score Calculators
               </Link>
             </div>
           </article>

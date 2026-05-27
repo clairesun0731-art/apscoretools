@@ -77,8 +77,9 @@ export default function ComingSoonCalculatorPage({
             <h2>Calculator Not Live Yet</h2>
             <p>
               This planned page is included so students can find future AP score
-              calculator updates. The AP Environmental Science and AP Chemistry
-              score calculators are live on AP Score Tools right now.
+              calculator updates. AP Environmental Science, AP Chemistry, AP
+              Human Geography, AP Macroeconomics, and AP World History
+              calculators are live on AP Score Tools right now.
             </p>
           </article>
 
@@ -96,18 +97,22 @@ export default function ComingSoonCalculatorPage({
           <article className="card prose-card">
             <h2>Use a Live AP Score Calculator</h2>
             <p>
-              AP Environmental Science and AP Chemistry calculators are live now
-              if you want to try a current working AP score calculator.
+              AP Environmental Science, AP Chemistry, AP Human Geography, AP
+              Macroeconomics, and AP World History calculators are live now if
+              you want to try a current working AP score calculator.
             </p>
             <div className="hero-actions">
               <Link className="button" href="/ap-environmental-science-score-calculator/">
-                Open APES calculator
+                AP Environmental Science Score Calculator
               </Link>
               <Link className="button secondary" href="/ap-chemistry-score-calculator/">
-                Open AP Chemistry calculator
+                AP Chemistry Score Calculator
+              </Link>
+              <Link className="button secondary" href="/ap-world-history-score-calculator/">
+                AP World History Score Calculator
               </Link>
               <Link className="button secondary" href="/ap-score-calculators/">
-                Explore AP score calculators
+                AP Score Calculators
               </Link>
             </div>
           </article>

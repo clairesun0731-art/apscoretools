@@ -5,12 +5,20 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AP Chemistry Score Calculator 2026 | AP Chem Score Predictor",
+    absolute: "AP Chemistry Score Calculator | AP Chem Score Estimate",
   },
   description:
-    "Estimate your AP Chemistry score with a free, unofficial AP Chem score calculator. Enter your MCQ and FRQ raw scores to predict your AP score from 1 to 5.",
+    "Use this free AP Chemistry score calculator to estimate your AP Chem score from MCQ and FRQ inputs. Get an unofficial AP score estimate with a composite score breakdown.",
   alternates: {
     canonical: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
+  },
+  openGraph: {
+    title: "AP Chemistry Score Calculator | AP Chem Score Estimate",
+    description:
+      "Use this free AP Chemistry score calculator to estimate your AP Chem score from MCQ and FRQ inputs.",
+    url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
+    siteName: "AP Score Tools",
+    type: "website",
   },
 };
 
@@ -26,9 +34,9 @@ const faqItems = [
       "It provides an estimate based on the AP Chemistry exam structure and estimated score ranges. Official AP score cutoffs can vary by year and exam form.",
   },
   {
-    question: "How many multiple-choice questions are on the AP Chemistry Exam?",
+    question: "How are AP Chemistry MCQs and FRQs weighted?",
     answer:
-      "The AP Chemistry multiple-choice section has 60 questions and accounts for 50% of the exam score.",
+      "This calculator uses an approximate 50/50 model: MCQ raw score is scaled to 50 points and FRQ raw score is scaled to 50 points.",
   },
   {
     question: "How many FRQs are on the AP Chemistry Exam?",
@@ -41,9 +49,9 @@ const faqItems = [
       "In this calculator, the estimated AP Chemistry 5 range starts at a composite score of 75 out of 100. The actual cutoff may vary.",
   },
   {
-    question: "When is the 2026 AP Chemistry Exam?",
+    question: "Can I use this calculator for the 2026 AP Chemistry exam?",
     answer:
-      "The 2026 AP Chemistry Exam is scheduled for Tuesday, May 5, 2026, at 8 AM local time.",
+      "Yes. You can use it for 2026 AP Chemistry practice and post-exam estimates, but official score conversions may vary by exam year and form.",
   },
   {
     question: "Can I use this calculator after the AP Chemistry exam?",
@@ -113,27 +121,35 @@ export default function ApChemistryScoreCalculatorPage() {
     <main className="page">
       <JsonLd data={jsonLd} />
 
-      <section className="container hero">
-        <div>
-          <span className="eyebrow">AP Chem score predictor</span>
-          <h1>AP Chemistry Score Calculator 2026</h1>
+      <section className="tool-hero-section">
+        <div className="container tool-hero-stack">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/ap-score-calculators/">AP Score Calculators</Link>
+            <span>AP Chemistry Score Calculator</span>
+          </nav>
+          <span className="eyebrow">AP Chem score estimate</span>
+          <h1>AP Chemistry Score Calculator</h1>
           <p className="lead">
             Use this AP Chemistry score calculator to estimate your AP Chem
-            score from multiple-choice and free-response raw scores. The
-            calculator scales your MCQ score to 50 points, your FRQ score to 50
-            points, and estimates a composite score out of 100.
+            score from MCQ and FRQ inputs. Enter your raw section scores to get
+            an unofficial estimate with a composite score breakdown.
           </p>
-        </div>
-      </section>
+          <div className="benefit-row">
+            <span>Free to use</span>
+            <span>MCQ + FRQ breakdown</span>
+            <span>Estimated AP score 1-5</span>
+          </div>
 
-      <section className="section" id="calculator">
-        <div className="container content-stack">
-          <APChemCalculator mode="full" />
-          <article className="disclaimer">
+          <div className="centered-calculator-panel" id="calculator">
+            <APChemCalculator mode="full" />
+          </div>
+
+          <article className="disclaimer tool-hero-disclaimer">
             <p>
-              These score ranges are estimates only. Official AP Chemistry
-              score cutoffs are determined by the College Board and may vary by
-              exam year and form.
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. AP, Advanced Placement, and related
+              exam names are trademarks of their respective owners. Calculator
+              results are estimates only.
             </p>
           </article>
         </div>
@@ -270,19 +286,27 @@ export default function ApChemistryScoreCalculatorPage() {
           </article>
 
           <article className="card prose-card">
-            <h2>Explore More AP Score Tools</h2>
+            <h2>Related AP Score Calculators</h2>
             <p>
               Browse{" "}
-              <Link href="/ap-score-calculators/">AP score calculators</Link>,
-              use the{" "}
+              <Link href="/ap-score-calculators/">AP Score Calculators</Link>,
+              compare with the{" "}
               <Link href="/ap-environmental-science-score-calculator/">
-                APES score calculator
+                AP Environmental Science Score Calculator
               </Link>
               , or check the{" "}
-              <Link href="/ap-biology-score-calculator/">
-                AP Biology score calculator
-              </Link>{" "}
-              page while more AP subject tools are being built.
+              <Link href="/ap-human-geography-score-calculator/">
+                AP Human Geography Score Calculator
+              </Link>
+              ,{" "}
+              <Link href="/ap-macroeconomics-score-calculator/">
+                AP Macroeconomics Score Calculator
+              </Link>
+              , and{" "}
+              <Link href="/ap-world-history-score-calculator/">
+                AP World History Score Calculator
+              </Link>
+              .
             </p>
           </article>
         </div>

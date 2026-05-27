@@ -23,18 +23,16 @@ export default function Header() {
           />
         </Link>
         <div className="desktop-nav-links">
-          <Link href="/">Home</Link>
           <TrackedLink
             eventName="calculator_hub_click"
             eventParams={{ source: "header" }}
             href="/ap-score-calculators/"
           >
-            Calculators
+            AP Score Calculators
           </TrackedLink>
-          <Link href="/ap-environmental-science-score-calculator/">
-            APES
+          <Link href="/how-ap-environmental-science-is-scored/">
+            Scoring Guides
           </Link>
-          <Link href="/ap-chemistry-score-calculator/">AP Chemistry</Link>
           <Link href="/about/">About</Link>
         </div>
 
@@ -58,13 +56,10 @@ export default function Header() {
               AP Score Calculators
             </Link>
             <Link
-              href="/ap-environmental-science-score-calculator/"
+              href="/how-ap-environmental-science-is-scored/"
               onClick={closeMenu}
             >
-              APES Calculator
-            </Link>
-            <Link href="/ap-chemistry-score-calculator/" onClick={closeMenu}>
-              AP Chemistry Calculator
+              Scoring Guides
             </Link>
             <Link href="/about/" onClick={closeMenu}>
               About

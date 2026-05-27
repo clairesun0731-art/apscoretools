@@ -19,7 +19,8 @@ export default function Footer() {
           <p>
             AP Score Tools is unofficial and is not affiliated with or endorsed
             by the College Board. AP, Advanced Placement, and related exam names
-            are trademarks of their respective owners.
+            are trademarks of their respective owners. Calculator results are
+            estimates only.
           </p>
         </div>
 
@@ -38,6 +39,15 @@ export default function Footer() {
             </Link>
             <Link href="/ap-chemistry-score-calculator/">
               AP Chemistry Score Calculator
+            </Link>
+            <Link href="/ap-human-geography-score-calculator/">
+              AP Human Geography Score Calculator
+            </Link>
+            <Link href="/ap-macroeconomics-score-calculator/">
+              AP Macroeconomics Score Calculator
+            </Link>
+            <Link href="/ap-world-history-score-calculator/">
+              AP World History Score Calculator
             </Link>
             <TrackedLink
               eventName="coming_soon_subject_click"

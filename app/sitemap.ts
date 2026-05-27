@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const lastModified = new Date("2026-05-20T00:00:00.000Z");
+const lastModified = new Date("2026-05-27T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -36,6 +36,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-human-geography-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-macroeconomics-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-world-history-score-calculator/",
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
