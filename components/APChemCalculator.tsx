@@ -13,6 +13,7 @@ type ScoreFieldProps = {
   max: number;
   min: number;
   onChange: (value: number) => void;
+  step?: number;
   value: number;
 };
 
@@ -30,13 +31,6 @@ type InputField =
   | "short_frq_5"
   | "short_frq_6"
   | "short_frq_7";
-
-const nextThresholdByScore: Record<Exclude<ScoreBand, 5>, number> = {
-  1: 30,
-  2: 45,
-  3: 60,
-  4: 75,
-};
 
 function clamp(value: number, min: number, max: number) {
   if (Number.isNaN(value)) {
@@ -58,6 +52,10 @@ function formatScore(value: number, max: number) {
   return Math.min(value, max).toFixed(1);
 }
 
+function formatComposite(value: number) {
+  return Math.round(value).toString();
+}
+
 function ScoreField({
   helper,
   id,
@@ -65,24 +63,52 @@ function ScoreField({
   max,
   min,
   onChange,
+  step = 1,
   value,
 }: ScoreFieldProps) {
+  const decrease = () => onChange(clamp(value - step, min, max));
+  const increase = () => onChange(clamp(value + step, min, max));
+
   return (
-    <div className="field">
-      <label htmlFor={id}>{label}</label>
-      <div className="input-row">
+    <div className="field chem-score-field">
+      <div className="chem-field-heading">
+        <label htmlFor={id}>{label}</label>
+        <span className="raw-score">
+          {value} / {max}
+        </span>
+      </div>
+      <div className="chem-slider-row">
+        <button
+          aria-label={`Decrease ${label}`}
+          className="stepper-button"
+          onClick={decrease}
+          type="button"
+        >
+          -
+        </button>
         <input
+          aria-valuemax={max}
+          aria-valuemin={min}
+          aria-valuenow={value}
+          className="score-slider"
           id={id}
-          inputMode="numeric"
           max={max}
           min={min}
           onChange={(event) =>
             onChange(clamp(event.target.valueAsNumber, min, max))
           }
-          type="number"
+          step={step}
+          type="range"
           value={value}
         />
-        <span className="raw-score">{value}</span>
+        <button
+          aria-label={`Increase ${label}`}
+          className="stepper-button"
+          onClick={increase}
+          type="button"
+        >
+          +
+        </button>
       </div>
       <span className="helper">{helper}</span>
     </div>
@@ -107,30 +133,19 @@ export default function APChemCalculator({
   const hasInteractedRef = useRef(false);
 
   const result = useMemo(() => {
-    const mcqScaled = Math.min((mcqRaw / 60) * 50, 50);
+    const mcqWeighted = Math.min((mcqRaw / 60) * 50, 50);
     const frqRawTotal = isCompact
       ? frqTotalCompact
       : long1 + long2 + long3 + short4 + short5 + short6 + short7;
-    const frqScaled = Math.min((frqRawTotal / 46) * 50, 50);
-    const composite = Math.min(mcqScaled + frqScaled, 100);
+    const frqWeighted = Math.min((frqRawTotal / 46) * 50, 50);
+    const composite = Math.round(Math.min(mcqWeighted + frqWeighted, 100));
     const score = getPredictedAPScore(composite);
-    const nextThreshold = score === 5 ? null : nextThresholdByScore[score];
-    const nextScore = score === 5 ? null : ((score + 1) as ScoreBand);
-    const pointsAway =
-      nextThreshold === null ? 0 : Math.max(0, nextThreshold - composite);
-    const nextBandMessage =
-      score === 5
-        ? "You are in the estimated AP Score 5 range."
-        : `You are about ${pointsAway.toFixed(
-            1,
-          )} composite points away from the estimated AP Score ${nextScore} range.`;
 
     return {
       composite,
       frqRawTotal,
-      frqScaled,
-      mcqScaled,
-      nextBandMessage,
+      frqWeighted,
+      mcqWeighted,
       score,
       scoreMessage: getScoreMessage(score),
     };
@@ -203,33 +218,49 @@ export default function APChemCalculator({
           className="input-card chemistry-input-card"
           onSubmit={(event) => event.preventDefault()}
         >
-          <ScoreField
-            helper="Raw score out of 60 questions"
-            id="chemistry-mcq"
-            label="Section I: Multiple Choice"
-            max={60}
-            min={0}
-            onChange={(value) => handleInputChange("mcq", value, setMcqRaw)}
-            value={mcqRaw}
-          />
-          {isCompact ? (
+          <div className="chem-input-section">
+            <div className="chem-input-section-heading">
+              <span>Section I</span>
+              <h3>Multiple Choice</h3>
+            </div>
             <ScoreField
-              helper="Total FRQ raw score out of 46. Use the full calculator page to enter each FRQ separately."
-              id="chemistry-frq-total"
-              label="Total FRQ Score"
-              max={46}
+              helper="Raw score out of 60 multiple-choice questions"
+              id="chemistry-mcq"
+              label="Multiple Choice"
+              max={60}
               min={0}
-              onChange={(value) =>
-                handleInputChange("frq_total", value, setFrqTotalCompact)
-              }
-              value={frqTotalCompact}
+              onChange={(value) => handleInputChange("mcq", value, setMcqRaw)}
+              value={mcqRaw}
             />
+          </div>
+          {isCompact ? (
+            <div className="chem-input-section">
+              <div className="chem-input-section-heading">
+                <span>Section II</span>
+                <h3>Free Response</h3>
+              </div>
+              <ScoreField
+                helper="Total FRQ raw score out of 46. Use the full calculator page to enter each FRQ separately."
+                id="chemistry-frq-total"
+                label="Total FRQ Score"
+                max={46}
+                min={0}
+                onChange={(value) =>
+                  handleInputChange("frq_total", value, setFrqTotalCompact)
+                }
+                value={frqTotalCompact}
+              />
+            </div>
           ) : (
-            <>
+            <div className="chem-input-section">
+              <div className="chem-input-section-heading">
+                <span>Section II</span>
+                <h3>Free Response</h3>
+              </div>
               <ScoreField
                 helper="Raw score out of 10"
                 id="chemistry-long-frq-1"
-                label="Long FRQ 1"
+                label="Question 1 - Long Answer"
                 max={10}
                 min={0}
                 onChange={(value) =>
@@ -240,7 +271,7 @@ export default function APChemCalculator({
               <ScoreField
                 helper="Raw score out of 10"
                 id="chemistry-long-frq-2"
-                label="Long FRQ 2"
+                label="Question 2 - Long Answer"
                 max={10}
                 min={0}
                 onChange={(value) =>
@@ -251,7 +282,7 @@ export default function APChemCalculator({
               <ScoreField
                 helper="Raw score out of 10"
                 id="chemistry-long-frq-3"
-                label="Long FRQ 3"
+                label="Question 3 - Long Answer"
                 max={10}
                 min={0}
                 onChange={(value) =>
@@ -262,7 +293,7 @@ export default function APChemCalculator({
               <ScoreField
                 helper="Raw score out of 4"
                 id="chemistry-short-frq-4"
-                label="Short FRQ 4"
+                label="Question 4 - Short Answer"
                 max={4}
                 min={0}
                 onChange={(value) =>
@@ -273,7 +304,7 @@ export default function APChemCalculator({
               <ScoreField
                 helper="Raw score out of 4"
                 id="chemistry-short-frq-5"
-                label="Short FRQ 5"
+                label="Question 5 - Short Answer"
                 max={4}
                 min={0}
                 onChange={(value) =>
@@ -284,7 +315,7 @@ export default function APChemCalculator({
               <ScoreField
                 helper="Raw score out of 4"
                 id="chemistry-short-frq-6"
-                label="Short FRQ 6"
+                label="Question 6 - Short Answer"
                 max={4}
                 min={0}
                 onChange={(value) =>
@@ -295,7 +326,7 @@ export default function APChemCalculator({
               <ScoreField
                 helper="Raw score out of 4"
                 id="chemistry-short-frq-7"
-                label="Short FRQ 7"
+                label="Question 7 - Short Answer"
                 max={4}
                 min={0}
                 onChange={(value) =>
@@ -303,35 +334,35 @@ export default function APChemCalculator({
                 }
                 value={short7}
               />
-            </>
+            </div>
           )}
         </form>
 
         <aside aria-live="polite" className="result-card">
           <div className="result-top">
-            <p>{isCompact ? "Estimated AP score" : "Predicted AP Score"}</p>
+            <p>Estimated AP Score</p>
             <strong className="score-number">{result.score}</strong>
           </div>
           <div className="result-details">
             <div className="metric">
-              <span>MCQ Score</span>
-              <strong>{formatScore(result.mcqScaled, 50)} / 50</strong>
+              <span>MCQ Weighted Score</span>
+              <strong>{formatScore(result.mcqWeighted, 50)} / 50</strong>
             </div>
             <div className="metric">
-              <span>FRQ Score</span>
-              <strong>{formatScore(result.frqScaled, 50)} / 50</strong>
-            </div>
-            <div className="metric">
-              <span>Composite Score</span>
-              <strong>{formatScore(result.composite, 100)} / 100</strong>
-            </div>
-            <div className="metric">
-              <span>FRQ raw total</span>
+              <span>FRQ Raw Score</span>
               <strong>{result.frqRawTotal} / 46</strong>
             </div>
             <div className="metric">
-              <span>Points to next score band</span>
-              <strong>{result.nextBandMessage}</strong>
+              <span>FRQ Weighted Score</span>
+              <strong>{formatScore(result.frqWeighted, 50)} / 50</strong>
+            </div>
+            <div className="metric">
+              <span>Composite Score</span>
+              <strong>{formatComposite(result.composite)} / 100</strong>
+            </div>
+            <div className="metric">
+              <span>Estimated AP Score</span>
+              <strong>{result.score}</strong>
             </div>
             {isCompact ? (
               <>

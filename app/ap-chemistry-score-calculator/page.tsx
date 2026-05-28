@@ -143,78 +143,57 @@ export default function ApChemistryScoreCalculatorPage() {
           <div className="centered-calculator-panel" id="calculator">
             <APChemCalculator mode="full" />
           </div>
-
-          <p className="inline-disclaimer tool-hero-note">
-            Unofficial estimate. Final AP score conversions may vary by year.
-          </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container content-stack">
           <article className="card prose-card">
-            <h2>How This AP Chemistry Score Calculator Works</h2>
-            <p>
-              This AP Chem score calculator estimates your score by scaling the
-              multiple-choice section and free-response section separately. The
-              MCQ section is scaled to 50 points, the FRQ section is scaled to
-              50 points, and both are combined into an estimated composite score
-              out of 100. The composite score is then mapped to an estimated AP
-              score from 1 to 5.
-            </p>
-            <p>
-              MCQ scaled score = (MCQ raw score ÷ 60) × 50
-              <br />
-              FRQ scaled score = (FRQ raw total ÷ 46) × 50
-              <br />
-              Composite score = MCQ scaled score + FRQ scaled score
-            </p>
+            <h2>How the AP Chemistry Exam Is Structured</h2>
+            <ul className="prose-list">
+              <li>
+                Section I has 60 multiple-choice questions and counts for 50%
+                of the exam score.
+              </li>
+              <li>
+                Section II has 7 free-response questions and counts for 50% of
+                the exam score.
+              </li>
+              <li>
+                The free-response section includes 3 long-answer questions and
+                4 short-answer questions.
+              </li>
+              <li>
+                Long-answer questions are commonly scored out of 10 points each,
+                while short-answer questions are commonly scored out of 4 points
+                each.
+              </li>
+            </ul>
           </article>
 
           <article className="card prose-card">
-            <h2>AP Chemistry Exam Format 2026</h2>
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Section</th>
-                    <th>Raw Score</th>
-                    <th>Scaled Score</th>
-                    <th>Time</th>
-                    <th>Weight</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Section I: Multiple Choice</td>
-                    <td>60 questions</td>
-                    <td>50 points</td>
-                    <td>1 hour 30 minutes</td>
-                    <td>50%</td>
-                  </tr>
-                  <tr>
-                    <td>Section II: Free Response</td>
-                    <td>46 raw points</td>
-                    <td>50 points</td>
-                    <td>1 hour 45 minutes</td>
-                    <td>50%</td>
-                  </tr>
-                  <tr>
-                    <td>Total</td>
-                    <td>-</td>
-                    <td>100 points</td>
-                    <td>3 hours 15 minutes</td>
-                    <td>100%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p>
-              The 2026 AP Chemistry Exam is scheduled for Tuesday, May 5, 2026,
-              at 8 AM local time. It is a hybrid digital exam: students
-              complete MCQs and view FRQs in Bluebook, then handwrite FRQ
-              responses in exam booklets.
-            </p>
+            <h2>How This AP Chemistry Score Calculator Works</h2>
+            <ul className="prose-list">
+              <li>
+                The calculator converts your MCQ raw score into a weighted score
+                out of 50.
+              </li>
+              <li>
+                It adds your seven FRQ question scores into a raw FRQ total out
+                of 46.
+              </li>
+              <li>
+                It converts the FRQ raw total into a weighted score out of 50.
+              </li>
+              <li>
+                The MCQ and FRQ weighted scores are added to create an estimated
+                composite score out of 100.
+              </li>
+              <li>
+                The final AP score estimate is based on approximate score ranges
+                and may vary from the official conversion.
+              </li>
+            </ul>
           </article>
 
           <article className="card prose-card">
