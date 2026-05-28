@@ -210,10 +210,10 @@ export default function APChemCalculator({
           <span>Live calculator</span>
           <span>100-point composite</span>
         </div>
-        <h2>AP Chemistry Score Calculator</h2>
+        <h2>Enter your AP Chemistry section scores</h2>
         <p>
-          Estimate your AP Chemistry score from your multiple-choice score and
-          seven free-response question scores.
+          Use your multiple-choice score and seven free-response question scores
+          to estimate your composite score and AP score range.
         </p>
       </div>
 
