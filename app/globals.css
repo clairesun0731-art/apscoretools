@@ -603,6 +603,55 @@ p {
   font-size: clamp(1.25rem, 3vw, 1.65rem);
 }
 
+.chem-calculator-header {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.chem-calculator-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chem-calculator-meta span {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.2;
+  padding: 5px 10px;
+}
+
+.chem-calculator-meta span:first-child {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.chem-calculator-meta span:last-child {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.chem-calculator-header h2 {
+  max-width: 720px;
+  color: #020617;
+  font-size: 1.875rem;
+  font-weight: 850;
+  line-height: 1.12;
+}
+
+.chem-calculator-header p {
+  max-width: 672px;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .calculator-body {
   display: grid;
   grid-template-columns: minmax(0, 0.96fr) minmax(260px, 1.04fr);
@@ -1660,6 +1709,18 @@ tr:last-child td {
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .chem-calculator-header {
+    gap: 10px;
+  }
+
+  .chem-calculator-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .chem-calculator-header p {
+    font-size: 0.94rem;
   }
 
   .field-grid {

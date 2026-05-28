@@ -205,12 +205,16 @@ export default function APChemCalculator({
       aria-label="AP Chemistry score calculator"
       className={`calculator-card ${isCompact ? "calculator-card-compact" : ""}`}
     >
-      <div className="calculator-card-header">
-        <div>
-          <span className="kicker">Live calculator</span>
-          <h2>AP Chemistry Score Calculator</h2>
+      <div className="chem-calculator-header">
+        <div className="chem-calculator-meta">
+          <span>Live calculator</span>
+          <span>100-point composite</span>
         </div>
-        {!isCompact && <span className="score-chip">100-point composite</span>}
+        <h2>AP Chemistry Score Calculator</h2>
+        <p>
+          Estimate your AP Chemistry score from your multiple-choice score and
+          seven free-response question scores.
+        </p>
       </div>
 
       <div className="calculator-body chemistry-calculator-body">
