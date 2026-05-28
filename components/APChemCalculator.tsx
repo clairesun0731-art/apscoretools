@@ -213,7 +213,7 @@ export default function APChemCalculator({
         {!isCompact && <span className="score-chip">100-point composite</span>}
       </div>
 
-      <div className="calculator-body">
+      <div className="calculator-body chemistry-calculator-body">
         <form
           className="input-card chemistry-input-card"
           onSubmit={(event) => event.preventDefault()}
@@ -338,56 +338,61 @@ export default function APChemCalculator({
           )}
         </form>
 
-        <aside aria-live="polite" className="result-card">
-          <div className="result-top">
-            <p>Estimated AP Score</p>
-            <strong className="score-number">{result.score}</strong>
+        <aside aria-live="polite" className="chem-result-card">
+          <div className="chem-result-header">
+            <span className="kicker">Results</span>
+            <span className="score-chip">100-point composite</span>
           </div>
-          <div className="result-details">
-            <div className="metric">
+
+          <div className="chem-score-panel">
+            <p>Estimated AP Score</p>
+            <div className="chem-score-line">
+              <strong>{result.score}</strong>
+              <span>/5</span>
+            </div>
+            <div className="chem-result-message">
+              <strong>{result.scoreMessage.title}</strong>
+              <p>{result.scoreMessage.body}</p>
+            </div>
+          </div>
+
+          <div className="chem-breakdown-card">
+            <h3>Score Breakdown</h3>
+            <div className="chem-breakdown-row">
               <span>MCQ Weighted Score</span>
               <strong>{formatScore(result.mcqWeighted, 50)} / 50</strong>
             </div>
-            <div className="metric">
+            <div className="chem-breakdown-row">
               <span>FRQ Raw Score</span>
               <strong>{result.frqRawTotal} / 46</strong>
             </div>
-            <div className="metric">
+            <div className="chem-breakdown-row">
               <span>FRQ Weighted Score</span>
               <strong>{formatScore(result.frqWeighted, 50)} / 50</strong>
             </div>
-            <div className="metric">
+            <div className="chem-breakdown-row">
               <span>Composite Score</span>
               <strong>{formatComposite(result.composite)} / 100</strong>
             </div>
-            <div className="metric">
-              <span>Estimated AP Score</span>
-              <strong>{result.score}</strong>
-            </div>
-            {isCompact ? (
-              <>
-                <div className="result-message compact-feedback">
-                  <strong>{result.scoreMessage.title}</strong>
-                  <p>{result.scoreMessage.body}</p>
-                </div>
-                <a
-                  className="result-link"
-                  href="/ap-chemistry-score-calculator/"
-                  onClick={() =>
-                    trackEvent("view_detailed_breakdown", {
-                      calculator_name: "ap_chemistry_score_calculator",
-                      source: "homepage_compact_calculator",
-                    })
-                  }
-                >
-                  View detailed score breakdown
-                </a>
-              </>
-            ) : (
-              <div className="result-message">
-                <strong>{result.scoreMessage.title}</strong>
-                <p>{result.scoreMessage.body}</p>
-              </div>
+          </div>
+
+          <div className="chem-result-actions">
+            <a className="button secondary" href="/ap-score-calculators/">
+              View All AP Score Calculators
+            </a>
+            {isCompact && (
+              <a
+                className="button"
+                href="/ap-chemistry-score-calculator/"
+                onClick={() =>
+                  trackEvent("view_detailed_breakdown", {
+                    calculator_name: "ap_chemistry_score_calculator",
+                    source: "homepage_compact_calculator",
+                  })
+                }
+              >
+                Try Another Calculator
+              </a>
             )}
           </div>
         </aside>
