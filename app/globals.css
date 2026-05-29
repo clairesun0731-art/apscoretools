@@ -1688,8 +1688,15 @@ tr:last-child td {
 }
 
 @media (max-width: 560px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   .container {
-    width: min(100% - 24px, 1120px);
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    overflow: hidden;
   }
 
   .page {
@@ -1707,7 +1714,36 @@ tr:last-child td {
 
   .calculator-card {
     border-radius: 24px;
+    max-width: 100%;
+    overflow: hidden;
     padding: 16px;
+  }
+
+  .centered-calculator-panel {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+  }
+
+  .tool-hero-stack h1 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .breadcrumb,
+  .tool-hero-stack .lead,
+  .benefit-row {
+    width: calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
+  }
+
+  .chem-calculator-header,
+  .chem-calculator-meta,
+  .chem-calculator-header p,
+  .calculator-helper-copy,
+  .chem-input-section,
+  .chem-result-card {
+    width: calc(100vw - 56px);
+    max-width: calc(100vw - 56px);
   }
 
   .calculator-card-header,

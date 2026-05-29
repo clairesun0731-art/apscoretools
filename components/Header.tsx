@@ -14,13 +14,13 @@ const liveCalculatorLinks = [
     href: "/ap-chemistry-score-calculator/",
     label: "AP Chemistry",
   },
-];
-
-const betaCalculatorLinks = [
   {
     href: "/ap-human-geography-score-calculator/",
     label: "AP Human Geography",
   },
+];
+
+const betaCalculatorLinks = [
   {
     href: "/ap-macroeconomics-score-calculator/",
     label: "AP Macroeconomics",

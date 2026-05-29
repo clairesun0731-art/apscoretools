@@ -41,7 +41,7 @@ export default function Footer() {
               AP Chemistry Score Calculator
             </Link>
             <Link href="/ap-human-geography-score-calculator/">
-              AP Human Geography Score Calculator (Beta)
+              AP Human Geography Score Calculator
             </Link>
             <Link href="/ap-macroeconomics-score-calculator/">
               AP Macroeconomics Score Calculator (Beta)
