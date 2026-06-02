@@ -9,7 +9,7 @@ export const metadata: Metadata = {
       "AP Score Calculators | Free AP Exam Score Calculator by Subject",
   },
   description:
-    "Explore free AP score calculators by subject. AP Environmental Science, AP Chemistry, and AP Human Geography are live, with additional AP calculators in beta or coming soon.",
+    "Explore free AP score calculators by subject. AP Environmental Science, AP Chemistry, AP Human Geography, and AP Macroeconomics are live, with additional AP calculators in beta or coming soon.",
   alternates: {
     canonical: "https://www.apscoretools.com/ap-score-calculators/",
   },
@@ -45,17 +45,16 @@ const liveCalculators = [
       "Estimate your AP Human Geography score from MCQ and three FRQ inputs with a 100-point composite score.",
     href: "/ap-human-geography-score-calculator/",
   },
-];
-
-const betaCalculators = [
   {
     category: "History & Social Science",
     name: "AP Macroeconomics Score Calculator",
     description:
-      "Beta page under review while the AP Macro scoring model is verified.",
+      "Estimate your AP Macroeconomics score from MCQ, one long FRQ, and two short FRQ scores.",
     href: "/ap-macroeconomics-score-calculator/",
-    subject: "ap_macroeconomics",
   },
+];
+
+const betaCalculators = [
   {
     category: "History & Social Science",
     name: "AP World History Score Calculator",
@@ -133,7 +132,7 @@ const faqItems = [
   {
     question: "Which AP score calculators are live right now?",
     answer:
-      "AP Environmental Science, AP Chemistry, and AP Human Geography score calculators are live now. AP Macroeconomics and AP World History are currently beta pages under review.",
+      "AP Environmental Science, AP Chemistry, AP Human Geography, and AP Macroeconomics score calculators are live now. AP World History is currently a beta page under review.",
   },
   {
     question: "How do AP score calculators work?",
@@ -228,9 +227,9 @@ export default function ApScoreCalculatorsPage() {
           <h1>AP Score Calculators by Subject</h1>
           <p className="lead">
             AP Score Tools provides free, unofficial AP score calculators by
-            subject. AP Environmental Science, AP Chemistry, and AP Human
-            Geography are live now, while AP Macroeconomics and AP World
-            History are beta pages under review.
+            subject. AP Environmental Science, AP Chemistry, AP Human
+            Geography, and AP Macroeconomics are live now, while AP World
+            History is a beta page under review.
           </p>
           <p className="short-note">
             Results are approximate estimates and may vary by year. Beta and

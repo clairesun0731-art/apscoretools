@@ -1736,6 +1736,17 @@ tr:last-child td {
     max-width: calc(100vw - 48px);
   }
 
+  .macro-calculator-page .breadcrumb a,
+  .macro-calculator-page .breadcrumb span,
+  .macro-calculator-page .benefit-row span,
+  .macro-calculator-page .chem-calculator-meta span {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+    white-space: normal;
+  }
+
   .chem-calculator-header,
   .chem-calculator-meta,
   .chem-calculator-header p,

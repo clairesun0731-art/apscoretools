@@ -18,13 +18,13 @@ const liveCalculatorLinks = [
     href: "/ap-human-geography-score-calculator/",
     label: "AP Human Geography",
   },
-];
-
-const betaCalculatorLinks = [
   {
     href: "/ap-macroeconomics-score-calculator/",
     label: "AP Macroeconomics",
   },
+];
+
+const betaCalculatorLinks = [
   {
     href: "/ap-world-history-score-calculator/",
     label: "AP World History",
