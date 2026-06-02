@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     absolute: "AP Score Tools | Free AP Score Calculators by Subject",
   },
   description:
-    "Use AP Score Tools to estimate AP exam scores with free, unofficial AP score calculators. AP Environmental Science and AP Chemistry are live, with more subjects under review.",
+    "Use AP Score Tools to estimate AP exam scores with free, unofficial AP score calculators for AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, AP World History, and more.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
@@ -34,26 +34,26 @@ const popularCalculators = [
   {
     name: "AP Human Geography Score Calculator",
     description:
-      "Beta page under review while the APHUG scoring model is verified.",
+      "Estimate your AP Human Geography score from MCQ and three FRQ raw scores.",
     href: "/ap-human-geography-score-calculator/",
-    status: "Beta / Under Review",
-    cta: "View AP Human Geography Beta Page",
+    status: "Live",
+    cta: "Use AP Human Geography Score Calculator",
   },
   {
     name: "AP Macroeconomics Score Calculator",
     description:
-      "Beta page under review while the AP Macro scoring model is verified.",
+      "Estimate your AP Macroeconomics score from MCQ, one long FRQ, and two short FRQ scores.",
     href: "/ap-macroeconomics-score-calculator/",
-    status: "Beta / Under Review",
-    cta: "View AP Macroeconomics Beta Page",
+    status: "Live",
+    cta: "Use AP Macroeconomics Score Calculator",
   },
   {
     name: "AP World History Score Calculator",
     description:
-      "Beta page under review while the APWH scoring model is verified.",
+      "Estimate your AP World History score from MCQ, SAQ, DBQ, and LEQ raw scores.",
     href: "/ap-world-history-score-calculator/",
-    status: "Beta / Under Review",
-    cta: "View AP World History Beta Page",
+    status: "Live",
+    cta: "Use AP World History Score Calculator",
   },
 ];
 
@@ -116,9 +116,8 @@ export default function Home() {
           <h1>Free AP Score Calculators by Subject</h1>
           <p className="lead">
             Estimate your AP exam score with free, unofficial AP score
-            calculators. AP Environmental Science and AP Chemistry are live,
-            with AP Human Geography, AP Macroeconomics, and AP World History
-            currently in beta review.
+            calculators for AP Environmental Science, AP Chemistry, AP Human
+            Geography, AP Macroeconomics, AP World History, and more.
           </p>
           <p className="trust-line">
             Unofficial AP score estimates · Subject-specific calculators · Not
@@ -146,8 +145,8 @@ export default function Home() {
             <div className="section-heading compact-heading">
               <h2>Popular AP Score Calculators</h2>
               <p>
-                Choose a live calculator or review a clearly labeled beta page
-                for subjects whose scoring models are still being verified.
+                Choose a live calculator, enter your raw section scores, and
+                review an unofficial AP score estimate from 1 to 5.
               </p>
             </div>
             <div className="cards-grid">
@@ -210,8 +209,7 @@ export default function Home() {
                 <h3>Subject-specific calculators</h3>
                 <p>
                   Live calculators use subject-specific inputs and estimated
-                  weights. Beta pages stay clearly labeled until their scoring
-                  models are reviewed.
+                  weights for each AP exam structure.
                 </p>
               </article>
               <article className="why-card">

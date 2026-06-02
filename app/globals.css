@@ -1739,7 +1739,11 @@ tr:last-child td {
   .macro-calculator-page .breadcrumb a,
   .macro-calculator-page .breadcrumb span,
   .macro-calculator-page .benefit-row span,
-  .macro-calculator-page .chem-calculator-meta span {
+  .macro-calculator-page .chem-calculator-meta span,
+  .world-history-calculator-page .breadcrumb a,
+  .world-history-calculator-page .breadcrumb span,
+  .world-history-calculator-page .benefit-row span,
+  .world-history-calculator-page .chem-calculator-meta span {
     min-width: 0;
     max-width: 100%;
     overflow-wrap: anywhere;

@@ -22,14 +22,13 @@ const liveCalculatorLinks = [
     href: "/ap-macroeconomics-score-calculator/",
     label: "AP Macroeconomics",
   },
-];
-
-const betaCalculatorLinks = [
   {
     href: "/ap-world-history-score-calculator/",
     label: "AP World History",
   },
 ];
+
+const betaCalculatorLinks: { href: string; label: string }[] = [];
 
 const comingSoonLinks = [
   {
@@ -95,18 +94,20 @@ export default function Header() {
                     </Link>
                   ))}
                 </div>
-                <div className="nav-dropdown-section">
-                  <strong>Beta / Under Review</strong>
-                  {betaCalculatorLinks.map((link) => (
-                    <Link
-                      href={link.href}
-                      key={link.href}
-                      onClick={closeCalculatorMenu}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
+                {betaCalculatorLinks.length > 0 && (
+                  <div className="nav-dropdown-section">
+                    <strong>Beta / Under Review</strong>
+                    {betaCalculatorLinks.map((link) => (
+                      <Link
+                        href={link.href}
+                        key={link.href}
+                        onClick={closeCalculatorMenu}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
                 <div className="nav-dropdown-section">
                   <strong>Coming Soon</strong>
                   {comingSoonLinks.map((link) => (
@@ -161,14 +162,16 @@ export default function Header() {
                 </Link>
               ))}
             </div>
-            <div className="mobile-nav-group">
-              <strong>Beta / Under Review</strong>
-              {betaCalculatorLinks.map((link) => (
-                <Link href={link.href} key={link.href} onClick={closeMenu}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {betaCalculatorLinks.length > 0 && (
+              <div className="mobile-nav-group">
+                <strong>Beta / Under Review</strong>
+                {betaCalculatorLinks.map((link) => (
+                  <Link href={link.href} key={link.href} onClick={closeMenu}>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
             <div className="mobile-nav-group">
               <strong>Coming Soon</strong>
               {comingSoonLinks.map((link) => (

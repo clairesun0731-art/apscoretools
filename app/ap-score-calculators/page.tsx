@@ -9,7 +9,7 @@ export const metadata: Metadata = {
       "AP Score Calculators | Free AP Exam Score Calculator by Subject",
   },
   description:
-    "Explore free AP score calculators by subject. AP Environmental Science, AP Chemistry, AP Human Geography, and AP Macroeconomics are live, with additional AP calculators in beta or coming soon.",
+    "Explore free AP score calculators by subject. AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, and AP World History are live, with additional AP calculators coming soon.",
   alternates: {
     canonical: "https://www.apscoretools.com/ap-score-calculators/",
   },
@@ -52,18 +52,22 @@ const liveCalculators = [
       "Estimate your AP Macroeconomics score from MCQ, one long FRQ, and two short FRQ scores.",
     href: "/ap-macroeconomics-score-calculator/",
   },
-];
-
-const betaCalculators = [
   {
     category: "History & Social Science",
     name: "AP World History Score Calculator",
     description:
-      "Beta page under review while the APWH scoring model is verified.",
+      "Estimate your AP World History score from MCQ, SAQ, DBQ, and LEQ raw scores.",
     href: "/ap-world-history-score-calculator/",
-    subject: "ap_world_history",
   },
 ];
+
+const betaCalculators: {
+  category: string;
+  description: string;
+  href: string;
+  name: string;
+  subject: string;
+}[] = [];
 
 const comingSoonCalculators = [
   {
@@ -132,7 +136,7 @@ const faqItems = [
   {
     question: "Which AP score calculators are live right now?",
     answer:
-      "AP Environmental Science, AP Chemistry, AP Human Geography, and AP Macroeconomics score calculators are live now. AP World History is currently a beta page under review.",
+      "AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, and AP World History score calculators are live now.",
   },
   {
     question: "How do AP score calculators work?",
@@ -228,13 +232,13 @@ export default function ApScoreCalculatorsPage() {
           <p className="lead">
             AP Score Tools provides free, unofficial AP score calculators by
             subject. AP Environmental Science, AP Chemistry, AP Human
-            Geography, and AP Macroeconomics are live now, while AP World
-            History is a beta page under review.
+            Geography, AP Macroeconomics, and AP World History are live now,
+            with more AP subjects coming soon.
           </p>
           <p className="short-note">
-            Results are approximate estimates and may vary by year. Beta and
-            coming soon pages are clearly labeled when a live calculator is not
-            available yet.
+            Results are approximate estimates and may vary by year. Coming soon
+            pages are clearly labeled when a live calculator is not available
+            yet.
           </p>
         </div>
       </section>
@@ -317,30 +321,34 @@ export default function ApScoreCalculatorsPage() {
             </div>
           </section>
 
-          <section className="prose-card">
-            <div className="section-heading compact-heading">
-              <h2>Beta / Under Review AP Score Calculators</h2>
-              <p>
-                These pages are not functional calculators yet. Their scoring
-                models are being reviewed before AP Score Tools treats them as
-                live tools.
-              </p>
-            </div>
-            <div className="cards-grid">
-              {betaCalculators.map((calculator) => (
-                <Link href={calculator.href} key={calculator.name}>
-                  <article className="tool-card">
-                    <div>
-                      <span className="status-pill beta">Beta / Under Review</span>
-                      <h3>{calculator.name}</h3>
-                      <p>{calculator.description}</p>
-                    </div>
-                    <span>View beta calculator page</span>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          </section>
+          {betaCalculators.length > 0 && (
+            <section className="prose-card">
+              <div className="section-heading compact-heading">
+                <h2>Beta / Under Review AP Score Calculators</h2>
+                <p>
+                  These pages are not functional calculators yet. Their scoring
+                  models are being reviewed before AP Score Tools treats them as
+                  live tools.
+                </p>
+              </div>
+              <div className="cards-grid">
+                {betaCalculators.map((calculator) => (
+                  <Link href={calculator.href} key={calculator.name}>
+                    <article className="tool-card">
+                      <div>
+                        <span className="status-pill beta">
+                          Beta / Under Review
+                        </span>
+                        <h3>{calculator.name}</h3>
+                        <p>{calculator.description}</p>
+                      </div>
+                      <span>View beta calculator page</span>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="prose-card">
             <div className="section-heading compact-heading">

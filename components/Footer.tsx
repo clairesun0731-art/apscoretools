@@ -47,7 +47,7 @@ export default function Footer() {
               AP Macroeconomics Score Calculator
             </Link>
             <Link href="/ap-world-history-score-calculator/">
-              AP World History Score Calculator (Beta)
+              AP World History Score Calculator
             </Link>
             <TrackedLink
               eventName="coming_soon_subject_click"
