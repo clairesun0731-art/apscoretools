@@ -77,9 +77,9 @@ export default function ComingSoonCalculatorPage({
             <h2>Calculator Not Live Yet</h2>
             <p>
               This planned page is included so students can find future AP score
-              calculator updates. AP Environmental Science and AP Chemistry are
-              live on AP Score Tools right now. AP Human Geography, AP
-              Macroeconomics, and AP World History are beta pages under review.
+              calculator updates. AP Environmental Science, AP Chemistry, AP
+              Human Geography, AP Macroeconomics, and AP World History are live
+              on AP Score Tools right now.
             </p>
           </article>
 
@@ -97,8 +97,8 @@ export default function ComingSoonCalculatorPage({
           <article className="card prose-card">
             <h2>Use a Live AP Score Calculator</h2>
             <p>
-              AP Environmental Science and AP Chemistry calculators are live now
-              if you want to try a current working AP score calculator.
+              Use one of the current live calculators if you want to try a
+              working AP score calculator.
             </p>
             <div className="hero-actions">
               <Link className="button" href="/ap-environmental-science-score-calculator/">
@@ -106,6 +106,12 @@ export default function ComingSoonCalculatorPage({
               </Link>
               <Link className="button secondary" href="/ap-chemistry-score-calculator/">
                 AP Chemistry Score Calculator
+              </Link>
+              <Link className="button secondary" href="/ap-human-geography-score-calculator/">
+                AP Human Geography Score Calculator
+              </Link>
+              <Link className="button secondary" href="/ap-world-history-score-calculator/">
+                AP World History Score Calculator
               </Link>
               <Link className="button secondary" href="/ap-score-calculators/">
                 AP Score Calculators

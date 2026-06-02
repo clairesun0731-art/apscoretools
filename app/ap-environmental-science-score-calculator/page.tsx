@@ -5,11 +5,10 @@ import ApesCalculator from "./ApesCalculator";
 
 export const metadata: Metadata = {
   title: {
-    absolute:
-      "AP Environmental Science Score Calculator 2026 | APES Score Predictor",
+    absolute: "AP Environmental Science Score Calculator | AP Score Tools",
   },
   description:
-    "Estimate your AP Environmental Science score with our free APES score calculator. Enter your MCQ and FRQ raw scores to predict your unofficial AP score from 1 to 5.",
+    "Use this free, unofficial AP Environmental Science Score Calculator to estimate your APES score from MCQ and FRQ raw scores.",
   alternates: {
     canonical:
       "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
@@ -40,7 +39,7 @@ const faqs = [
   {
     question: "Is this APES score calculator official?",
     answer:
-      "No. This calculator is unofficial and is not affiliated with or endorsed by the College Board. It uses estimated score boundaries.",
+      "No. This calculator provides an unofficial APES score estimate using estimated score boundaries.",
   },
   {
     question: "Do AP Environmental Science score cutoffs change every year?",
@@ -545,7 +544,18 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 }}
                 href="/ap-human-geography-score-calculator/"
               >
-                AP Human Geography Score Calculator (Beta)
+                AP Human Geography Score Calculator
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="apes_explore_click"
+                eventParams={{
+                  subject: "ap_macroeconomics",
+                  source: "apes_calculator_page",
+                }}
+                href="/ap-macroeconomics-score-calculator/"
+              >
+                AP Macroeconomics Score Calculator
               </TrackedLink>
               <TrackedLink
                 className="button secondary"
@@ -556,7 +566,7 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 }}
                 href="/ap-world-history-score-calculator/"
               >
-                AP World History Score Calculator (Beta)
+                AP World History Score Calculator
               </TrackedLink>
             </div>
           </article>

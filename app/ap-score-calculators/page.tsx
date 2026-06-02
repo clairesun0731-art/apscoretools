@@ -5,16 +5,15 @@ import TrackedLink from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: {
-    absolute:
-      "AP Score Calculators | Free AP Exam Score Calculator by Subject",
+    absolute: "AP Score Calculators by Subject | AP Score Tools",
   },
   description:
-    "Explore free AP score calculators by subject. AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, and AP World History are live, with additional AP calculators coming soon.",
+    "Browse free, unofficial AP score calculators by subject, including AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, AP World History, and more.",
   alternates: {
     canonical: "https://www.apscoretools.com/ap-score-calculators/",
   },
   openGraph: {
-    title: "AP Score Calculators | Free AP Exam Score Calculator by Subject",
+    title: "AP Score Calculators by Subject | AP Score Tools",
     description:
       "Explore free AP score calculators by subject from AP Score Tools. Results are unofficial estimates and may vary by year.",
     url: "https://www.apscoretools.com/ap-score-calculators/",
@@ -131,7 +130,7 @@ const faqItems = [
   {
     question: "Are these AP score calculators official?",
     answer:
-      "No. AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board.",
+      "No. AP Score Tools provides unofficial AP score estimates for practice and planning.",
   },
   {
     question: "Which AP score calculators are live right now?",

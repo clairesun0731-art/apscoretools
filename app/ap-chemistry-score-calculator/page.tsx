@@ -5,17 +5,17 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AP Chemistry Score Calculator | AP Chem Score Estimate",
+    absolute: "AP Chemistry Score Calculator | AP Score Tools",
   },
   description:
-    "Use this free AP Chemistry score calculator to estimate your AP Chem score from MCQ and FRQ inputs. Get an unofficial AP score estimate with a composite score breakdown.",
+    "Use this free, unofficial AP Chemistry Score Calculator to estimate your AP Chem score from multiple-choice and free-response question scores.",
   alternates: {
     canonical: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
   },
   openGraph: {
-    title: "AP Chemistry Score Calculator | AP Chem Score Estimate",
+    title: "AP Chemistry Score Calculator | AP Score Tools",
     description:
-      "Use this free AP Chemistry score calculator to estimate your AP Chem score from MCQ and FRQ inputs.",
+      "Use this free, unofficial AP Chemistry Score Calculator to estimate your AP Chem score from multiple-choice and free-response question scores.",
     url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
     siteName: "AP Score Tools",
     type: "website",
@@ -26,7 +26,7 @@ const faqItems = [
   {
     question: "Is this AP Chemistry score calculator official?",
     answer:
-      "No. This calculator is unofficial and is not affiliated with or endorsed by the College Board.",
+      "No. This calculator provides an unofficial AP Chemistry score estimate.",
   },
   {
     question: "How accurate is this AP Chem score calculator?",
@@ -270,15 +270,15 @@ export default function ApChemistryScoreCalculatorPage() {
               </Link>
               , or check the{" "}
               <Link href="/ap-human-geography-score-calculator/">
-                AP Human Geography Score Calculator (Beta)
+                AP Human Geography Score Calculator
               </Link>
               ,{" "}
               <Link href="/ap-macroeconomics-score-calculator/">
-                AP Macroeconomics Score Calculator (Beta)
+                AP Macroeconomics Score Calculator
               </Link>
               , and{" "}
               <Link href="/ap-world-history-score-calculator/">
-                AP World History Score Calculator (Beta)
+                AP World History Score Calculator
               </Link>
               .
             </p>

@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.apscoretools.com/ap-biology-score-calculator/",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 const jsonLd = [

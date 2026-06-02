@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     absolute: "AP Human Geography Score Calculator | AP Score Tools",
   },
   description:
-    "Use this free, unofficial AP Human Geography Score Calculator to estimate your AP score from MCQ and FRQ raw scores, including APHUG section breakdowns.",
+    "Use this free, unofficial AP Human Geography Score Calculator to estimate your APHUG score from MCQ and FRQ raw scores.",
   alternates: {
     canonical: url,
   },
   openGraph: {
     title: "AP Human Geography Score Calculator | AP Score Tools",
     description:
-      "Use this free, unofficial AP Human Geography Score Calculator to estimate your AP score from MCQ and FRQ raw scores.",
+      "Use this free, unofficial AP Human Geography Score Calculator to estimate your APHUG score from MCQ and FRQ raw scores.",
     url,
     siteName: "AP Score Tools",
     type: "website",

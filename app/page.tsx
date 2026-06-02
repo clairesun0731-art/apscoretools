@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     absolute: "AP Score Tools | Free AP Score Calculators by Subject",
   },
   description:
-    "Use free, unofficial AP score calculators to estimate your AP score from raw section scores, including AP Environmental Science, AP Chemistry, AP Human Geography, AP World History, and more.",
+    "Use free, unofficial AP score calculators to estimate your AP score from raw section scores, including AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, AP World History, and more.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },

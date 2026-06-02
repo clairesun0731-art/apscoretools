@@ -236,9 +236,12 @@ export default function HowApEnvironmentalScienceIsScoredPage() {
               Enter your MCQ and FRQ raw scores to estimate your APES composite
               score and predicted AP score range.
             </p>
-            <div>
+            <div className="hero-actions">
               <Link className="button" href="/ap-environmental-science-score-calculator/">
                 Use the AP Environmental Science Score Calculator
+              </Link>
+              <Link className="button secondary" href="/ap-score-calculators/">
+                View All AP Score Calculators
               </Link>
             </div>
           </article>
