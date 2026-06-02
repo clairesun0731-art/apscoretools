@@ -8,60 +8,47 @@ export const metadata: Metadata = {
     absolute: "AP Score Tools | Free AP Score Calculators by Subject",
   },
   description:
-    "Use AP Score Tools to estimate AP exam scores with free, unofficial AP score calculators for AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, AP World History, and more.",
+    "Use free, unofficial AP score calculators to estimate your AP score from raw section scores, including AP Environmental Science, AP Chemistry, AP Human Geography, AP World History, and more.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
 };
 
-const popularCalculators = [
-  {
-    name: "AP Chemistry Score Calculator",
-    description:
-      "Estimate your AP Chem score from MCQ and FRQ inputs with a composite score breakdown.",
-    href: "/ap-chemistry-score-calculator/",
-    status: "Live",
-    cta: "Use AP Chemistry Score Calculator",
-  },
+const liveCalculators = [
   {
     name: "AP Environmental Science Score Calculator",
     description:
-      "Estimate your APES score from MCQ and FRQ raw scores with an unofficial AP score estimate.",
+      "Estimate your AP Environmental Science score from MCQ and FRQ raw scores.",
     href: "/ap-environmental-science-score-calculator/",
-    status: "Live",
-    cta: "Use AP Environmental Science Score Calculator",
+    badges: ["Live", "MCQ + FRQ"],
+  },
+  {
+    name: "AP Chemistry Score Calculator",
+    description:
+      "Estimate your AP Chemistry score from multiple-choice and seven free-response question scores.",
+    href: "/ap-chemistry-score-calculator/",
+    badges: ["Live", "MCQ + FRQ breakdown"],
   },
   {
     name: "AP Human Geography Score Calculator",
     description:
-      "Estimate your AP Human Geography score from MCQ and three FRQ raw scores.",
+      "Estimate your AP Human Geography, or APHUG, score from MCQ and three FRQ scores.",
     href: "/ap-human-geography-score-calculator/",
-    status: "Live",
-    cta: "Use AP Human Geography Score Calculator",
-  },
-  {
-    name: "AP Macroeconomics Score Calculator",
-    description:
-      "Estimate your AP Macroeconomics score from MCQ, one long FRQ, and two short FRQ scores.",
-    href: "/ap-macroeconomics-score-calculator/",
-    status: "Live",
-    cta: "Use AP Macroeconomics Score Calculator",
+    badges: ["Live", "APHUG calculator", "MCQ + FRQ"],
   },
   {
     name: "AP World History Score Calculator",
     description:
-      "Estimate your AP World History score from MCQ, SAQ, DBQ, and LEQ raw scores.",
+      "Estimate your AP World History, or APWH, score from MCQ, SAQ, DBQ, and LEQ raw scores.",
     href: "/ap-world-history-score-calculator/",
-    status: "Live",
-    cta: "Use AP World History Score Calculator",
+    badges: ["Live", "APWH calculator", "MCQ + SAQ + DBQ + LEQ"],
   },
 ];
 
 const faqItems = [
   {
     question: "Is AP Score Tools official?",
-    answer:
-      "No. AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board.",
+    answer: "No. AP Score Tools provides unofficial AP score estimates only.",
   },
   {
     question: "What can I estimate with AP Score Tools?",
@@ -80,7 +67,8 @@ const websiteSchema = {
   "@type": "WebSite",
   name: "AP Score Tools",
   url: "https://www.apscoretools.com",
-  description: "Free, unofficial AP score calculators and exam tools for students.",
+  description:
+    "Free, unofficial AP score calculators and exam tools for students.",
 };
 
 const organizationSchema = {
@@ -115,9 +103,9 @@ export default function Home() {
           <span className="eyebrow">AP score calculator by subject</span>
           <h1>Free AP Score Calculators by Subject</h1>
           <p className="lead">
-            Estimate your AP exam score with free, unofficial AP score
-            calculators for AP Environmental Science, AP Chemistry, AP Human
-            Geography, AP Macroeconomics, AP World History, and more.
+            Estimate your AP score from raw section scores using free,
+            unofficial calculators for AP Environmental Science, AP Chemistry,
+            AP Human Geography, AP World History, and more.
           </p>
           <p className="trust-line">
             Unofficial AP score estimates · Subject-specific calculators · Not
@@ -130,45 +118,39 @@ export default function Home() {
               eventParams={{ source: "homepage_hero" }}
               href="/ap-score-calculators/"
             >
-              Browse AP Score Calculators
+              View All AP Score Calculators
             </TrackedLink>
-            <a className="button secondary" href="#popular-calculators">
-              View Popular Calculators
+            <a className="button secondary" href="#live-calculators">
+              Try a Live Calculator
             </a>
           </div>
         </div>
       </section>
 
-      <section className="section" id="popular-calculators">
+      <section className="section" id="live-calculators">
         <div className="container content-stack">
           <section className="prose-card">
-            <div className="section-heading compact-heading">
-              <h2>Popular AP Score Calculators</h2>
+            <div className="section-heading compact-heading centered-section-heading">
+              <h2>Live AP Score Calculators</h2>
               <p>
                 Choose a live calculator, enter your raw section scores, and
-                review an unofficial AP score estimate from 1 to 5.
+                get an unofficial AP score estimate from 1 to 5.
               </p>
             </div>
-            <div className="cards-grid">
-              {popularCalculators.map((calculator) => (
+            <div className="homepage-live-grid">
+              {liveCalculators.map((calculator) => (
                 <Link href={calculator.href} key={calculator.name}>
-                  <article
-                    className={`tool-card tool-card-compact ${
-                      calculator.status === "Live" ? "active" : ""
-                    }`}
-                  >
+                  <article className="homepage-live-card">
                     <div>
-                      <span
-                        className={`status-pill ${
-                          calculator.status.includes("Beta") ? "beta" : ""
-                        }`}
-                      >
-                        {calculator.status}
-                      </span>
+                      <div className="homepage-card-badges">
+                        {calculator.badges.map((badge) => (
+                          <span key={badge}>{badge}</span>
+                        ))}
+                      </div>
                       <h3>{calculator.name}</h3>
                       <p>{calculator.description}</p>
                     </div>
-                    <span>{calculator.cta}</span>
+                    <span>Open Calculator →</span>
                   </article>
                 </Link>
               ))}
@@ -208,22 +190,23 @@ export default function Home() {
               <article className="why-card">
                 <h3>Subject-specific calculators</h3>
                 <p>
-                  Live calculators use subject-specific inputs and estimated
-                  weights for each AP exam structure.
+                  Each calculator follows the structure of its AP subject,
+                  including multiple-choice, free-response, and
+                  written-response sections where applicable.
                 </p>
               </article>
               <article className="why-card">
-                <h3>Clear 1-5 score estimates</h3>
+                <h3>Clear score breakdowns</h3>
                 <p>
-                  See an estimated AP score, composite score, and section
-                  breakdown so you can understand what moved the result.
+                  Review weighted section scores, composite score, and an
+                  estimated AP score from 1 to 5.
                 </p>
               </article>
               <article className="why-card">
-                <h3>Unofficial, student-friendly guidance</h3>
+                <h3>Useful before official scores</h3>
                 <p>
-                  Every result is clearly labeled as an estimate, with plain
-                  language that helps you decide what to review next.
+                  Use AP Score Tools to understand practice test performance
+                  while you wait for official AP scores.
                 </p>
               </article>
             </div>
@@ -232,8 +215,8 @@ export default function Home() {
           <section className="card prose-card">
             <h2>Find Every AP Score Calculator</h2>
             <p>
-              The AP Score Calculators hub lists live tools, beta pages under
-              review, and clearly marked planned calculators by subject.
+              The AP Score Calculators hub lists live tools and clearly marked
+              planned calculators by subject.
             </p>
             <div className="hero-actions">
               <TrackedLink
