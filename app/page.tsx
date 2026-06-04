@@ -227,6 +227,9 @@ export default function Home() {
               >
                 AP Score Calculators
               </TrackedLink>
+              <Link className="button secondary" href="/guides/">
+                AP Score Guides
+              </Link>
             </div>
           </section>
 

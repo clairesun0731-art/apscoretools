@@ -316,7 +316,9 @@ export default function ApWorldHistoryScoreCalculatorPage() {
               <Link href="/ap-chemistry-score-calculator/">
                 AP Chemistry Score Calculator
               </Link>
-              .
+              . You can also browse{" "}
+              <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>{" "}
+              for subject-by-subject scoring explanations.
             </p>
           </article>
         </div>

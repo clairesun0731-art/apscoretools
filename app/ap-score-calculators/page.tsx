@@ -414,6 +414,11 @@ export default function ApScoreCalculatorsPage() {
               tools are useful for practice tests and planning, but they are not
               official AP score reports.
             </p>
+            <p>
+              For more background on section weights and composite scores,
+              browse the{" "}
+              <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>.
+            </p>
           </article>
 
           <article className="card prose-card">

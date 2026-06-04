@@ -49,11 +49,32 @@ const comingSoonLinks = [
   },
 ];
 
+const guideLinks = [
+  {
+    href: "/guides/",
+    label: "All AP Score Guides",
+  },
+  {
+    href: "/guides/ap-score-release/",
+    label: "AP Score Release",
+  },
+  {
+    href: "/guides/ap-score-meaning/",
+    label: "AP Score Meaning",
+  },
+  {
+    href: "/guides/ap-scoring-guides/",
+    label: "AP Scoring Guides",
+  },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCalculatorMenuOpen, setIsCalculatorMenuOpen] = useState(false);
+  const [isGuidesMenuOpen, setIsGuidesMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const closeCalculatorMenu = () => setIsCalculatorMenuOpen(false);
+  const closeGuidesMenu = () => setIsGuidesMenuOpen(false);
 
   return (
     <header className="site-header">
@@ -73,9 +94,10 @@ export default function Header() {
             <button
               aria-expanded={isCalculatorMenuOpen}
               className="nav-dropdown-trigger"
-              onClick={() =>
-                setIsCalculatorMenuOpen((menuOpen) => !menuOpen)
-              }
+              onClick={() => {
+                setIsCalculatorMenuOpen((menuOpen) => !menuOpen);
+                setIsGuidesMenuOpen(false);
+              }}
               type="button"
             >
               Calculators
@@ -132,9 +154,38 @@ export default function Header() {
               </div>
             )}
           </div>
-          <Link href="/how-ap-environmental-science-is-scored/">
-            Scoring Guides
-          </Link>
+          <div className="nav-dropdown-wrap">
+            <button
+              aria-expanded={isGuidesMenuOpen}
+              className="nav-dropdown-trigger"
+              onClick={() => {
+                setIsGuidesMenuOpen((menuOpen) => !menuOpen);
+                setIsCalculatorMenuOpen(false);
+              }}
+              type="button"
+            >
+              Guides
+            </button>
+            {isGuidesMenuOpen && (
+              <div
+                className="nav-dropdown guides-nav-dropdown"
+                onMouseLeave={closeGuidesMenu}
+              >
+                <div className="nav-dropdown-section">
+                  <strong>AP Score Guides</strong>
+                  {guideLinks.map((link) => (
+                    <Link
+                      href={link.href}
+                      key={link.href}
+                      onClick={closeGuidesMenu}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
           <Link href="/about/">About</Link>
         </div>
 
@@ -188,12 +239,14 @@ export default function Header() {
             >
               View All AP Score Calculators →
             </TrackedLink>
-            <Link
-              href="/how-ap-environmental-science-is-scored/"
-              onClick={closeMenu}
-            >
-              Scoring Guides
-            </Link>
+            <div className="mobile-nav-group">
+              <strong>Guides</strong>
+              {guideLinks.map((link) => (
+                <Link href={link.href} key={link.href} onClick={closeMenu}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
             <Link href="/about/" onClick={closeMenu}>
               About
             </Link>

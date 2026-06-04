@@ -281,7 +281,9 @@ export default function ApMacroeconomicsScoreCalculatorPage() {
               <Link href="/ap-environmental-science-score-calculator/">
                 AP Environmental Science Score Calculator
               </Link>
-              .
+              . You can also browse{" "}
+              <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>{" "}
+              for subject-by-subject scoring explanations.
             </p>
           </article>
         </div>

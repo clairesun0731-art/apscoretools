@@ -280,7 +280,8 @@ export default function ApChemistryScoreCalculatorPage() {
               <Link href="/ap-world-history-score-calculator/">
                 AP World History Score Calculator
               </Link>
-              .
+              . For scoring explanations, browse the{" "}
+              <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>.
             </p>
           </article>
         </div>

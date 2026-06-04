@@ -517,6 +517,14 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 How AP Environmental Science Is Scored
               </TrackedLink>
               <TrackedLink
+                className="button secondary"
+                eventName="scoring_guide_click"
+                eventParams={{ source: "apes_calculator_page_related" }}
+                href="/guides/ap-scoring-guides/"
+              >
+                AP Scoring Guides
+              </TrackedLink>
+              <TrackedLink
                 className="button"
                 eventName="apes_explore_click"
                 eventParams={{ source: "apes_calculator_page" }}

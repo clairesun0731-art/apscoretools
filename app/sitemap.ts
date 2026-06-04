@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const lastModified = new Date("2026-06-02T00:00:00.000Z");
+const lastModified = new Date("2026-06-04T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -15,6 +15,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: "https://www.apscoretools.com/guides/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://www.apscoretools.com/guides/ap-score-release/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: "https://www.apscoretools.com/guides/ap-score-meaning/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: "https://www.apscoretools.com/guides/ap-scoring-guides/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.75,
     },
     {
       url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",

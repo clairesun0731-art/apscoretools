@@ -69,6 +69,14 @@ export default function Footer() {
 
           <nav className="footer-links" aria-label="Learn">
             <strong>Learn</strong>
+            <Link href="/guides/">AP Score Guides</Link>
+            <Link href="/guides/ap-score-release/">
+              AP Score Release Guides
+            </Link>
+            <Link href="/guides/ap-score-meaning/">
+              AP Score Meaning Guides
+            </Link>
+            <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>
             <Link href="/how-ap-environmental-science-is-scored/">
               How AP Environmental Science Is Scored
             </Link>
