@@ -86,6 +86,11 @@ const relatedResources = [
     href: "/ap-score-calculators/",
   },
   {
+    title: "What Do AP Scores Mean?",
+    description: "Understand AP scores from 1 to 5 and how colleges may use them.",
+    href: "/what-do-ap-scores-mean/",
+  },
+  {
     title: "AP Score Release Guides",
     description: "Browse AP score release timing, checking, and troubleshooting guides.",
     href: "/guides/ap-score-release/",
@@ -506,7 +511,11 @@ export default function HowToCheckApScoresPage() {
                 You can also use{" "}
                 <Link href="/ap-score-calculators/">AP Score Tools calculators</Link>{" "}
                 to understand how raw section performance may translate into an
-                estimated AP score. Live calculators include{" "}
+                estimated AP score. For score interpretation, read{" "}
+                <Link href="/what-do-ap-scores-mean/">
+                  What Do AP Scores Mean?
+                </Link>
+                . Live calculators include{" "}
                 {subjectCalculatorLinks.map((calculator, index) => (
                   <span key={calculator.href}>
                     <Link href={calculator.href}>{calculator.label}</Link>

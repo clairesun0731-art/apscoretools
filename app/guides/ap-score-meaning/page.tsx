@@ -25,32 +25,39 @@ const meaningGuides = [
   {
     title: "What Do AP Scores Mean?",
     description:
-      "Learn what AP scores from 1 to 5 generally represent for students.",
+      "Learn what AP scores from 1 to 5 mean, how colleges may use them, and what to do after checking scores.",
+    href: "/what-do-ap-scores-mean/",
+    status: "Live",
   },
   {
     title: "Is a 3 a Good AP Score?",
     description:
       "Understand how a 3 may be viewed and why credit policies vary by school.",
+    status: "Coming soon",
   },
   {
     title: "Is a 4 a Good AP Score?",
     description:
       "Review what a 4 usually suggests and how colleges may treat it.",
+    status: "Coming soon",
   },
   {
     title: "Is a 5 a Good AP Score?",
     description:
       "Learn why a 5 is generally a strong score while policies still differ by institution.",
+    status: "Coming soon",
   },
   {
     title: "Do Colleges Accept AP Scores?",
     description:
       "A planned guide to college credit, placement, and school-specific AP score policies.",
+    status: "Coming soon",
   },
   {
     title: "How to Send AP Scores to Colleges",
     description:
       "A planned guide to sending official AP scores and understanding score-send decisions.",
+    status: "Coming soon",
   },
 ];
 
@@ -136,15 +143,28 @@ export default function ApScoreMeaningGuidesPage() {
               </p>
             </div>
             <div className="guide-list-grid">
-              {meaningGuides.map((guide) => (
-                <article className="guide-list-card disabled" key={guide.title}>
-                  <div>
-                    <span className="status-pill soon">Coming soon</span>
-                    <h3>{guide.title}</h3>
-                    <p>{guide.description}</p>
-                  </div>
-                </article>
-              ))}
+              {meaningGuides.map((guide) =>
+                guide.href ? (
+                  <Link href={guide.href} key={guide.title}>
+                    <article className="guide-list-card guide-card-link">
+                      <div>
+                        <span className="status-pill">{guide.status}</span>
+                        <h3>{guide.title}</h3>
+                        <p>{guide.description}</p>
+                      </div>
+                      <span className="guide-card-action">Read guide</span>
+                    </article>
+                  </Link>
+                ) : (
+                  <article className="guide-list-card disabled" key={guide.title}>
+                    <div>
+                      <span className="status-pill soon">{guide.status}</span>
+                      <h3>{guide.title}</h3>
+                      <p>{guide.description}</p>
+                    </div>
+                  </article>
+                ),
+              )}
             </div>
           </section>
 

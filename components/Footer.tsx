@@ -55,6 +55,9 @@ export default function Footer() {
               When Do AP Scores Come Out?
             </Link>
             <Link href="/how-to-check-ap-scores/">How to Check AP Scores</Link>
+            <Link href="/what-do-ap-scores-mean/">
+              What Do AP Scores Mean?
+            </Link>
             <Link href="/guides/ap-score-release/">
               AP Score Release Guides
             </Link>

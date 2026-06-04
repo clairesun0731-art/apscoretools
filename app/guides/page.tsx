@@ -66,8 +66,9 @@ const featuredGuides = [
   {
     title: "What Do AP Scores Mean?",
     description:
-      "A planned guide to AP scores from 1 to 5 and how score meaning can vary by context.",
-    status: "Coming soon",
+      "Understand AP scores from 1 to 5, college credit policies, admissions context, and next steps.",
+    href: "/what-do-ap-scores-mean/",
+    status: "Live",
   },
   {
     title: "How AP Environmental Science Is Scored",

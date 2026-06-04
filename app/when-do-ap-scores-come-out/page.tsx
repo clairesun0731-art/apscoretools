@@ -552,9 +552,12 @@ export default function WhenDoApScoresComeOutPage() {
               </p>
               <p>
                 College credit and placement policies vary by institution and
-                subject. A planned AP Score Tools guide will cover what AP
-                scores mean in more detail, but students should always check
-                each college&apos;s official AP credit policy.
+                subject. Read{" "}
+                <Link href="/what-do-ap-scores-mean/">
+                  What Do AP Scores Mean?
+                </Link>{" "}
+                for a fuller explanation of AP scores from 1 to 5, but always
+                check each college&apos;s official AP credit policy.
               </p>
             </section>
 
