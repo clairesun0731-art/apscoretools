@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
     {
+      url: "https://www.apscoretools.com/when-do-ap-scores-come-out/",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.78,
+    },
+    {
       url: "https://www.apscoretools.com/guides/ap-score-meaning/",
       lastModified,
       changeFrequency: "weekly",

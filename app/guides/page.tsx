@@ -46,8 +46,9 @@ const featuredGuides = [
   {
     title: "When Do AP Scores Come Out?",
     description:
-      "A planned guide to AP score release timing and what students can expect.",
-    status: "Coming soon",
+      "Learn the 2026 AP score release date, how to check AP scores, and what to prepare before release day.",
+    href: "/when-do-ap-scores-come-out/",
+    status: "Live",
   },
   {
     title: "AP Score Release Date",

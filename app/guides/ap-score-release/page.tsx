@@ -26,26 +26,32 @@ const releaseGuides = [
     title: "When Do AP Scores Come Out?",
     description:
       "Learn the basics of AP score release timing and what students should watch for.",
+    href: "/when-do-ap-scores-come-out/",
+    status: "Live",
   },
   {
     title: "AP Score Release Date",
     description:
       "A focused guide to AP score release date questions and yearly score timing.",
+    status: "Coming soon",
   },
   {
     title: "What Time Do AP Scores Come Out?",
     description:
       "Understand why exact AP score access times may vary and where to check official results.",
+    status: "Coming soon",
   },
   {
     title: "How to Check AP Scores",
     description:
       "A student-friendly guide to checking official AP scores through a College Board account.",
+    status: "Coming soon",
   },
   {
     title: "Why Is My AP Score Not Showing?",
     description:
       "Review common reasons an AP score may be delayed or missing after scores are released.",
+    status: "Coming soon",
   },
 ];
 
@@ -131,15 +137,28 @@ export default function ApScoreReleaseGuidesPage() {
               </p>
             </div>
             <div className="guide-list-grid">
-              {releaseGuides.map((guide) => (
-                <article className="guide-list-card disabled" key={guide.title}>
-                  <div>
-                    <span className="status-pill soon">Coming soon</span>
-                    <h3>{guide.title}</h3>
-                    <p>{guide.description}</p>
-                  </div>
-                </article>
-              ))}
+              {releaseGuides.map((guide) =>
+                guide.href ? (
+                  <Link href={guide.href} key={guide.title}>
+                    <article className="guide-list-card guide-card-link">
+                      <div>
+                        <span className="status-pill">{guide.status}</span>
+                        <h3>{guide.title}</h3>
+                        <p>{guide.description}</p>
+                      </div>
+                      <span className="guide-card-action">Read guide</span>
+                    </article>
+                  </Link>
+                ) : (
+                  <article className="guide-list-card disabled" key={guide.title}>
+                    <div>
+                      <span className="status-pill soon">{guide.status}</span>
+                      <h3>{guide.title}</h3>
+                      <p>{guide.description}</p>
+                    </div>
+                  </article>
+                ),
+              )}
             </div>
           </section>
 
