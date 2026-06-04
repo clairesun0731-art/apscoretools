@@ -1315,10 +1315,14 @@ tr:last-child td {
 }
 
 .footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: grid;
+  gap: 8px;
   max-width: 680px;
+}
+
+.footer-brand strong {
+  color: var(--foreground);
+  font-size: 1rem;
 }
 
 .footer-icon {
@@ -1328,7 +1332,7 @@ tr:last-child td {
 
 .footer-link-groups {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 

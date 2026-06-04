@@ -558,17 +558,6 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 className="button secondary"
                 eventName="apes_explore_click"
                 eventParams={{
-                  subject: "ap_macroeconomics",
-                  source: "apes_calculator_page",
-                }}
-                href="/ap-macroeconomics-score-calculator/"
-              >
-                AP Macroeconomics Score Calculator
-              </TrackedLink>
-              <TrackedLink
-                className="button secondary"
-                eventName="apes_explore_click"
-                eventParams={{
                   subject: "ap_world_history",
                   source: "apes_calculator_page",
                 }}

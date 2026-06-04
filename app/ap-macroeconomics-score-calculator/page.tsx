@@ -274,12 +274,12 @@ export default function ApMacroeconomicsScoreCalculatorPage() {
                 AP Human Geography Score Calculator
               </Link>
               , try the{" "}
-              <Link href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
+              <Link href="/ap-world-history-score-calculator/">
+                AP World History Score Calculator
               </Link>
               , or use the{" "}
-              <Link href="/ap-environmental-science-score-calculator/">
-                AP Environmental Science Score Calculator
+              <Link href="/ap-chemistry-score-calculator/">
+                AP Chemistry Score Calculator
               </Link>
               . You can also browse{" "}
               <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>{" "}

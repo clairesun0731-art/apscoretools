@@ -282,10 +282,14 @@ export default function ApHumanGeographyScoreCalculatorPage() {
               Browse{" "}
               <Link href="/ap-score-calculators/">AP Score Calculators</Link>,
               compare with the{" "}
-              <Link href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
+              <Link href="/ap-world-history-score-calculator/">
+                AP World History Score Calculator
               </Link>
               , or try the{" "}
+              <Link href="/ap-macroeconomics-score-calculator/">
+                AP Macroeconomics Score Calculator
+              </Link>
+              , and the{" "}
               <Link href="/ap-environmental-science-score-calculator/">
                 AP Environmental Science Score Calculator
               </Link>

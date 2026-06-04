@@ -243,6 +243,9 @@ export default function HowApEnvironmentalScienceIsScoredPage() {
               <Link className="button secondary" href="/ap-score-calculators/">
                 View All AP Score Calculators
               </Link>
+              <Link className="button secondary" href="/guides/ap-scoring-guides/">
+                AP Scoring Guides
+              </Link>
             </div>
           </article>
 

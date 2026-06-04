@@ -313,8 +313,8 @@ export default function ApWorldHistoryScoreCalculatorPage() {
                 AP Macroeconomics Score Calculator
               </Link>
               , or use the{" "}
-              <Link href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
+              <Link href="/ap-environmental-science-score-calculator/">
+                AP Environmental Science Score Calculator
               </Link>
               . You can also browse{" "}
               <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>{" "}

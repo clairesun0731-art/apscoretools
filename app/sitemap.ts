@@ -35,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.78,
     },
     {
+      url: "https://www.apscoretools.com/how-to-check-ap-scores/",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.78,
+    },
+    {
       url: "https://www.apscoretools.com/guides/ap-score-meaning/",
       lastModified,
       changeFrequency: "weekly",

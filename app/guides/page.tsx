@@ -59,8 +59,9 @@ const featuredGuides = [
   {
     title: "How to Check AP Scores",
     description:
-      "A planned walkthrough for checking official AP scores through a College Board account.",
-    status: "Coming soon",
+      "Learn how to sign in, prepare your account, download your score report, and troubleshoot missing AP scores.",
+    href: "/how-to-check-ap-scores/",
+    status: "Live",
   },
   {
     title: "What Do AP Scores Mean?",

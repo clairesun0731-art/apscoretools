@@ -153,7 +153,7 @@ const faqs = [
   {
     question: "What time do AP scores come out?",
     answer:
-      "College Board announces the score release date, but exact access timing can vary. If your score is not visible immediately on release day, check again later and confirm your account information.",
+      "College Board announces the score release date, but exact access timing can vary. Students should sign in to their College Board account on score release day and check again later if scores are not visible yet.",
   },
   {
     question: "Why is my AP score not showing?",
@@ -415,19 +415,26 @@ export default function WhenDoApScoresComeOutPage() {
               </div>
             </section>
 
-            <section className="card prose-card" id="what-time">
+            <section
+              className="card prose-card"
+              id="what-time-do-ap-scores-come-out"
+            >
               <h2>What Time Do AP Scores Come Out?</h2>
               <p>
-                Do not plan around an unsupported exact release hour. Official
-                AP scores become available starting on the release date, but
-                your access may depend on account status, processing status, and
-                login issues.
+                Do not plan around an unsupported exact release hour. AP scores
+                become available starting on the official release date, but your
+                access may depend on account status, processing status, or score
+                matching.
               </p>
               <p>
-                If your score is not visible immediately on July 6, check again
-                later, verify that you are using the correct College Board
-                account, and make sure your browser and login session are
-                working normally.
+                If your score is not visible immediately on July 6, sign in to
+                your College Board account again later and verify that your
+                account information is correct. For the full login walkthrough,
+                read{" "}
+                <Link href="/how-to-check-ap-scores/">
+                  how to check AP scores
+                </Link>
+                .
               </p>
             </section>
 
@@ -626,7 +633,7 @@ export default function WhenDoApScoresComeOutPage() {
               <a href="#quick-answer">Quick answer</a>
               <a href="#timeline">2026 timeline</a>
               <a href="#how-to-check">How to check scores</a>
-              <a href="#what-time">Release timing</a>
+              <a href="#what-time-do-ap-scores-come-out">Release timing</a>
               <a href="#score-not-showing">Score not showing</a>
               <a href="#before-release">Student checklist</a>
               <a href="#estimate">Estimate your score</a>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 import TrackedLink from "@/components/TrackedLink";
@@ -8,25 +7,17 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="footer-icon"
-            height={32}
-            src="/logo-ap-score-calculator-square.png"
-            width={32}
-          />
+          <strong>AP Score Tools</strong>
           <p>
-            AP Score Tools is unofficial and is not affiliated with or endorsed
-            by the College Board. AP, Advanced Placement, and related exam names
-            are trademarks of their respective owners. Calculator results are
-            estimates only.
+            Free, unofficial AP score calculators and AP score guides for U.S.
+            AP students.
           </p>
         </div>
 
         <div className="footer-link-groups">
-          <nav className="footer-links" aria-label="Tools">
-            <strong>Tools</strong>
+          <nav className="footer-links" aria-label="AP Score Tools">
+            <strong>AP Score Tools</strong>
+            <Link href="/about/">About</Link>
             <TrackedLink
               eventName="calculator_hub_click"
               eventParams={{ source: "footer" }}
@@ -34,6 +25,13 @@ export default function Footer() {
             >
               AP Score Calculators
             </TrackedLink>
+            <Link href="/guides/">AP Score Guides</Link>
+            <Link href="/privacy-policy/">Privacy Policy</Link>
+            <Link href="/terms-of-use/">Terms of Use</Link>
+          </nav>
+
+          <nav className="footer-links" aria-label="Popular Calculators">
+            <strong>Popular Calculators</strong>
             <Link href="/ap-environmental-science-score-calculator/">
               AP Environmental Science Score Calculator
             </Link>
@@ -49,27 +47,14 @@ export default function Footer() {
             <Link href="/ap-world-history-score-calculator/">
               AP World History Score Calculator
             </Link>
-            <TrackedLink
-              eventName="coming_soon_subject_click"
-              eventParams={{ subject: "ap_biology", source: "footer" }}
-              href="/ap-biology-score-calculator/"
-            >
-              AP Biology Score Calculator
-            </TrackedLink>
-            <Link href="/ap-calculus-ab-score-calculator/">
-              AP Calculus AB Score Calculator
-            </Link>
-            <Link href="/ap-lang-score-calculator/">
-              AP Lang Score Calculator
-            </Link>
-            <Link href="/apush-score-calculator/">
-              APUSH Score Calculator
-            </Link>
           </nav>
 
-          <nav className="footer-links" aria-label="Learn">
-            <strong>Learn</strong>
-            <Link href="/guides/">AP Score Guides</Link>
+          <nav className="footer-links" aria-label="AP Score Guides">
+            <strong>AP Score Guides</strong>
+            <Link href="/when-do-ap-scores-come-out/">
+              When Do AP Scores Come Out?
+            </Link>
+            <Link href="/how-to-check-ap-scores/">How to Check AP Scores</Link>
             <Link href="/guides/ap-score-release/">
               AP Score Release Guides
             </Link>
@@ -83,10 +68,12 @@ export default function Footer() {
           </nav>
 
           <nav className="footer-links" aria-label="Legal">
-            <strong>Legal</strong>
-            <Link href="/about/">About</Link>
-            <Link href="/privacy-policy/">Privacy Policy</Link>
-            <Link href="/terms-of-use/">Terms of Use</Link>
+            <strong>Legal / Disclaimer</strong>
+            <p>
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. Calculator results are estimates
+              only.
+            </p>
             <CookiePreferencesButton />
           </nav>
         </div>

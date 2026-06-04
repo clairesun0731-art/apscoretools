@@ -4,7 +4,7 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AP Score Release Guides | Dates, Times, and How to Check Scores",
+    absolute: "AP Score Release Guides | Dates and How to Check Scores",
   },
   description:
     "Find AP score release guides, including when AP scores come out, AP score release dates, how to check AP scores, and what to do if your score is not showing.",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     canonical: "https://www.apscoretools.com/guides/ap-score-release/",
   },
   openGraph: {
-    title: "AP Score Release Guides | Dates, Times, and How to Check Scores",
+    title: "AP Score Release Guides | Dates and How to Check Scores",
     description:
       "Find AP score release guides, including when AP scores come out, AP score release dates, how to check AP scores, and what to do if your score is not showing.",
     url: "https://www.apscoretools.com/guides/ap-score-release/",
@@ -36,16 +36,11 @@ const releaseGuides = [
     status: "Coming soon",
   },
   {
-    title: "What Time Do AP Scores Come Out?",
-    description:
-      "Understand why exact AP score access times may vary and where to check official results.",
-    status: "Coming soon",
-  },
-  {
     title: "How to Check AP Scores",
     description:
       "A student-friendly guide to checking official AP scores through a College Board account.",
-    status: "Coming soon",
+    href: "/how-to-check-ap-scores/",
+    status: "Live",
   },
   {
     title: "Why Is My AP Score Not Showing?",
