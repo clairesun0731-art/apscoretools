@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     absolute: "AP World History Score Calculator | AP Score Tools",
   },
   description:
-    "Use this free, unofficial AP World History Score Calculator to estimate your APWH score from MCQ, SAQ, DBQ, and LEQ raw scores.",
+    "Use this free, unofficial AP World History Score Calculator to estimate your APWH score from MCQ, SAQ, DBQ, and LEQ raw scores for recent exam years.",
   alternates: {
     canonical: url,
   },
   openGraph: {
     title: "AP World History Score Calculator | AP Score Tools",
     description:
-      "Use this free, unofficial AP World History Score Calculator to estimate your APWH score from MCQ, SAQ, DBQ, and LEQ raw scores.",
+      "Use this free, unofficial AP World History Score Calculator to estimate your APWH score from MCQ, SAQ, DBQ, and LEQ raw scores for recent exam years.",
     url,
     siteName: "AP Score Tools",
     type: "website",
@@ -34,6 +34,11 @@ const faqItems = [
     question: "What does APWH stand for?",
     answer:
       "APWH usually refers to AP World History, often AP World History: Modern.",
+  },
+  {
+    question: "Can I use this as an AP World score calculator for 2025 or 2026?",
+    answer:
+      "Yes, this AP World score calculator can be used as an unofficial estimate for recent exam years, including 2025 and 2026, but official cutoffs may vary.",
   },
   {
     question: "How many multiple-choice questions are on AP World History?",
@@ -71,6 +76,8 @@ const jsonLd = [
       "AP World History: Modern Score Calculator",
       "APWH Score Calculator",
       "AP World Score Calculator",
+      "AP World Scoring Calculator",
+      "AP World Calculator",
       "AP World History Calculator",
     ],
     url,
@@ -149,8 +156,9 @@ export default function ApWorldHistoryScoreCalculatorPage() {
           </h1>
           <p className="lead">
             Estimate your AP World History: Modern score from MCQ, SAQ, DBQ,
-            and LEQ raw scores. This APWH score calculator gives an unofficial
-            score estimate from 1 to 5.
+            and LEQ raw scores. This unofficial APWH score calculator also
+            works as an AP World score calculator or AP World scoring calculator
+            for estimating a score from 1 to 5.
           </p>
           <div className="benefit-row">
             <span>55 MCQs</span>
@@ -274,6 +282,11 @@ export default function ApWorldHistoryScoreCalculatorPage() {
             <ul className="prose-list">
               <li>
                 This APWH calculator is designed for practice and planning.
+              </li>
+              <li>
+                This AP World score calculator can be used as an unofficial
+                estimate for recent exam years, including 2025 and 2026, but
+                official cutoffs may vary.
               </li>
               <li>
                 It can help students understand how MCQ, SAQ, DBQ, and LEQ

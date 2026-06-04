@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import TrackedLink from "@/components/TrackedLink";
+import {
+  apCalculatorDirectory,
+  calculatorCategoryOrder,
+  getCalculatorsByCategory,
+  liveApCalculators,
+} from "@/lib/apCalculatorDirectory";
 
 export const metadata: Metadata = {
   title: {
     absolute: "AP Score Calculators by Subject | AP Score Tools",
   },
   description:
-    "Browse free, unofficial AP score calculators by subject, including AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, AP World History, and more.",
+    "Browse free, unofficial AP score calculators and AP exam score calculators by subject. Find live AP calculators now and see planned AP scoring calculator tools coming soon.",
   alternates: {
     canonical: "https://www.apscoretools.com/ap-score-calculators/",
   },
@@ -21,110 +26,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const liveCalculators = [
-  {
-    category: "Science",
-    name: "AP Environmental Science Score Calculator",
-    description:
-      "Estimate your APES score from MCQ and FRQ raw scores with a composite score out of 130.",
-    href: "/ap-environmental-science-score-calculator/",
-  },
-  {
-    category: "Science",
-    name: "AP Chemistry Score Calculator",
-    description:
-      "Estimate your AP Chem score from MCQ and FRQ inputs with a composite score breakdown.",
-    href: "/ap-chemistry-score-calculator/",
-  },
-  {
-    category: "History & Social Science",
-    name: "AP Human Geography Score Calculator",
-    description:
-      "Estimate your AP Human Geography score from MCQ and three FRQ inputs with a 100-point composite score.",
-    href: "/ap-human-geography-score-calculator/",
-  },
-  {
-    category: "History & Social Science",
-    name: "AP Macroeconomics Score Calculator",
-    description:
-      "Estimate your AP Macroeconomics score from MCQ, one long FRQ, and two short FRQ scores.",
-    href: "/ap-macroeconomics-score-calculator/",
-  },
-  {
-    category: "History & Social Science",
-    name: "AP World History Score Calculator",
-    description:
-      "Estimate your AP World History score from MCQ, SAQ, DBQ, and LEQ raw scores.",
-    href: "/ap-world-history-score-calculator/",
-  },
-];
-
-const betaCalculators: {
-  category: string;
-  description: string;
-  href: string;
-  name: string;
-  subject: string;
-}[] = [];
-
-const comingSoonCalculators = [
-  {
-    category: "Science",
-    name: "AP Biology Score Calculator",
-    aliases: "AP Bio score calculator",
-    href: "/ap-biology-score-calculator/",
-    subject: "ap_biology",
-  },
-  {
-    category: "Math & Computer Science",
-    name: "AP Calculus AB Score Calculator",
-    aliases: "AP Calc AB score calculator",
-    href: "/ap-calculus-ab-score-calculator/",
-    subject: "ap_calculus_ab",
-  },
-  {
-    category: "English",
-    name: "AP English Language Score Calculator",
-    aliases: "AP Lang score calculator",
-    href: "/ap-lang-score-calculator/",
-    subject: "ap_lang",
-  },
-  {
-    category: "History & Social Science",
-    name: "APUSH Score Calculator",
-    aliases: "AP US History score calculator",
-    href: "/apush-score-calculator/",
-    subject: "apush",
-  },
-];
-
-const morePlannedByCategory = [
-  {
-    category: "Science",
-    items: [
-      "AP Psychology Score Calculator",
-      "AP Statistics Score Calculator",
-      "AP Physics C Score Calculator",
-    ],
-  },
-  {
-    category: "Math & Computer Science",
-    items: [
-      "AP Calculus BC Score Calculator",
-      "AP Computer Science A Score Calculator",
-      "AP Computer Science Principles Score Calculator",
-    ],
-  },
-  {
-    category: "Arts & Languages",
-    items: [
-      "AP Spanish Language Score Calculator",
-      "AP French Language Score Calculator",
-      "AP Art History Score Calculator",
-    ],
-  },
-];
 
 const faqItems = [
   {
@@ -143,22 +44,15 @@ const faqItems = [
       "They combine raw section scores, apply an estimated subject-specific weighting model, and map the result to unofficial score bands from 1 to 5.",
   },
   {
+    question: "Is this an AP exam calculator or an AP grade calculator?",
+    answer:
+      "AP Score Tools calculators are unofficial AP exam score calculators. Students may use them like AP grade calculators for practice exams, but official AP scores and college credit decisions are separate.",
+  },
+  {
     question: "Do AP score calculator cutoffs change every year?",
     answer:
       "Official AP score conversions may vary by subject, exam form, and year. AP Score Tools uses estimated score bands, not official cut scores.",
   },
-  {
-    question: "Can I use these as AP grade calculators?",
-    answer:
-      "You can use them as unofficial AP exam score estimators, but college credit policies and official AP scores are determined separately.",
-  },
-];
-
-const categories = [
-  "Science",
-  "History & Social Science",
-  "Math & Computer Science",
-  "English",
 ];
 
 const jsonLd = [
@@ -168,7 +62,7 @@ const jsonLd = [
     name: "AP Score Calculators by Subject",
     url: "https://www.apscoretools.com/ap-score-calculators/",
     description:
-      "A directory of free, unofficial AP score calculators by subject from AP Score Tools.",
+      "A directory of free, unofficial AP score calculators, AP exam score calculators, and planned AP scoring calculator tools by subject.",
     isPartOf: {
       "@type": "WebSite",
       name: "AP Score Tools",
@@ -179,11 +73,11 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Live AP Score Calculators",
-    numberOfItems: liveCalculators.length,
-    itemListElement: liveCalculators.map((calculator, index) => ({
+    numberOfItems: liveApCalculators.length,
+    itemListElement: liveApCalculators.map((calculator, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: calculator.name,
+      name: calculator.title,
       item: `https://www.apscoretools.com${calculator.href}`,
     })),
   },
@@ -229,174 +123,143 @@ export default function ApScoreCalculatorsPage() {
           <span className="eyebrow">AP score calculator by subject</span>
           <h1>AP Score Calculators by Subject</h1>
           <p className="lead">
-            AP Score Tools provides free, unofficial AP score calculators by
-            subject. AP Environmental Science, AP Chemistry, AP Human
-            Geography, AP Macroeconomics, and AP World History are live now,
-            with more AP subjects coming soon.
+            Browse free, unofficial AP score calculators by subject. Use live
+            AP exam score calculators for AP Environmental Science, AP
+            Chemistry, AP Human Geography, AP Macroeconomics, and AP World
+            History, with more AP scoring calculator tools coming soon.
           </p>
           <p className="short-note">
-            Results are approximate estimates and may vary by year. Coming soon
-            pages are clearly labeled when a live calculator is not available
-            yet.
+            Results are approximate estimates and may vary by year. Coming Soon
+            tools are clearly labeled and are not presented as live calculators.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container content-stack">
-          <section className="prose-card">
+          <section className="prose-card" id="live-ap-calculators">
             <div className="section-heading compact-heading">
               <h2>Live AP Score Calculators</h2>
               <p>
-                These calculators are live tools with subject-specific inputs
-                and estimated score ranges.
+                These calculators are live tools with subject-specific inputs,
+                estimated score ranges, and unofficial AP score estimates from
+                1 to 5.
               </p>
             </div>
             <div className="cards-grid">
-              {liveCalculators.map((calculator) => (
-                <Link href={calculator.href} key={calculator.name}>
+              {liveApCalculators.map((calculator) => (
+                <Link
+                  aria-label={`Use ${calculator.title}`}
+                  href={calculator.href}
+                  key={calculator.title}
+                >
                   <article className="tool-card active">
                     <div>
                       <span className="status-pill">Live</span>
-                      <h3>{calculator.name}</h3>
+                      <h3>{calculator.title}</h3>
                       <p>{calculator.description}</p>
+                      {calculator.aliases && (
+                        <p className="short-note">
+                          Also searched as: {calculator.aliases.slice(0, 3).join(", ")}
+                        </p>
+                      )}
                     </div>
-                    <span>{calculator.name}</span>
+                    <span>Use Calculator</span>
                   </article>
                 </Link>
               ))}
             </div>
           </section>
 
-          <section className="card prose-card">
-            <h2>Browse Calculators by Category</h2>
-            <div className="category-grid">
-              {categories.map((category) => {
-                const liveItems = liveCalculators.filter(
-                  (calculator) => calculator.category === category,
-                );
-                const betaItems = betaCalculators.filter(
-                  (calculator) => calculator.category === category,
-                );
-                const plannedItems = comingSoonCalculators.filter(
-                  (calculator) => calculator.category === category,
-                );
-
-                return (
-                  <div className="category-group" key={category}>
-                    <h3>{category}</h3>
-                    <ul>
-                      {liveItems.map((calculator) => (
-                        <li key={calculator.href}>
-                          <Link href={calculator.href}>{calculator.name}</Link>
-                          <span className="status-live">Live</span>
-                        </li>
-                      ))}
-                      {betaItems.map((calculator) => (
-                        <li key={calculator.href}>
-                          <Link href={calculator.href}>{calculator.name}</Link>
-                          <span className="status-beta">Beta / Under Review</span>
-                        </li>
-                      ))}
-                      {plannedItems.map((calculator) => (
-                        <li key={calculator.href}>
-                          <TrackedLink
-                            eventName="coming_soon_subject_click"
-                            eventParams={{
-                              subject: calculator.subject,
-                              source: "hub_category",
-                            }}
-                            href={calculator.href}
-                          >
-                            {calculator.name}
-                          </TrackedLink>
-                          <span className="status-soon">Coming Soon</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {betaCalculators.length > 0 && (
-            <section className="prose-card">
-              <div className="section-heading compact-heading">
-                <h2>Beta / Under Review AP Score Calculators</h2>
-                <p>
-                  These pages are not functional calculators yet. Their scoring
-                  models are being reviewed before AP Score Tools treats them as
-                  live tools.
-                </p>
-              </div>
-              <div className="cards-grid">
-                {betaCalculators.map((calculator) => (
-                  <Link href={calculator.href} key={calculator.name}>
-                    <article className="tool-card">
-                      <div>
-                        <span className="status-pill beta">
-                          Beta / Under Review
-                        </span>
-                        <h3>{calculator.name}</h3>
-                        <p>{calculator.description}</p>
-                      </div>
-                      <span>View beta calculator page</span>
-                    </article>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
-
-          <section className="prose-card">
+          <section className="card prose-card" id="all-ap-calculators">
             <div className="section-heading compact-heading">
-              <h2>Coming Soon AP Score Calculators</h2>
+              <h2>All AP Score Calculators</h2>
               <p>
-                These pages are planned or informational. They are not live
-                calculators yet.
+                Find AP score calculators by subject. Live calculators are
+                available now, and more AP exam calculators are being added
+                soon.
               </p>
             </div>
-            <div className="cards-grid">
-              {comingSoonCalculators.map((calculator) => (
-                <TrackedLink
-                  eventName="coming_soon_subject_click"
-                  eventParams={{
-                    subject: calculator.subject,
-                    source: "hub_page",
-                  }}
-                  href={calculator.href}
-                  key={calculator.name}
-                >
-                  <article className="tool-card">
-                    <div>
-                      <span className="status-pill soon">Coming soon</span>
-                      <h3>{calculator.name}</h3>
-                      <p>{calculator.aliases}</p>
-                    </div>
-                    <span>View planned calculator page</span>
-                  </article>
-                </TrackedLink>
-              ))}
-            </div>
-          </section>
-
-          <section className="card prose-card">
-            <h2>More Planned AP Calculators</h2>
+            <p>
+              Browse AP exam score calculators by subject, including AP World
+              History, AP U.S. History, AP Statistics, AP English Literature,
+              AP Human Geography, AP Chemistry, and more. Coming Soon cards are
+              included for discovery, but they do not link to non-existing
+              calculator routes.
+            </p>
+            <p>
+              Students looking for an AP exam calculator, AP exam score
+              calculator, or AP exams score calculator can start with the live
+              subject tools below and use the directory to see what is planned.
+            </p>
             <div className="category-grid">
-              {morePlannedByCategory.map((group) => (
-                <div className="category-group" key={group.category}>
-                  <h3>{group.category}</h3>
+              {calculatorCategoryOrder.map((category) => (
+                <div className="category-group" key={category}>
+                  <h3>{category}</h3>
                   <ul>
-                    {group.items.map((item) => (
-                      <li key={item}>
-                        <span>{item}</span>
-                        <span className="status-planned">Planned</span>
+                    {getCalculatorsByCategory(category).map((calculator) => (
+                      <li key={calculator.title}>
+                        <span className="calculator-list-copy">
+                          {calculator.status === "live" ? (
+                            <Link
+                              aria-label={`Use ${calculator.title}`}
+                              href={calculator.href}
+                            >
+                              {calculator.title}
+                            </Link>
+                          ) : (
+                            <span>{calculator.title}</span>
+                          )}
+                          {calculator.aliases && (
+                            <span className="calculator-list-aliases">
+                              {calculator.aliases.slice(0, 2).join(" · ")}
+                            </span>
+                          )}
+                        </span>
+                        <span
+                          className={
+                            calculator.status === "live"
+                              ? "status-live"
+                              : "status-soon"
+                          }
+                        >
+                          {calculator.status === "live" ? "Live" : "Coming Soon"}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
               ))}
+            </div>
+          </section>
+
+          <section className="prose-card">
+            <div className="section-heading compact-heading">
+              <h2>Coming Soon AP Exam Calculators</h2>
+              <p>
+                These planned AP score calculators are listed so students can
+                see what is being prioritized next. They are not live tools and
+                do not include fake scoring inputs.
+              </p>
+            </div>
+            <div className="cards-grid">
+              {apCalculatorDirectory
+                .filter((calculator) => calculator.status === "coming-soon")
+                .map((calculator) => (
+                  <article className="tool-card" key={calculator.title}>
+                    <div>
+                      <span className="status-pill soon">Coming Soon</span>
+                      <h3>{calculator.title}</h3>
+                      <p>{calculator.description}</p>
+                      {calculator.aliases && (
+                        <p className="short-note">
+                          Also searched as: {calculator.aliases.join(", ")}
+                        </p>
+                      )}
+                    </div>
+                    <span>Coming Soon</span>
+                  </article>
+                ))}
             </div>
           </section>
 
@@ -411,8 +274,8 @@ export default function ApScoreCalculatorsPage() {
             </p>
             <p>
               Exact scoring methods and cutoffs vary by subject and year. These
-              tools are useful for practice tests and planning, but they are not
-              official AP score reports.
+              AP exam calculators are useful for practice tests and planning,
+              but they are not official AP score reports.
             </p>
             <p>
               For more background on section weights and composite scores,
