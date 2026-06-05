@@ -4,29 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
+import { getPopularCalculators } from "@/lib/apCalculatorDirectory";
 
-const liveCalculatorLinks = [
-  {
-    href: "/ap-environmental-science-score-calculator/",
-    label: "AP Environmental Science",
-  },
-  {
-    href: "/ap-chemistry-score-calculator/",
-    label: "AP Chemistry",
-  },
-  {
-    href: "/ap-human-geography-score-calculator/",
-    label: "AP Human Geography",
-  },
-  {
-    href: "/ap-macroeconomics-score-calculator/",
-    label: "AP Macroeconomics",
-  },
-  {
-    href: "/ap-world-history-score-calculator/",
-    label: "AP World History",
-  },
-];
+const liveCalculatorLinks = getPopularCalculators();
 
 const guideLinks = [
   {
@@ -105,7 +85,7 @@ export default function Header() {
                       key={link.href}
                       onClick={closeCalculatorMenu}
                     >
-                      {link.label}
+                      {link.shortTitle}
                     </Link>
                   ))}
                 </div>
@@ -184,7 +164,7 @@ export default function Header() {
               </TrackedLink>
               {liveCalculatorLinks.map((link) => (
                 <Link href={link.href} key={link.href} onClick={closeMenu}>
-                  {link.label}
+                  {link.shortTitle}
                 </Link>
               ))}
             </div>

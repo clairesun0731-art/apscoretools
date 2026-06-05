@@ -14,6 +14,8 @@ export type ApCalculatorDirectoryItem = {
   category: CalculatorCategory;
   description: string;
   href: string;
+  shortTitle?: string;
+  slug: string;
   status: CalculatorStatus;
   subjectId: string;
   title: string;
@@ -29,7 +31,7 @@ export const calculatorCategoryOrder: CalculatorCategory[] = [
   "Capstone",
 ];
 
-export const apCalculatorDirectory: ApCalculatorDirectoryItem[] = [
+const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug">[] = [
   {
     category: "Science",
     title: "AP Environmental Science Score Calculator",
@@ -409,6 +411,13 @@ export const apCalculatorDirectory: ApCalculatorDirectoryItem[] = [
   },
 ];
 
+export const apCalculatorDirectory: ApCalculatorDirectoryItem[] =
+  apCalculatorEntries.map((calculator) => ({
+    ...calculator,
+    shortTitle: calculator.title.replace(" Score Calculator", ""),
+    slug: calculator.href,
+  }));
+
 export const liveApCalculators = apCalculatorDirectory.filter(
   (calculator) => calculator.status === "live",
 );
@@ -419,4 +428,16 @@ export const comingSoonApCalculators = apCalculatorDirectory.filter(
 
 export function getCalculatorsByCategory(category: CalculatorCategory) {
   return apCalculatorDirectory.filter((calculator) => calculator.category === category);
+}
+
+export function getLiveCalculators() {
+  return liveApCalculators;
+}
+
+export function getComingSoonCalculators() {
+  return comingSoonApCalculators;
+}
+
+export function getPopularCalculators() {
+  return liveApCalculators;
 }

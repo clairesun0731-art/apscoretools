@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CalculatorDirectory from "@/components/CalculatorDirectory";
 import JsonLd from "@/components/JsonLd";
-import {
-  apCalculatorDirectory,
-  calculatorCategoryOrder,
-  getCalculatorsByCategory,
-  liveApCalculators,
-} from "@/lib/apCalculatorDirectory";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
 
 export const metadata: Metadata = {
   title: {
@@ -192,75 +188,7 @@ export default function ApScoreCalculatorsPage() {
               calculator, or AP exams score calculator can start with the live
               subject tools below and use the directory to see what is planned.
             </p>
-            <div className="category-grid">
-              {calculatorCategoryOrder.map((category) => (
-                <div className="category-group" key={category}>
-                  <h3>{category}</h3>
-                  <ul>
-                    {getCalculatorsByCategory(category).map((calculator) => (
-                      <li key={calculator.title}>
-                        <span className="calculator-list-copy">
-                          {calculator.status === "live" ? (
-                            <Link
-                              aria-label={`Use ${calculator.title}`}
-                              href={calculator.href}
-                            >
-                              {calculator.title}
-                            </Link>
-                          ) : (
-                            <span>{calculator.title}</span>
-                          )}
-                          {calculator.aliases && (
-                            <span className="calculator-list-aliases">
-                              {calculator.aliases.slice(0, 2).join(" · ")}
-                            </span>
-                          )}
-                        </span>
-                        <span
-                          className={
-                            calculator.status === "live"
-                              ? "status-live"
-                              : "status-soon"
-                          }
-                        >
-                          {calculator.status === "live" ? "Live" : "Coming Soon"}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="prose-card">
-            <div className="section-heading compact-heading">
-              <h2>Coming Soon AP Exam Calculators</h2>
-              <p>
-                These planned AP score calculators are listed so students can
-                see what is being prioritized next. They are not live tools and
-                do not include fake scoring inputs.
-              </p>
-            </div>
-            <div className="cards-grid">
-              {apCalculatorDirectory
-                .filter((calculator) => calculator.status === "coming-soon")
-                .map((calculator) => (
-                  <article className="tool-card" key={calculator.title}>
-                    <div>
-                      <span className="status-pill soon">Coming Soon</span>
-                      <h3>{calculator.title}</h3>
-                      <p>{calculator.description}</p>
-                      {calculator.aliases && (
-                        <p className="short-note">
-                          Also searched as: {calculator.aliases.join(", ")}
-                        </p>
-                      )}
-                    </div>
-                    <span>Coming Soon</span>
-                  </article>
-                ))}
-            </div>
+            <CalculatorDirectory aliasLimit={3} showDescriptions variant="detailed" />
           </section>
 
           <article className="card prose-card">

@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CalculatorDirectory from "@/components/CalculatorDirectory";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
-import {
-  calculatorCategoryOrder,
-  getCalculatorsByCategory,
-  liveApCalculators,
-} from "@/lib/apCalculatorDirectory";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
 
 export const metadata: Metadata = {
   title: {
@@ -156,45 +153,7 @@ export default function Home() {
               subject tools and use Coming Soon cards as a roadmap for planned
               coverage.
             </p>
-            <div className="category-grid">
-              {calculatorCategoryOrder.map((category) => (
-                <div className="category-group" key={category}>
-                  <h3>{category}</h3>
-                  <ul>
-                    {getCalculatorsByCategory(category).map((calculator) => (
-                      <li key={calculator.title}>
-                        <span className="calculator-list-copy">
-                          {calculator.status === "live" ? (
-                            <Link
-                              aria-label={`Use ${calculator.title}`}
-                              href={calculator.href}
-                            >
-                              {calculator.title}
-                            </Link>
-                          ) : (
-                            <span>{calculator.title}</span>
-                          )}
-                          {calculator.aliases && (
-                            <span className="calculator-list-aliases">
-                              {calculator.aliases.slice(0, 2).join(" · ")}
-                            </span>
-                          )}
-                        </span>
-                        <span
-                          className={
-                            calculator.status === "live"
-                              ? "status-live"
-                              : "status-soon"
-                          }
-                        >
-                          {calculator.status === "live" ? "Live" : "Coming Soon"}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            <CalculatorDirectory />
           </section>
 
           <section className="card prose-card">

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 import TrackedLink from "@/components/TrackedLink";
+import { getPopularCalculators } from "@/lib/apCalculatorDirectory";
+
+const popularCalculators = getPopularCalculators();
 
 export default function Footer() {
   return (
@@ -32,21 +35,11 @@ export default function Footer() {
 
           <nav className="footer-links" aria-label="Popular Calculators">
             <strong>Popular Calculators</strong>
-            <Link href="/ap-environmental-science-score-calculator/">
-              AP Environmental Science Score Calculator
-            </Link>
-            <Link href="/ap-chemistry-score-calculator/">
-              AP Chemistry Score Calculator
-            </Link>
-            <Link href="/ap-human-geography-score-calculator/">
-              AP Human Geography Score Calculator
-            </Link>
-            <Link href="/ap-macroeconomics-score-calculator/">
-              AP Macroeconomics Score Calculator
-            </Link>
-            <Link href="/ap-world-history-score-calculator/">
-              AP World History Score Calculator
-            </Link>
+            {popularCalculators.map((calculator) => (
+              <Link href={calculator.href} key={calculator.href}>
+                {calculator.title}
+              </Link>
+            ))}
           </nav>
 
           <nav className="footer-links" aria-label="AP Score Guides">
