@@ -4,9 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
-import { getPopularCalculators } from "@/lib/apCalculatorDirectory";
+import {
+  getComingSoonCalculators,
+  getPopularCalculators,
+} from "@/lib/apCalculatorDirectory";
 
 const liveCalculatorLinks = getPopularCalculators();
+const comingSoonNavLinks = getComingSoonCalculators().filter((calculator) =>
+  [
+    "ap_physics_1",
+    "ap_physics_2",
+    "ap_calculus_ab",
+    "ap_english_language",
+    "ap_us_history",
+  ].includes(calculator.subjectId),
+);
 
 const guideLinks = [
   {
@@ -64,7 +76,7 @@ export default function Header() {
             {isCalculatorMenuOpen && (
               <div className="nav-dropdown" onMouseLeave={closeCalculatorMenu}>
                 <div className="nav-dropdown-section">
-                  <strong>Calculator Hub</strong>
+                  <strong>Live Calculators</strong>
                   <TrackedLink
                     eventName="calculator_hub_click"
                     eventParams={{ source: "header_dropdown_group" }}
@@ -73,15 +85,21 @@ export default function Header() {
                   >
                     All AP Score Calculators
                   </TrackedLink>
-                  <Link href="/guides/ap-scoring-guides/" onClick={closeCalculatorMenu}>
-                    AP Scoring Guides
-                  </Link>
-                </div>
-                <div className="nav-dropdown-section">
-                  <strong>Popular Calculators</strong>
                   {liveCalculatorLinks.map((link) => (
                     <Link
                       href={link.href}
+                      key={link.href}
+                      onClick={closeCalculatorMenu}
+                    >
+                      {link.shortTitle}
+                    </Link>
+                  ))}
+                </div>
+                <div className="nav-dropdown-section">
+                  <strong>Coming Soon</strong>
+                  {comingSoonNavLinks.map((link) => (
+                    <Link
+                      href="/ap-score-calculators/"
                       key={link.href}
                       onClick={closeCalculatorMenu}
                     >
@@ -164,6 +182,14 @@ export default function Header() {
               </TrackedLink>
               {liveCalculatorLinks.map((link) => (
                 <Link href={link.href} key={link.href} onClick={closeMenu}>
+                  {link.shortTitle}
+                </Link>
+              ))}
+            </div>
+            <div className="mobile-nav-group">
+              <strong>Coming Soon</strong>
+              {comingSoonNavLinks.map((link) => (
+                <Link href="/ap-score-calculators/" key={link.href} onClick={closeMenu}>
                   {link.shortTitle}
                 </Link>
               ))}

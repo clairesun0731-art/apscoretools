@@ -56,11 +56,15 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
     category: "Science",
     title: "AP Biology Score Calculator",
     description:
-      "A planned AP Biology score calculator for estimating AP Bio exam performance.",
+      "Estimate your AP Bio score using MCQ and FRQ raw points.",
     href: "/ap-biology-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_biology",
-    aliases: ["AP Bio Score Calculator"],
+    aliases: [
+      "AP Bio Score Calculator",
+      "AP Biology Score Predictor",
+      "AP Bio Score Predictor",
+    ],
   },
   {
     category: "Science",

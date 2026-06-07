@@ -67,8 +67,9 @@ export default function Footer() {
             <strong>Legal / Disclaimer</strong>
             <p>
               AP Score Tools is unofficial and is not affiliated with or
-              endorsed by the College Board. Calculator results are estimates
-              only.
+              endorsed by the College Board. AP, Advanced Placement, and
+              related exam names are trademarks of their respective owners.
+              Calculator results are estimates only.
             </p>
             <CookiePreferencesButton />
           </nav>

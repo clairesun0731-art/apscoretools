@@ -1,6 +1,6 @@
 export type ScoreBand = 1 | 2 | 3 | 4 | 5;
 
-export type CalculatorSubject = "apes" | "ap_chemistry";
+export type CalculatorSubject = "apes" | "ap_chemistry" | "ap_biology";
 
 export type CalculatorField = {
   helper: string;
@@ -31,7 +31,10 @@ export type ScoreCalculatorConfig = {
   mcqScaledMax: number;
   scoreBands: ScoreBandRange[];
   scoreChip: string;
-  trackingName: "apes_score_calculator" | "ap_chemistry_score_calculator";
+  trackingName:
+    | "apes_score_calculator"
+    | "ap_chemistry_score_calculator"
+    | "ap_biology_score_calculator";
 };
 
 export type CalculatorResult = {
@@ -201,6 +204,87 @@ export const scoreCalculatorConfigs: Record<
     ],
     scoreChip: "100-point composite",
     trackingName: "ap_chemistry_score_calculator",
+  },
+  ap_biology: {
+    ariaLabel: "AP Biology score calculator",
+    compositeMax: 100,
+    defaultValues: {
+      frq1: 7,
+      frq2: 7,
+      frq3: 3,
+      frq4: 3,
+      frq5: 3,
+      frq6: 3,
+      mcq: 45,
+    },
+    fields: [
+      {
+        helper: "Raw score out of 60 multiple-choice questions",
+        id: "mcq",
+        label: "Section I: Multiple Choice",
+        max: 60,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq1",
+        label: "FRQ 1 Long Question",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq2",
+        label: "FRQ 2 Long Question",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 4",
+        id: "frq3",
+        label: "FRQ 3 Short Question",
+        max: 4,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 4",
+        id: "frq4",
+        label: "FRQ 4 Short Question",
+        max: 4,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 4",
+        id: "frq5",
+        label: "FRQ 5 Short Question",
+        max: 4,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 4",
+        id: "frq6",
+        label: "FRQ 6 Short Question",
+        max: 4,
+        min: 0,
+      },
+    ],
+    frqFieldIds: ["frq1", "frq2", "frq3", "frq4", "frq5", "frq6"],
+    frqRawMax: 34,
+    frqScaledMax: 50,
+    heading: "AP Biology Score Calculator",
+    id: "ap_biology",
+    mcqFieldId: "mcq",
+    mcqRawMax: 60,
+    mcqScaledMax: 50,
+    scoreBands: [
+      { max: 100, min: 78, score: 5 },
+      { max: 77, min: 63, score: 4 },
+      { max: 62, min: 54, score: 3 },
+      { max: 53, min: 36, score: 2 },
+      { max: 35, min: 0, score: 1 },
+    ],
+    scoreChip: "100-point composite",
+    trackingName: "ap_biology_score_calculator",
   },
 };
 

@@ -536,6 +536,17 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
                 className="button secondary"
                 eventName="apes_explore_click"
                 eventParams={{
+                  subject: "ap_biology",
+                  source: "apes_calculator_page",
+                }}
+                href="/ap-biology-score-calculator/"
+              >
+                AP Biology Score Calculator
+              </TrackedLink>
+              <TrackedLink
+                className="button secondary"
+                eventName="apes_explore_click"
+                eventParams={{
                   subject: "ap_chemistry",
                   source: "apes_calculator_page",
                 }}

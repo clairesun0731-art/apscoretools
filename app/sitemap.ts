@@ -71,6 +71,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: "https://www.apscoretools.com/ap-biology-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
       url: "https://www.apscoretools.com/ap-human-geography-score-calculator/",
       lastModified,
       changeFrequency: "weekly",

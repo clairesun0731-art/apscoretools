@@ -265,16 +265,16 @@ export default function ApChemistryScoreCalculatorPage() {
               Browse{" "}
               <Link href="/ap-score-calculators/">AP Score Calculators</Link>,
               compare with the{" "}
+              <Link href="/ap-biology-score-calculator/">
+                AP Biology Score Calculator
+              </Link>
+              , use the{" "}
               <Link href="/ap-environmental-science-score-calculator/">
                 AP Environmental Science Score Calculator
               </Link>
               , or check the{" "}
               <Link href="/ap-human-geography-score-calculator/">
                 AP Human Geography Score Calculator
-              </Link>
-              , and{" "}
-              <Link href="/ap-macroeconomics-score-calculator/">
-                AP Macroeconomics Score Calculator
               </Link>
               . For scoring explanations, browse the{" "}
               <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>.

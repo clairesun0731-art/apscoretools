@@ -32,7 +32,7 @@ const faqItems = [
   {
     question: "Which AP score calculators are live right now?",
     answer:
-      "AP Environmental Science, AP Chemistry, AP Human Geography, AP Macroeconomics, and AP World History score calculators are live now.",
+      "AP Environmental Science, AP Biology, AP Chemistry, AP Human Geography, AP Macroeconomics, and AP World History score calculators are live now.",
   },
   {
     question: "How do AP score calculators work?",
@@ -121,8 +121,9 @@ export default function ApScoreCalculatorsPage() {
           <p className="lead">
             Browse free, unofficial AP score calculators by subject. Use live
             AP exam score calculators for AP Environmental Science, AP
-            Chemistry, AP Human Geography, AP Macroeconomics, and AP World
-            History, with more AP scoring calculator tools coming soon.
+            Biology, AP Chemistry, AP Human Geography, AP Macroeconomics, and
+            AP World History, with more AP scoring calculator tools coming
+            soon.
           </p>
           <p className="short-note">
             Results are approximate estimates and may vary by year. Coming Soon
@@ -179,9 +180,9 @@ export default function ApScoreCalculatorsPage() {
             <p>
               Browse AP exam score calculators by subject, including AP World
               History, AP U.S. History, AP Statistics, AP English Literature,
-              AP Human Geography, AP Chemistry, and more. Coming Soon cards are
-              included for discovery, but they do not link to non-existing
-              calculator routes.
+              AP Human Geography, AP Biology, AP Chemistry, and more. Coming
+              Soon cards are included for discovery, but they do not link to
+              non-existing calculator routes.
             </p>
             <p>
               Students looking for an AP exam calculator, AP exam score
