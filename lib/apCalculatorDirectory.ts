@@ -21,6 +21,12 @@ export type ApCalculatorDirectoryItem = {
   title: string;
 };
 
+export type CalculatorNavGroup = {
+  category: CalculatorCategory;
+  displayName: string;
+  items: ApCalculatorDirectoryItem[];
+};
+
 export const calculatorCategoryOrder: CalculatorCategory[] = [
   "Science",
   "Math & Computer Science",
@@ -456,6 +462,23 @@ export const apCalculatorDirectory: ApCalculatorDirectoryItem[] =
     slug: calculator.href,
   }));
 
+const primaryNavCategoryOrder: CalculatorCategory[] = [
+  "Science",
+  "Math & Computer Science",
+  "History & Social Science",
+  "English",
+];
+
+const navCategoryDisplayNames: Record<CalculatorCategory, string> = {
+  Arts: "Arts",
+  Capstone: "Capstone",
+  English: "English",
+  "History & Social Science": "History & Social Studies",
+  "Math & Computer Science": "Math",
+  Science: "Science",
+  "World Languages": "World Languages",
+};
+
 export const liveApCalculators = apCalculatorDirectory.filter(
   (calculator) => calculator.status === "live",
 );
@@ -478,4 +501,28 @@ export function getComingSoonCalculators() {
 
 export function getPopularCalculators() {
   return liveApCalculators;
+}
+
+export function getPrimaryCalculatorNavGroups(): CalculatorNavGroup[] {
+  return primaryNavCategoryOrder
+    .map((category) => {
+      const calculators = apCalculatorDirectory
+        .filter((calculator) => calculator.category === category)
+        .sort((first, second) => {
+          if (first.status !== second.status) {
+            return first.status === "live" ? -1 : 1;
+          }
+
+          return (first.shortTitle ?? first.title).localeCompare(
+            second.shortTitle ?? second.title,
+          );
+        });
+
+      return {
+        category,
+        displayName: navCategoryDisplayNames[category],
+        items: calculators,
+      };
+    })
+    .filter((group) => group.items.length > 0);
 }
