@@ -318,6 +318,10 @@ export default function ApWorldHistoryScoreCalculatorPage() {
               Browse{" "}
               <Link href="/ap-score-calculators/">AP Score Calculators</Link>,
               compare with the{" "}
+              <Link href="/ap-us-history-score-calculator/">
+                AP U.S. History Score Calculator
+              </Link>
+              , use the{" "}
               <Link href="/ap-human-geography-score-calculator/">
                 AP Human Geography Score Calculator
               </Link>
@@ -325,11 +329,7 @@ export default function ApWorldHistoryScoreCalculatorPage() {
               <Link href="/ap-macroeconomics-score-calculator/">
                 AP Macroeconomics Score Calculator
               </Link>
-              , or use the{" "}
-              <Link href="/ap-environmental-science-score-calculator/">
-                AP Environmental Science Score Calculator
-              </Link>
-              . You can also browse{" "}
+              , or browse{" "}
               <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>{" "}
               for subject-by-subject scoring explanations.
             </p>

@@ -211,15 +211,15 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
     category: "History & Social Science",
     title: "AP U.S. History Score Calculator",
     description:
-      "A planned AP U.S. History score calculator for APUSH, AP US History, and AP United States History calculator searches.",
+      "Estimate your APUSH score using MCQ, SAQ, DBQ, and LEQ raw points.",
     href: "/ap-us-history-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_us_history",
     aliases: [
       "APUSH Score Calculator",
       "AP US History Score Calculator",
-      "AP U.S. History Grade Calculator",
-      "AP United States History Calculator",
+      "AP U.S. History Score Predictor",
+      "APUSH Score Predictor",
     ],
   },
   {

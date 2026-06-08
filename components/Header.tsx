@@ -17,7 +17,8 @@ const comingSoonNavLinks = getComingSoonCalculators().filter((calculator) =>
     "ap_calculus_bc",
     "ap_statistics",
     "ap_english_language",
-    "ap_us_history",
+    "ap_european_history",
+    "ap_us_government",
   ].includes(calculator.subjectId),
 );
 
