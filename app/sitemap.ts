@@ -83,7 +83,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: "https://www.apscoretools.com/ap-calculus-bc-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-statistics-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
       url: "https://www.apscoretools.com/ap-us-history-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-us-government-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-psychology-score-calculator/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: "https://www.apscoretools.com/ap-english-language-score-calculator/",
       lastModified,
       changeFrequency: "weekly",
       priority: 0.85,

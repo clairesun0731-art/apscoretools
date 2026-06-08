@@ -364,8 +364,8 @@ export default function ApCalculusAbScoreCalculatorPage() {
           <article className="card prose-card">
             <h2>Related Math AP Score Calculators</h2>
             <p>
-              Continue with the live AP Calculus AB calculator or browse
-              planned math calculators from AP Score Tools.
+              Continue with the live AP Calculus AB calculator or compare with
+              other live math calculators from AP Score Tools.
             </p>
             <div className="calculator-item-grid">
               <Link
@@ -381,24 +381,32 @@ export default function ApCalculusAbScoreCalculatorPage() {
                   <span className="directory-status live">Live</span>
                 </article>
               </Link>
-              <div aria-disabled="true" className="calculator-directory-disabled">
-                <article className="calculator-directory-item is-coming-soon">
+              <Link
+                aria-label="Use AP Calculus BC Score Calculator"
+                className="calculator-directory-link"
+                href="/ap-calculus-bc-score-calculator/"
+              >
+                <article className="calculator-directory-item is-live">
                   <div className="calculator-directory-copy">
                     <h4>AP Calculus BC Score Calculator</h4>
-                    <p>Planned AP Calc BC calculator.</p>
+                    <p>Estimate your AP Calc BC score from MCQ and FRQ points.</p>
                   </div>
-                  <span className="directory-status soon">Coming Soon</span>
+                  <span className="directory-status live">Live</span>
                 </article>
-              </div>
-              <div aria-disabled="true" className="calculator-directory-disabled">
-                <article className="calculator-directory-item is-coming-soon">
+              </Link>
+              <Link
+                aria-label="Use AP Statistics Score Calculator"
+                className="calculator-directory-link"
+                href="/ap-statistics-score-calculator/"
+              >
+                <article className="calculator-directory-item is-live">
                   <div className="calculator-directory-copy">
                     <h4>AP Statistics Score Calculator</h4>
-                    <p>Planned AP Stats calculator.</p>
+                    <p>Estimate your AP Stats score from MCQ and FRQ points.</p>
                   </div>
-                  <span className="directory-status soon">Coming Soon</span>
+                  <span className="directory-status live">Live</span>
                 </article>
-              </div>
+              </Link>
             </div>
             <div className="hero-actions">
               <TrackedLink

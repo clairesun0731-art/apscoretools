@@ -387,6 +387,15 @@ export default function ApUsHistoryScoreCalculatorPage() {
               </Link>
               <Link
                 className="button secondary"
+                href="/ap-us-government-score-calculator/"
+              >
+                AP U.S. Government Score Calculator
+              </Link>
+              <Link className="button secondary" href="/ap-psychology-score-calculator/">
+                AP Psychology Score Calculator
+              </Link>
+              <Link
+                className="button secondary"
                 href="/ap-human-geography-score-calculator/"
               >
                 AP Human Geography Score Calculator

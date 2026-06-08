@@ -14,11 +14,9 @@ const comingSoonNavLinks = getComingSoonCalculators().filter((calculator) =>
   [
     "ap_physics_1",
     "ap_physics_2",
-    "ap_calculus_bc",
-    "ap_statistics",
-    "ap_english_language",
     "ap_european_history",
-    "ap_us_government",
+    "ap_comparative_government",
+    "ap_english_literature",
   ].includes(calculator.subjectId),
 );
 

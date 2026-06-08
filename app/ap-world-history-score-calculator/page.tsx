@@ -321,6 +321,14 @@ export default function ApWorldHistoryScoreCalculatorPage() {
               <Link href="/ap-us-history-score-calculator/">
                 AP U.S. History Score Calculator
               </Link>
+              , try the{" "}
+              <Link href="/ap-us-government-score-calculator/">
+                AP U.S. Government Score Calculator
+              </Link>
+              , review the{" "}
+              <Link href="/ap-psychology-score-calculator/">
+                AP Psychology Score Calculator
+              </Link>
               , use the{" "}
               <Link href="/ap-human-geography-score-calculator/">
                 AP Human Geography Score Calculator

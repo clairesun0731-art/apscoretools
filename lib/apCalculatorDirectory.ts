@@ -120,21 +120,29 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
     category: "Math & Computer Science",
     title: "AP Calculus BC Score Calculator",
     description:
-      "A planned AP Calculus BC score calculator for AP Calc BC exam estimates.",
+      "Estimate your AP Calc BC score using MCQ and FRQ raw points.",
     href: "/ap-calculus-bc-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_calculus_bc",
-    aliases: ["AP Calc BC Score Calculator"],
+    aliases: [
+      "AP Calc BC Score Calculator",
+      "AP Calculus BC Score Predictor",
+      "AP Calc BC Score Predictor",
+    ],
   },
   {
     category: "Math & Computer Science",
     title: "AP Statistics Score Calculator",
     description:
-      "A planned AP Statistics score calculator for students looking for an AP Stats exam score calculator.",
+      "Estimate your AP Stats score using MCQ and FRQ raw points.",
     href: "/ap-statistics-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_statistics",
-    aliases: ["AP Stats Score Calculator", "AP Stats Exam Score Calculator"],
+    aliases: [
+      "AP Stats Score Calculator",
+      "AP Statistics Score Predictor",
+      "AP Stats Score Predictor",
+    ],
   },
   {
     category: "Math & Computer Science",
@@ -236,11 +244,29 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
     category: "History & Social Science",
     title: "AP U.S. Government and Politics Score Calculator",
     description:
-      "A planned AP U.S. Government and Politics score calculator for AP Gov and AP US Gov score estimates.",
+      "Estimate your AP Gov score using MCQ and FRQ raw points.",
     href: "/ap-us-government-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_us_government",
-    aliases: ["AP Gov Score Calculator", "AP US Gov Score Calculator"],
+    aliases: [
+      "AP Gov Score Calculator",
+      "AP US Gov Score Calculator",
+      "AP Government Score Predictor",
+    ],
+  },
+  {
+    category: "History & Social Science",
+    title: "AP Psychology Score Calculator",
+    description:
+      "Estimate your AP Psych score using MCQ and FRQ raw points.",
+    href: "/ap-psychology-score-calculator/",
+    status: "live",
+    subjectId: "ap_psychology",
+    aliases: [
+      "AP Psych Score Calculator",
+      "AP Psychology Score Predictor",
+      "AP Psych Score Predictor",
+    ],
   },
   {
     category: "History & Social Science",
@@ -256,11 +282,15 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
     category: "English",
     title: "AP English Language Score Calculator",
     description:
-      "A planned AP English Language score calculator for AP Lang exam estimates.",
+      "Estimate your AP Lang score using multiple-choice and essay raw scores.",
     href: "/ap-english-language-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_english_language",
-    aliases: ["AP Lang Score Calculator"],
+    aliases: [
+      "AP Lang Score Calculator",
+      "AP English Language Score Predictor",
+      "AP Lang Score Predictor",
+    ],
   },
   {
     category: "English",

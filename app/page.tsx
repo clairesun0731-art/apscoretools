@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     absolute: "AP Score Tools | Free AP Score Calculators by Subject",
   },
   description:
-    "Use free, unofficial AP exam score calculators by subject to estimate AP scores for AP U.S. History, AP Calculus AB, AP Biology, AP Chemistry, AP Environmental Science, AP Human Geography, AP World History, AP Macroeconomics, and more.",
+    "Use free, unofficial AP exam score calculators by subject to estimate AP scores for AP Statistics, AP Calculus BC, AP U.S. Government, AP Psychology, AP English Language, and more.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
@@ -75,9 +75,9 @@ export default function Home() {
           <h1>Free AP Score Calculators by Subject</h1>
           <p className="lead">
             Estimate your AP exam score with free, unofficial AP score
-            calculators for AP U.S. History, AP Calculus AB, AP Biology, AP
-            Chemistry, AP Environmental Science, AP Human Geography, AP World
-            History, AP Macroeconomics, and more.
+            calculators for AP Statistics, AP Calculus BC, AP U.S. Government,
+            AP Psychology, AP English Language, AP U.S. History, AP Biology,
+            AP Chemistry, and more.
           </p>
           <p className="trust-line">
             Unofficial AP score estimates · Subject-specific calculators · Not
