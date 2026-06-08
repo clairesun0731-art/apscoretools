@@ -1,6 +1,10 @@
 export type ScoreBand = 1 | 2 | 3 | 4 | 5;
 
-export type CalculatorSubject = "apes" | "ap_chemistry" | "ap_biology";
+export type CalculatorSubject =
+  | "apes"
+  | "ap_chemistry"
+  | "ap_biology"
+  | "ap_calculus_ab";
 
 export type CalculatorField = {
   helper: string;
@@ -26,6 +30,7 @@ export type ScoreCalculatorConfig = {
   frqScaledMax: number;
   heading: string;
   id: CalculatorSubject;
+  mcqFieldIds?: string[];
   mcqFieldId: string;
   mcqRawMax: number;
   mcqScaledMax: number;
@@ -34,7 +39,8 @@ export type ScoreCalculatorConfig = {
   trackingName:
     | "apes_score_calculator"
     | "ap_chemistry_score_calculator"
-    | "ap_biology_score_calculator";
+    | "ap_biology_score_calculator"
+    | "ap_calculus_ab_score_calculator";
 };
 
 export type CalculatorResult = {
@@ -286,6 +292,96 @@ export const scoreCalculatorConfigs: Record<
     scoreChip: "100-point composite",
     trackingName: "ap_biology_score_calculator",
   },
+  ap_calculus_ab: {
+    ariaLabel: "AP Calculus AB score calculator",
+    compositeMax: 108,
+    defaultValues: {
+      frq1: 6,
+      frq2: 6,
+      frq3: 6,
+      frq4: 6,
+      frq5: 6,
+      frq6: 6,
+      mcq_part_a: 22,
+      mcq_part_b: 11,
+    },
+    fields: [
+      {
+        helper: "No-calculator raw score out of 30",
+        id: "mcq_part_a",
+        label: "MCQ Part A No Calculator",
+        max: 30,
+        min: 0,
+      },
+      {
+        helper: "Calculator-allowed raw score out of 15",
+        id: "mcq_part_b",
+        label: "MCQ Part B Calculator",
+        max: 15,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq1",
+        label: "FRQ 1",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq2",
+        label: "FRQ 2",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq3",
+        label: "FRQ 3",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq4",
+        label: "FRQ 4",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq5",
+        label: "FRQ 5",
+        max: 9,
+        min: 0,
+      },
+      {
+        helper: "Raw score out of 9",
+        id: "frq6",
+        label: "FRQ 6",
+        max: 9,
+        min: 0,
+      },
+    ],
+    frqFieldIds: ["frq1", "frq2", "frq3", "frq4", "frq5", "frq6"],
+    frqRawMax: 54,
+    frqScaledMax: 54,
+    heading: "AP Calculus AB Score Calculator",
+    id: "ap_calculus_ab",
+    mcqFieldId: "mcq_part_a",
+    mcqFieldIds: ["mcq_part_a", "mcq_part_b"],
+    mcqRawMax: 45,
+    mcqScaledMax: 54,
+    scoreBands: [
+      { max: 108, min: 76, score: 5 },
+      { max: 75, min: 62, score: 4 },
+      { max: 61, min: 49, score: 3 },
+      { max: 48, min: 35, score: 2 },
+      { max: 34, min: 0, score: 1 },
+    ],
+    scoreChip: "108-point composite",
+    trackingName: "ap_calculus_ab_score_calculator",
+  },
 };
 
 export function clampScore(value: number, min: number, max: number) {
@@ -330,7 +426,10 @@ export function calculateScoreResult(
   values: Record<string, number>,
 ): CalculatorResult {
   const checkedValues = ensureSubjectInputValues(config, values);
-  const mcqRaw = checkedValues[config.mcqFieldId] ?? 0;
+  const mcqRaw = (config.mcqFieldIds ?? [config.mcqFieldId]).reduce(
+    (total, fieldId) => total + (checkedValues[fieldId] ?? 0),
+    0,
+  );
   const frqRawTotal = config.frqFieldIds.reduce(
     (total, fieldId) => total + (checkedValues[fieldId] ?? 0),
     0,

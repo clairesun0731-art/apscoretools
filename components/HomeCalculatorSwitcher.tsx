@@ -30,6 +30,10 @@ const calculators: Array<{
     id: "ap_biology",
     label: "AP Biology",
   },
+  {
+    id: "ap_calculus_ab",
+    label: "AP Calculus AB",
+  },
 ];
 
 function formatScore(value: number, max: number) {

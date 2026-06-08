@@ -106,11 +106,15 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
     category: "Math & Computer Science",
     title: "AP Calculus AB Score Calculator",
     description:
-      "A planned AP Calculus AB score calculator for AP Calc AB exam estimates.",
+      "Estimate your AP Calc AB score using MCQ and FRQ raw points.",
     href: "/ap-calculus-ab-score-calculator/",
-    status: "coming-soon",
+    status: "live",
     subjectId: "ap_calculus_ab",
-    aliases: ["AP Calc AB Score Calculator"],
+    aliases: [
+      "AP Calc AB Score Calculator",
+      "AP Calculus AB Score Predictor",
+      "AP Calc AB Score Predictor",
+    ],
   },
   {
     category: "Math & Computer Science",
