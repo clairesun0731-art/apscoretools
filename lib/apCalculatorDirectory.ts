@@ -14,6 +14,7 @@ export type ApCalculatorDirectoryItem = {
   category: CalculatorCategory;
   description: string;
   href: string;
+  navTitle?: string;
   shortTitle?: string;
   slug: string;
   status: CalculatorStatus;
@@ -458,9 +459,37 @@ const apCalculatorEntries: Omit<ApCalculatorDirectoryItem, "shortTitle" | "slug"
 export const apCalculatorDirectory: ApCalculatorDirectoryItem[] =
   apCalculatorEntries.map((calculator) => ({
     ...calculator,
+    navTitle: getCalculatorNavTitle(calculator),
     shortTitle: calculator.title.replace(" Score Calculator", ""),
     slug: calculator.href,
   }));
+
+function getCalculatorNavTitle(
+  calculator: Omit<ApCalculatorDirectoryItem, "navTitle" | "shortTitle" | "slug">,
+) {
+  const navTitles: Record<string, string> = {
+    ap_biology: "AP Biology",
+    ap_calculus_ab: "AP Calculus AB",
+    ap_calculus_bc: "AP Calculus BC",
+    ap_chemistry: "AP Chemistry",
+    ap_comparative_government: "AP Comparative Gov",
+    ap_english_language: "AP English Language",
+    ap_english_literature: "AP English Literature",
+    ap_environmental_science: "AP Environmental Science",
+    ap_european_history: "AP European History",
+    ap_human_geography: "AP Human Geography",
+    ap_macroeconomics: "AP Macroeconomics",
+    ap_physics_1: "AP Physics 1",
+    ap_physics_2: "AP Physics 2",
+    ap_psychology: "AP Psychology",
+    ap_statistics: "AP Statistics",
+    ap_us_government: "AP U.S. Government",
+    ap_us_history: "AP U.S. History",
+    ap_world_history: "AP World History",
+  };
+
+  return navTitles[calculator.subjectId] ?? calculator.title.replace(" Score Calculator", "");
+}
 
 const primaryNavCategoryOrder: CalculatorCategory[] = [
   "Science",
@@ -468,6 +497,27 @@ const primaryNavCategoryOrder: CalculatorCategory[] = [
   "History & Social Science",
   "English",
 ];
+
+const primaryNavSubjectIds = new Set([
+  "ap_biology",
+  "ap_calculus_ab",
+  "ap_calculus_bc",
+  "ap_chemistry",
+  "ap_comparative_government",
+  "ap_english_language",
+  "ap_english_literature",
+  "ap_environmental_science",
+  "ap_european_history",
+  "ap_human_geography",
+  "ap_macroeconomics",
+  "ap_physics_1",
+  "ap_physics_2",
+  "ap_psychology",
+  "ap_statistics",
+  "ap_us_government",
+  "ap_us_history",
+  "ap_world_history",
+]);
 
 const navCategoryDisplayNames: Record<CalculatorCategory, string> = {
   Arts: "Arts",
@@ -507,14 +557,18 @@ export function getPrimaryCalculatorNavGroups(): CalculatorNavGroup[] {
   return primaryNavCategoryOrder
     .map((category) => {
       const calculators = apCalculatorDirectory
-        .filter((calculator) => calculator.category === category)
+        .filter(
+          (calculator) =>
+            calculator.category === category &&
+            primaryNavSubjectIds.has(calculator.subjectId),
+        )
         .sort((first, second) => {
           if (first.status !== second.status) {
             return first.status === "live" ? -1 : 1;
           }
 
-          return (first.shortTitle ?? first.title).localeCompare(
-            second.shortTitle ?? second.title,
+          return (first.navTitle ?? first.shortTitle ?? first.title).localeCompare(
+            second.navTitle ?? second.shortTitle ?? second.title,
           );
         });
 

@@ -64,11 +64,11 @@ export default function Footer() {
                 {group.items.map((calculator) =>
                   calculator.status === "live" ? (
                     <Link href={calculator.href} key={calculator.href}>
-                      {calculator.shortTitle}
+                      {calculator.navTitle}
                     </Link>
                   ) : (
                     <span className="footer-soon-item" key={calculator.href}>
-                      <span>{calculator.shortTitle}</span>
+                      <span>{calculator.navTitle}</span>
                       <span>Coming Soon</span>
                     </span>
                   ),

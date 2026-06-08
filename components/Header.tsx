@@ -87,11 +87,11 @@ export default function Header() {
                             key={calculator.href}
                             onClick={closeCalculatorMenu}
                           >
-                            {calculator.shortTitle}
+                            {calculator.navTitle}
                           </Link>
                         ) : (
                           <span className="nav-soon-item" key={calculator.href}>
-                            <span>{calculator.shortTitle}</span>
+                            <span>{calculator.navTitle}</span>
                             <span className="nav-soon-badge">Coming Soon</span>
                           </span>
                         ),
@@ -183,11 +183,11 @@ export default function Header() {
                           key={calculator.href}
                           onClick={closeMenu}
                         >
-                          {calculator.shortTitle}
+                          {calculator.navTitle}
                         </Link>
                       ) : (
                         <span className="mobile-soon-item" key={calculator.href}>
-                          <span>{calculator.shortTitle}</span>
+                          <span>{calculator.navTitle}</span>
                           <span className="nav-soon-badge">Coming Soon</span>
                         </span>
                       ),
