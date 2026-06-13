@@ -96,6 +96,25 @@ export default function Home() {
               Try a Live Calculator
             </a>
           </div>
+          <div className="release-banner mt-6">
+            <div className="release-banner-inner">
+              <h3>AP Scores Release Soon</h3>
+              <p>
+                2026 AP scores are available starting July 6, 2026. While
+                official scores must be checked through College Board, you can
+                use AP Score Tools to estimate possible scores with unofficial
+                calculators.
+              </p>
+              <div className="hero-actions">
+                <Link className="button" href="/when-do-ap-scores-come-out/">
+                  When Do AP Scores Come Out?
+                </Link>
+                <Link className="button secondary" href="/ap-score-calculators/">
+                  Browse AP Score Calculators
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

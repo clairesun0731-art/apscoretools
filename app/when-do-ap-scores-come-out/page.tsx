@@ -2,23 +2,24 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { getLiveCalculators } from "@/lib/apCalculatorDirectory";
 
 const pageUrl = "https://www.apscoretools.com/when-do-ap-scores-come-out/";
 const lastUpdated = "June 4, 2026";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "When Do AP Scores Come Out in 2026?",
+    absolute: "When Do AP Scores Come Out 2026? AP Score Release Date",
   },
   description:
-    "2026 AP scores will be available starting Monday, July 6. Learn when AP scores come out, how to check your scores, what to do before release day, and how to estimate your AP score while you wait.",
+    "AP scores for 2026 are available starting July 6, 2026. Learn when AP scores come out, how to check them, why some scores may be delayed, and how to estimate your score with unofficial AP score calculators.",
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
-    title: "When Do AP Scores Come Out in 2026?",
+    title: "When Do AP Scores Come Out 2026? AP Score Release Date",
     description:
-      "2026 AP scores will be available starting Monday, July 6. Learn when AP scores come out, how to check your scores, what to do before release day, and how to estimate your AP score while you wait.",
+      "AP scores for 2026 are available starting July 6, 2026. Learn when AP scores come out, how to check them, why some scores may be delayed, and how to estimate your score with unofficial AP score calculators.",
     url: pageUrl,
     siteName: "AP Score Tools",
     type: "article",
@@ -106,33 +107,7 @@ const afterReleaseItems = [
   "If you are unhappy with a score, review options such as retaking in a future year, withholding or canceling where applicable, or focusing on future coursework.",
 ];
 
-const calculatorCards = [
-  {
-    title: "AP Environmental Science Score Calculator",
-    description: "Estimate an APES score from MCQ and FRQ raw scores.",
-    href: "/ap-environmental-science-score-calculator/",
-  },
-  {
-    title: "AP Chemistry Score Calculator",
-    description: "Estimate an AP Chemistry score from MCQ and FRQ scores.",
-    href: "/ap-chemistry-score-calculator/",
-  },
-  {
-    title: "AP Human Geography Score Calculator",
-    description: "Estimate an AP Human Geography score from MCQ and FRQ inputs.",
-    href: "/ap-human-geography-score-calculator/",
-  },
-  {
-    title: "AP Macroeconomics Score Calculator",
-    description: "Estimate an AP Macro score from MCQ and FRQ raw scores.",
-    href: "/ap-macroeconomics-score-calculator/",
-  },
-  {
-    title: "AP World History Score Calculator",
-    description: "Estimate an AP World History score from MCQ, SAQ, DBQ, and LEQ scores.",
-    href: "/ap-world-history-score-calculator/",
-  },
-];
+const liveCalculators = getLiveCalculators().slice(0, 6);
 
 const faqs = [
   {
@@ -290,14 +265,28 @@ export default function WhenDoApScoresComeOutPage() {
           <div className="answer-box">
             <strong>Short answer</strong>
             <p>
-              2026 AP scores will be available starting Monday, July 6. You
-              will need to sign in to your College Board account to view your
-              official scores.
+              AP scores for 2026 are available starting Monday, July 6, 2026,
+              according to College Board. Some scores may take longer to
+              appear because of late testing, processing delays, or account
+              matching issues.
             </p>
             <p>
               AP Score Tools provides unofficial score calculators and guides.
               It does not display official AP scores.
             </p>
+          </div>
+          <div className="release-cta-card">
+            <h3>Waiting for AP scores?</h3>
+            <p>
+              Before official scores are released, you can use AP Score Tools
+              to estimate your possible score with unofficial AP score
+              calculators by subject.
+            </p>
+            <div className="hero-actions">
+              <Link className="button" href="/ap-score-calculators/">
+                Browse AP Score Calculators →
+              </Link>
+            </div>
           </div>
         </div>
         <div className="article-hero-media">
@@ -574,7 +563,7 @@ export default function WhenDoApScoresComeOutPage() {
                 use a calculator as a planning tool, not as a guarantee.
               </p>
               <div className="guide-list-grid">
-                {calculatorCards.map((calculator) => (
+                {liveCalculators.map((calculator) => (
                   <Link href={calculator.href} key={calculator.href}>
                     <article className="guide-list-card guide-card-link">
                       <div>

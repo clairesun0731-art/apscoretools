@@ -130,6 +130,19 @@ export default function ApScoreCalculatorsPage() {
             Results are approximate estimates and may vary by year. Coming Soon
             tools are clearly labeled and are not presented as live calculators.
           </p>
+          <div className="release-season-note mt-4">
+            <h3>Estimate Your AP Score Before Results Come Out</h3>
+            <p>
+              AP scores for 2026 are available starting July 6. Before official
+              scores appear in your College Board account, use these unofficial
+              AP score calculators to estimate possible results by subject.
+            </p>
+            <p className="short-note">
+              <Link href="/when-do-ap-scores-come-out/">When do AP scores come out?</Link>
+              {" · "}
+              <Link href="/how-to-check-ap-scores/">How to check AP scores</Link>
+            </p>
+          </div>
         </div>
       </section>
 

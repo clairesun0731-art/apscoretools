@@ -8,17 +8,17 @@ const lastUpdated = "June 4, 2026";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "How to Check AP Scores in 2026",
+    absolute: "How to Check AP Scores 2026 | AP Score Report Guide",
   },
   description:
-    "Learn how to check your AP scores in 2026 through your College Board account, what to prepare before score release day, and what to do if your AP scores are not showing.",
+    "Learn how to check your 2026 AP scores through College Board, what to do if a score is missing, and how to estimate AP scores before release with unofficial AP Score Tools calculators.",
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
-    title: "How to Check AP Scores in 2026",
+    title: "How to Check AP Scores 2026 | AP Score Report Guide",
     description:
-      "Learn how to check your AP scores in 2026 through your College Board account, what to prepare before score release day, and what to do if your AP scores are not showing.",
+      "Learn how to check your 2026 AP scores through College Board, what to do if a score is missing, and how to estimate AP scores before release with unofficial AP Score Tools calculators.",
     url: pageUrl,
     siteName: "AP Score Tools",
     type: "article",

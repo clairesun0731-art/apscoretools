@@ -149,6 +149,25 @@ export default function ApMacroeconomicsScoreCalculatorPage() {
           <div className="centered-calculator-panel" id="calculator">
             <ApMacroeconomicsCalculator />
           </div>
+          <div className="release-note-card mt-6">
+            <h3>Waiting for Official AP Scores?</h3>
+            <p>
+              Official 2026 AP scores are available starting July 6 through
+              College Board. This calculator gives an unofficial estimate only
+              and may vary from your actual AP score.
+            </p>
+            <div className="hero-actions">
+              <Link className="button secondary" href="/when-do-ap-scores-come-out/">
+                When Do AP Scores Come Out?
+              </Link>
+              <Link className="button secondary" href="/how-to-check-ap-scores/">
+                How to Check AP Scores
+              </Link>
+              <Link className="button" href="/ap-score-calculators/">
+                Browse all AP score calculators
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
