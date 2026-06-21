@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 import TrackedLink from "@/components/TrackedLink";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
 
 export default function Footer() {
   return (
@@ -25,11 +26,13 @@ export default function Footer() {
               >
                 AP Score Calculators
               </TrackedLink>
-              <Link href="/ap-environmental-science-score-calculator/">
-                AP Environmental Science Score Calculator
-              </Link>
-              <Link href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
+              {liveApCalculators.map((calculator) => (
+                <Link href={calculator.href} key={calculator.href}>
+                  {calculator.title}
+                </Link>
+              ))}
+              <Link href="/ap-score-calculators/">
+                More AP calculators coming soon
               </Link>
             </nav>
 

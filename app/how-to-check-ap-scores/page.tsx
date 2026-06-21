@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
 
 const pageUrl = "https://www.apscoretools.com/how-to-check-ap-scores/";
 const lastUpdated = "June 4, 2026";
@@ -117,16 +118,7 @@ const relatedResources = [
   },
 ];
 
-const subjectCalculatorLinks = [
-  {
-    label: "AP Environmental Science Score Calculator",
-    href: "/ap-environmental-science-score-calculator/",
-  },
-  {
-    label: "AP Chemistry Score Calculator",
-    href: "/ap-chemistry-score-calculator/",
-  },
-];
+const subjectCalculatorLinks = liveApCalculators.slice(0, 5);
 
 const faqs = [
   {
@@ -507,10 +499,10 @@ export default function HowToCheckApScoresPage() {
                 <Link href="/what-do-ap-scores-mean/">
                   What Do AP Scores Mean?
                 </Link>
-                . Live calculators include{" "}
+                . Current live calculators include{" "}
                 {subjectCalculatorLinks.map((calculator, index) => (
                   <span key={calculator.href}>
-                    <Link href={calculator.href}>{calculator.label}</Link>
+                    <Link href={calculator.href}>{calculator.title}</Link>
                     {index < subjectCalculatorLinks.length - 2
                       ? ", "
                       : index === subjectCalculatorLinks.length - 2
@@ -518,7 +510,9 @@ export default function HowToCheckApScoresPage() {
                         : ""}
                   </span>
                 ))}
-                .
+                . Browse{" "}
+                <Link href="/ap-score-calculators/">AP Score Calculators</Link>{" "}
+                for the full live directory.
               </p>
             </section>
 

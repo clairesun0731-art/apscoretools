@@ -1319,6 +1319,13 @@ p {
   font-weight: 850;
 }
 
+.muted-cta {
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 800;
+  margin-top: 12px;
+}
+
 .coming-soon-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

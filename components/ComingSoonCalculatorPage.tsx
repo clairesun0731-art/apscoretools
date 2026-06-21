@@ -1,5 +1,8 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
+
+const featuredLiveCalculators = liveApCalculators.slice(0, 5);
 
 type ComingSoonCalculatorPageProps = {
   description: string;
@@ -77,9 +80,9 @@ export default function ComingSoonCalculatorPage({
             <h2>Calculator Not Live Yet</h2>
             <p>
               This planned page is included so students can find future AP score
-              calculator updates. AP Environmental Science, AP Chemistry, AP
-              Human Geography, AP Macroeconomics, and AP World History are live
-              on AP Score Tools right now.
+              calculator updates. AP Score Tools has multiple live subject
+              calculators right now, and planned tools are clearly marked until
+              they have real scoring inputs.
             </p>
           </article>
 
@@ -101,18 +104,15 @@ export default function ComingSoonCalculatorPage({
               working AP score calculator.
             </p>
             <div className="hero-actions">
-              <Link className="button" href="/ap-environmental-science-score-calculator/">
-                AP Environmental Science Score Calculator
-              </Link>
-              <Link className="button secondary" href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
-              </Link>
-              <Link className="button secondary" href="/ap-human-geography-score-calculator/">
-                AP Human Geography Score Calculator
-              </Link>
-              <Link className="button secondary" href="/ap-world-history-score-calculator/">
-                AP World History Score Calculator
-              </Link>
+              {featuredLiveCalculators.map((calculator, index) => (
+                <Link
+                  className={index === 0 ? "button" : "button secondary"}
+                  href={calculator.href}
+                  key={calculator.href}
+                >
+                  {calculator.title}
+                </Link>
+              ))}
               <Link className="button secondary" href="/ap-score-calculators/">
                 AP Score Calculators
               </Link>

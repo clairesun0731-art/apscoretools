@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
 
 const pageUrl = "https://www.apscoretools.com/when-do-ap-scores-come-out/";
 const lastUpdated = "June 4, 2026";
@@ -106,19 +107,7 @@ const afterReleaseItems = [
   "If you are unhappy with a score, review options such as retaking in a future year, withholding or canceling where applicable, or focusing on future coursework.",
 ];
 
-const liveCalculators = [
-  {
-    title: "AP Environmental Science Score Calculator",
-    description: "Estimate an unofficial APES score from MCQ and FRQ raw scores.",
-    href: "/ap-environmental-science-score-calculator/",
-  },
-  {
-    title: "AP Chemistry Score Calculator",
-    description:
-      "Estimate an unofficial AP Chemistry score from MCQ and FRQ raw scores.",
-    href: "/ap-chemistry-score-calculator/",
-  },
-];
+const liveCalculators = liveApCalculators.slice(0, 6);
 
 const faqs = [
   {
@@ -506,15 +495,20 @@ export default function WhenDoApScoresComeOutPage() {
                 <Link href="/ap-score-calculators/">
                   estimate your score before the official release
                 </Link>
-                . Live calculators include the{" "}
+                . Current live AP Score Tools calculators include subjects
+                across science, math, history and social science, and English.
+                Popular starting points include the{" "}
                 <Link href="/ap-environmental-science-score-calculator/">
                   AP Environmental Science Score Calculator
                 </Link>
-                {" "}and the{" "}
+                {" "}
+                and the{" "}
                 <Link href="/ap-chemistry-score-calculator/">
                   AP Chemistry Score Calculator
                 </Link>
-                .
+                . Browse the{" "}
+                <Link href="/ap-score-calculators/">AP Score Calculators</Link>{" "}
+                hub for the full live directory.
               </p>
             </section>
 

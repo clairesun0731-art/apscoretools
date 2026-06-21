@@ -1,5 +1,8 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { liveApCalculators } from "@/lib/apCalculatorDirectory";
+
+const featuredLiveCalculators = liveApCalculators.slice(0, 4);
 
 export type BetaCalculatorPageProps = {
   description: string;
@@ -128,17 +131,20 @@ export default function BetaCalculatorPage({
           <article className="card prose-card">
             <h2>Use a Verified Live AP Calculator</h2>
             <p>
-              AP Environmental Science and AP Chemistry are the fully live AP
-              Score Tools calculators right now. The {examName} calculator will
-              move out of beta only after its scoring model is reviewed.
+              AP Score Tools has multiple live subject calculators right now.
+              The {examName} calculator will move out of beta only after its
+              scoring model is reviewed.
             </p>
             <div className="hero-actions">
-              <Link className="button" href="/ap-environmental-science-score-calculator/">
-                AP Environmental Science Score Calculator
-              </Link>
-              <Link className="button secondary" href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
-              </Link>
+              {featuredLiveCalculators.map((calculator, index) => (
+                <Link
+                  className={index === 0 ? "button" : "button secondary"}
+                  href={calculator.href}
+                  key={calculator.href}
+                >
+                  {calculator.title}
+                </Link>
+              ))}
               <Link className="button secondary" href="/ap-score-calculators/">
                 AP Score Calculators
               </Link>

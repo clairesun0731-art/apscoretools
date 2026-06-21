@@ -4,24 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
+import {
+  comingSoonApCalculators,
+  getPrimaryCalculatorNavGroups,
+} from "@/lib/apCalculatorDirectory";
 
-const liveCalculatorLinks = [
-  {
-    href: "/ap-environmental-science-score-calculator/",
-    label: "AP Environmental Science",
-  },
-  {
-    href: "/ap-chemistry-score-calculator/",
-    label: "AP Chemistry",
-  },
-];
+const liveCalculatorGroups = getPrimaryCalculatorNavGroups()
+  .map((group) => ({
+    ...group,
+    items: group.items.filter((calculator) => calculator.status === "live"),
+  }))
+  .filter((group) => group.items.length > 0);
 
-const comingSoonLinks = [
-  "AP Biology",
-  "AP Calculus AB",
-  "AP English Language",
-  "AP U.S. History",
-];
+const mobileLiveCalculatorLinks = liveCalculatorGroups.flatMap((group) => group.items);
+
+const comingSoonLinks = comingSoonApCalculators.slice(0, 8);
 
 const guideLinks = [
   {
@@ -74,7 +71,7 @@ export default function Header() {
             </button>
             {isCalculatorMenuOpen && (
               <div
-                className="nav-dropdown calculator-nav-dropdown compact-calculator-dropdown"
+                className="nav-dropdown calculator-nav-dropdown"
                 onMouseLeave={closeCalculatorMenu}
               >
                 <div className="nav-dropdown-top">
@@ -87,25 +84,27 @@ export default function Header() {
                     AP Score Calculators Hub
                   </TrackedLink>
                 </div>
-                <div className="calculator-nav-grid compact-calculator-grid">
-                  <div className="nav-dropdown-section">
-                    <strong>Live Calculators</strong>
-                    {liveCalculatorLinks.map((calculator) => (
-                      <Link
-                        href={calculator.href}
-                        key={calculator.href}
-                        onClick={closeCalculatorMenu}
-                      >
-                        {calculator.label}
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="nav-dropdown-section">
+                <div className="calculator-nav-grid">
+                  {liveCalculatorGroups.map((group) => (
+                    <div className="nav-dropdown-section" key={group.category}>
+                      <strong>{group.displayName}</strong>
+                      {group.items.map((calculator) => (
+                        <Link
+                          href={calculator.href}
+                          key={calculator.href}
+                          onClick={closeCalculatorMenu}
+                        >
+                          {calculator.navTitle ?? calculator.shortTitle}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                  <div className="nav-dropdown-section nav-dropdown-section-muted">
                     <strong>Coming Soon</strong>
-                    {comingSoonLinks.map((label) => (
-                      <span className="nav-soon-item" key={label}>
-                        <span>{label}</span>
-                        <span className="nav-soon-badge">Coming Soon</span>
+                    {comingSoonLinks.map((calculator) => (
+                      <span className="nav-soon-item" key={calculator.href}>
+                        <span>{calculator.navTitle ?? calculator.shortTitle}</span>
+                        <span className="nav-soon-badge">Soon</span>
                       </span>
                     ))}
                   </div>
@@ -142,14 +141,14 @@ export default function Header() {
                 <div className="nav-dropdown-section">
                   <strong>AP Score Guides</strong>
                   {guideLinks.map((link) => (
-                    <Link
-                      href={link.href}
-                      key={link.href}
-                      onClick={closeGuidesMenu}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                      <Link
+                        href={link.href}
+                        key={link.href}
+                        onClick={closeGuidesMenu}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
                 </div>
               </div>
             )}
@@ -183,22 +182,22 @@ export default function Header() {
               >
                 AP Score Calculators Hub
               </TrackedLink>
-              {liveCalculatorLinks.map((calculator) => (
+              {mobileLiveCalculatorLinks.map((calculator) => (
                 <Link
                   href={calculator.href}
                   key={calculator.href}
                   onClick={closeMenu}
                 >
-                  {calculator.label}
+                  {calculator.navTitle ?? calculator.shortTitle}
                 </Link>
               ))}
               <details className="mobile-calculator-group">
                 <summary>Coming Soon</summary>
                 <div className="mobile-calculator-links">
-                  {comingSoonLinks.map((label) => (
-                    <span className="mobile-soon-item" key={label}>
-                      <span>{label}</span>
-                      <span className="nav-soon-badge">Coming Soon</span>
+                  {comingSoonLinks.map((calculator) => (
+                    <span className="mobile-soon-item" key={calculator.href}>
+                      <span>{calculator.navTitle ?? calculator.shortTitle}</span>
+                      <span className="nav-soon-badge">Soon</span>
                     </span>
                   ))}
                 </div>

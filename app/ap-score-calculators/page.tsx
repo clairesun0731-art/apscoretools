@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import {
+  comingSoonApCalculators,
+  liveApCalculators,
+} from "@/lib/apCalculatorDirectory";
 
 export const metadata: Metadata = {
   title: {
@@ -21,29 +25,9 @@ export const metadata: Metadata = {
   },
 };
 
-const liveCalculatorCards = [
-  {
-    title: "AP Environmental Science Score Calculator",
-    description:
-      "Estimate your unofficial APES score from MCQ and FRQ raw scores.",
-    href: "/ap-environmental-science-score-calculator/",
-  },
-  {
-    title: "AP Chemistry Score Calculator",
-    description:
-      "Estimate your unofficial AP Chemistry score from MCQ and FRQ raw scores.",
-    href: "/ap-chemistry-score-calculator/",
-  },
-];
-
-const comingSoonCalculatorCards = [
-  "AP Biology Score Calculator",
-  "AP Calculus AB Score Calculator",
-  "AP English Language Score Calculator",
-  "AP U.S. History Score Calculator",
-  "AP Human Geography Score Calculator",
-  "AP World History Score Calculator",
-];
+const liveCalculatorNames = liveApCalculators
+  .map((calculator) => calculator.shortTitle ?? calculator.title)
+  .join(", ");
 
 const faqItems = [
   {
@@ -63,8 +47,7 @@ const faqItems = [
   },
   {
     question: "Which AP score calculators are live right now?",
-    answer:
-      "The live AP Score Tools calculators are AP Environmental Science and AP Chemistry. Other subjects shown on this page are marked Coming Soon and should not be treated as live tools yet.",
+    answer: `Current live AP Score Tools calculators include ${liveCalculatorNames}. Other subjects shown on this page are marked Coming Soon and should not be treated as live tools yet.`,
   },
   {
     question: "Can I use these calculators for 2026 AP exams?",
@@ -85,7 +68,7 @@ const jsonLd = [
     name: "AP Score Calculators",
     url: "https://www.apscoretools.com/ap-score-calculators/",
     description:
-      "A free, unofficial AP score calculator hub with live AP Environmental Science and AP Chemistry estimators plus clearly marked coming soon tools.",
+      "A free, unofficial AP score calculator hub with live subject-specific estimators plus clearly marked coming soon tools.",
     isPartOf: {
       "@type": "WebSite",
       name: "AP Score Tools",
@@ -96,8 +79,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Live AP Score Calculators",
-    numberOfItems: liveCalculatorCards.length,
-    itemListElement: liveCalculatorCards.map((calculator, index) => ({
+    numberOfItems: liveApCalculators.length,
+    itemListElement: liveApCalculators.map((calculator, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: calculator.title,
@@ -151,9 +134,9 @@ export default function ApScoreCalculatorsPage() {
           <h1>AP Score Calculators</h1>
           <p className="lead">
             Use AP Score Tools to estimate your unofficial AP exam scores from
-            raw multiple-choice and free-response scores. Start with live
-            calculators for AP Environmental Science and AP Chemistry, or
-            browse upcoming AP score calculator tools.
+            raw multiple-choice and free-response scores. Start with current
+            live calculators by subject, or browse upcoming AP score calculator
+            tools that are clearly marked Coming Soon.
           </p>
           <p className="short-note">
             Results are unofficial estimates and may vary by year. Learn{" "}
@@ -178,11 +161,11 @@ export default function ApScoreCalculatorsPage() {
               </p>
             </div>
             <div className="featured-live-grid">
-              {liveCalculatorCards.map((calculator) => (
+              {liveApCalculators.map((calculator) => (
                 <Link
                   aria-label={`Open ${calculator.title}`}
                   href={calculator.href}
-                  key={calculator.title}
+                  key={calculator.href}
                 >
                   <article className="featured-tool-card">
                     <div>
@@ -206,18 +189,19 @@ export default function ApScoreCalculatorsPage() {
               </p>
             </div>
             <div className="coming-soon-grid">
-              {comingSoonCalculatorCards.map((title) => (
+              {comingSoonApCalculators.map((calculator) => (
                 <article
                   className="tool-card coming-soon"
-                  key={title}
+                  key={calculator.href}
                 >
                   <div>
                     <span className="status-pill soon">Coming Soon</span>
-                    <h3>{title}</h3>
+                    <h3>{calculator.title}</h3>
                     <p>
                       A planned unofficial AP score estimator for this subject.
                     </p>
                   </div>
+                  <span className="cta muted-cta">View status</span>
                 </article>
               ))}
             </div>
@@ -238,7 +222,7 @@ export default function ApScoreCalculatorsPage() {
               than official score prediction.
             </p>
             <p>
-              Start with the{" "}
+              Start with a live calculator like the{" "}
               <Link href="/ap-environmental-science-score-calculator/">
                 AP Environmental Science Score Calculator
               </Link>{" "}
@@ -246,7 +230,7 @@ export default function ApScoreCalculatorsPage() {
               <Link href="/ap-chemistry-score-calculator/">
                 AP Chemistry Score Calculator
               </Link>
-              . You can also read{" "}
+              , or browse the full live list above. You can also read{" "}
               <Link href="/how-ap-environmental-science-is-scored/">
                 how AP Environmental Science is scored
               </Link>

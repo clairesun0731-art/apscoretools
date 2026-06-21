@@ -2,39 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
+import {
+  comingSoonApCalculators,
+  liveApCalculators,
+} from "@/lib/apCalculatorDirectory";
 
 export const metadata: Metadata = {
   title: {
     absolute: "AP Score Tools | Free AP Score Calculators by Subject",
   },
   description:
-    "AP Score Tools helps students estimate unofficial AP exam scores from raw MCQ and FRQ scores, starting with AP Environmental Science and AP Chemistry calculators.",
+    "AP Score Tools helps students estimate unofficial AP exam scores from raw MCQ and FRQ scores with live AP score calculators by subject.",
   alternates: {
     canonical: "https://www.apscoretools.com/",
   },
 };
 
-const liveCalculatorCards = [
-  {
-    title: "AP Environmental Science Score Calculator",
-    description:
-      "Estimate your unofficial APES score from MCQ and FRQ raw scores.",
-    href: "/ap-environmental-science-score-calculator/",
-  },
-  {
-    title: "AP Chemistry Score Calculator",
-    description:
-      "Estimate your unofficial AP Chemistry score from MCQ and FRQ raw scores.",
-    href: "/ap-chemistry-score-calculator/",
-  },
-];
-
-const comingSoonCalculatorCards = [
-  "AP Biology Score Calculator",
-  "AP Calculus AB Score Calculator",
-  "AP English Language Score Calculator",
-  "AP U.S. History Score Calculator",
-];
+const homepageComingSoonCalculators = comingSoonApCalculators.slice(0, 8);
 
 const faqItems = [
   {
@@ -44,7 +28,7 @@ const faqItems = [
   {
     question: "What can I estimate with AP Score Tools?",
     answer:
-      "You can use live subject-specific AP exam score calculators for AP Environmental Science and AP Chemistry to enter raw section scores and get an unofficial estimated AP score from 1 to 5.",
+      "You can use live subject-specific AP exam score calculators to enter raw section scores and get an unofficial estimated AP score from 1 to 5.",
   },
   {
     question: "Are calculator results exact?",
@@ -76,7 +60,7 @@ const webPageSchema = {
   name: "AP Score Tools",
   url: "https://www.apscoretools.com/",
   description:
-    "AP Score Tools helps students estimate unofficial AP exam scores from MCQ and FRQ raw scores.",
+    "AP Score Tools helps students estimate unofficial AP exam scores from MCQ and FRQ raw scores with live calculators by subject.",
   isPartOf: {
     "@type": "WebSite",
     name: "AP Score Tools",
@@ -109,7 +93,8 @@ export default function Home() {
           <p className="lead">
             AP Score Tools helps students estimate unofficial AP exam scores
             from raw multiple-choice and free-response scores. Start with live
-            calculators for AP Environmental Science and AP Chemistry.
+            calculators by subject, then use Coming Soon labels as a roadmap for
+            planned tools.
           </p>
           <p className="trust-line">
             Unofficial AP score estimates · MCQ and FRQ raw scores · Not
@@ -129,15 +114,15 @@ export default function Home() {
             </a>
           </div>
           <p className="short-note">
-            Start with the{" "}
+            Start with popular live tools like the{" "}
             <Link href="/ap-environmental-science-score-calculator/">
               AP Environmental Science Score Calculator
             </Link>{" "}
             or the{" "}
             <Link href="/ap-chemistry-score-calculator/">
               AP Chemistry Score Calculator
-            </Link>
-            .
+            </Link>{" "}
+            and browse the full live calculator directory below.
           </p>
         </div>
       </section>
@@ -153,11 +138,11 @@ export default function Home() {
               </p>
             </div>
             <div className="featured-live-grid">
-              {liveCalculatorCards.map((calculator) => (
+              {liveApCalculators.map((calculator) => (
                 <Link
                   aria-label={`Open ${calculator.title}`}
                   href={calculator.href}
-                  key={calculator.title}
+                  key={calculator.href}
                 >
                   <article className="featured-tool-card">
                     <div>
@@ -181,15 +166,16 @@ export default function Home() {
               </p>
             </div>
             <div className="coming-soon-grid">
-              {comingSoonCalculatorCards.map((title) => (
-                <article className="tool-card coming-soon" key={title}>
+              {homepageComingSoonCalculators.map((calculator) => (
+                <article className="tool-card coming-soon" key={calculator.href}>
                   <div>
                     <span className="status-pill soon">Coming Soon</span>
-                    <h3>{title}</h3>
+                    <h3>{calculator.title}</h3>
                     <p>
                       A planned unofficial AP score estimator for this subject.
                     </p>
                   </div>
+                  <span className="cta muted-cta">View status</span>
                 </article>
               ))}
             </div>
