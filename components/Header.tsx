@@ -4,33 +4,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
-import { liveApCalculators, comingSoonApCalculators } from "@/lib/apCalculatorDirectory";
 
-const headerTopToolHrefs = [
-  "/ap-environmental-science-score-calculator/",
-  "/ap-chemistry-score-calculator/",
+const liveCalculatorLinks = [
+  {
+    href: "/ap-environmental-science-score-calculator/",
+    label: "AP Environmental Science",
+  },
+  {
+    href: "/ap-chemistry-score-calculator/",
+    label: "AP Chemistry",
+  },
 ];
-const headerTopTools = liveApCalculators.filter((calculator) =>
-  headerTopToolHrefs.includes(calculator.href),
-);
-const headerComingSoonTools = comingSoonApCalculators.slice(0, 2);
+
+const comingSoonLinks = [
+  "AP Biology",
+  "AP Calculus AB",
+  "AP English Language",
+  "AP U.S. History",
+];
 
 const guideLinks = [
   {
-    href: "/guides/",
-    label: "All AP Score Guides",
+    href: "/how-ap-environmental-science-is-scored/",
+    label: "How AP Environmental Science Is Scored",
   },
   {
-    href: "/guides/ap-score-release/",
-    label: "AP Score Release",
+    href: "/when-do-ap-scores-come-out/",
+    label: "When Do AP Scores Come Out?",
   },
   {
-    href: "/guides/ap-score-meaning/",
-    label: "AP Score Meaning",
-  },
-  {
-    href: "/guides/ap-scoring-guides/",
-    label: "AP Scoring Guides",
+    href: "/how-to-check-ap-scores/",
+    label: "How to Check AP Scores",
   },
 ];
 
@@ -70,7 +74,7 @@ export default function Header() {
             </button>
             {isCalculatorMenuOpen && (
               <div
-                className="nav-dropdown calculator-nav-dropdown"
+                className="nav-dropdown calculator-nav-dropdown compact-calculator-dropdown"
                 onMouseLeave={closeCalculatorMenu}
               >
                 <div className="nav-dropdown-top">
@@ -83,47 +87,38 @@ export default function Header() {
                     AP Score Calculators Hub
                   </TrackedLink>
                 </div>
-                <div className="nav-dropdown-section">
-                  <strong>Live tools</strong>
-                  {headerTopTools.map((calculator) => (
-                    <Link
-                      href={calculator.href}
-                      key={calculator.href}
-                      onClick={closeCalculatorMenu}
-                    >
-                      {calculator.navTitle}
-                    </Link>
-                  ))}
+                <div className="calculator-nav-grid compact-calculator-grid">
+                  <div className="nav-dropdown-section">
+                    <strong>Live Calculators</strong>
+                    {liveCalculatorLinks.map((calculator) => (
+                      <Link
+                        href={calculator.href}
+                        key={calculator.href}
+                        onClick={closeCalculatorMenu}
+                      >
+                        {calculator.label}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="nav-dropdown-section">
+                    <strong>Coming Soon</strong>
+                    {comingSoonLinks.map((label) => (
+                      <span className="nav-soon-item" key={label}>
+                        <span>{label}</span>
+                        <span className="nav-soon-badge">Coming Soon</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="nav-dropdown-section subtle">
-                  <strong>More calculators</strong>
-                  <p>
-                    Browse additional unofficial AP score calculators and
-                    planned tools in the hub.
-                  </p>
-                  <TrackedLink
-                    className="nav-dropdown-cta"
-                    eventName="calculator_hub_click"
-                    eventParams={{ source: "header_dropdown" }}
-                    href="/ap-score-calculators/"
-                    onClick={closeCalculatorMenu}
-                  >
-                    View all AP score calculators →
-                  </TrackedLink>
-                </div>
-                <div className="nav-dropdown-section">
-                  <strong>Coming Soon</strong>
-                  <p className="nav-soon-note">
-                    Planned tools are shown in the hub so students can discover
-                    upcoming subjects.
-                  </p>
-                  {headerComingSoonTools.map((calculator) => (
-                    <span className="nav-soon-item" key={calculator.href}>
-                      <span>{calculator.navTitle}</span>
-                      <span className="nav-soon-badge">Coming Soon</span>
-                    </span>
-                  ))}
-                </div>
+                <TrackedLink
+                  className="nav-dropdown-cta"
+                  eventName="calculator_hub_click"
+                  eventParams={{ source: "header_dropdown" }}
+                  href="/ap-score-calculators/"
+                  onClick={closeCalculatorMenu}
+                >
+                  Browse AP Score Calculators →
+                </TrackedLink>
               </div>
             )}
           </div>
@@ -186,20 +181,28 @@ export default function Header() {
                 href="/ap-score-calculators/"
                 onClick={closeMenu}
               >
-                AP Score Calculators
+                AP Score Calculators Hub
               </TrackedLink>
-              {headerTopTools.map((calculator) => (
+              {liveCalculatorLinks.map((calculator) => (
                 <Link
                   href={calculator.href}
                   key={calculator.href}
                   onClick={closeMenu}
                 >
-                  {calculator.navTitle}
+                  {calculator.label}
                 </Link>
               ))}
-              <span className="mobile-soon-note">
-                More live calculators and planned tools are available in the hub.
-              </span>
+              <details className="mobile-calculator-group">
+                <summary>Coming Soon</summary>
+                <div className="mobile-calculator-links">
+                  {comingSoonLinks.map((label) => (
+                    <span className="mobile-soon-item" key={label}>
+                      <span>{label}</span>
+                      <span className="nav-soon-badge">Coming Soon</span>
+                    </span>
+                  ))}
+                </div>
+              </details>
             </div>
             <div className="mobile-nav-group">
               <strong>Guides</strong>

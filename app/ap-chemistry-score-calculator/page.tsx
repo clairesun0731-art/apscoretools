@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     canonical: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
   },
   openGraph: {
-    title: "AP Chemistry Score Calculator | AP Score Tools",
+    title: "AP Chemistry Score Calculator | Estimate Your AP Chem Score",
     description:
-      "Use this free, unofficial AP Chemistry Score Calculator to estimate your AP Chem score from multiple-choice and free-response question scores.",
+      "Use this unofficial AP Chemistry score calculator to estimate your AP Chem score from MCQ and FRQ raw scores. Results are estimates and may vary.",
     url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
     siteName: "AP Score Tools",
     type: "website",
@@ -26,42 +26,48 @@ const faqItems = [
   {
     question: "Is this AP Chemistry score calculator official?",
     answer:
-      "No. This AP Chemistry score calculator is unofficial. Results are estimates and may vary by year; it is not endorsed by the College Board.",
+      "No. This AP Chemistry score calculator is unofficial. It provides estimated AP Chem score results for practice planning and is not affiliated with or endorsed by the College Board.",
   },
   {
     question: "How is the AP Chemistry exam scored?",
     answer:
-      "The exam combines multiple-choice and free-response sections. This estimator converts MCQ raw points to a 50-point MCQ section and FRQ raw points to a 50-point FRQ section, then sums them to a composite out of 100.",
+      "AP Chemistry includes a multiple-choice section and a free-response section. This calculator scales the MCQ raw score to an estimated score out of 50, scales the FRQ raw score to an estimated score out of 50, and combines them into a composite score out of 100.",
   },
   {
     question: "What composite score do I need for a 5 on AP Chemistry?",
     answer:
-      "In this estimator, a predicted 5 corresponds to a composite in the 75–100 range. Use these ranges as guidance — official cutoffs can change each year.",
+      "In this AP Chemistry score estimator, an estimated 5 starts at 75 composite points out of 100. Official score conversions may vary by year, so this is not a guaranteed cutoff.",
   },
   {
     question: "How are AP Chemistry MCQ and FRQ scores weighted?",
     answer:
-      "This calculator treats MCQ and FRQ as roughly equal halves, scaling MCQ to 50 and FRQ to 50 before combining them into a composite out of 100.",
+      "This AP Chem calculator treats MCQ and FRQ performance as equal halves of the estimated composite score. MCQ raw points are scaled to 50 points, and FRQ raw points are scaled to 50 points.",
   },
   {
     question: "Can I use this AP Chemistry calculator for 2026?",
     answer:
-      "Yes. You may use it for 2026 practice or post-exam estimates, but official scores are released by College Board and may differ.",
+      "Yes. You can use this AP Chemistry calculator for 2026 practice tests or post-exam estimates, but final official AP scores may differ because score conversions can vary.",
   },
   {
     question: "How accurate is this AP Chem score calculator?",
     answer:
-      "Accuracy depends on input quality and year-to-year conversion differences. This calculator gives an unofficial estimate for practice and planning, not an exact or guaranteed score.",
+      "Accuracy depends on how close your MCQ and FRQ inputs are to your actual performance and how the year's official conversion is set. Use the result as an unofficial estimate, not an exact score prediction.",
   },
 ];
-
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "AP Chemistry Score Calculator",
-    alternateName: ["AP Chem Score Calculator", "AP Chemistry Score Predictor"],
+    alternateName: [
+      "AP Chem Score Calculator",
+      "AP Chemistry Score Calculator 2026",
+      "AP Chem Calculator",
+      "AP Chemistry Calculator",
+      "AP Chemistry Score Estimator",
+      "AP Chemistry Score Predictor",
+    ],
     url: "https://www.apscoretools.com/ap-chemistry-score-calculator/",
     applicationCategory: "EducationalApplication",
     applicationSubCategory: "Score calculator",
@@ -79,6 +85,8 @@ const jsonLd = [
       "Estimate AP Chemistry composite score out of 100",
       "Map estimated composite score to a predicted AP score from 1 to 5",
     ],
+    description:
+      "An unofficial AP Chemistry score calculator that estimates an AP Chem composite score from MCQ and FRQ raw scores.",
   },
   {
     "@context": "https://schema.org",
@@ -136,26 +144,44 @@ export default function ApChemistryScoreCalculatorPage() {
           </div>
 
           <div className="brief-explain card mt-6">
-            <h3>How this AP Chemistry estimate works</h3>
+            <h2>How this AP Chemistry estimate works</h2>
             <p>
-              This calculator scales MCQ raw points (0–60) to a 50-point MCQ
-              section and converts FRQ raw total (0–46) to a 50-point FRQ
-              section. The two scaled section scores are added to give an
-              estimated composite out of 100 and mapped to an unofficial AP
-              score band.
+              This AP Chemistry score estimator converts your MCQ raw score
+              from 0-60 into an estimated scaled score out of 50. It also
+              converts your FRQ raw score from 0-46 into an estimated scaled
+              score out of 50.
             </p>
             <p>
-              Learn more in <Link href="/ap-score-calculators/">AP score calculators</Link> or compare with the <Link href="/ap-environmental-science-score-calculator/">AP Environmental Science Score Calculator</Link>. Check <Link href="/when-do-ap-scores-come-out/">AP score release dates</Link> for official timing.
+              Those two section estimates are added into an estimated composite
+              score out of 100, then mapped to an unofficial AP score estimate
+              from 1 to 5. Final AP score cutoffs may vary by year and exam
+              form, so use the result for practice planning only.
+            </p>
+            <p>
+              Browse other{" "}
+              <Link href="/ap-score-calculators/">AP score calculators</Link>{" "}
+              or compare with the{" "}
+              <Link href="/ap-environmental-science-score-calculator/">
+                AP Environmental Science Score Calculator
+              </Link>
+              .
             </p>
           </div>
 
-          <div className="release-note-card mt-4">
+          <div className="release-note-card mt-6">
+            <h3>Waiting for Official AP Scores?</h3>
             <p>
-              This calculator is unofficial and provides estimates only. Final
-              AP score conversions may vary by exam form and year.
+              Official 2026 AP scores are available starting July 6 through
+              College Board. This calculator gives an unofficial estimate only
+              and may vary from your actual AP score.
             </p>
-            <div className="disclaimer mt-4">
-              AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board. AP, Advanced Placement, and related exam names are trademarks of their respective owners. Calculator results are estimates only.
+            <div className="hero-actions">
+              <Link className="button secondary" href="/when-do-ap-scores-come-out/">
+                AP score release dates
+              </Link>
+              <Link className="button" href="/ap-score-calculators/">
+                AP score calculators
+              </Link>
             </div>
           </div>
         </div>
@@ -275,24 +301,28 @@ export default function ApChemistryScoreCalculatorPage() {
           </article>
 
           <article className="card prose-card">
-            <h2>Related AP Score Calculators</h2>
+            <h2>Related AP Score Tools Resources</h2>
             <p>
               Browse{" "}
-              <Link href="/ap-score-calculators/">AP Score Calculators</Link>,
+              <Link href="/ap-score-calculators/">AP score calculators</Link>,
               compare with the{" "}
-              <Link href="/ap-biology-score-calculator/">
-                AP Biology Score Calculator
-              </Link>
-              , use the{" "}
               <Link href="/ap-environmental-science-score-calculator/">
                 AP Environmental Science Score Calculator
               </Link>
-              , or check the{" "}
-              <Link href="/ap-human-geography-score-calculator/">
-                AP Human Geography Score Calculator
+              , or review{" "}
+              <Link href="/when-do-ap-scores-come-out/">
+                AP score release dates
               </Link>
-              . For scoring explanations, browse the{" "}
-              <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>.
+              .
+            </p>
+          </article>
+
+          <article className="disclaimer">
+            <p>
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. AP, Advanced Placement, and
+              related exam names are trademarks of their respective owners.
+              Calculator results are estimates only.
             </p>
           </article>
         </div>

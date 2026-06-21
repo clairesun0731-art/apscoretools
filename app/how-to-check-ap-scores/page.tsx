@@ -115,33 +115,16 @@ const relatedResources = [
     description: "Estimate an APES score from MCQ and FRQ raw scores.",
     href: "/ap-environmental-science-score-calculator/",
   },
-  {
-    title: "AP World History Score Calculator",
-    description: "Estimate an AP World History score from MCQ, SAQ, DBQ, and LEQ scores.",
-    href: "/ap-world-history-score-calculator/",
-  },
 ];
 
 const subjectCalculatorLinks = [
   {
-    label: "AP Environmental Science",
+    label: "AP Environmental Science Score Calculator",
     href: "/ap-environmental-science-score-calculator/",
   },
   {
-    label: "AP Chemistry",
+    label: "AP Chemistry Score Calculator",
     href: "/ap-chemistry-score-calculator/",
-  },
-  {
-    label: "AP Human Geography",
-    href: "/ap-human-geography-score-calculator/",
-  },
-  {
-    label: "AP Macroeconomics",
-    href: "/ap-macroeconomics-score-calculator/",
-  },
-  {
-    label: "AP World History",
-    href: "/ap-world-history-score-calculator/",
   },
 ];
 
@@ -383,11 +366,13 @@ export default function HowToCheckApScoresPage() {
                 AP Central or other College Board systems.
               </p>
               <p>
-                AP Score Tools calculators are unofficial estimates and are
-                not a replacement for official College Board score reports.
                 AP Score Tools cannot access official AP score records. It can
                 help you estimate scores before release day or understand how AP
                 scoring works.
+              </p>
+              <p>
+                AP Score Tools calculators are unofficial estimates and are not
+                a replacement for official College Board score reports.
               </p>
               <div className="hero-actions">
                 <a
@@ -397,7 +382,7 @@ export default function HowToCheckApScoresPage() {
                   Official AP Students Score Page
                 </a>
                 <Link className="button" href="/ap-score-calculators/">
-                  Try a Free AP Score Calculator
+                  AP Score Calculators
                 </Link>
               </div>
             </section>
@@ -410,11 +395,12 @@ export default function HowToCheckApScoresPage() {
                 officially confirms one.
               </p>
               <p>
-                For more timing details, read
+                For timing details, review{" "}
                 <Link href="/when-do-ap-scores-come-out/">
                   AP score release dates
                 </Link>
-                . Availability can vary by account, processing status, or score
+                .{" "}
+                Availability can vary by account, processing status, or score
                 matching. If your AP score is not visible immediately, check
                 again later and verify that your College Board account
                 information is correct.

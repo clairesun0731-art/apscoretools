@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import { getLiveCalculators } from "@/lib/apCalculatorDirectory";
 
 const pageUrl = "https://www.apscoretools.com/when-do-ap-scores-come-out/";
 const lastUpdated = "June 4, 2026";
@@ -107,7 +106,19 @@ const afterReleaseItems = [
   "If you are unhappy with a score, review options such as retaking in a future year, withholding or canceling where applicable, or focusing on future coursework.",
 ];
 
-const liveCalculators = getLiveCalculators().slice(0, 6);
+const liveCalculators = [
+  {
+    title: "AP Environmental Science Score Calculator",
+    description: "Estimate an unofficial APES score from MCQ and FRQ raw scores.",
+    href: "/ap-environmental-science-score-calculator/",
+  },
+  {
+    title: "AP Chemistry Score Calculator",
+    description:
+      "Estimate an unofficial AP Chemistry score from MCQ and FRQ raw scores.",
+    href: "/ap-chemistry-score-calculator/",
+  },
+];
 
 const faqs = [
   {
@@ -325,19 +336,10 @@ export default function WhenDoApScoresComeOutPage() {
                 </div>
               </div>
               <p>
-                Want an estimate before official scores appear? After checking
-                when AP scores are released, you can use AP Score Tools to
-                estimate unofficial results with available
-                <Link href="/ap-score-calculators/">AP Score Calculators</Link>.
-                Start with the
-                <Link href="/ap-environmental-science-score-calculator/">
-                  AP Environmental Science Score Calculator
-                </Link>
-                or the
-                <Link href="/ap-chemistry-score-calculator/">
-                  AP Chemistry Score Calculator
-                </Link>
-                , then return to the hub for more subjects.
+                After checking when AP scores are released, you can use AP
+                Score Tools to estimate unofficial scores with available{" "}
+                <Link href="/ap-score-calculators/">AP Score Calculators</Link>
+                .
               </p>
             </section>
 
@@ -504,25 +506,13 @@ export default function WhenDoApScoresComeOutPage() {
                 <Link href="/ap-score-calculators/">
                   estimate your score before the official release
                 </Link>
-                . Live calculators include{" "}
-                <Link href="/ap-chemistry-score-calculator/">
-                  AP Chemistry Score Calculator
-                </Link>
-                ,{" "}
+                . Live calculators include the{" "}
                 <Link href="/ap-environmental-science-score-calculator/">
                   AP Environmental Science Score Calculator
                 </Link>
-                ,{" "}
-                <Link href="/ap-human-geography-score-calculator/">
-                  AP Human Geography
-                </Link>
-                ,{" "}
-                <Link href="/ap-macroeconomics-score-calculator/">
-                  AP Macroeconomics
-                </Link>
-                , and{" "}
-                <Link href="/ap-world-history-score-calculator/">
-                  AP World History
+                {" "}and the{" "}
+                <Link href="/ap-chemistry-score-calculator/">
+                  AP Chemistry Score Calculator
                 </Link>
                 .
               </p>

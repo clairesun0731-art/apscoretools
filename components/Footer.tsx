@@ -52,17 +52,15 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div className="footer-legal-row">
-            <div className="footer-links footer-legal">
-              <strong>Legal / Disclaimer</strong>
-              <p>
-                AP Score Tools is unofficial and is not affiliated with or
-                endorsed by the College Board. AP, Advanced Placement, and
-                related exam names are trademarks of their respective owners.
-                Calculator results are estimates only.
-              </p>
-              <CookiePreferencesButton />
-            </div>
+          <div className="footer-links footer-legal">
+            <strong>Legal / Disclaimer</strong>
+            <p>
+              AP Score Tools is unofficial and is not affiliated with or
+              endorsed by the College Board. AP, Advanced Placement, and
+              related exam names are trademarks of their respective owners.
+              Calculator results are estimates only.
+            </p>
+            <CookiePreferencesButton />
           </div>
         </div>
       </div>
