@@ -6,10 +6,10 @@ import ApesCalculator from "./ApesCalculator";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AP Environmental Science Score Calculator | AP Score Tools",
+    absolute: "AP Environmental Science Score Calculator | Estimate Your APES Score",
   },
   description:
-    "Use this free, unofficial AP Environmental Science Score Calculator to estimate your APES score from MCQ and FRQ raw scores.",
+    "Use this unofficial AP Environmental Science score calculator to estimate your APES score from MCQ and FRQ raw scores. Results are estimates and may vary.",
   alternates: {
     canonical:
       "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
@@ -18,34 +18,34 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "When is the 2026 AP Environmental Science Exam?",
+    question: "Is this AP Environmental Science score calculator official?",
     answer:
-      "The regularly scheduled 2026 AP Environmental Science Exam is Friday, May 15, 2026, at 8 AM local time. Your school or AP coordinator can confirm your exact testing details.",
+      "No. This AP Environmental Science score calculator is unofficial. Results are estimates and may vary by year; it is not affiliated with or endorsed by the College Board.",
   },
   {
-    question: "When do 2026 AP scores come out?",
+    question: "How is the AP Environmental Science exam scored?",
     answer:
-      "2026 AP scores will be available starting Monday, July 6, 2026. Students can view their scores through their College Board account.",
+      "The exam combines multiple-choice and free-response sections. This estimator scales MCQ raw points to an estimated 78-point section and FRQ raw points to an estimated 52-point section, then sums them to a composite out of 130.",
   },
   {
-    question: "Can I use this calculator before the APES exam?",
+    question: "What composite score do I need for a 5 on AP Environmental Science?",
     answer:
-      "Yes. You can use it during review season to test different MCQ and FRQ score scenarios and see how they may affect your estimated AP score.",
+      "In this estimator, a predicted 5 corresponds to a composite in the 96–130 range. Use these ranges as guidance — official cutoffs can change each year.",
   },
   {
-    question: "Can I use this calculator after the APES exam?",
+    question: "Is AP Environmental Science curved?",
     answer:
-      "Yes. If you remember your approximate multiple-choice and free-response performance, you can use it to estimate your possible AP score before official scores are released.",
+      "Official AP score conversions vary by exam form and year. The College Board determines cutoffs; this tool provides an estimated mapping, not an official curve.",
   },
   {
-    question: "Is this APES score calculator official?",
+    question: "How accurate is this APES score calculator?",
     answer:
-      "No. This calculator provides an unofficial APES score estimate using estimated score boundaries.",
+      "Accuracy depends on input quality and year-to-year conversion differences. This calculator gives an unofficial estimate for practice and planning, not an exact or guaranteed score.",
   },
   {
-    question: "Do AP Environmental Science score cutoffs change every year?",
+    question: "Can I use this APES calculator for 2026?",
     answer:
-      "Yes, official AP score cutoffs can vary by year. This calculator uses estimated ranges based on common APES calculator models and past scoring patterns.",
+      "Yes. You may use it for 2026 practice or post-exam estimates, but remember official scores are released by College Board and may differ.",
   },
 ];
 
@@ -145,7 +145,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "AP Environmental Science Score Calculator 2026",
+    name: "AP Environmental Science Score Calculator",
     url: "https://www.apscoretools.com/ap-environmental-science-score-calculator/",
     description:
       "A free, unofficial APES score calculator page for estimating AP Environmental Science composite scores from MCQ and FRQ raw scores.",
@@ -209,29 +209,25 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
             </TrackedLink>
             <span>AP Environmental Science Score Calculator</span>
           </nav>
-          <span className="eyebrow">APES score predictor</span>
-          <h1>AP Environmental Science Score Calculator 2026</h1>
+          <span className="eyebrow">APES score estimator</span>
+          <h1>AP Environmental Science Score Calculator</h1>
           <p className="lead">
-            Use this APES score calculator to estimate your AP Environmental
-            Science score from MCQ and FRQ raw scores. Results are unofficial
-            estimates and may vary by exam year.
+            Enter your AP Environmental Science MCQ and FRQ raw scores to
+            estimate your unofficial AP score. This calculator uses an
+            estimated composite score model and should be used for practice
+            planning only.
           </p>
-          <div className="benefit-row">
-            <span>Free to use</span>
-            <span>MCQ + FRQ breakdown</span>
-            <span>Estimated AP score 1-5</span>
-          </div>
 
           <div className="centered-calculator-panel" id="calculator">
             <ApesCalculator mode="full" />
           </div>
 
           <div className="release-note-card mt-6">
-            <h3>Waiting for Official AP Scores?</h3>
+            <h3>About this estimator</h3>
             <p>
-              Official 2026 AP scores are available starting July 6 through
-              College Board. This calculator gives an unofficial estimate only
-              and may vary from your actual AP score.
+              This calculator provides an unofficial estimate only and may
+              differ from official College Board score conversions. Use it for
+              practice and planning.
             </p>
             <div className="hero-actions">
               <Link className="button secondary" href="/when-do-ap-scores-come-out/">
@@ -240,14 +236,30 @@ export default function ApEnvironmentalScienceScoreCalculatorPage() {
               <Link className="button secondary" href="/how-to-check-ap-scores/">
                 How to Check AP Scores
               </Link>
-              <Link className="button" href="/ap-score-calculators/">
-                Browse all AP score calculators
-              </Link>
             </div>
           </div>
 
-          <p className="inline-disclaimer tool-hero-note">
-            Unofficial estimate. Final AP score conversions may vary by year.
+          <div className="brief-explain card mt-6">
+            <h3>How this APES estimate works</h3>
+            <p>
+              The calculator converts your MCQ raw score (0–80) to an
+              estimated MCQ scaled score out of 78, converts FRQ raw total
+              (0–30) to an estimated FRQ scaled score out of 52, then adds them
+              to a composite score out of 130 and maps that to an unofficial
+              AP score band.
+            </p>
+            <p>
+              Learn more about scoring and section conversions in the
+              <Link href="/how-ap-environmental-science-is-scored/"> how AP Environmental Science is scored</Link> guide, or browse other
+              tools in <Link href="/ap-score-calculators/">AP score calculators</Link>. Compare with the
+              <Link href="/ap-chemistry-score-calculator/"> AP Chemistry Score Calculator</Link> as needed.
+            </p>
+          </div>
+
+          <p className="tool-hero-note">Enter scores above to see an estimate.</p>
+
+          <p className="full-disclaimer mt-4">
+            AP Score Tools is unofficial and is not affiliated with or endorsed by the College Board. AP, Advanced Placement, and related exam names are trademarks of their respective owners. Calculator results are estimates only.
           </p>
         </div>
       </section>

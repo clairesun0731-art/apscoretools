@@ -3,7 +3,7 @@ import Link from "next/link";
 import CalculatorDirectory from "@/components/CalculatorDirectory";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
-import { liveApCalculators } from "@/lib/apCalculatorDirectory";
+import { liveApCalculators, comingSoonApCalculators } from "@/lib/apCalculatorDirectory";
 
 export const metadata: Metadata = {
   title: {
@@ -71,17 +71,15 @@ export default function Home() {
 
       <section className="hero-tool directory-hero">
         <div className="container centered-hero-copy">
-          <span className="eyebrow">AP score calculator by subject</span>
-          <h1>Free AP Score Calculators by Subject</h1>
+          <span className="eyebrow">AP score calculators</span>
+          <h1>AP Score Tools</h1>
           <p className="lead">
-            Estimate your AP exam score with free, unofficial AP score
-            calculators for AP Statistics, AP Calculus BC, AP U.S. Government,
-            AP Psychology, AP English Language, AP U.S. History, AP Biology,
-            AP Chemistry, and more.
+            AP Score Tools helps students estimate unofficial AP exam scores
+            from raw multiple-choice and free-response points. Start with
+            live calculators for AP Environmental Science and AP Chemistry.
           </p>
           <p className="trust-line">
-            Unofficial AP score estimates · Subject-specific calculators · Not
-            affiliated with the College Board
+            Unofficial estimates · Subject-specific calculators · Not affiliated with the College Board
           </p>
           <div className="hero-actions centered-actions">
             <TrackedLink
@@ -90,31 +88,12 @@ export default function Home() {
               eventParams={{ source: "homepage_hero" }}
               href="/ap-score-calculators/"
             >
-              View All AP Score Calculators
+              Browse AP score calculators
             </TrackedLink>
-            <a className="button secondary" href="#live-ap-calculators">
-              Try a Live Calculator
-            </a>
           </div>
-          <div className="release-banner mt-6">
-            <div className="release-banner-inner">
-              <h3>AP Scores Release Soon</h3>
-              <p>
-                2026 AP scores are available starting July 6, 2026. While
-                official scores must be checked through College Board, you can
-                use AP Score Tools to estimate possible scores with unofficial
-                calculators.
-              </p>
-              <div className="hero-actions">
-                <Link className="button" href="/when-do-ap-scores-come-out/">
-                  When Do AP Scores Come Out?
-                </Link>
-                <Link className="button secondary" href="/ap-score-calculators/">
-                  Browse AP Score Calculators
-                </Link>
-              </div>
-            </div>
-          </div>
+          <p className="hero-links">
+            Start with the <Link href="/ap-environmental-science-score-calculator/">AP Environmental Science Score Calculator</Link> or the <Link href="/ap-chemistry-score-calculator/">AP Chemistry Score Calculator</Link>, then browse the <Link href="/ap-score-calculators/">AP Score Calculators</Link> hub.
+          </p>
         </div>
       </section>
 
@@ -124,31 +103,71 @@ export default function Home() {
             <div className="section-heading compact-heading centered-section-heading">
               <h2>Live AP Score Calculators</h2>
               <p>
-                Choose a live AP exam score calculator, enter your raw section
-                scores, and get an unofficial AP score estimate from 1 to 5.
+                Choose a live AP exam score calculator below. Live tools are
+                prioritized for quick access on mobile and desktop.
               </p>
             </div>
+
             <div className="homepage-live-grid">
-              {liveApCalculators.map((calculator) => (
-                <Link
-                  aria-label={`Use ${calculator.title}`}
-                  href={calculator.href}
-                  key={calculator.title}
-                >
-                  <article className="homepage-live-card">
-                    <div>
-                      <div className="homepage-card-badges">
-                        <span>Live</span>
-                        {calculator.aliases?.slice(0, 1).map((alias) => (
-                          <span key={alias}>{alias}</span>
-                        ))}
+              {/* Featured: APES and AP Chemistry first */}
+              {liveApCalculators
+                .filter((c) =>
+                  [
+                    "/ap-environmental-science-score-calculator/",
+                    "/ap-chemistry-score-calculator/",
+                  ].includes(c.href),
+                )
+                .map((calculator) => (
+                  <Link aria-label={`Open ${calculator.title}`} href={calculator.href} key={calculator.href}>
+                    <article className="homepage-live-card featured">
+                      <div>
+                        <h3>{calculator.title}</h3>
+                        <p>
+                          {calculator.href.includes("environmental")
+                            ? "Estimate your unofficial APES score from MCQ and FRQ raw scores."
+                            : "Estimate your unofficial AP Chemistry score from MCQ and FRQ raw scores."}
+                        </p>
                       </div>
-                      <h3>{calculator.title}</h3>
-                      <p>{calculator.description}</p>
-                    </div>
-                    <span>Use Calculator →</span>
-                  </article>
-                </Link>
+                      <span>Open calculator →</span>
+                    </article>
+                  </Link>
+                ))}
+
+              {/* Other live calculators */}
+              {liveApCalculators
+                .filter(
+                  (c) =>
+                    ![
+                      "/ap-environmental-science-score-calculator/",
+                      "/ap-chemistry-score-calculator/",
+                    ].includes(c.href),
+                )
+                .map((calculator) => (
+                  <Link aria-label={`Use ${calculator.title}`} href={calculator.href} key={calculator.title}>
+                    <article className="homepage-live-card">
+                      <div>
+                        <div className="homepage-card-badges">
+                          <span>Live</span>
+                          {calculator.aliases?.slice(0, 1).map((alias) => (
+                            <span key={alias}>{alias}</span>
+                          ))}
+                        </div>
+                        <h3>{calculator.title}</h3>
+                        <p>{calculator.description}</p>
+                      </div>
+                      <span>Use Calculator →</span>
+                    </article>
+                  </Link>
+                ))}
+            </div>
+
+            {/* Compact Coming Soon strip - de-emphasized */}
+            <div className="coming-soon-strip mt-4">
+              {comingSoonApCalculators.slice(0, 6).map((c) => (
+                <div key={c.slug} className="coming-soon-pill" aria-hidden>
+                  <span className="pill-title">{c.shortTitle ?? c.title}</span>
+                  <small>Coming Soon</small>
+                </div>
               ))}
             </div>
           </section>

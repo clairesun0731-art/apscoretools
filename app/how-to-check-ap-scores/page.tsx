@@ -383,6 +383,8 @@ export default function HowToCheckApScoresPage() {
                 AP Central or other College Board systems.
               </p>
               <p>
+                AP Score Tools calculators are unofficial estimates and are
+                not a replacement for official College Board score reports.
                 AP Score Tools cannot access official AP score records. It can
                 help you estimate scores before release day or understand how AP
                 scoring works.
@@ -408,7 +410,11 @@ export default function HowToCheckApScoresPage() {
                 officially confirms one.
               </p>
               <p>
-                Availability can vary by account, processing status, or score
+                For more timing details, read
+                <Link href="/when-do-ap-scores-come-out/">
+                  AP score release dates
+                </Link>
+                . Availability can vary by account, processing status, or score
                 matching. If your AP score is not visible immediately, check
                 again later and verify that your College Board account
                 information is correct.

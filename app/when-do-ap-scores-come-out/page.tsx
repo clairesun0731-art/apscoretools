@@ -325,11 +325,19 @@ export default function WhenDoApScoresComeOutPage() {
                 </div>
               </div>
               <p>
-                Want an estimate before official scores appear? Try a free{" "}
-                <Link href="/ap-score-calculators/">
-                  AP score calculator by subject
+                Want an estimate before official scores appear? After checking
+                when AP scores are released, you can use AP Score Tools to
+                estimate unofficial results with available
+                <Link href="/ap-score-calculators/">AP Score Calculators</Link>.
+                Start with the
+                <Link href="/ap-environmental-science-score-calculator/">
+                  AP Environmental Science Score Calculator
                 </Link>
-                .
+                or the
+                <Link href="/ap-chemistry-score-calculator/">
+                  AP Chemistry Score Calculator
+                </Link>
+                , then return to the hub for more subjects.
               </p>
             </section>
 
@@ -497,10 +505,12 @@ export default function WhenDoApScoresComeOutPage() {
                   estimate your score before the official release
                 </Link>
                 . Live calculators include{" "}
-                <Link href="/ap-chemistry-score-calculator/">AP Chemistry</Link>
+                <Link href="/ap-chemistry-score-calculator/">
+                  AP Chemistry Score Calculator
+                </Link>
                 ,{" "}
                 <Link href="/ap-environmental-science-score-calculator/">
-                  AP Environmental Science
+                  AP Environmental Science Score Calculator
                 </Link>
                 ,{" "}
                 <Link href="/ap-human-geography-score-calculator/">

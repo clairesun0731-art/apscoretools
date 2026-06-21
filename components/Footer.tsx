@@ -1,9 +1,6 @@
 import Link from "next/link";
 import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 import TrackedLink from "@/components/TrackedLink";
-import { getPrimaryCalculatorNavGroups } from "@/lib/apCalculatorDirectory";
-
-const calculatorNavGroups = getPrimaryCalculatorNavGroups();
 
 export default function Footer() {
   return (
@@ -18,10 +15,9 @@ export default function Footer() {
         </div>
 
         <div className="footer-content">
-          <div className="footer-link-groups">
-            <nav className="footer-links" aria-label="AP Score Tools">
-              <strong>AP Score Tools</strong>
-              <Link href="/">Home</Link>
+          <div className="footer-link-groups footer-columns">
+            <nav className="footer-links" aria-label="Calculators">
+              <strong>Calculators</strong>
               <TrackedLink
                 eventName="calculator_hub_click"
                 eventParams={{ source: "footer" }}
@@ -29,53 +25,32 @@ export default function Footer() {
               >
                 AP Score Calculators
               </TrackedLink>
-              <Link href="/about/">About</Link>
-              <Link href="/guides/">AP Score Guides</Link>
-              <Link href="/privacy-policy/">Privacy Policy</Link>
-              <Link href="/terms-of-use/">Terms of Use</Link>
+              <Link href="/ap-environmental-science-score-calculator/">
+                AP Environmental Science Score Calculator
+              </Link>
+              <Link href="/ap-chemistry-score-calculator/">
+                AP Chemistry Score Calculator
+              </Link>
             </nav>
 
-            <nav className="footer-links" aria-label="AP Score Guides">
-              <strong>AP Score Guides</strong>
+            <nav className="footer-links" aria-label="Guides">
+              <strong>Guides</strong>
+              <Link href="/how-ap-environmental-science-is-scored/">
+                How AP Environmental Science Is Scored
+              </Link>
               <Link href="/when-do-ap-scores-come-out/">
                 When Do AP Scores Come Out?
               </Link>
               <Link href="/how-to-check-ap-scores/">How to Check AP Scores</Link>
-              <Link href="/what-do-ap-scores-mean/">
-                What Do AP Scores Mean?
-              </Link>
-              <Link href="/guides/ap-score-release/">
-                AP Score Release Guides
-              </Link>
-              <Link href="/guides/ap-score-meaning/">
-                AP Score Meaning Guides
-              </Link>
-              <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>
+            </nav>
+
+            <nav className="footer-links" aria-label="Legal">
+              <strong>Legal</strong>
+              <Link href="/about/">About</Link>
+              <Link href="/privacy-policy/">Privacy Policy</Link>
+              <Link href="/terms-of-use/">Terms of Use</Link>
             </nav>
           </div>
-
-          <nav
-            aria-label="AP calculator links by category"
-            className="footer-calculator-nav"
-          >
-            {calculatorNavGroups.map((group) => (
-              <div className="footer-calculator-column" key={group.category}>
-                <strong>{group.displayName}</strong>
-                {group.items.map((calculator) =>
-                  calculator.status === "live" ? (
-                    <Link href={calculator.href} key={calculator.href}>
-                      {calculator.navTitle}
-                    </Link>
-                  ) : (
-                    <span className="footer-soon-item" key={calculator.href}>
-                      <span>{calculator.navTitle}</span>
-                      <span>Coming Soon</span>
-                    </span>
-                  ),
-                )}
-              </div>
-            ))}
-          </nav>
 
           <div className="footer-legal-row">
             <div className="footer-links footer-legal">

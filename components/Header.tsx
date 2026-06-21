@@ -4,9 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
-import { getPrimaryCalculatorNavGroups } from "@/lib/apCalculatorDirectory";
+import { liveApCalculators, comingSoonApCalculators } from "@/lib/apCalculatorDirectory";
 
-const calculatorNavGroups = getPrimaryCalculatorNavGroups();
+const headerTopToolHrefs = [
+  "/ap-environmental-science-score-calculator/",
+  "/ap-chemistry-score-calculator/",
+];
+const headerTopTools = liveApCalculators.filter((calculator) =>
+  headerTopToolHrefs.includes(calculator.href),
+);
+const headerComingSoonTools = comingSoonApCalculators.slice(0, 2);
 
 const guideLinks = [
   {
@@ -73,41 +80,50 @@ export default function Header() {
                     href="/ap-score-calculators/"
                     onClick={closeCalculatorMenu}
                   >
-                    All AP Score Calculators
+                    AP Score Calculators Hub
                   </TrackedLink>
                 </div>
-                <div className="calculator-nav-grid">
-                  {calculatorNavGroups.map((group) => (
-                    <div className="nav-dropdown-section" key={group.category}>
-                      <strong>{group.displayName}</strong>
-                      {group.items.map((calculator) =>
-                        calculator.status === "live" ? (
-                          <Link
-                            href={calculator.href}
-                            key={calculator.href}
-                            onClick={closeCalculatorMenu}
-                          >
-                            {calculator.navTitle}
-                          </Link>
-                        ) : (
-                          <span className="nav-soon-item" key={calculator.href}>
-                            <span>{calculator.navTitle}</span>
-                            <span className="nav-soon-badge">Coming Soon</span>
-                          </span>
-                        ),
-                      )}
-                    </div>
+                <div className="nav-dropdown-section">
+                  <strong>Live tools</strong>
+                  {headerTopTools.map((calculator) => (
+                    <Link
+                      href={calculator.href}
+                      key={calculator.href}
+                      onClick={closeCalculatorMenu}
+                    >
+                      {calculator.navTitle}
+                    </Link>
                   ))}
                 </div>
-                <TrackedLink
-                  className="nav-dropdown-cta"
-                  eventName="calculator_hub_click"
-                  eventParams={{ source: "header_dropdown" }}
-                  href="/ap-score-calculators/"
-                  onClick={closeCalculatorMenu}
-                >
-                  View All AP Score Calculators →
-                </TrackedLink>
+                <div className="nav-dropdown-section subtle">
+                  <strong>More calculators</strong>
+                  <p>
+                    Browse additional unofficial AP score calculators and
+                    planned tools in the hub.
+                  </p>
+                  <TrackedLink
+                    className="nav-dropdown-cta"
+                    eventName="calculator_hub_click"
+                    eventParams={{ source: "header_dropdown" }}
+                    href="/ap-score-calculators/"
+                    onClick={closeCalculatorMenu}
+                  >
+                    View all AP score calculators →
+                  </TrackedLink>
+                </div>
+                <div className="nav-dropdown-section">
+                  <strong>Coming Soon</strong>
+                  <p className="nav-soon-note">
+                    Planned tools are shown in the hub so students can discover
+                    upcoming subjects.
+                  </p>
+                  {headerComingSoonTools.map((calculator) => (
+                    <span className="nav-soon-item" key={calculator.href}>
+                      <span>{calculator.navTitle}</span>
+                      <span className="nav-soon-badge">Coming Soon</span>
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -170,31 +186,20 @@ export default function Header() {
                 href="/ap-score-calculators/"
                 onClick={closeMenu}
               >
-                All AP Score Calculators
+                AP Score Calculators
               </TrackedLink>
-              {calculatorNavGroups.map((group) => (
-                <details className="mobile-calculator-group" key={group.category}>
-                  <summary>{group.displayName}</summary>
-                  <div className="mobile-calculator-links">
-                    {group.items.map((calculator) =>
-                      calculator.status === "live" ? (
-                        <Link
-                          href={calculator.href}
-                          key={calculator.href}
-                          onClick={closeMenu}
-                        >
-                          {calculator.navTitle}
-                        </Link>
-                      ) : (
-                        <span className="mobile-soon-item" key={calculator.href}>
-                          <span>{calculator.navTitle}</span>
-                          <span className="nav-soon-badge">Coming Soon</span>
-                        </span>
-                      ),
-                    )}
-                  </div>
-                </details>
+              {headerTopTools.map((calculator) => (
+                <Link
+                  href={calculator.href}
+                  key={calculator.href}
+                  onClick={closeMenu}
+                >
+                  {calculator.navTitle}
+                </Link>
               ))}
+              <span className="mobile-soon-note">
+                More live calculators and planned tools are available in the hub.
+              </span>
             </div>
             <div className="mobile-nav-group">
               <strong>Guides</strong>
