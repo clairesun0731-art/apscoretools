@@ -22,6 +22,10 @@ const comingSoonLinks = comingSoonApCalculators.slice(0, 8);
 
 const guideLinks = [
   {
+    href: "/ap-score-distributions/",
+    label: "AP Score Distributions",
+  },
+  {
     href: "/how-ap-environmental-science-is-scored/",
     label: "How AP Environmental Science Is Scored",
   },

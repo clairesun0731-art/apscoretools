@@ -145,6 +145,10 @@ export default function ApScoreCalculatorsPage() {
             </Link>{" "}
             or{" "}
             <Link href="/how-to-check-ap-scores/">how to check AP scores</Link>
+            . Compare national results in our{" "}
+            <Link href="/ap-score-distributions/">
+              2026 AP Score Distributions
+            </Link>
             .
           </p>
         </div>

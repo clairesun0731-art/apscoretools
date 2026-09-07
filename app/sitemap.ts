@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://www.apscoretools.com/ap-score-distributions/",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.86,
+    },
+    {
       url: "https://www.apscoretools.com/guides/",
       lastModified,
       changeFrequency: "weekly",
