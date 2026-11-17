@@ -1,5 +1,16 @@
 # AGENTS.md — AP Score Tools
 
+
+## Current Implementation — November 17, 2026
+
+The user authorized launching the eight calculators formerly shown as Coming Soon on the homepage. The directory in `lib/apCalculatorDirectory.ts` is the source of truth for live status; historical lists below may be stale.
+
+Added Physics 1, Physics 2, Physics C Mechanics, Physics C E&M, Computer Science A, Computer Science Principles, Microeconomics, and European History. There are now 21 live calculators. Other subjects remain Coming Soon.
+
+New pages reuse `SubjectCalculatorPage` and `GenericScoreCalculator`. Data and per-page source links are in `lib/newCalculatorPages.ts`; scoring arithmetic is in `lib/genericScoring.ts`. See `docs/calculator-models.md` for exam versions and projected threshold provenance. Never present these thresholds as official current-year boundaries. New physics inputs target May 2027 (42 MCQs); CSA uses the revised 42-MCQ, 25-FRQ-point format.
+
+Validation: `npm run build`, `npm run lint`, and `node scripts/test-new-calculators.mjs` (Node 22.18+ with native TypeScript stripping). Preserve existing analytics, consent handling, and AdSense configuration.
+
 ## Project Overview
 
 AP Score Tools is a free, unofficial educational tool website for U.S. AP students.

@@ -4,6 +4,15 @@ const lastModified = new Date("2026-06-13T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    { url: "https://www.apscoretools.com/ap-physics-1-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-physics-2-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-physics-c-mechanics-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-physics-c-electricity-and-magnetism-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-computer-science-a-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-computer-science-principles-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-microeconomics-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+    { url: "https://www.apscoretools.com/ap-european-history-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
+
     {
       url: "https://www.apscoretools.com/",
       lastModified,

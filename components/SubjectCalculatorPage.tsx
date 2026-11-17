@@ -18,6 +18,8 @@ export type RelatedCalculator = {
 };
 
 export type SubjectCalculatorPageProps = {
+  sources?: Array<{ label: string; href: string }>;
+  modelDescription?: string;
   calculator: GenericCalculatorProps;
   calculatorTitle: string;
   chartTitle: string;
@@ -49,6 +51,8 @@ function formatScoreBands(scoreBands: GenericScoreBand[]) {
 
 export default function SubjectCalculatorPage({
   calculator,
+  sources,
+  modelDescription,
   calculatorTitle,
   chartTitle,
   description,
@@ -161,6 +165,7 @@ export default function SubjectCalculatorPage({
         <div className="container content-stack">
           <article className="card prose-card">
             <h2>{chartTitle}</h2>
+            {modelDescription && <p>{modelDescription}</p>}
             <div className="table-wrap">
               <table>
                 <thead>
@@ -173,7 +178,9 @@ export default function SubjectCalculatorPage({
                   {scoreBands.map((band) => (
                     <tr key={band.score}>
                       <td>
-                        {band.min}-{band.max}
+                        {calculator.continuousBands
+                          ? `${band.min} ${band.score === 5 ? "to" : "to below"} ${band.max}`
+                          : `${band.min}-${band.max}`}
                       </td>
                       <td>{band.score}</td>
                     </tr>
@@ -277,6 +284,13 @@ export default function SubjectCalculatorPage({
             </div>
           </article>
 
+          {sources && (
+            <article className="card prose-card">
+              <h2>Scoring Sources and Assumptions</h2>
+              <p>College Board sources describe the exam. Third-party calculator sources provide planning estimates, not official cut scores. Competitor models can disagree, especially after exam changes.</p>
+              <ul>{sources.map((source) => <li key={source.href}><a href={source.href} rel="noopener noreferrer" target="_blank">{source.label}</a></li>)}</ul>
+            </article>
+          )}
           <article className="card prose-card">
             <h2>Related AP Score Calculators</h2>
             <p>{relatedIntro}</p>

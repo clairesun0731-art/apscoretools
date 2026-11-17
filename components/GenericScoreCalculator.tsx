@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { trackEvent } from "@/lib/gtag";
+import { calculateGenericScore } from "@/lib/genericScoring";
 import { getScoreMessage } from "@/lib/scoreMessages";
 
 export type GenericScoreBand = {
@@ -35,6 +36,8 @@ export type GenericCalculatorSection = {
 };
 
 export type GenericCalculatorProps = {
+  continuousBands?: boolean;
+  modelNote?: string;
   ariaLabel: string;
   calculatorName: string;
   compositeMax: number;
@@ -62,13 +65,6 @@ function formatScore(value: number, max: number) {
 function formatRawScore(value: number, max: number) {
   const score = Math.min(value, max);
   return Number.isInteger(score) ? score.toString() : score.toFixed(1);
-}
-
-function getScoreFromBands(scoreBands: GenericScoreBand[], composite: number) {
-  return (
-    scoreBands.find((band) => composite >= band.min)?.score ??
-    scoreBands[scoreBands.length - 1].score
-  );
 }
 
 function ScoreField({
@@ -131,6 +127,8 @@ function ScoreField({
 
 export default function GenericScoreCalculator({
   ariaLabel,
+  continuousBands,
+  modelNote,
   calculatorName,
   compositeMax,
   defaultValues,
@@ -146,24 +144,9 @@ export default function GenericScoreCalculator({
   const hasInteractedRef = useRef(false);
 
   const result = useMemo(() => {
-    const sectionResults = sections.map((section) => {
-      const raw = section.fieldIds.reduce(
-        (total, fieldId) => total + (values[fieldId] ?? 0),
-        0,
-      );
-      const weighted = (raw / section.rawMax) * section.weightedMax;
-
-      return {
-        ...section,
-        raw,
-        weighted: Math.min(weighted, section.weightedMax),
-      };
-    });
-    const composite = Math.min(
-      sectionResults.reduce((total, section) => total + section.weighted, 0),
-      compositeMax,
+    const { sectionResults, composite, score } = calculateGenericScore(
+      { groups, sections, compositeMax, scoreBands }, values,
     );
-    const score = getScoreFromBands(scoreBands, composite);
     const scoreBand =
       scoreBands.find((band) => band.score === score) ?? scoreBands[0];
     const nextBand = scoreBands.find((band) => band.score === score + 1);
@@ -177,11 +160,11 @@ export default function GenericScoreCalculator({
       composite,
       pointsToNextBand,
       score,
-      scoreBand: `AP Score ${score} (${scoreBand.min}-${scoreBand.max} composite)`,
+      scoreBand: `AP Score ${score} (${scoreBand.min}${continuousBands ? (score === 5 ? " to " : " to below ") : "-"}${scoreBand.max} composite)`,
       scoreMessage: getScoreMessage(score),
       sectionResults,
     };
-  }, [compositeMax, scoreBands, sections, values]);
+  }, [compositeMax, continuousBands, groups, scoreBands, sections, values]);
 
   function handleInputChange(fieldId: string, value: number) {
     setValues((currentValues) => ({ ...currentValues, [fieldId]: value }));
@@ -234,11 +217,16 @@ export default function GenericScoreCalculator({
         </p>
       </div>
 
+      {modelNote && <p className="calculator-model-note">{modelNote}</p>}
       <div className="calculator-body chemistry-calculator-body">
         <form
           className="input-card chemistry-input-card"
           onSubmit={(event) => event.preventDefault()}
         >
+          {modelNote && <button className="button secondary" type="button" onClick={() => {
+            setValues(defaultValues);
+            hasInteractedRef.current = true;
+          }}>Reset scores</button>}
           {groups.map((group) => (
             <div className="chem-input-section" key={group.heading}>
               <div className="chem-input-section-heading">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 import TrackedLink from "@/components/TrackedLink";
-import { liveApCalculators } from "@/lib/apCalculatorDirectory";
+import { liveApCalculators, calculatorCategoryOrder } from "@/lib/apCalculatorDirectory";
 
 export default function Footer() {
   return (
@@ -26,11 +26,6 @@ export default function Footer() {
               >
                 AP Score Calculators
               </TrackedLink>
-              {liveApCalculators.map((calculator) => (
-                <Link href={calculator.href} key={calculator.href}>
-                  {calculator.title}
-                </Link>
-              ))}
               <Link href="/ap-score-calculators/">
                 More AP calculators coming soon
               </Link>
@@ -55,6 +50,17 @@ export default function Footer() {
               <Link href="/terms-of-use/">Terms of Use</Link>
             </nav>
           </div>
+
+          <nav className="footer-calculator-nav" aria-label="Calculators by subject">
+            {calculatorCategoryOrder.map((category) => {
+              const calculators = liveApCalculators.filter((item) => item.category === category);
+              if (!calculators.length) return null;
+              return <div className="footer-calculator-column" key={category}>
+                <strong>{category}</strong>
+                {calculators.map((calculator) => <Link key={calculator.href} href={calculator.href}>{calculator.navTitle ?? calculator.shortTitle}</Link>)}
+              </div>;
+            })}
+          </nav>
 
           <div className="footer-links footer-legal">
             <strong>Legal / Disclaimer</strong>
