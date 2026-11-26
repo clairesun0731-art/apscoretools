@@ -1,3 +1,5 @@
+import { liveApCalculators } from "./apCalculatorDirectory";
+
 export const apScoreDistributionCategories = [
   "All",
   "Arts",
@@ -25,9 +27,10 @@ export interface APScoreDistribution {
   calculatorUrl?: string;
 }
 
-export const apScoreDistributions: APScoreDistribution[] = [
+const distributionRows: (Omit<APScoreDistribution, "calculatorUrl"> & { subjectId: string })[] = [
   {
     subject: "AP African American Studies",
+    subjectId: "ap_african_american_studies",
     category: "History & Social Sciences",
     year: 2026,
     score5: 20,
@@ -39,6 +42,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP 2D Art & Design",
+    subjectId: "ap_2d_art_and_design",
     category: "Arts",
     year: 2026,
     score5: 12,
@@ -50,6 +54,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP 3D Art & Design",
+    subjectId: "ap_3d_art_and_design",
     category: "Arts",
     year: 2026,
     score5: 7,
@@ -61,6 +66,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Drawing",
+    subjectId: "ap_drawing",
     category: "Arts",
     year: 2026,
     score5: 16,
@@ -72,6 +78,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Art History",
+    subjectId: "ap_art_history",
     category: "Arts",
     year: 2026,
     score5: 15,
@@ -83,6 +90,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Biology",
+    subjectId: "ap_biology",
     category: "Sciences",
     year: 2026,
     score5: 15,
@@ -91,10 +99,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 21,
     score1: 8,
     passRate: 71,
-    calculatorUrl: "/ap-biology-score-calculator/",
   },
   {
     subject: "AP Calculus AB",
+    subjectId: "ap_calculus_ab",
     category: "Math & Computer Science",
     year: 2026,
     score5: 20,
@@ -103,10 +111,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 24,
     score1: 11,
     passRate: 65,
-    calculatorUrl: "/ap-calculus-ab-score-calculator/",
   },
   {
     subject: "AP Calculus BC",
+    subjectId: "ap_calculus_bc",
     category: "Math & Computer Science",
     year: 2026,
     score5: 46,
@@ -115,10 +123,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 14,
     score1: 4,
     passRate: 82,
-    calculatorUrl: "/ap-calculus-bc-score-calculator/",
   },
   {
     subject: "AP Chemistry",
+    subjectId: "ap_chemistry",
     category: "Sciences",
     year: 2026,
     score5: 15,
@@ -127,10 +135,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 18,
     score1: 6,
     passRate: 75,
-    calculatorUrl: "/ap-chemistry-score-calculator/",
   },
   {
     subject: "AP Chinese Language and Culture",
+    subjectId: "ap_chinese_language",
     category: "World Languages",
     year: 2026,
     score5: 48,
@@ -142,6 +150,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Comparative Government & Politics",
+    subjectId: "ap_comparative_government",
     category: "History & Social Sciences",
     year: 2026,
     score5: 15,
@@ -153,6 +162,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Computer Science A",
+    subjectId: "ap_computer_science_a",
     category: "Math & Computer Science",
     year: 2026,
     score5: 25,
@@ -164,6 +174,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Computer Science Principles",
+    subjectId: "ap_computer_science_principles",
     category: "Math & Computer Science",
     year: 2026,
     score5: 10,
@@ -175,6 +186,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP English Language & Composition",
+    subjectId: "ap_english_language",
     category: "English",
     year: 2026,
     score5: 15,
@@ -183,10 +195,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 15,
     score1: 10,
     passRate: 75,
-    calculatorUrl: "/ap-english-language-score-calculator/",
   },
   {
     subject: "AP English Literature & Composition",
+    subjectId: "ap_english_literature",
     category: "English",
     year: 2026,
     score5: 16,
@@ -198,6 +210,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Environmental Science",
+    subjectId: "ap_environmental_science",
     category: "Sciences",
     year: 2026,
     score5: 13,
@@ -206,10 +219,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 15,
     score1: 16,
     passRate: 69,
-    calculatorUrl: "/ap-environmental-science-score-calculator/",
   },
   {
     subject: "AP European History",
+    subjectId: "ap_european_history",
     category: "History & Social Sciences",
     year: 2026,
     score5: 16,
@@ -221,6 +234,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP French Language and Culture",
+    subjectId: "ap_french_language",
     category: "World Languages",
     year: 2026,
     score5: 15,
@@ -232,6 +246,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP German Language and Culture",
+    subjectId: "ap_german_language",
     category: "World Languages",
     year: 2026,
     score5: 24,
@@ -243,6 +258,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Human Geography",
+    subjectId: "ap_human_geography",
     category: "History & Social Sciences",
     year: 2026,
     score5: 19,
@@ -251,10 +267,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 24,
     score1: 10,
     passRate: 66,
-    calculatorUrl: "/ap-human-geography-score-calculator/",
   },
   {
     subject: "AP Italian Language and Culture",
+    subjectId: "ap_italian_language",
     category: "World Languages",
     year: 2026,
     score5: 19,
@@ -266,6 +282,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Japanese Language and Culture",
+    subjectId: "ap_japanese_language",
     category: "World Languages",
     year: 2026,
     score5: 47,
@@ -277,6 +294,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Latin",
+    subjectId: "ap_latin",
     category: "World Languages",
     year: 2026,
     score5: 20,
@@ -288,6 +306,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Macroeconomics",
+    subjectId: "ap_macroeconomics",
     category: "History & Social Sciences",
     year: 2026,
     score5: 19,
@@ -296,10 +315,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 20,
     score1: 14,
     passRate: 66,
-    calculatorUrl: "/ap-macroeconomics-score-calculator/",
   },
   {
     subject: "AP Microeconomics",
+    subjectId: "ap_microeconomics",
     category: "History & Social Sciences",
     year: 2026,
     score5: 19,
@@ -311,6 +330,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Music Theory",
+    subjectId: "ap_music_theory",
     category: "Arts",
     year: 2026,
     score5: 18,
@@ -322,6 +342,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Physics 1",
+    subjectId: "ap_physics_1",
     category: "Sciences",
     year: 2026,
     score5: 19,
@@ -333,6 +354,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Physics 2",
+    subjectId: "ap_physics_2",
     category: "Sciences",
     year: 2026,
     score5: 20,
@@ -344,6 +366,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Physics C: Electricity and Magnetism",
+    subjectId: "ap_physics_c_electricity_and_magnetism",
     category: "Sciences",
     year: 2026,
     score5: 24,
@@ -355,6 +378,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Physics C: Mechanics",
+    subjectId: "ap_physics_c_mechanics",
     category: "Sciences",
     year: 2026,
     score5: 20,
@@ -366,6 +390,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Precalculus",
+    subjectId: "ap_precalculus",
     category: "Math & Computer Science",
     year: 2026,
     score5: 29,
@@ -377,6 +402,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Psychology",
+    subjectId: "ap_psychology",
     category: "History & Social Sciences",
     year: 2026,
     score5: 15,
@@ -385,10 +411,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 18,
     score1: 8,
     passRate: 74,
-    calculatorUrl: "/ap-psychology-score-calculator/",
   },
   {
     subject: "AP Research",
+    subjectId: "ap_research",
     category: "AP Capstone",
     year: 2026,
     score5: 17,
@@ -400,6 +426,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Seminar",
+    subjectId: "ap_seminar",
     category: "AP Capstone",
     year: 2026,
     score5: 10,
@@ -411,6 +438,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Spanish Language and Culture",
+    subjectId: "ap_spanish_language",
     category: "World Languages",
     year: 2026,
     score5: 21,
@@ -422,6 +450,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Spanish Literature and Culture",
+    subjectId: "ap_spanish_literature",
     category: "World Languages",
     year: 2026,
     score5: 20,
@@ -433,6 +462,7 @@ export const apScoreDistributions: APScoreDistribution[] = [
   },
   {
     subject: "AP Statistics",
+    subjectId: "ap_statistics",
     category: "Math & Computer Science",
     year: 2026,
     score5: 17,
@@ -441,10 +471,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 17,
     score1: 21,
     passRate: 62,
-    calculatorUrl: "/ap-statistics-score-calculator/",
   },
   {
     subject: "AP U.S. Government & Politics",
+    subjectId: "ap_us_government",
     category: "History & Social Sciences",
     year: 2026,
     score5: 23,
@@ -453,10 +483,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 16,
     score1: 8,
     passRate: 76,
-    calculatorUrl: "/ap-us-government-score-calculator/",
   },
   {
     subject: "AP U.S. History",
+    subjectId: "ap_us_history",
     category: "History & Social Sciences",
     year: 2026,
     score5: 14,
@@ -465,10 +495,10 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 18,
     score1: 8,
     passRate: 74,
-    calculatorUrl: "/ap-us-history-score-calculator/",
   },
   {
     subject: "AP World History: Modern",
+    subjectId: "ap_world_history",
     category: "History & Social Sciences",
     year: 2026,
     score5: 14,
@@ -477,6 +507,11 @@ export const apScoreDistributions: APScoreDistribution[] = [
     score2: 26,
     score1: 8,
     passRate: 66,
-    calculatorUrl: "/ap-world-history-score-calculator/",
   },
 ];
+
+const calculatorUrls = new Map(liveApCalculators.map(({ subjectId, href }) => [subjectId, href]));
+
+export const apScoreDistributions: APScoreDistribution[] = distributionRows.map(
+  ({ subjectId, ...row }) => ({ ...row, calculatorUrl: calculatorUrls.get(subjectId) }),
+);

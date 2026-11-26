@@ -345,8 +345,8 @@ export default function ApWorldHistoryScoreCalculatorPage() {
                 AP U.S. Government Score Calculator
               </Link>
               , review the{" "}
-              <Link href="/ap-psychology-score-calculator/">
-                AP Psychology Score Calculator
+              <Link href="/ap-european-history-score-calculator/">
+                AP European History Score Calculator
               </Link>
               , use the{" "}
               <Link href="/ap-human-geography-score-calculator/">
