@@ -3,37 +3,38 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
 import {
+  calculatorCategoryOrder,
   comingSoonApCalculators,
   liveApCalculators,
 } from "@/lib/apCalculatorDirectory";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "AP Score Tools | Free AP Score Calculators by Subject",
-  },
-  description:
-    "AP Score Tools helps students estimate unofficial AP exam scores from raw MCQ and FRQ scores with live AP score calculators by subject.",
-  alternates: {
-    canonical: "https://www.apscoretools.com/",
-  },
-};
+const title = "AP Score Tools | Free AP Score Calculators by Subject";
+const description = `Estimate your AP score from practice exam results with free, unofficial calculators for ${liveApCalculators.length} subjects, including AP Physics, Chemistry, and U.S. History.`;
+const subjectGroups = calculatorCategoryOrder.map((category) => ({
+  category,
+  calculators: liveApCalculators.filter((calculator) => calculator.category === category),
+})).filter((group) => group.calculators.length > 0);
 
-const homepageComingSoonCalculators = comingSoonApCalculators.slice(0, 8);
+export const metadata: Metadata = {
+  title: { absolute: title },
+  description,
+  alternates: { canonical: "https://www.apscoretools.com/" },
+  openGraph: { title, description, url: "/", siteName: "AP Score Tools", type: "website" },
+  twitter: { title, description, card: "summary_large_image" },
+};
 
 const faqItems = [
   {
-    question: "Is AP Score Tools official?",
-    answer: "No. AP Score Tools provides unofficial AP score estimates only.",
+    question: "What scores should I enter from my practice test?",
+    answer: "Start with the number of multiple-choice questions you answered correctly. For written responses, use the points you earned on the scoring rubric. Follow the labels on your subject’s calculator for each section.",
   },
   {
-    question: "What can I estimate with AP Score Tools?",
-    answer:
-      "You can use live subject-specific AP exam score calculators to enter raw section scores and get an unofficial estimated AP score from 1 to 5.",
+    question: "Which AP Physics calculator should I use?",
+    answer: "Match the calculator to the exam on your practice paper. AP Physics 1, AP Physics 2, AP Physics C: Mechanics, and AP Physics C: Electricity and Magnetism each have a separate calculator. Check the exam format shown on the calculator before entering your scores.",
   },
   {
-    question: "Are calculator results exact?",
-    answer:
-      "No. Results are unofficial estimates based on raw scores, section weights, and estimated score ranges. Official AP score conversions may vary by year.",
+    question: "Will my estimated score match my official AP score?",
+    answer: "Your estimate may differ. Each calculator applies section weights and estimated score ranges to your raw points. The College Board determines official AP scores, and the cutoffs can vary by exam year.",
   },
 ];
 
@@ -42,8 +43,7 @@ const websiteSchema = {
   "@type": "WebSite",
   name: "AP Score Tools",
   url: "https://www.apscoretools.com",
-  description:
-    "Free, unofficial AP score calculators and AP exam score estimators for students.",
+  description,
 };
 
 const organizationSchema = {
@@ -59,8 +59,7 @@ const webPageSchema = {
   "@type": "WebPage",
   name: "AP Score Tools",
   url: "https://www.apscoretools.com/",
-  description:
-    "AP Score Tools helps students estimate unofficial AP exam scores from MCQ and FRQ raw scores with live calculators by subject.",
+  description,
   isPartOf: {
     "@type": "WebSite",
     name: "AP Score Tools",
@@ -88,42 +87,17 @@ export default function Home() {
 
       <section className="hero-tool directory-hero">
         <div className="container centered-hero-copy">
-          <span className="eyebrow">AP score calculator by subject</span>
           <h1>AP Score Tools</h1>
           <p className="lead">
-            AP Score Tools helps students estimate unofficial AP exam scores
-            from raw multiple-choice and free-response scores. Start with live
-            calculators by subject, then use Coming Soon labels as a roadmap for
-            planned tools.
+            Choose from {liveApCalculators.length} free AP score calculators.
+            Enter your practice exam points to see how each section contributes
+            to your estimated AP score from 1 to 5.
           </p>
-          <p className="trust-line">
-            Unofficial AP score estimates · MCQ and FRQ raw scores · Not
-            affiliated with the College Board
-          </p>
+          <p className="trust-line">Unofficial estimates · Independent of the College Board</p>
           <div className="hero-actions centered-actions">
-            <TrackedLink
-              className="button"
-              eventName="calculator_hub_click"
-              eventParams={{ source: "homepage_hero" }}
-              href="/ap-score-calculators/"
-            >
-              Browse AP score calculators
-            </TrackedLink>
-            <a className="button secondary" href="#live-ap-calculators">
-              Try a Live Calculator
-            </a>
+            <a className="button" href="#live-ap-calculators">Choose your AP subject</a>
+            <Link className="button secondary" href="/ap-score-distributions/">See AP score distributions</Link>
           </div>
-          <p className="short-note">
-            Start with popular live tools like the{" "}
-            <Link href="/ap-environmental-science-score-calculator/">
-              AP Environmental Science Score Calculator
-            </Link>{" "}
-            or the{" "}
-            <Link href="/ap-chemistry-score-calculator/">
-              AP Chemistry Score Calculator
-            </Link>{" "}
-            and browse the full live calculator directory below.
-          </p>
         </div>
       </section>
 
@@ -131,54 +105,33 @@ export default function Home() {
         <div className="container content-stack">
           <section className="prose-card">
             <div className="section-heading compact-heading centered-section-heading">
-              <h2>Live AP Score Calculators</h2>
-              <p>
-                Open a live AP score calculator, enter raw MCQ and FRQ scores,
-                and review an unofficial estimate from 1 to 5.
-              </p>
+              <h2>AP Score Calculators by Subject</h2>
             </div>
-            <div className="featured-live-grid">
-              {liveApCalculators.map((calculator) => (
-                <Link
-                  aria-label={`Open ${calculator.title}`}
-                  href={calculator.href}
-                  key={calculator.href}
-                >
-                  <article className="featured-tool-card">
-                    <div>
-                      <span className="status-pill">Live</span>
-                      <h3>{calculator.title}</h3>
-                      <p>{calculator.description}</p>
-                    </div>
-                    <span className="cta">Open calculator</span>
-                  </article>
-                </Link>
+            <div className="category-grid">
+              {subjectGroups.map(({ category, calculators }) => (
+                <section className="category-group" key={category}>
+                  <h3>{category}</h3>
+                  <ul>
+                    {calculators.map((calculator) => (
+                      <li key={calculator.href}>
+                        <Link href={calculator.href} aria-label={calculator.title}>
+                          {calculator.shortTitle}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
             </div>
-          </section>
-
-          <section className="prose-card" id="coming-soon-calculators">
-            <div className="section-heading compact-heading centered-section-heading">
-              <h2>Coming Soon Calculators</h2>
-              <p>
-                Planned AP score calculator tools are listed lightly below.
-                They are not live calculators yet.
+            {comingSoonApCalculators.length > 0 && (
+              <p className="short-note">
+                Looking for another subject?{" "}
+                <TrackedLink href="/ap-score-calculators/#coming-soon-calculators"
+                  eventName="calculator_hub_click" eventParams={{ source: "homepage_coming_soon" }}>
+                  See which calculators are coming soon.
+                </TrackedLink>
               </p>
-            </div>
-            <div className="coming-soon-grid">
-              {homepageComingSoonCalculators.map((calculator) => (
-                <article className="tool-card coming-soon" key={calculator.href}>
-                  <div>
-                    <span className="status-pill soon">Coming Soon</span>
-                    <h3>{calculator.title}</h3>
-                    <p>
-                      A planned unofficial AP score estimator for this subject.
-                    </p>
-                  </div>
-                  <span className="cta muted-cta">View status</span>
-                </article>
-              ))}
-            </div>
+            )}
           </section>
 
           <section className="card prose-card">
@@ -202,59 +155,17 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="prose-card">
-            <div className="section-heading compact-heading centered-section-heading">
-              <h2>Why Students Use AP Score Tools</h2>
-              <p>
-                The calculators are built for quick practice-test checks,
-                post-exam estimates, and clearer section-by-section review.
-              </p>
-            </div>
-            <div className="why-card-grid">
-              <article className="why-card">
-                <h3>Subject-specific calculators</h3>
-                <p>
-                  Each calculator follows the structure of its AP subject,
-                  including multiple-choice, free-response, and
-                  written-response sections where applicable.
-                </p>
-              </article>
-              <article className="why-card">
-                <h3>Clear score breakdowns</h3>
-                <p>
-                  Review weighted section scores, composite score, and an
-                  estimated AP score from 1 to 5.
-                </p>
-              </article>
-              <article className="why-card">
-                <h3>Useful before official scores</h3>
-                <p>
-                  Use AP Score Tools to understand practice test performance
-                  while you wait for official AP scores.
-                </p>
-              </article>
-            </div>
-          </section>
-
           <section className="card prose-card">
-            <h2>Find Every AP Score Calculator</h2>
-            <p>
-              The AP Score Calculators hub lists the current live calculators
-              first and keeps planned tools clearly marked as Coming Soon.
-            </p>
-            <div className="hero-actions">
-              <TrackedLink
-                className="button"
-                eventName="calculator_hub_click"
-                eventParams={{ source: "homepage_directory_section" }}
-                href="/ap-score-calculators/"
-              >
-                AP Score Calculators
-              </TrackedLink>
-              <Link className="button secondary" href="/when-do-ap-scores-come-out/">
-                When Do AP Scores Come Out?
-              </Link>
-            </div>
+            <h2>Understand Your AP Score</h2>
+            <ul>
+              <li><Link href="/what-do-ap-scores-mean/">What does an AP score of 1 to 5 mean?</Link></li>
+              <li><Link href="/when-do-ap-scores-come-out/">When do AP scores come out?</Link></li>
+              <li><Link href="/how-to-check-ap-scores/">How do I check my official AP scores?</Link></li>
+            </ul>
+            <TrackedLink href="/ap-score-calculators/" eventName="calculator_hub_click"
+              eventParams={{ source: "homepage_directory_section" }}>
+              Browse the full AP calculator directory
+            </TrackedLink>
           </section>
 
           <section className="card prose-card">
