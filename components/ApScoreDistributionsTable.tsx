@@ -175,6 +175,7 @@ export default function ApScoreDistributionsTable({
                       <Link
                         className="distribution-calculator-link"
                         href={distribution.calculatorUrl}
+                        aria-label={`Open the ${distribution.subject} score calculator`}
                         onClick={() =>
                           trackEvent("distribution_calculator_click", {
                             subject: distribution.subject,

@@ -297,8 +297,8 @@ export default function ApMacroeconomicsScoreCalculatorPage() {
                 AP World History Score Calculator
               </Link>
               , or use the{" "}
-              <Link href="/ap-chemistry-score-calculator/">
-                AP Chemistry Score Calculator
+              <Link href="/ap-microeconomics-score-calculator/">
+                AP Microeconomics Score Calculator
               </Link>
               . You can also browse{" "}
               <Link href="/guides/ap-scoring-guides/">AP Scoring Guides</Link>{" "}

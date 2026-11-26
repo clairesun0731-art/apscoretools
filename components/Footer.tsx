@@ -26,13 +26,11 @@ export default function Footer() {
               >
                 AP Score Calculators
               </TrackedLink>
-              <Link href="/ap-score-calculators/">
-                More AP calculators coming soon
-              </Link>
             </nav>
 
             <nav className="footer-links" aria-label="Guides">
               <strong>Guides</strong>
+              <Link href="/guides/">AP Score Guides</Link>
               <Link href="/ap-score-distributions/">AP Score Distributions</Link>
               <Link href="/how-ap-environmental-science-is-scored/">
                 How AP Environmental Science Is Scored
