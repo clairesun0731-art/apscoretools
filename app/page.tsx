@@ -1,20 +1,15 @@
+import SubjectBrowser from "@/components/SubjectBrowser";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
 import {
-  calculatorCategoryOrder,
   comingSoonApCalculators,
   liveApCalculators,
 } from "@/lib/apCalculatorDirectory";
 
 const title = "AP Score Tools | Free AP Score Calculators by Subject";
 const description = `Estimate your AP score from practice exam results with free, unofficial calculators for ${liveApCalculators.length} subjects, including AP Physics, Chemistry, and U.S. History.`;
-const subjectGroups = calculatorCategoryOrder.map((category) => ({
-  category,
-  calculators: liveApCalculators.filter((calculator) => calculator.category === category),
-})).filter((group) => group.calculators.length > 0);
-
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
@@ -107,22 +102,7 @@ export default function Home() {
             <div className="section-heading compact-heading centered-section-heading">
               <h2>AP Score Calculators by Subject</h2>
             </div>
-            <div className="category-grid">
-              {subjectGroups.map(({ category, calculators }) => (
-                <section className="category-group" key={category}>
-                  <h3>{category}</h3>
-                  <ul>
-                    {calculators.map((calculator) => (
-                      <li key={calculator.href}>
-                        <Link href={calculator.href} aria-label={calculator.title}>
-                          {calculator.shortTitle}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
-            </div>
+            <SubjectBrowser />
             {comingSoonApCalculators.length > 0 && (
               <p className="short-note">
                 Looking for another subject?{" "}

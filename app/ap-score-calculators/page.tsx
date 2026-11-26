@@ -1,3 +1,4 @@
+import SubjectBrowser from "@/components/SubjectBrowser";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
@@ -164,24 +165,7 @@ export default function ApScoreCalculatorsPage() {
                 scores to estimate a possible 1-5 result.
               </p>
             </div>
-            <div className="featured-live-grid">
-              {liveApCalculators.map((calculator) => (
-                <Link
-                  aria-label={`Open ${calculator.title}`}
-                  href={calculator.href}
-                  key={calculator.href}
-                >
-                  <article className="featured-tool-card">
-                    <div>
-                      <span className="status-pill">Live</span>
-                      <h3>{calculator.title}</h3>
-                      <p>{calculator.description}</p>
-                    </div>
-                    <span className="cta">Open calculator</span>
-                  </article>
-                </Link>
-              ))}
-            </div>
+            <SubjectBrowser />
           </section>
 
           <section className="prose-card" id="coming-soon-calculators">
@@ -192,23 +176,10 @@ export default function ApScoreCalculatorsPage() {
                 only. They are not live calculators yet.
               </p>
             </div>
-            <div className="coming-soon-grid">
-              {comingSoonApCalculators.map((calculator) => (
-                <article
-                  className="tool-card coming-soon"
-                  key={calculator.href}
-                >
-                  <div>
-                    <span className="status-pill soon">Coming Soon</span>
-                    <h3>{calculator.title}</h3>
-                    <p>
-                      A planned unofficial AP score estimator for this subject.
-                    </p>
-                  </div>
-                  <span className="cta muted-cta">View status</span>
-                </article>
-              ))}
-            </div>
+            <details className="planned-subjects">
+              <summary>View {comingSoonApCalculators.length} planned subjects</summary>
+              <ul>{comingSoonApCalculators.map(item => <li key={item.href}>{item.shortTitle}</li>)}</ul>
+            </details>
           </section>
 
           <article className="card prose-card" id="how-ap-score-calculators-work">

@@ -5,6 +5,7 @@ import ConsentBanner from "@/components/ConsentBanner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "./globals.css";
+import "./navigation.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
