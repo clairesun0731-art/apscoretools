@@ -1,3 +1,4 @@
+import { practiceGuides } from "@/lib/practiceGuides";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TrackedLink from "@/components/TrackedLink";
@@ -70,6 +71,7 @@ export default function SubjectCalculatorPage({
   subtitle,
   url,
 }: SubjectCalculatorPageProps) {
+  const guide = practiceGuides.find(item => item.calculators.includes(new URL(url).pathname));
   const scoreBands = formatScoreBands(calculator.scoreBands);
   const jsonLd = [
     {
@@ -157,6 +159,7 @@ export default function SubjectCalculatorPage({
 
           <div className="centered-calculator-panel" id="calculator">
             <GenericScoreCalculator {...calculator} />
+            {guide && <p><TrackedLink href={guide.href} eventName="scoring_guide_click" eventParams={{ subject: calculator.subject }}>{guide.title}</TrackedLink></p>}
           </div>
         </div>
       </section>

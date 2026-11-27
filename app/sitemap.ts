@@ -1,9 +1,11 @@
+import { practiceGuides } from "@/lib/practiceGuides";
 import type { MetadataRoute } from "next";
 
 const lastModified = new Date("2026-06-13T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    ...practiceGuides.map(guide => ({ url: "https://www.apscoretools.com" + guide.href })),
     { url: "https://www.apscoretools.com/ap-physics-1-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
     { url: "https://www.apscoretools.com/ap-physics-2-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },
     { url: "https://www.apscoretools.com/ap-physics-c-mechanics-score-calculator/", lastModified: new Date("2026-11-17T00:00:00Z"), changeFrequency: "monthly", priority: 0.85 },

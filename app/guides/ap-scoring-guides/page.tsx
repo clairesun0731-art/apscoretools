@@ -21,7 +21,10 @@ export const metadata: Metadata = {
   },
 };
 
+import { practiceGuides } from "@/lib/practiceGuides";
+
 const scoringGuides = [
+  ...practiceGuides.map(guide => ({ ...guide, status: "Live", calculatorHref: undefined, calculatorLabel: undefined })),
   {
     title: "How AP Environmental Science Is Scored",
     description:
